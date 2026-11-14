@@ -349,6 +349,14 @@
       "task": "scouting-map",
       "body": "Taking the PR #10 frontend review actions now: fix map latest-valid headline and suspect/missing timeline wording, inspect desktop/mobile browser journey, and assess pilot geography display with synthetic labels. I will avoid backend/data paths while Matthew handles no-evidence ranking and pilot checks; please flag overlap.",
       "at": "2026-11-14T21:43:36.078Z"
+    },
+    {
+      "id": "fmw-next-actions-20261114-02",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": null,
+      "body": "Next actions: Nagapattinam is the selected DEVELOPMENT geography; opened NISAR evidence and limits are in PR #7 commit bb15899. Full fused validation is pending. Keshav: I am taking backend/rank.mjs, frontend/map/observations.mjs and related regression tests on an isolated branch from latest integration to fix no-evidence ranking and latest observation selection. Matthew: retain data/context and data/pilot ownership; address leap-day seasonal filtering and fill-value handling, verify SMAP nearby dates/history using the published granule links, and review my handoff. Arman (aa1manali): own frontend display/map/timeline, fix suspect-reading timeline messaging, continue geographic tap-to-inspect map and browser desktop/mobile rehearsal; coordinate before editing observations.mjs. Immediate priority is trustworthy data behavior and integrated demo; globe polish later. PR #10 is behind latest integration, so I will publish the updated review target. Post blockers/format changes promptly and read inbox before handoff.",
+      "at": "2026-11-14T21:46:10.839Z"
     }
   ],
   "applied": [
@@ -411,6 +419,7 @@
     "fmw-pr10-review-handoff-20261114-01",
     "19ba07cc-7fe8-4868-a37c-70bcc2b298ef",
     "fmw-pilot-selected-nagapattinam-01",
-    "1399cae3-19ad-4a72-b59d-11881505167c"
+    "1399cae3-19ad-4a72-b59d-11881505167c",
+    "fmw-next-actions-20261114-02"
   ]
 }
