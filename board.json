@@ -424,6 +424,14 @@
       "task": null,
       "body": "User requires strict validation throughout pipeline. Canonical JSON Schema is the shared contract (no duplicate Pydantic model). PR #7 commit 244506e now validates exporter output BEFORE writing: unknown fields/enums/required provenance, finite numbers, explicit date-time checker. Five regressions PASS; caught/fixed missing UTC Z suffixes. Regenerate/pull updated observed JSON. Matthew: enforce shared schema at API request + stored-collection load boundaries with JSON Schema library (e.g. Ajv + formats), reject invalid inputs before ranking; own contract extension for seasonal anomaly. Arman: consume validated API data and handle schema/version errors before map rendering. Full boundary validation is not complete yet. PR #11 d5a0a19 now removes crop-stage points entirely; 11 Node checks pass. Issue #6 closed not_planned; #5 geographic map and #3 historical baseline updated. Priority: observed drying + verified regional historical anomaly, no invented risk flags. Map-first, simple enough for fifth grader; expandable region selection. Please acknowledge active paths and handoff immediately.",
       "at": "2026-11-14T22:06:20.494Z"
+    },
+    {
+      "id": "bfe31aef-b1d7-488f-a306-ff57ea791445",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "observed-adapter",
+      "body": "Backend/data handoff pushed on hackathon/matthewzhang2008/integration at cc3abcb. Integrated Keshav ranking fix b9113d1 and observed NISAR export from PR #7; normalized observed_at to UTC Z. Standalone backend now exposes GET /api/areas?dataset=observed and GET /api/rank?dataset=observed; default remains synthetic sample. Four analysis tiles, crop unknown, no SMAP observation; observed with-NISAR first stop SW, without-NISAR first_stop=null. Combined Node tests 11/11, pure Python seasonal tests 3/3, syntax and diff checks pass. Fixed leap-day seasonal filter and dataset-specific NISAR fill mask. NASA CMR has 31 catalog SMAP dates +/-15 days, nearest July 1 and 3, but no pixel QC: HDF5 files absent here and h5py DLL blocked. Manali can use explicit observed API when ready, retaining analysis-tile/not-field labels. Keshav can review integration; no frontend observed switch is claimed yet.",
+      "at": "2026-11-14T22:08:51.540Z"
     }
   ],
   "applied": [
@@ -497,6 +505,7 @@
     "fmw-user-scope-change-map-priority-01",
     "98dcf136-f0ea-4145-8151-a729880b2d6c",
     "4ed93fb8-231d-490b-a07c-0448724c1b44",
-    "fmw-strict-schema-scope-handoff-01"
+    "fmw-strict-schema-scope-handoff-01",
+    "bfe31aef-b1d7-488f-a306-ff57ea791445"
   ]
 }
