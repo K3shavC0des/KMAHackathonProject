@@ -20,8 +20,8 @@ This checkout reproduced the public Nagapattinam CMR catalog query: four hits, t
 | --- | --- | --- | --- |
 | `pilot-data` | matthewzhang2008 | blocked | Obtain accessible files and runnable HDF5 environment; check small agricultural AOI and matching SMAP dates before selecting pilot. |
 | `smap-crop` | matthewzhang2008 | blocked | Quality-valid same-cell AM baseline with at least five years, then source crop stage or leave unknown. |
-| `area-contract` | matthewzhang2008 | review | Teammate review and integrated schema/fixture check. |
-| `fusion-api` | matthewzhang2008 | review | Integrated map/API journey and review of illustrative ranking. |
+| `area-contract` | matthewzhang2008 | done | Merged as PR #8; fixture/schema and API tests pass. |
+| `fusion-api` | matthewzhang2008 | done | Merged as PR #9; Node tests 3/3 pass on sample inputs. |
 | `scouting-map` | aa1manali | review | Browser visual check and integration. |
 | `crop-demo` | aa1manali | queued | Add crop-stage scenario without changing satellite observations. |
 
@@ -29,6 +29,6 @@ The integration branch combines the published contract, API, map, Keshav data sc
 
 ## Last verification and next action
 
-Node backend tests: 3/3 passed. Map server returned HTTP 200 for page, script, canonical fixture and `/api/rank`; response reported the expected first-stop change. Python source compiled; public CMR preflight returned four hits and two repeat pairs. HDF5 tests blocked by application control. Browser visual check, crop scenario, final project page and real-data pilot remain to do.
+Node tests: 4/4 passed, including the regression that excludes suspect/missing headline readings. Map server returned HTTP 200 for page, script, quality-filter module, canonical fixture and `/api/rank`; response reported the expected first-stop change. Python source compiled; public CMR preflight returned four hits and two repeat pairs. HDF5 tests blocked by application control. Browser visual check could not run because this session's browser access host was unavailable. Crop scenario, final project page publication and real-data pilot remain to do. `SUBMISSION_DRAFT.md` is ready for review.
 
-Next: push the integration branch, ask aa1manali to add the scenario against it, review the combined UI at desktop/mobile, rehearse the sample demo, and prepare the NASA project page. If accessible source files and an HDF5-capable runtime arrive, resume the pilot gate. Preserve local edits and never commit `.tools/`, `.local/`, credentials, or downloaded granules.
+Next: ask aa1manali to add the scenario against the integration branch, review the combined UI at desktop/mobile, rehearse the sample demo, and finalize the NASA project page from `SUBMISSION_DRAFT.md`. If accessible source files and an HDF5-capable runtime arrive, resume the pilot gate. Preserve local edits and never commit `.tools/`, `.local/`, credentials, or downloaded granules.

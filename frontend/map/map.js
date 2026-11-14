@@ -1,12 +1,10 @@
+import { usableObservation } from './observations.mjs';
+
 const byId = id => document.getElementById(id);
 const svgNs = 'http://www.w3.org/2000/svg';
 let areas = [];
 let selectedId;
 let comparison;
-
-function observation(area, source) {
-  return area.observations.find(item => item.source === source && item.quality !== 'missing') || null;
-}
 
 function readingText(item) {
   if (!item) return 'Unavailable';
@@ -60,8 +58,8 @@ function render() {
   select.value = selectedId;
   drawMap();
   const area = areas.find(item => item.area_id === selectedId);
-  const sme2 = observation(area, 'NISAR_SME2');
-  const smap = observation(area, 'SMAP');
+  const sme2 = usableObservation(area, 'NISAR_SME2');
+  const smap = usableObservation(area, 'SMAP');
   const statuses = new Set(area.observations.map(item => item.data_status));
   byId('sample-badge').textContent = statuses.size === 1 ? [...statuses][0].toUpperCase() : 'MIXED STATUS';
   byId('area-description').textContent = `${area.label}. Crop stage: ${area.crop_stage}. Polygon coordinates are from the sample fixture; no pilot has been selected.`;
