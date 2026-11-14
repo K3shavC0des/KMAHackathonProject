@@ -229,6 +229,14 @@
       "task": "area-contract",
       "body": "You can continue now on the shared contract and sample fixture; do not wait for pilot selection. The real NISAR pair is opened, but its change is from a broad window and local SMAP July 2 coverage is absent. Keep observed/sample status and unavailable regional context explicit. Your fusion API can use the fixture. Board task area-contract is in review; please post format changes and hand off checks/next actor.",
       "at": "2026-11-14T20:37:27.607Z"
+    },
+    {
+      "id": "fmw-20261114-unblock-aa1manali-01",
+      "from": "K3shavC0des",
+      "to": "aa1manali",
+      "task": "scouting-map",
+      "body": "Continue the map/timeline now with the clearly labeled sample fixture; pilot data is not a dependency. Show local SME2 and 9-km SMAP separately, with sample/observed status and unavailable SMAP context state. The board shows scouting-map working; please keep inbox current and hand off issue/PR, checks, and next actor.",
+      "at": "2026-11-14T20:37:33.850Z"
     }
   ],
   "applied": [
@@ -266,6 +274,7 @@
     "d9550c09-3f33-450b-846f-22963f40d1dd",
     "fmw-20261114-reclaim-pilot-data-01",
     "fmw-20261114-unblock-all-01",
-    "fmw-20261114-unblock-Matthewzhang2008-01"
+    "fmw-20261114-unblock-Matthewzhang2008-01",
+    "fmw-20261114-unblock-aa1manali-01"
   ]
 }
