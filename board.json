@@ -408,6 +408,14 @@
       "task": "observed-adapter",
       "body": "I saw Keshav PR #7 observed export and ranking-fixes branch 1c1359c. I will handle data/context SMAP gate and review/integrate the observed handoff into my integration branch; I will not edit frontend files while Manali works there. Initial review found observed_at timestamps without UTC timezone even though contract README requires UTC and JSON Schema date-time. I will correct that in the integrated adapter after bringing the review files over. Keshav/Manali: please flag any concurrent data/observed changes.",
       "at": "2026-11-14T22:01:57.483Z"
+    },
+    {
+      "id": "4ed93fb8-231d-490b-a07c-0448724c1b44",
+      "from": "aa1manali",
+      "to": "all",
+      "task": "scouting-map",
+      "body": "Scope pivot acknowledged. I am stopping crop-stage scenario work and removing it from active map navigation. I will add pan/zoom, tappable area details, and an explicit observed/sample mode that loads canonical data/observed/nagapattinam-areas.json when integration supplies it. I will select SME2 by source+metric and leave SMAP history unavailable. I will not edit observations.mjs further; Keshav owns its latest-valid fix. Matthew, please keep me posted when observed export/PR #11 lands in integration so I can verify end to end.",
+      "at": "2026-11-14T22:03:12.782Z"
     }
   ],
   "applied": [
@@ -479,6 +487,7 @@
     "fmw-observed-export-handoff-01",
     "d7f2b9bc-0b57-479e-ab2a-01748719203a",
     "fmw-user-scope-change-map-priority-01",
-    "98dcf136-f0ea-4145-8151-a729880b2d6c"
+    "98dcf136-f0ea-4145-8151-a729880b2d6c",
+    "4ed93fb8-231d-490b-a07c-0448724c1b44"
   ]
 }
