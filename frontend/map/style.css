@@ -12,6 +12,12 @@ header > p:last-child { max-width: 700px; line-height: 1.5; }
 .panel-head h2 { margin: 0 0 18px; }
 .panel-head span { color: #607368; font-size: .8rem; }
 svg { width: 100%; height: auto; border-radius: 8px; }
+.map-tools { display: flex; gap: 7px; margin-bottom: 10px; }
+.map-tools button { min-width: 38px; min-height: 38px; border: 1px solid #8ca495; border-radius: 6px; background: white; color: #24352b; font: inherit; font-weight: 700; cursor: pointer; }
+.map-tools button:hover { background: #e6e9df; }
+#map { touch-action: none; cursor: grab; }
+#map:active { cursor: grabbing; }
+#mode-note { color: #526459; font-size: .85rem; }
 .map-note { font-size: .8rem; color: #526459; }
 .marker { cursor: pointer; }
 .marker polygon { fill: #6b9e7e; stroke: white; stroke-width: 4; }
@@ -38,4 +44,5 @@ select { width: 100%; padding: 10px; border: 1px solid #8ca495; border-radius: 6
 ol { padding-left: 24px; }
 li { margin: 0 0 18px; padding-left: 5px; }
 li span { display: block; color: #526459; font-size: .85rem; margin-top: 3px; }
+.detail, .pilot-panel, .metrics article { overflow-wrap: anywhere; }
 @media (max-width: 760px) { .layout { grid-template-columns: 1fr; } .metrics { grid-template-columns: 1fr; } }

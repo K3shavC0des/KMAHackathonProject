@@ -14,21 +14,31 @@
       <p>Inspect local moisture change alongside regional context before choosing where to scout.</p>
     </header>
     <div class="notice" role="status">The selectable field areas and rankings use synthetic sample data. Nagapattinam is a development analysis window with a verified NISAR summary; field validation and matching SMAP context are pending.</div>
-    <p><a href="../scenario/">Try a crop-stage scenario</a> using the same sample areas.</p>
+    <label for="data-mode">Evidence view</label>
+    <select id="data-mode" aria-describedby="mode-note">
+      <option value="sample">Synthetic sample areas</option>
+      <option value="observed">Nagapattinam observed NISAR tiles</option>
+    </select>
+    <p id="mode-note">Choose the observed view when the verified tile export is available.</p>
     <section class="panel value-check" aria-labelledby="value-heading">
-      <div class="panel-head"><h2 id="value-heading">First scouting stop</h2><span>Illustrative priority only</span></div>
+      <div class="panel-head"><h2 id="value-heading">Moisture inspection</h2><span>Evidence for a field visit, not watering advice</span></div>
       <div class="metrics">
-        <article><h3>With local NISAR evidence</h3><strong id="with-first">Loading…</strong></article>
-        <article><h3>Without NISAR evidence</h3><strong id="without-first">Loading…</strong></article>
+        <article><h3>Strongest local drying signal</h3><strong id="with-first">Loading…</strong></article>
+        <article><h3>Below historical standard?</h3><strong id="without-first">Loading…</strong></article>
       </div>
       <p id="value-change"></p>
       <p id="rank-explanation"></p>
     </section>
     <div class="layout">
       <section class="panel" aria-labelledby="map-heading">
-        <div class="panel-head"><h2 id="map-heading">Areas</h2><span>Illustrative locations</span></div>
+        <div class="panel-head"><h2 id="map-heading">Areas</h2><span>Tap an area for evidence</span></div>
+        <div class="map-tools" aria-label="Map controls">
+          <button type="button" id="zoom-in" aria-label="Zoom in">+</button>
+          <button type="button" id="zoom-out" aria-label="Zoom out">−</button>
+          <button type="button" id="reset-view">Reset view</button>
+        </div>
         <svg id="map" viewBox="0 0 640 390" role="img" aria-label="Sample area polygons"></svg>
-        <p class="map-note">Dashed outline: Nagapattinam development window. Solid polygons: synthetic sample areas outside that window. Coordinates use longitude and latitude; this is not a basemap.</p>
+        <p class="map-note" id="map-note">Dashed outline: Nagapattinam development window. Solid polygons: synthetic sample areas outside that window. Drag to pan; scroll or use buttons to zoom. Coordinates use longitude and latitude; this is not a basemap.</p>
         <div class="pilot-panel" id="pilot-panel" hidden>
           <h3>Nagapattinam development window · observed NISAR summary</h3>
           <p>79.74–79.80° E, 10.70–10.76° N. June 20 to July 2, 2026: median SME2 surface-moisture change <strong>−0.0175 m³/m³</strong> across 920 matched recommended cells. This window spans multiple areas; it is not a validated farm field.</p>
