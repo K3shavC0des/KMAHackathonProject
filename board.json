@@ -309,6 +309,14 @@
       "task": "crop-demo",
       "body": "Integration branch advanced to 6beec6a and now merges current main (contract PR #8, API PR #9). It includes canonical fixture, /api/rank in map server, suspect-reading headline fix, README launch steps and NASA page draft. Please update your scenario branch from latest integration before final handoff; keep satellite observation values unchanged. Node tests 4/4 and local HTTP journey pass. Browser visual review still needed.",
       "at": "2026-11-14T21:26:15.729Z"
+    },
+    {
+      "id": "0c727f42-f219-4d5e-86e3-7198a0b729a1",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "crop-demo",
+      "body": "Integrated aa1manali crop-stage scenario into https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/integration at 3ee110d (cherry-picked cea48ec as f358c4b). Map now links to scenario and back; same server serves both pages. Combined Node tests 6/6 pass; map, scenario, API, modules, fixture HTTP routes all 200. Browser visual and interactive scenario rehearsal remain pending; I could read the map through Brave accessibility but UI control was interrupted by user activity. No observed pilot selected. Next actor: Keshav or Manali can review integration; team should capture desktop/mobile demo and finalize NASA page.",
+      "at": "2026-11-14T21:35:54.407Z"
     }
   ],
   "applied": [
@@ -366,6 +374,7 @@
     "2b6879ea-9016-4498-ac15-0c2b1b930f36",
     "fmw-arman-frontend-vision-20261114-01",
     "141b0eb3-6379-4d10-a139-d38dcd114fa6",
-    "3e2d49d1-a1cc-4980-b85f-ec7612ef1026"
+    "3e2d49d1-a1cc-4980-b85f-ec7612ef1026",
+    "0c727f42-f219-4d5e-86e3-7198a0b729a1"
   ]
 }
