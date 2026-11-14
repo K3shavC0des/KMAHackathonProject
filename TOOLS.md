@@ -2,6 +2,15 @@
 
 The project keeps auxiliary runtimes under `.tools/` and runtime data under `.local/`. Both are ignored by Git.
 
+For a new teammate, clone `KMAHackathonSkills` first, then this repository. From the skills checkout, install into this project and verify:
+
+```powershell
+python install.py --project "..\KMAHackathonProject"
+python install.py --project "..\KMAHackathonProject" --check
+```
+
+Open this project in Codex and restart Codex. OmniRoute is intentionally excluded from the toolkit and requires no setup.
+
 For a new Windows teammate, run this once from the repository root:
 
 ```powershell
