@@ -36,13 +36,27 @@
         "observations": { "type": "array", "items": { "$ref": "#/$defs/observation" } }
       }
     },
+    "seasonal_context": {
+      "type": "object", "additionalProperties": false,
+      "required": ["current_m3m3", "baseline_m3m3", "grid_center_wgs84", "window_days_each_side", "historical_year_medians_m3m3"],
+      "properties": {
+        "current_m3m3": { "type": "number", "minimum": 0, "maximum": 1 },
+        "baseline_m3m3": { "type": "number", "minimum": 0, "maximum": 1 },
+        "grid_center_wgs84": { "$ref": "#/$defs/point" },
+        "window_days_each_side": { "const": 15 },
+        "historical_year_medians_m3m3": {
+          "type": "object", "minProperties": 5, "additionalProperties": false,
+          "patternProperties": { "^20(1[6-9]|2[0-5])$": { "type": "number", "minimum": 0, "maximum": 1 } }
+        }
+      }
+    },
     "observation": {
       "type": "object", "additionalProperties": false,
       "required": ["observation_id", "source", "metric", "value", "unit", "observed_at", "spatial_scale", "quality", "data_status", "source_ref"],
       "properties": {
         "observation_id": { "type": "string", "minLength": 1 },
         "source": { "enum": ["NISAR_SME2", "SMAP", "CROP_CONTEXT"] },
-        "metric": { "enum": ["soil_moisture", "soil_moisture_change", "seasonal_baseline", "crop_stage"] },
+        "metric": { "enum": ["soil_moisture", "soil_moisture_change", "seasonal_baseline", "seasonal_anomaly", "crop_stage"] },
         "value": { "oneOf": [{ "type": "number" }, { "type": "string", "minLength": 1 }] },
         "unit": { "enum": ["m3/m3", "percentage_points", "stage"] },
         "observed_at": { "type": "string", "format": "date-time" },
@@ -50,8 +64,21 @@
         "quality": { "enum": ["valid", "suspect", "missing"] },
         "data_status": { "enum": ["sample", "observed"] },
         "source_ref": { "type": "string", "minLength": 1 },
-        "note": { "type": "string" }
-      }
+        "note": { "type": "string" },
+        "seasonal_context": { "$ref": "#/$defs/seasonal_context" }
+      },
+      "if": { "properties": { "metric": { "const": "seasonal_anomaly" } } },
+      "then": {
+        "required": ["seasonal_context"],
+        "properties": {
+          "seasonal_context": { "$ref": "#/$defs/seasonal_context" },
+          "source": { "const": "SMAP" },
+          "unit": { "const": "m3/m3" },
+          "spatial_scale": { "const": "regional" },
+          "value": { "type": "number" }
+        }
+      },
+      "else": { "not": { "required": ["seasonal_context"] } }
     }
   }
 }

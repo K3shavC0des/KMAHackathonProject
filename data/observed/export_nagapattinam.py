@@ -5,7 +5,6 @@ import json
 import re
 from pathlib import Path
 
-import h5py
 import numpy as np
 from jsonschema import Draft202012Validator, FormatChecker
 
@@ -49,6 +48,8 @@ def utc_timestamp(value):
 
 
 def export(earlier, later):
+    import h5py
+
     areas = []
     with h5py.File(earlier) as before, h5py.File(later) as after:
         for key in ['productType', 'trackNumber', 'frameNumber', 'orbitPassDirection', 'radarBand', 'lookDirection']:
@@ -62,6 +63,7 @@ def export(earlier, later):
         for axis in (lat, lon):
             if not np.isfinite(axis).all() or not (np.all(np.diff(axis) > 0) or np.all(np.diff(axis) < 0)):
                 raise ValueError('Expected finite strictly monotonic coordinate axes')
+        # NISAR zero-Doppler acquisition times are UTC; some files omit the Z.
         dates = [utc_timestamp(scalar(handle, 'zeroDopplerStartTime')) for handle in [before, after]]
         if datetime.fromisoformat(dates[0].replace('Z', '+00:00')) >= datetime.fromisoformat(dates[1].replace('Z', '+00:00')):
             raise ValueError('Inputs must be in chronological order')
