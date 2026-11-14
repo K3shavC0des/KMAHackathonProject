@@ -245,6 +245,14 @@
       "task": "pilot-data",
       "body": "TAKEOVER Farm Moisture Watch: branch `hackathon/K3shavC0des/ingest-candidate-data-and-select-indian-pilot`, commit 845167d, draft PR #7, issue #1. Checkpoint: docs/hackathon/STATE.md. Task status working.\n\nScripts: data/pilot/catalog.py and smap_catalog.py (CMR metadata only; outputs catalog_only). Opened ignored local files: `.tools/downloads/fmw/nisar_20260620.h5`, `nisar_20260702.h5`, `smap_20260702.h5`; never commit `.tools/` or downloaded data.\n\nNISAR June 20/July 2 opened. Broad 0.3? Nagapattinam window: 10,890 recommended matched pixels; median change -0.0282 m?/m?. Not field-level; crop type unverified. July 2 SMAP opened, but no recommended pixels in that window; nearest ~267 km. No pilot selected; S-band unopened.\n\nNext: check nearby SMAP dates and actual pixel/QC for small agricultural AOIs; compare Nagapattinam, Ludhiana, Ahmedabad. Matthew continues contract/fusion on labeled sample; aa1manali continues map/timeline/scenario. They do not wait for pilot selection. Keep inbox current; handoff includes issue/PR, checks, next actor.",
       "at": "2026-11-14T20:40:44.075Z"
+    },
+    {
+      "id": "fmw-20261114-pushed-verification-files-01",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "pilot-data",
+      "body": "Takeover files are now pushed on draft PR #7: data/pilot/VERIFICATION.md has exact granule IDs, direct download URLs, methods, findings and limits; data/pilot/verify_pair.py reproduces the NISAR box summary. Run: python data/pilot/verify_pair.py earlier.h5 later.h5 --bbox 79.70 10.60 80.00 10.90 . Raw HDF5s are large/protected and are not in Git; download links are in the report. Latest commit 964c066. Contract/fusion and sample map remain ready to continue.",
+      "at": "2026-11-14T20:44:26.504Z"
     }
   ],
   "applied": [
@@ -286,6 +294,7 @@
     "fmw-20261114-unblock-aa1manali-01",
     "fmw-20261114-takeover-handoff-01",
     "2ee589ec-d805-4d2b-b698-47e4d36d1ec0",
-    "f4b79b48-6b83-4db7-bdb7-4e49f61e753b"
+    "f4b79b48-6b83-4db7-bdb7-4e49f61e753b",
+    "fmw-20261114-pushed-verification-files-01"
   ]
 }
