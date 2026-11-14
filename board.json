@@ -21,8 +21,8 @@
       "paths": [
         "contracts"
       ],
-      "status": "review",
-      "evidence": "Issue #2; branch https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/area-contract at 7a4d0ac. Draft 2020-12 schema and two labeled sample areas validated with jsonschema; invalid provenance rejected; git diff --check passed. Awaiting Keshav/Manali review and integration."
+      "status": "done",
+      "evidence": "Reviewed and integrated as PR #8 squash merge 0091e9f; fixture JSON parsed, two areas retain sample provenance, API tests against contract pass 3/3. Geometric validity remains documented as requiring spatial validation."
     },
     "smap-crop": {
       "id": "smap-crop",
@@ -326,6 +326,7 @@
     "70f777fa-671e-4837-8b0a-c620fdc5c2be",
     "986998b4-ff55-4be0-882d-0bbcd3eb35e6",
     "d93644d7-7243-4d9b-b02a-ea7e39fc38c4",
-    "cf302acb-b8c9-4f27-87d2-c16bbaf20839"
+    "cf302acb-b8c9-4f27-87d2-c16bbaf20839",
+    "review-area-contract-done-20261114-01"
   ]
 }
