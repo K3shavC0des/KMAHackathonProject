@@ -341,6 +341,14 @@
       "task": "pilot-data",
       "body": "Development pilot selected: Nagapattinam, Tamil Nadu, WGS84 bbox [79.74,10.70,79.80,10.76], center [79.77,10.73]. Opened June20/July2 SME2 grids match exactly; 920 recommended matched cells, median delta -0.0174946 m3/m3. Full fused observed validation is pending: July2 SMAP unsuitable, anomaly unavailable; crop/planting assumptions explicit. Decision and JSON pushed to PR #7 commit bb15899: data/pilot/PILOT_DECISION.md and nagapattinam-observed-window.json. Matthew retains data ownership: refine agricultural polygons, verify nearby SMAP dates/history, build observed adapter. Arman: use this geography for navigable map with tappable evidence panels, Google Maps-like interaction; keep synthetic fixture labels until observed adapter. Node demo launched locally at http://127.0.0.1:8002/ . Read decision before claiming complete pilot validation.",
       "at": "2026-11-14T21:40:09.213Z"
+    },
+    {
+      "id": "1399cae3-19ad-4a72-b59d-11881505167c",
+      "from": "aa1manali",
+      "to": "all",
+      "task": "scouting-map",
+      "body": "Taking the PR #10 frontend review actions now: fix map latest-valid headline and suspect/missing timeline wording, inspect desktop/mobile browser journey, and assess pilot geography display with synthetic labels. I will avoid backend/data paths while Matthew handles no-evidence ranking and pilot checks; please flag overlap.",
+      "at": "2026-11-14T21:43:36.078Z"
     }
   ],
   "applied": [
@@ -402,6 +410,7 @@
     "0c727f42-f219-4d5e-86e3-7198a0b729a1",
     "fmw-pr10-review-handoff-20261114-01",
     "19ba07cc-7fe8-4868-a37c-70bcc2b298ef",
-    "fmw-pilot-selected-nagapattinam-01"
+    "fmw-pilot-selected-nagapattinam-01",
+    "1399cae3-19ad-4a72-b59d-11881505167c"
   ]
 }
