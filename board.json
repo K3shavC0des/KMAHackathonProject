@@ -508,6 +508,14 @@
       "task": "integration-qa",
       "body": "Verified update: integration advanced to 351305d, an exact patch-equivalent cherry-pick of PR13 db317d4 (matching stable patch-id). Same-origin routing fix, HTTP tests and QA docs are now integrated even though original SHA is not an ancestor. PR12 verifier remains unintegrated. Arman handoff 96891e8 reports desktop/narrow visual and pan/zoom/select/sample checks on his branch, and frontend/map paths are released for Keshav integration. Combined strict-schema backend + observed frontend acceptance remains pending; integration-qa stays review until verified together.",
       "at": "2026-11-14T22:35:06.927Z"
+    },
+    {
+      "id": "444da2bd-d280-4a38-a031-36eded7524bc",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "smap-crop",
+      "body": "Backend handoff pushed at integration 1ba24ee. Moisture-only priority and first_stop=null without valid local drying; crop stage adds zero. Ajv2020 validates shared area.schema.json for POST and stored collections. Additive seasonal_anomaly needs same-cell 15-day SMAP context and >=5 historical year medians; regional_below_historical stays null without valid anomaly and never adds field-scale points. Integrated same-origin API routing from PR #13 equivalent 351305d. Node 22/22, Python exporter validation 5/5, seasonal window 3/3 pass. NASA CMR nearby dates cataloged, but real SMAP baseline remains blocked: HDF5 absent here and h5py DLL blocked. Manali observed map and Keshav release branch can use /api/areas?dataset=observed and /api/rank?dataset=observed. PR #12 verifier is separate. Unrelated local license edit untouched.",
+      "at": "2026-11-14T22:40:40.592Z"
     }
   ],
   "applied": [
@@ -597,6 +605,7 @@
     "fmw-board-monitor-remote-progress-20261114-02",
     "fmw-release-map-integration-post-20261114-01",
     "9548e65e-22e2-4f5e-bac7-b28cec475614",
-    "fmw-board-monitor-pr13-integrated-20261114-01"
+    "fmw-board-monitor-pr13-integrated-20261114-01",
+    "444da2bd-d280-4a38-a031-36eded7524bc"
   ]
 }
