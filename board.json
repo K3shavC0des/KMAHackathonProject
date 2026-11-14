@@ -54,8 +54,8 @@
       "paths": [
         "frontend/map"
       ],
-      "status": "queued",
-      "evidence": ""
+      "status": "working",
+      "evidence": "Starting issue #5 scouting map and area timeline; will use reviewed contracts fixture when available."
     },
     "crop-demo": {
       "id": "crop-demo",
@@ -177,6 +177,7 @@
     "fmw-20261114-post-all-01",
     "fmw-20261114-post-K3shavC0des-01",
     "fmw-20261114-post-Matthewzhang2008-01",
-    "fmw-20261114-post-aa1manali-01"
+    "fmw-20261114-post-aa1manali-01",
+    "222b4f43-16ab-445f-8efd-dd96e376424c"
   ]
 }
