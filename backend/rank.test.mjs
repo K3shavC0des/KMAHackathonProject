@@ -6,13 +6,13 @@ import { makeServer } from './server.mjs';
 
 const fixture = JSON.parse(await readFile(new URL('../contracts/sample-areas.json', import.meta.url), 'utf8'));
 
-test('labeled fixture changes first stop when local NISAR signal is removed', () => {
+test('local drying supports inspection priority while regional context alone does not', () => {
   const result = compareScoutingStops(fixture);
   assert.equal(result.with_nisar.first_stop, 'illustrative-field-a');
-  assert.equal(result.without_nisar.first_stop, 'illustrative-field-b');
-  assert.equal(result.first_stop_changes, true);
+  assert.equal(result.without_nisar.first_stop, null);
+  assert.equal(result.first_stop_changes, false);
   assert.equal(result.with_nisar.ranking[0].evidence_status, 'sample');
-  assert.equal(result.without_nisar.ranking[0].basis, 'crop_stage_scenario_only');
+  assert.equal(result.without_nisar.ranking[0].basis, 'insufficient_local_evidence');
   assert.equal(result.without_nisar.ranking[0].evidence_status, 'sample');
   assert.equal(result.with_nisar.ranking[0].evidence.find(e => e.source === 'SMAP').role, 'regional_context_only');
 });
@@ -49,7 +49,7 @@ test('API serves fixture and rejects unlabeled input', async () => {
   try {
     const demo = await fetch(`${base}/api/rank`);
     assert.equal(demo.status, 200);
-    assert.equal((await demo.json()).first_stop_changes, true);
+    assert.equal((await demo.json()).without_nisar.first_stop, null);
     const bad = structuredClone(fixture);
     delete bad.areas[0].observations[0].data_status;
     const response = await fetch(`${base}/api/rank`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(bad) });
@@ -57,4 +57,16 @@ test('API serves fixture and rejects unlabeled input', async () => {
   } finally {
     await new Promise(resolve => server.close(resolve));
   }
+});
+
+test('known crop stage without local evidence cannot nominate a stop', () => {
+  const changed = structuredClone(fixture);
+  for (const area of changed.areas) area.observations = [];
+  assert.equal(compareScoutingStops(changed).with_nisar.first_stop, null);
+});
+
+test('wetting readings do not nominate a drying inspection stop', () => {
+  const changed = structuredClone(fixture);
+  for (const area of changed.areas) area.observations[0].value = 0.02;
+  assert.equal(compareScoutingStops(changed).with_nisar.first_stop, null);
 });
