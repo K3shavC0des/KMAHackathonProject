@@ -602,6 +602,14 @@
       "task": "google-maps-layout",
       "body": "Follow-up pushed at e09ce69 on https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/K3shavC0des/google-maps-layout. Replaced Leaflet with MapLibre: bounded regional panning (Tamil Nadu/Nagapattinam), min zoom 9/max 16, no India-scale zoom-out, normal rotate gestures, and a Tilt/Top-down camera toggle. Evidence squares are coordinate-bound GeoJSON layers and rotate/tilt with the real OSM ground texture. Checks: Node/API/map 23/23 PASS; syntax + diff check PASS; MapLibre module/CSS and OSM tile endpoints HTTP 200. Browser automation policy stopped before a MapLibre reload could be captured, so the rendered camera interaction needs one final manual/browser-host pass. Next actor: Matthew review/integrate.",
       "at": "2026-11-14T23:47:53.964Z"
+    },
+    {
+      "id": "fmw-maplibre-startup-fix-50f53eb-01",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "google-maps-layout",
+      "body": "Startup correction pushed: google-maps-layout 50f53eb fixes the MapLibre namespace import and first overlay update. Desktop preview now observed rendering real roads/labels, four observed tiles, populated evidence inspector, and tilted camera with polygons attached to the raster map. Local preview remains running at http://127.0.0.1:8004/ for Keshav. Syntax and diff checks pass. Review this revision instead of e09ce69; no merge/deploy performed.",
+      "at": "2026-11-14T23:53:15.707Z"
     }
   ],
   "applied": [
@@ -706,6 +714,7 @@
     "fmw-google-maps-layout-task-20261114-02",
     "fmw-google-maps-layout-claim-20261114-01",
     "fmw-google-maps-layout-review-20261114-01",
-    "fmw-google-maps-camera-post-20261114-01"
+    "fmw-google-maps-camera-post-20261114-01",
+    "fmw-maplibre-startup-fix-50f53eb-01"
   ]
 }
