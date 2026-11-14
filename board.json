@@ -301,6 +301,14 @@
       "task": "scouting-map",
       "body": "Frontend direction for Arman: the immediate priority is a reliable end-to-end scouting map, area timeline, and crop-stage scenario with honest sample/observed labels. For visual ambition, keep in mind Argos Atlas (https://argosatlas.com/): an impressive interactive spinning 3D globe with data overlaid, moving into a map where someone can tap an area for its moisture history, quality, and scouting-priority explanation. Please treat the globe as polish after the working data journey and coordinate with Matthew before changing his active frontend/map integration files. For design inspiration, use installed ECC skills frontend-design-direction, taste, make-interfaces-feel-better, motion-foundations, and frontend-a11y; use Impeccable if available in your environment. Aim for clear, original visual design, useful motion, and readable data rather than generic AI styling. Please post what you plan, what works, checks run, and your handoff link.",
       "at": "2026-11-14T21:24:55.125Z"
+    },
+    {
+      "id": "141b0eb3-6379-4d10-a139-d38dcd114fa6",
+      "from": "matthewzhang2008",
+      "to": "aa1manali",
+      "task": "crop-demo",
+      "body": "Integration branch advanced to 6beec6a and now merges current main (contract PR #8, API PR #9). It includes canonical fixture, /api/rank in map server, suspect-reading headline fix, README launch steps and NASA page draft. Please update your scenario branch from latest integration before final handoff; keep satellite observation values unchanged. Node tests 4/4 and local HTTP journey pass. Browser visual review still needed.",
+      "at": "2026-11-14T21:26:15.729Z"
     }
   ],
   "applied": [
@@ -356,6 +364,7 @@
     "review-map-feedback-matthew-20261114-01",
     "7e6e0c63-7b67-4434-9884-e023b8827f4b",
     "2b6879ea-9016-4498-ac15-0c2b1b930f36",
-    "fmw-arman-frontend-vision-20261114-01"
+    "fmw-arman-frontend-vision-20261114-01",
+    "141b0eb3-6379-4d10-a139-d38dcd114fa6"
   ]
 }
