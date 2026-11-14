@@ -57,7 +57,8 @@ function drawMap() {
     addSvg('polygon', { points: ring.map(point => `${x(point[0])},${y(point[1])}`).join(' ') }, group);
     const midLon = ring.reduce((total, point) => total + point[0], 0) / ring.length;
     const midLat = ring.reduce((total, point) => total + point[1], 0) / ring.length;
-    addSvg('text', { x: x(midLon) - 55, y: y(midLat) - 72 }, group).textContent = area.label.split(' (')[0];
+    const shortName = area.label.match(/field\s+([A-Za-z0-9]+)/i)?.[1] ?? area.area_id;
+    addSvg('text', { x: x(midLon), y: y(midLat) - 72, 'text-anchor': 'middle' }, group).textContent = `Sample ${shortName}`;
     group.addEventListener('click', () => selectArea(area.area_id));
     group.addEventListener('keydown', event => {
       if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectArea(area.area_id); }
