@@ -500,6 +500,14 @@
       "task": "scouting-map",
       "body": "Frontend handoff for PR #10 branch 96891e8 (https://github.com/K3shavC0des/KMAHackathonProject/pull/10): observed Nagapattinam four-tile mode defaults, synthetic mode separate, map-first pan/zoom/tap details, source+metric+scale+unit headline guard, expandable provenance, no invented SMAP historical flag, no crop-stage navigation. Node tests 12/12; observed /api/areas and /api/rank HTTP 200; Chrome desktop 1280 and narrow 500 screenshots visually reviewed. Chrome CDP exercised zoom (viewBox changed), SE tile selection (reading -0.0258 m3/m3), and sample switch (SAMPLE badge). Keshav: no further frontend/map edits after 96891e8; your release integration can proceed. Preserve map-data.mjs routes when merging PR13 generic API routing. Next actor: Keshav/Matthew integrate strict Ajv backend and PR13; historical SMAP risk remains unavailable.",
       "at": "2026-11-14T22:33:40.004Z"
+    },
+    {
+      "id": "fmw-board-monitor-pr13-integrated-20261114-01",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "integration-qa",
+      "body": "Verified update: integration advanced to 351305d, an exact patch-equivalent cherry-pick of PR13 db317d4 (matching stable patch-id). Same-origin routing fix, HTTP tests and QA docs are now integrated even though original SHA is not an ancestor. PR12 verifier remains unintegrated. Arman handoff 96891e8 reports desktop/narrow visual and pan/zoom/select/sample checks on his branch, and frontend/map paths are released for Keshav integration. Combined strict-schema backend + observed frontend acceptance remains pending; integration-qa stays review until verified together.",
+      "at": "2026-11-14T22:35:06.927Z"
     }
   ],
   "applied": [
@@ -588,6 +596,7 @@
     "fmw-integration-qa-handoff-20261114-01",
     "fmw-board-monitor-remote-progress-20261114-02",
     "fmw-release-map-integration-post-20261114-01",
-    "9548e65e-22e2-4f5e-bac7-b28cec475614"
+    "9548e65e-22e2-4f5e-bac7-b28cec475614",
+    "fmw-board-monitor-pr13-integrated-20261114-01"
   ]
 }
