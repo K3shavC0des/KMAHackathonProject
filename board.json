@@ -4,14 +4,14 @@
   "tasks": {
     "pilot-data": {
       "id": "pilot-data",
-      "owner": "matthewzhang2008",
+      "owner": "K3shavC0des",
       "goal": "Ingest candidate data and select Indian pilot; https://github.com/K3shavC0des/KMAHackathonProject/issues/1",
       "acceptance": "Opened SME2 and SMAP evidence selects or rejects a pilot",
       "paths": [
         "data/pilot"
       ],
-      "status": "blocked",
-      "evidence": "CMR catalog reproduced; no selected pilot. Requires accessible NISAR and SMAP HDF5 plus runnable h5py environment to verify local quality-valid cells. Continuation branch bd3d6c8."
+      "status": "working",
+      "evidence": "Taking blocked pilot verification: review latest integrated verifier and add coordinate-alignment regression coverage using locally opened HDF5. Isolated branch; leave data/context and backend/frontend active edits to Matthew/Arman."
     },
     "area-contract": {
       "id": "area-contract",
@@ -515,6 +515,7 @@
     "4ed93fb8-231d-490b-a07c-0448724c1b44",
     "fmw-strict-schema-scope-handoff-01",
     "bfe31aef-b1d7-488f-a306-ff57ea791445",
-    "e2d06670-8d3d-4cbe-8fcf-a2a197b97f02"
+    "e2d06670-8d3d-4cbe-8fcf-a2a197b97f02",
+    "fmw-pilot-alignment-claim-20261114-01"
   ]
 }
