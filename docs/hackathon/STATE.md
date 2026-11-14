@@ -1,6 +1,6 @@
 # Farm Moisture Watch — team checkpoint
 
-Updated 2026-11-14. Approved team handoff published and read back. Pilot-data implementation has started on issue #1.
+Updated 2026-11-14. Approved team handoff published and read back. Pilot-data preflights are in draft PR #7; `pilot-data` is blocked on Earthdata file access before pixel validation.
 
 ## Goal and scope
 
@@ -37,4 +37,4 @@ Board: `hackathon-board` branch in the shared repository, accessed with `.agents
 
 ## Verification and limitations
 
-Read-only CMR catalog queries ran for Ludhiana, Ahmedabad, and Nagapattinam; two scripts reproduce NISAR repeat-pair and SMAP temporal-coverage discovery. CMR metadata is not raster verification. A direct NISAR file download returned HTTP 401; Earthdata sign-in or an authorized download path is needed to inspect pixels. SMAP and ISRO files have not been ingested. Draft PR: https://github.com/K3shavC0des/KMAHackathonProject/pull/7 . The memory semantic backend was offline. Graphify was unnecessary because there was no app code to map; bounded output made Headroom compression unnecessary. Do not commit `.tools/`, `.local/`, credentials, or downloaded granules.
+Read-only CMR catalog queries ran for Ludhiana, Ahmedabad, and Nagapattinam; two scripts reproduce NISAR repeat-pair and SMAP temporal-coverage discovery. CMR metadata is not raster verification. A direct NISAR file download returned HTTP 401; Earthdata sign-in or an authorized download path is needed to inspect pixels. SMAP and ISRO files have not been ingested. Draft PR: https://github.com/K3shavC0des/KMAHackathonProject/pull/7 . Board task `pilot-data` was marked blocked with the PR, checks, and next actor. The memory semantic backend was offline. Graphify was unnecessary because there was no app code to map; bounded output made Headroom compression unnecessary. Do not commit `.tools/`, `.local/`, credentials, or downloaded granules.
