@@ -10,13 +10,17 @@ const files = new Map([
   ['/index.html', ['index.html', 'text/html; charset=utf-8']],
   ['/style.css', ['style.css', 'text/css; charset=utf-8']],
   ['/map.js', ['map.js', 'text/javascript; charset=utf-8']],
+  ['/map-data.mjs', ['map-data.mjs', 'text/javascript; charset=utf-8']],
   ['/observations.mjs', ['observations.mjs', 'text/javascript; charset=utf-8']],
   ['/sample-areas.json', ['../../contracts/sample-areas.json', 'application/json; charset=utf-8']],
+  ['/observed-areas.json', ['../../data/observed/nagapattinam-areas.json', 'application/json; charset=utf-8']],
   ['/map/', ['index.html', 'text/html; charset=utf-8']],
   ['/map/style.css', ['style.css', 'text/css; charset=utf-8']],
   ['/map/map.js', ['map.js', 'text/javascript; charset=utf-8']],
+  ['/map/map-data.mjs', ['map-data.mjs', 'text/javascript; charset=utf-8']],
   ['/map/observations.mjs', ['observations.mjs', 'text/javascript; charset=utf-8']],
   ['/map/sample-areas.json', ['../../contracts/sample-areas.json', 'application/json; charset=utf-8']],
+  ['/map/observed-areas.json', ['../../data/observed/nagapattinam-areas.json', 'application/json; charset=utf-8']],
   ['/scenario/', ['../scenario/index.html', 'text/html; charset=utf-8']],
   ['/scenario/style.css', ['../scenario/style.css', 'text/css; charset=utf-8']],
   ['/scenario/scenario.js', ['../scenario/scenario.js', 'text/javascript; charset=utf-8']],
@@ -43,10 +47,11 @@ export function makeServer() {
     const body = await readFile(fileURLToPath(new URL(file[0], root)));
     response.writeHead(200, { 'Content-Type': file[1], 'Cache-Control': 'no-store' });
     response.end(body);
-  } catch {
-    response.writeHead(500); response.end('Could not load page');
+  } catch (error) {
+    response.writeHead(error.code === 'ENOENT' ? 404 : 500); response.end('Could not load page');
   }
-}); }
+  });
+}
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
   const port = Number(process.env.PORT || 8000);

@@ -92,7 +92,7 @@ def read(path: str, bbox: tuple[float, float, float, float]) -> dict:
 def verify(earlier_path: str, later_path: str, bbox: tuple[float, float, float, float]) -> dict:
     west, south, east, north = bbox
     if not all(np.isfinite(bbox)) or not (-180 <= west < east <= 180 and -90 <= south < north <= 90):
-        raise ValueError("Expected finite WGS84 bounds WEST SOUTH EAST NORTH")
+        raise ValueError("Expected finite ordered WGS84 bounds WEST SOUTH EAST NORTH")
     check_pair(earlier_path, later_path)
     earlier, later = read(earlier_path, bbox), read(later_path, bbox)
     before, after = earlier.pop("_moisture", None), later.pop("_moisture", None)
