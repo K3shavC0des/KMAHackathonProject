@@ -120,8 +120,9 @@ class PairTests(unittest.TestCase):
         self.assertEqual(result["evidence_status"], "no_comparable_grid_window")
 
     def test_invalid_bounds_rejected(self):
-        with self.assertRaisesRegex(ValueError, "WGS84"):
-            verify(str(self.before), str(self.after), (81, 10, 79, 12))
+        for bounds in ((81, 10, 79, 12), (float("nan"), 10, 79, 12)):
+            with self.subTest(bounds=bounds), self.assertRaisesRegex(ValueError, "WGS84"):
+                verify(str(self.before), str(self.after), bounds)
 
 
 if __name__ == "__main__":
