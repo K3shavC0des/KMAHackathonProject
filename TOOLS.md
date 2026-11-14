@@ -31,3 +31,9 @@ Claude Mem is configured for the Codex provider and runs on port `37778`:
 The worker health endpoint is `http://127.0.0.1:37778/api/health`. The project Codex MCP configuration is in `.codex/config.toml`.
 
 No gateway or provider credentials are required by this project setup.
+
+From the project root, launch Codex through Headroom with:
+
+```powershell
+.\codex-headroom.cmd
+```
