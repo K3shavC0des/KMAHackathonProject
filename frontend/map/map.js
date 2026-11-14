@@ -1,4 +1,4 @@
-import { inspectionSummary, latestReading } from './map-data.mjs';
+import { inspectionSummary, latestReading, observationInstant } from './map-data.mjs';
 
 const byId = id => document.getElementById(id);
 const svgNs = 'http://www.w3.org/2000/svg';
@@ -110,7 +110,7 @@ function render() {
   byId('smap-meta').textContent = smap ? `9 km regional context · ${metadata(smap)}` : 'Regional SMAP context unavailable for this area';
   const timeline = byId('timeline');
   timeline.replaceChildren();
-  for (const item of [...area.observations].sort((a, b) => b.observed_at.localeCompare(a.observed_at))) {
+  for (const item of [...area.observations].sort((a, b) => observationInstant(b) - observationInstant(a))) {
     const li = document.createElement('li');
     const source = item.source === 'NISAR_SME2' ? 'Local SME2' : item.source === 'SMAP' ? 'Regional SMAP' : 'Crop context';
     const metric = item.metric === 'soil_moisture_change' ? 'change' : item.metric === 'soil_moisture' ? 'surface moisture' : item.metric.replaceAll('_', ' ');

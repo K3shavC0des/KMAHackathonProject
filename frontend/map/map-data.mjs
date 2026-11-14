@@ -1,9 +1,14 @@
+export function observationInstant(item) {
+  const instant = Date.parse(item?.observed_at);
+  return Number.isFinite(instant) ? instant : Number.NEGATIVE_INFINITY;
+}
+
 export function latestReading(area, source, metric) {
   const scale = source === 'NISAR_SME2' ? 'local' : source === 'SMAP' ? 'regional' : null;
   return area.observations
     .filter(item => item.source === source && item.metric === metric && item.spatial_scale === scale &&
       item.unit === 'm3/m3' && item.quality === 'valid' && typeof item.value === 'number' && Number.isFinite(item.value))
-    .sort((a, b) => b.observed_at.localeCompare(a.observed_at))[0] || null;
+    .sort((a, b) => observationInstant(b) - observationInstant(a))[0] || null;
 }
 
 export function inspectionSummary(areas) {
