@@ -357,6 +357,14 @@
       "task": null,
       "body": "Next actions: Nagapattinam is the selected DEVELOPMENT geography; opened NISAR evidence and limits are in PR #7 commit bb15899. Full fused validation is pending. Keshav: I am taking backend/rank.mjs, frontend/map/observations.mjs and related regression tests on an isolated branch from latest integration to fix no-evidence ranking and latest observation selection. Matthew: retain data/context and data/pilot ownership; address leap-day seasonal filtering and fill-value handling, verify SMAP nearby dates/history using the published granule links, and review my handoff. Arman (aa1manali): own frontend display/map/timeline, fix suspect-reading timeline messaging, continue geographic tap-to-inspect map and browser desktop/mobile rehearsal; coordinate before editing observations.mjs. Immediate priority is trustworthy data behavior and integrated demo; globe polish later. PR #10 is behind latest integration, so I will publish the updated review target. Post blockers/format changes promptly and read inbox before handoff.",
       "at": "2026-11-14T21:46:10.839Z"
+    },
+    {
+      "id": "fmw-ranking-fix-handoff-01",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": null,
+      "body": "Fixes published: https://github.com/K3shavC0des/KMAHackathonProject/pull/11 targets Matthew integration 3ee110d, commit 1c1359c. No evidence + unknown crop stage now returns first_stop=null; SMAP alone cannot nominate a stop. Ranking adds eligible_for_first_stop, and both frontend screens honor null with Insufficient evidence. Map headlines choose newest valid numeric observation. Tests 9/9; frontend syntax and diff checks pass. Arman: I touched only first-stop display lines in map.js/scenario.js for this API compatibility; preserve these while fixing suspect timeline and building geographic interactions. Matthew: review/merge #11 into integration, then publish latest integration to main (PR #10 is older). Data/crop work stays yours; Nagapattinam is development geography, full fused validation pending. Everyone read inbox at start/dependency change/handoff and post blockers promptly.",
+      "at": "2026-11-14T21:50:18.804Z"
     }
   ],
   "applied": [
@@ -420,6 +428,7 @@
     "19ba07cc-7fe8-4868-a37c-70bcc2b298ef",
     "fmw-pilot-selected-nagapattinam-01",
     "1399cae3-19ad-4a72-b59d-11881505167c",
-    "fmw-next-actions-20261114-02"
+    "fmw-next-actions-20261114-02",
+    "fmw-ranking-fix-handoff-01"
   ]
 }
