@@ -5,12 +5,13 @@ import { compareScoutingStops } from './rank.mjs';
 import { makeServer } from './server.mjs';
 
 const fixture = JSON.parse(await readFile(new URL('../contracts/sample-areas.json', import.meta.url), 'utf8'));
+const observed = JSON.parse(await readFile(new URL('../data/observed/nagapattinam-areas.json', import.meta.url), 'utf8'));
 
-test('newest observation is selected by instant across timezone offsets', () => {
+test('newest observation is selected by instant across UTC timestamp forms', () => {
   const changed = structuredClone(fixture);
   const observation = changed.areas[0].observations.find(item => item.source === 'NISAR_SME2');
   observation.observed_at = '2026-07-02T00:00:00Z';
-  changed.areas[0].observations.push({ ...observation, observation_id: 'newer', observed_at: '2026-07-01T23:00:00-02:00', value: .02 });
+  changed.areas[0].observations.push({ ...observation, observation_id: 'newer', observed_at: '2026-07-02T00:00:00.500+00:00', value: .02 });
   const result = compareScoutingStops(changed).with_nisar.ranking.find(item => item.area_id === changed.areas[0].area_id);
   assert.equal(result.priority_points, 0);
   assert.equal(result.eligible_for_first_stop, false);
@@ -52,6 +53,23 @@ test('regional context alone cannot nominate a first stop', () => {
   assert.equal(compareScoutingStops(changed).with_nisar.first_stop, null);
 });
 
+test('observed NISAR analysis tiles keep missing crop and SMAP context unavailable', () => {
+  const result = compareScoutingStops(observed);
+  assert.equal(observed.areas.length, 4);
+  assert.ok(observed.areas.every(area => area.crop_stage === 'unknown' && area.observations.every(item => item.data_status === 'observed' && item.observed_at.endsWith('Z'))));
+  assert.equal(result.with_nisar.first_stop, 'nagapattinam-analysis-sw');
+  assert.equal(result.without_nisar.first_stop, null);
+  assert.equal(result.first_stop_changes, false);
+  assert.match(result.warning, /analysis tiles are not verified fields/);
+  assert.ok(result.with_nisar.ranking.every(item => item.evidence.every(evidence => evidence.source !== 'SMAP')));
+});
+
+test('ranking rejects timestamps without an explicit UTC timezone', () => {
+  const changed = structuredClone(fixture);
+  changed.areas[0].observations[0].observed_at = '2026-07-02T00:00:00';
+  assert.throws(() => compareScoutingStops(changed), /timestamp/);
+});
+
 test('API serves fixture and rejects unlabeled input', async () => {
   const server = makeServer();
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
@@ -64,6 +82,13 @@ test('API serves fixture and rejects unlabeled input', async () => {
     delete bad.areas[0].observations[0].data_status;
     const response = await fetch(`${base}/api/rank`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(bad) });
     assert.equal(response.status, 400);
+    const areasResponse = await fetch(`${base}/api/areas?dataset=observed`);
+    assert.equal(areasResponse.status, 200);
+    assert.equal((await areasResponse.json()).areas.length, 4);
+    const observedRank = await fetch(`${base}/api/rank?dataset=observed`);
+    assert.equal(observedRank.status, 200);
+    assert.equal((await observedRank.json()).without_nisar.first_stop, null);
+    assert.equal((await fetch(`${base}/api/areas?dataset=unknown`)).status, 400);
   } finally {
     await new Promise(resolve => server.close(resolve));
   }
