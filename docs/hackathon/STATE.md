@@ -1,6 +1,25 @@
 # Farm Moisture Watch — team checkpoint
 
-Updated 2026-11-14. Approved team handoff published and read back; implementation has not begun in this session.
+Updated 2026-11-14. Team handoff published and updated. Earthdata access works; pilot-data has opened NISAR and SMAP granules and continues AOI/date matching. Sample-data contract/fusion and map work are unblocked.
+
+## Current scope override (user revision)
+
+Crop-stage scenarios are deferred and must not influence default priority. The
+product centers on a Google Maps-style pan/zoom/tap experience for irrigation
+inspection priorities, observed drying, and verified historical anomaly flags.
+Use plain-language explanations and support expansion by selected region after
+Nagapattinam. Regional SMAP history stays at its true scale; unavailable history
+must not generate an at-risk flag. Issue #6 is closed as not planned; #5 and #3
+were rewritten for this scope. Earlier crop-scenario statements below are historical.
+
+PR #11 commit d5a0a19 removes crop-stage priority points; 11 Node checks pass.
+Arman owns map UI, Matthew owns baseline/API integration, Keshav owns observed
+export. JSON Schema v1 is the common contract: exporter now validates before
+writing, including required fields, enums, unknown keys, finite numbers and
+explicit date-time format checking. Five validation regression tests pass.
+This caught and corrected missing UTC Z suffixes in exported source timestamps.
+API-boundary and frontend-boundary schema enforcement are still pending with
+Matthew/Arman; do not claim full-pipeline enforcement yet.
 
 ## Goal and scope
 
@@ -12,7 +31,7 @@ Submission deadline: **unknown**; user supplied a placeholder, not a date/time. 
 
 ## Pilot selection status
 
-**Candidate, not selected:** Nagapattinam agricultural area, Tamil Nadu. NASA CMR lists same-track/frame SME2 candidates for 2026-06-20 and 2026-07-02; ISRO's S-band release illustrates a Nagapattinam GCOV acquisition on 2026-07-02. This supports investigating a same-day dual-band experiment; neither SME2 HDF5 pixels nor the S-band product were opened. The S-band GCOV backscatter is not directly comparable to SME2 volumetric moisture. See `PLAN.md` for IDs and decision gate.
+**Selected development geography, full fusion validation pending:** Nagapattinam agricultural area, Tamil Nadu. See `data/pilot/PILOT_DECISION.md` for the smaller analysis window. Opened SME2 granules on 2026-06-20 and 2026-07-02 (CMR IDs `G4249557322-ASF`, `G4255109928-ASF`), each about 60–72 MB. In a broad 0.3° × 0.3° window centered near Nagapattinam, 10,890 recommended cells match across dates; median later-minus-earlier surface moisture is −0.0282 m³/m³ (10th/90th percentiles −0.0625/0.0009). This is not field-level evidence. Opened July 2 SMAP SPL3SMP_E v6 (`SMAP_L3_SM_P_E_20260702_R19240_004.h5`). It has no recommended retrieval pixels in the same window; nearest recommended pixel is ~267 km away. Point CMR queries returned the same SMAP granule for Nagapattinam, Ludhiana, and Ahmedabad, so catalog selection alone does not demonstrate local usable coverage. Continue searching nearby SMAP dates and small agricultural AOIs before claiming validated local fusion. S-band raster remains unopened; July 2 GCOV backscatter is not directly comparable to SME2 moisture. See `PLAN.md` and [draft PR #7](https://github.com/K3shavC0des/KMAHackathonProject/pull/7).
 
 Alternates: Ludhiana/Punjab and Ahmedabad/Gujarat have repeat SME2 catalog candidates; ISRO has demonstrated L/S-derived moisture over North India and Ahmedabad. No candidate has passed pixel/quality, SMAP, crop-calendar, and access checks. Do not describe any as a verified pilot.
 
@@ -37,4 +56,10 @@ Board: `hackathon-board` branch in the shared repository, accessed with `.agents
 
 ## Verification and limitations
 
-Read-only CMR catalog queries ran for Ludhiana, Ahmedabad, and Nagapattinam. CMR metadata is not raster verification. SMAP and ISRO files have not been ingested. The memory semantic backend was offline. Graphify was unnecessary because this repo has no app code; bounded output made Headroom compression unnecessary. Do not commit `.tools/`, `.local/`, credentials, or downloaded granules.
+Read-only CMR queries and both local scripts cover NISAR repeat-pair and SMAP seasonal catalog discovery. Three HDF5 files were downloaded to ignored `.tools/downloads/fmw`; both NISAR files and the July 2 SMAP file were opened with h5py. Pixel-level limits and current findings are in the pilot section and draft PR #7. Board task `pilot-data` was reopened; sample-data contract/fusion and map tasks can continue while AOI/date matching proceeds. No S-band product was opened. The memory semantic backend was offline. The sample contract and ranking API are now on main. Do not commit `.tools/`, `.local/`, credentials, or downloaded granules.
+
+## Pilot decision update
+Nagapattinam selected as development geography; bbox [79.74,10.70,79.80,10.76]. Identical NISAR coordinate grids and 920 matched recommended cells verified; median change -0.0174946 m3/m3. SMAP seasonal anomaly unavailable; full fusion validation pending. See data/pilot/PILOT_DECISION.md. Product direction: navigable geographic map with tap-to-inspect moisture evidence. Matthew retains data ownership; Arman owns frontend. The UI in PR #10 uses a synthetic fixture; an observed-data adapter remains pending.
+
+## Observed adapter handoff
+K3shavC0des exported data/observed/nagapattinam-areas.json using data/observed/export_nagapattinam.py. Four half-open analysis tiles hold 920 total matched recommended cells from the opened SME2 pair; each has change and two dated moisture medians with granule provenance. Shared v1 schema/date validation passed. Ranking PR #11 chooses southwest with NISAR; without NISAR first_stop is null (unknown crop), so no supported two-stop-change claim. SMAP omitted/unavailable. Frontend integration remains pending; select by source AND metric, retain sample/observed mode labels. See data/observed/README.md. Unrelated local .codex/config.toml, README.md and PROJECT_CONTEXT.md edits are excluded from this handoff.
