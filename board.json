@@ -333,6 +333,14 @@
       "task": "scouting-map",
       "body": "Read-only integration review at 3ee110d: Node tests 6/6 pass; main still only has contract/API, PR #10 head 0c04ff1 is behind integration and omits the map-to-scenario navigation/docs added at 3ee110d. Reproduced gaps: backend/rank.mjs ranks two unknown-stage areas with zero observations and still returns first_stop a; frontend/map/observations.mjs takes first valid reading rather than newest (demonstrated older July 1 headline over newer July 2). Map timeline renders suspect reading value but metadata says no quality-valid reading. data/context/smap_baseline.py day.replace(year=2026) raises on leap-day historical file; data/pilot/verify_pair.py uses hard-coded -9999 fill for matched mask. Priority: fix no-evidence ranking and latest/timeline behavior, update review PR from latest integration, then browser desktop/mobile demo and NASA page. Real-data pilot remains gated on HDF5/runtime.",
       "at": "2026-11-14T21:39:38.594Z"
+    },
+    {
+      "id": "fmw-pilot-selected-nagapattinam-01",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "pilot-data",
+      "body": "Development pilot selected: Nagapattinam, Tamil Nadu, WGS84 bbox [79.74,10.70,79.80,10.76], center [79.77,10.73]. Opened June20/July2 SME2 grids match exactly; 920 recommended matched cells, median delta -0.0174946 m3/m3. Full fused observed validation is pending: July2 SMAP unsuitable, anomaly unavailable; crop/planting assumptions explicit. Decision and JSON pushed to PR #7 commit bb15899: data/pilot/PILOT_DECISION.md and nagapattinam-observed-window.json. Matthew retains data ownership: refine agricultural polygons, verify nearby SMAP dates/history, build observed adapter. Arman: use this geography for navigable map with tappable evidence panels, Google Maps-like interaction; keep synthetic fixture labels until observed adapter. Node demo launched locally at http://127.0.0.1:8002/ . Read decision before claiming complete pilot validation.",
+      "at": "2026-11-14T21:40:09.213Z"
     }
   ],
   "applied": [
@@ -393,6 +401,7 @@
     "3e2d49d1-a1cc-4980-b85f-ec7612ef1026",
     "0c727f42-f219-4d5e-86e3-7198a0b729a1",
     "fmw-pr10-review-handoff-20261114-01",
-    "19ba07cc-7fe8-4868-a37c-70bcc2b298ef"
+    "19ba07cc-7fe8-4868-a37c-70bcc2b298ef",
+    "fmw-pilot-selected-nagapattinam-01"
   ]
 }
