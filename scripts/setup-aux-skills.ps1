@@ -29,19 +29,24 @@ $node = Join-Path $nodeDir 'node.exe'
 $npm = Join-Path $nodeDir 'npm.cmd'
 if (-not (Test-Path $node) -or -not (Test-Path $npm)) { throw "Node.js runtime missing. Rerun without -SkipDownloads." }
 
-& $npm install --prefix $runtime claude-mem --no-audit --no-fund
-if ($LASTEXITCODE -ne 0) { throw 'Claude Mem installation failed.' }
+if (-not (Test-Path (Join-Path $runtime 'node_modules/claude-mem'))) {
+    & $npm install --prefix $runtime claude-mem --no-audit --no-fund
+    if ($LASTEXITCODE -ne 0) { throw 'Claude Mem installation failed.' }
+}
 
 $uvCache = Join-Path $tools 'uv-cache'
 $uvTools = Join-Path $tools 'uv-tools'
+$uvPython = Join-Path $tools 'uv-python'
 $env:UV_CACHE_DIR = $uvCache
 $env:UV_TOOL_DIR = $uvTools
+$env:UV_PYTHON_INSTALL_DIR = $uvPython
 if (Get-Command uv -ErrorAction SilentlyContinue) {
+    uv python install 3.13
     uv tool install --python 3.13 'headroom-ai[all]'
     if ($LASTEXITCODE -ne 0) { Write-Warning 'Headroom install failed; rerun this script after fixing uv.' }
     uv tool install --python 3.13 graphifyy
     if ($LASTEXITCODE -ne 0) { Write-Warning 'Graphify install failed; rerun this script after fixing uv.' }
-} else { Write-Warning 'uv is missing; install uv, then rerun to enable Headroom.' }
+} else { Write-Warning 'uv is missing; install uv, then rerun to enable Headroom and Graphify.' }
 
 New-Item -ItemType Directory -Force (Join-Path $root '.local/claude-mem') | Out-Null
 if ($Actor) {
