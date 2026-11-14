@@ -10,8 +10,8 @@
       "paths": [
         "data/pilot"
       ],
-      "status": "working",
-      "evidence": "Earthdata access restored. Opened June 20/July 2 SME2 and July 2 SMAP. NISAR broad-window pair is verified; SMAP July 2 has no recommended pixels near candidate AOIs. Continuing date/AOI matching; contract and sample map proceed independently."
+      "status": "blocked",
+      "evidence": "Keshav session limit reached; handing active data/pilot work to Matthew. Keshav verified broad-window NISAR pair but no quality-valid local SMAP match or selected pilot yet. Matthew will continue from PR #7 and preserve evidence boundaries."
     },
     "area-contract": {
       "id": "area-contract",
@@ -284,6 +284,7 @@
     "fmw-20261114-unblock-all-01",
     "fmw-20261114-unblock-Matthewzhang2008-01",
     "fmw-20261114-unblock-aa1manali-01",
-    "fmw-20261114-takeover-handoff-01"
+    "fmw-20261114-takeover-handoff-01",
+    "2ee589ec-d805-4d2b-b698-47e4d36d1ec0"
   ]
 }
