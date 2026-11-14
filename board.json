@@ -43,8 +43,8 @@
       "paths": [
         "backend"
       ],
-      "status": "review",
-      "evidence": "Issue #4 branch https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/fusion-api at bd82f78, stacked on area-contract 7a4d0ac. GET/POST /api/rank; explained with/without NISAR first stop changes on labeled sample fixture. Node tests 3/3, syntax and diff checks pass. Awaiting review and integrated app validation; no real pixels opened."
+      "status": "done",
+      "evidence": "Reviewed and integrated as PR #9 squash merge 9fdd77d; Node tests 3/3 pass against shared fixture; sample-only heuristic and limits documented. Real-data validation remains separate."
     },
     "scouting-map": {
       "id": "scouting-map",
@@ -327,6 +327,7 @@
     "986998b4-ff55-4be0-882d-0bbcd3eb35e6",
     "d93644d7-7243-4d9b-b02a-ea7e39fc38c4",
     "cf302acb-b8c9-4f27-87d2-c16bbaf20839",
-    "review-area-contract-done-20261114-01"
+    "review-area-contract-done-20261114-01",
+    "review-fusion-api-done-20261114-01"
   ]
 }
