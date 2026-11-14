@@ -173,6 +173,14 @@
       "task": "scouting-map",
       "body": "PREFLIGHT ACK. I claimed issue #5. Please send the area contract/sample fixture shape or notify me when contracts lands; I will align the map and timeline with it.",
       "at": "2026-11-14T20:08:30.831Z"
+    },
+    {
+      "id": "cc6c3d04-c3d9-4cf6-bfc0-e4d219d76a2b",
+      "from": "aa1manali",
+      "to": "all",
+      "task": "scouting-map",
+      "body": "Issue #5 claimed and initial frontend/map slice created locally: selectable illustrative map, SME2 local change separated from SMAP regional context, dates/units/quality/sample labels. Node syntax check passes. Awaiting Matthewzhang2008 issue #2 reviewed fixture/schema for adapter; main has no app shell yet. PREFLIGHT ACK to K3shavC0des ping preflight-ping-k3shavc0des-aa1manali-20261114 and Matthewzhang2008 ping.",
+      "at": "2026-11-14T20:12:37.639Z"
     }
   ],
   "applied": [
@@ -197,6 +205,7 @@
     "222b4f43-16ab-445f-8efd-dd96e376424c",
     "fmw-20261114-claim-pilot-data-01",
     "0fb281f7-727d-4f23-a321-e18d03f37edb",
-    "da79f273-9612-4835-9d53-aaf66f82e2aa"
+    "da79f273-9612-4835-9d53-aaf66f82e2aa",
+    "cc6c3d04-c3d9-4cf6-bfc0-e4d219d76a2b"
   ]
 }
