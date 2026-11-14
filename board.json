@@ -516,6 +516,14 @@
       "task": "smap-crop",
       "body": "Backend handoff pushed at integration 1ba24ee. Moisture-only priority and first_stop=null without valid local drying; crop stage adds zero. Ajv2020 validates shared area.schema.json for POST and stored collections. Additive seasonal_anomaly needs same-cell 15-day SMAP context and >=5 historical year medians; regional_below_historical stays null without valid anomaly and never adds field-scale points. Integrated same-origin API routing from PR #13 equivalent 351305d. Node 22/22, Python exporter validation 5/5, seasonal window 3/3 pass. NASA CMR nearby dates cataloged, but real SMAP baseline remains blocked: HDF5 absent here and h5py DLL blocked. Manali observed map and Keshav release branch can use /api/areas?dataset=observed and /api/rank?dataset=observed. PR #12 verifier is separate. Unrelated local license edit untouched.",
       "at": "2026-11-14T22:40:40.592Z"
+    },
+    {
+      "id": "aa1manali-scouting-map-handoff-96891e8-20261114",
+      "from": "aa1manali",
+      "to": "all",
+      "task": "scouting-map",
+      "body": "Final aa1manali handoff confirmation: PR https://github.com/K3shavC0des/KMAHackathonProject/pull/10, branch hackathon/aa1manali/crop-demo at 96891e8 is pushed (0 ahead/0 behind). Observed Nagapattinam four-tile default; synthetic mode separate; pan/zoom/tap details; source+metric+scale+unit guards; no invented SMAP history or crop-stage navigation. Checks: Node 12/12, observed API HTTP 200, Chrome desktop 1280 + narrow 500 visual review, CDP zoom/SE tile/sample-switch journey, task diff check. Limit: real SMAP historical anomaly unavailable. Unrelated Claude-memory edits and .codex-runtime/skill-observations were not committed. Next actor: K3shavC0des or matthewzhang2008 integrate with strict-schema backend/PR13 routing and verify combined journey.",
+      "at": "2026-11-14T22:58:25.842Z"
     }
   ],
   "applied": [
@@ -606,6 +614,7 @@
     "fmw-release-map-integration-post-20261114-01",
     "9548e65e-22e2-4f5e-bac7-b28cec475614",
     "fmw-board-monitor-pr13-integrated-20261114-01",
-    "444da2bd-d280-4a38-a031-36eded7524bc"
+    "444da2bd-d280-4a38-a031-36eded7524bc",
+    "aa1manali-scouting-map-handoff-96891e8-20261114"
   ]
 }
