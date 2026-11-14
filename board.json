@@ -56,6 +56,17 @@
       ],
       "status": "queued",
       "evidence": ""
+    },
+    "crop-demo": {
+      "id": "crop-demo",
+      "owner": "aa1manali",
+      "goal": "Build crop-stage scenario and demo; https://github.com/K3shavC0des/KMAHackathonProject/issues/6",
+      "acceptance": "Scenario changes priority only and demo works",
+      "paths": [
+        "frontend/scenario"
+      ],
+      "status": "queued",
+      "evidence": ""
     }
   },
   "messages": [
@@ -129,6 +140,7 @@
     "fmw-20261114-task-area-contract-01",
     "fmw-20261114-task-smap-crop-01",
     "fmw-20261114-task-fusion-api-01",
-    "fmw-20261114-task-scouting-map-01"
+    "fmw-20261114-task-scouting-map-01",
+    "fmw-20261114-task-crop-demo-01"
   ]
 }
