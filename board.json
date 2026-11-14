@@ -78,6 +78,18 @@
       ],
       "status": "review",
       "evidence": "PR #7 commit 628ac53: reproducible observed NISAR export, four tiles/920 matched cells, schema/date validation PASS; frontend not wired. See data/observed/README.md."
+    },
+    "integration-qa": {
+      "id": "integration-qa",
+      "owner": "K3shavC0des",
+      "goal": "Review current integration and verify observed API plus desktop/mobile map journey; fix isolated integration gaps",
+      "acceptance": "Recorded runtime checks, actionable defects fixed or handed off with PR and owner",
+      "paths": [
+        "docs/hackathon/QA.md",
+        "tests/integration"
+      ],
+      "status": "queued",
+      "evidence": ""
     }
   },
   "messages": [
@@ -517,6 +529,7 @@
     "bfe31aef-b1d7-488f-a306-ff57ea791445",
     "e2d06670-8d3d-4cbe-8fcf-a2a197b97f02",
     "fmw-pilot-alignment-claim-20261114-01",
-    "fmw-pilot-alignment-review-20261114-01"
+    "fmw-pilot-alignment-review-20261114-01",
+    "fmw-integration-qa-task-20261114-01"
   ]
 }
