@@ -46,6 +46,7 @@ def read(path: str, bbox: tuple[float, float, float, float]) -> dict:
             "quality_flag_counts": {str(int(k)): int(v) for k, v in zip(*np.unique(quality, return_counts=True))},
             "_moisture": moisture,
             "_quality": quality,
+            "_fill": float(grid["soilMoisture"].attrs["_FillValue"]),
         }
 
 
@@ -58,9 +59,9 @@ def main() -> None:
     earlier, later = read(args.earlier, tuple(args.bbox)), read(args.later, tuple(args.bbox))
     before, after = earlier.pop("_moisture", None), later.pop("_moisture", None)
     q0, q1 = earlier.pop("_quality", None), later.pop("_quality", None)
+    fill0, fill1 = earlier.pop("_fill", None), later.pop("_fill", None)
     if before is not None and after is not None and before.shape == after.shape:
-        fill = -9999.0
-        matched = (before != fill) & (after != fill) & ((q0 & 1) == 0) & ((q1 & 1) == 0)
+        matched = (before != fill0) & (after != fill1) & np.isfinite(before) & np.isfinite(after) & ((q0 & 1) == 0) & ((q1 & 1) == 0)
         delta = after[matched] - before[matched]
         result = {
             "bbox_wgs84": args.bbox,

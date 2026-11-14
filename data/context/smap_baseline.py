@@ -13,6 +13,8 @@ from statistics import median
 import h5py
 import numpy as np
 
+from seasonal_window import seasonal_distance_days
+
 
 GROUP = "Soil_Moisture_Retrieval_Data_AM"
 DATE = re.compile(r"SMAP_L3_SM_P_E_(\d{8})_")
@@ -75,7 +77,7 @@ def baseline(current_file: Path, historical_files: list[Path], latitude: float, 
     current_date = file_date(current_file)
     for path in historical_files:
         day = file_date(path)
-        if not 2016 <= day.year <= 2025 or abs((day.replace(year=current_date.year) - current_date).days) > 15:
+        if not 2016 <= day.year <= 2025 or seasonal_distance_days(day, current_date) > 15:
             continue
         reading = read_cell(path, cell)
         if distance_km(cell_lat, cell_lon, reading["cell_center_wgs84"][1], reading["cell_center_wgs84"][0]) > 0.1:

@@ -4,7 +4,10 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { compareScoutingStops } from './rank.mjs';
 
-const fixtureUrl = new URL('../contracts/sample-areas.json', import.meta.url);
+const collections = new Map([
+  ['sample', new URL('../contracts/sample-areas.json', import.meta.url)],
+  ['observed', new URL('../data/observed/nagapattinam-areas.json', import.meta.url)]
+]);
 const maxBodyBytes = 1024 * 1024;
 
 function send(response, status, body) {
@@ -30,12 +33,15 @@ export function makeServer() {
         response.writeHead(204, { 'access-control-allow-origin': '*', 'access-control-allow-methods': 'GET, POST, OPTIONS', 'access-control-allow-headers': 'content-type' });
         return response.end();
       }
-      if (request.url === '/health' && request.method === 'GET') return send(response, 200, { ok: true });
-      if (request.url === '/api/rank' && request.method === 'GET') {
-        const fixture = JSON.parse(await readFile(fixtureUrl, 'utf8'));
-        return send(response, 200, compareScoutingStops(fixture));
+      const url = new URL(request.url, 'http://localhost');
+      if (url.pathname === '/health' && request.method === 'GET') return send(response, 200, { ok: true });
+      if ((url.pathname === '/api/rank' || url.pathname === '/api/areas') && request.method === 'GET') {
+        const dataset = url.searchParams.get('dataset') ?? 'sample';
+        if (!collections.has(dataset)) return send(response, 400, { error: 'Unknown dataset' });
+        const collection = JSON.parse(await readFile(collections.get(dataset), 'utf8'));
+        return send(response, 200, url.pathname === '/api/rank' ? compareScoutingStops(collection) : collection);
       }
-      if (request.url === '/api/rank' && request.method === 'POST') return send(response, 200, compareScoutingStops(await readBody(request)));
+      if (url.pathname === '/api/rank' && request.method === 'POST') return send(response, 200, compareScoutingStops(await readBody(request)));
       return send(response, 404, { error: 'Not found' });
     } catch (error) {
       if (error instanceof SyntaxError || error instanceof TypeError) return send(response, 400, { error: error.message });
