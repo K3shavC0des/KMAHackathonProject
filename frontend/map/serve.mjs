@@ -2,7 +2,7 @@ import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
-import { compareScoutingStops } from '../../backend/rank.mjs';
+import { makeServer as makeApiServer } from '../../backend/server.mjs';
 
 const root = new URL('./', import.meta.url);
 const files = new Map([
@@ -25,16 +25,16 @@ const files = new Map([
   ['/contracts/sample-areas.json', ['../../contracts/sample-areas.json', 'application/json; charset=utf-8']]
 ]);
 
-export function makeServer() { return createServer(async (request, response) => {
+export function makeServer() {
+  // Use the backend's collection selection and validation at every map API path.
+  // This server is only a request dispatcher; it never opens a second listener.
+  const api = makeApiServer();
+  return createServer(async (request, response) => {
   const path = new URL(request.url, 'http://localhost').pathname;
-  if ((path === '/api/rank' || path === '/map/api/rank') && request.method === 'GET') {
-    try {
-      const collection = JSON.parse(await readFile(fileURLToPath(new URL('../../contracts/sample-areas.json', root)), 'utf8'));
-      response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
-      response.end(JSON.stringify(compareScoutingStops(collection)));
-    } catch {
-      response.writeHead(500); response.end('Could not calculate ranking');
-    }
+  if (path.startsWith('/api/') || path.startsWith('/map/api/') || path === '/health') {
+    if (path.startsWith('/map/api/')) request.url = request.url.slice('/map'.length);
+    response.setHeader('Cache-Control', 'no-store');
+    api.emit('request', request, response);
     return;
   }
   const file = files.get(path);
