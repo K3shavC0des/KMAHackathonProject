@@ -10,8 +10,8 @@
       "paths": [
         "data/pilot"
       ],
-      "status": "queued",
-      "evidence": ""
+      "status": "working",
+      "evidence": "Starting issue https://github.com/K3shavC0des/KMAHackathonProject/issues/1 with focused data-ingestion workers"
     },
     "area-contract": {
       "id": "area-contract",
@@ -178,6 +178,7 @@
     "fmw-20261114-post-K3shavC0des-01",
     "fmw-20261114-post-Matthewzhang2008-01",
     "fmw-20261114-post-aa1manali-01",
-    "222b4f43-16ab-445f-8efd-dd96e376424c"
+    "222b4f43-16ab-445f-8efd-dd96e376424c",
+    "fmw-20261114-claim-pilot-data-01"
   ]
 }
