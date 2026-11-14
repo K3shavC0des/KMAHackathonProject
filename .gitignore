@@ -1,6 +1,7 @@
 .tools/
 node_modules/
 .uv-cache/
+__pycache__/
 graphify-out/
 .local/
 .env
