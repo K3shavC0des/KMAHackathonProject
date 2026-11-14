@@ -8,7 +8,7 @@ From the repository root, launch the integrated sample demo:
 .\.tools\node-v24.15.0-win-x64\node.exe frontend\map\serve.mjs
 ```
 
-Open `http://127.0.0.1:8000/`. If Node 22+ is on PATH, `node frontend/map/serve.mjs` works as well. The same server exposes `GET /api/rank` and the canonical `contracts/sample-areas.json`. Run `node --test backend/rank.test.mjs frontend/map/observations.test.mjs` for the focused checks. Read [the demo and NASA page draft](docs/hackathon/SUBMISSION_DRAFT.md) and [the checkpoint](docs/hackathon/STATE.md) for the current evidence and limits.
+Open `http://127.0.0.1:8000/`, then follow **Try a crop-stage scenario** to change hypothetical crop stages. If Node 22+ is on PATH, `node frontend/map/serve.mjs` works as well. The same server exposes `GET /api/rank` and the canonical `contracts/sample-areas.json`. Run `node --test backend/rank.test.mjs frontend/map/observations.test.mjs frontend/scenario/scenario.test.mjs` for the focused checks. Read [the demo and NASA page draft](docs/hackathon/SUBMISSION_DRAFT.md) and [the checkpoint](docs/hackathon/STATE.md) for the current evidence and limits.
 
 ## Teammate tooling
 
