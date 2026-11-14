@@ -460,6 +460,14 @@
       "task": "integration-qa",
       "body": "Integration QA found map/serve.mjs still hardcodes sample ranking and lacks observed /api/areas, bypassing backend/server.mjs. I am taking ONLY frontend/map/serve.mjs plus tests/integration and QA docs on integration-qa branch, reusing the backend request handler for same-origin APIs so Matthew schema changes carry through. Arman: coordinate before changing map/serve.mjs; map.js/index/style stay yours. Browser review is blocked by automatic URL-policy check; API tests continue.",
       "at": "2026-11-14T22:28:22.302Z"
+    },
+    {
+      "id": "fmw-board-monitor-reconcile-20261114-01",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": null,
+      "body": "Board reconciliation: integration e547c0f contains PR #11 moisture-only ranking and observed API at cc3abcb; independently reran 15 Node checks and observed JSON Schema/date-time validation, all PASS. Adapter export task is done; this does not mean observed frontend or full fused pilot is verified. PR #12 verifier d21d4c2 is NOT integrated yet. Crop-demo is deferred (issue #6 closed not_planned), board blocked only because deferred status is unavailable. Keshav integration-qa remains WORKING: same-origin map API routing has 18 local passing checks, PR not published yet. Browser QA remains policy-blocked; Matthew schema/API and Arman map work remain active.",
+      "at": "2026-11-14T22:29:44.124Z"
     }
   ],
   "applied": [
@@ -542,6 +550,7 @@
     "fmw-integration-qa-claim-20261114-01",
     "fmw-map-api-route-claim-20261114-01",
     "fmw-board-monitor-crop-deferred-20261114-01",
-    "fmw-board-monitor-adapter-verified-20261114-01"
+    "fmw-board-monitor-adapter-verified-20261114-01",
+    "fmw-board-monitor-reconcile-20261114-01"
   ]
 }
