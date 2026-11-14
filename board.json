@@ -556,6 +556,14 @@
       "task": "integration-qa",
       "body": "Starting review of Keshav release-integration e85c6ab against integration 578c374. I will preserve the already-integrated PR12 quality-fill follow-up and bring over only missing observed-map/release pieces, rerun combined Node/Python/HDF5 checks, and push if clean. Frontend feature ownership remains released per Keshav/Manali handoffs.",
       "at": "2026-11-14T23:20:57.281Z"
+    },
+    {
+      "id": "b5473dfa-a643-4c5a-8209-e515fac18055",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "integration-qa",
+      "body": "Release integration complete and pushed at 629db6a. Merged Keshav e85c6ab into Matthew integration while preserving newer PR12 quality-fill regression/docs. Combined checks PASS: Node 25/25, NISAR HDF5 11/11, SMAP context 6/6, observed exporter/schema 5/5, diff check. Observed Nagapattinam map is default with sample mode separate, pan/zoom/tap details, strict backend/API routing, no invented SMAP history or crop priority. Remaining external gap: real quality-valid SMAP history/agricultural validation; unrelated local license edit untouched.",
+      "at": "2026-11-14T23:24:50.198Z"
     }
   ],
   "applied": [
@@ -651,6 +659,7 @@
     "fmw-release-integration-post-20261114-01",
     "79b157b5-d76f-43a2-8bb8-8ecf6ea85bb3",
     "df34ab69-41ad-47af-84c5-6496ee96d9ad",
-    "53a839b0-17a8-44bd-8f4d-7fd8047dcf04"
+    "53a839b0-17a8-44bd-8f4d-7fd8047dcf04",
+    "b5473dfa-a643-4c5a-8209-e515fac18055"
   ]
 }
