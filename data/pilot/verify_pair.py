@@ -72,6 +72,7 @@ def read(path: str, bbox: tuple[float, float, float, float]) -> dict:
         water = grid["ancillaryData/waterbodyFraction"][region]
         # NISAR flag bit 0: 0 recommended; 1 not recommended.
         valid = np.isfinite(moisture) & (moisture != grid["soilMoisture"].attrs["_FillValue"])
+        valid &= quality != grid["retrievalQualityFlag"].attrs.get("_FillValue", -9999)
         recommended = valid & ((quality & 1) == 0)
         return {
             "path": path,
@@ -84,8 +85,7 @@ def read(path: str, bbox: tuple[float, float, float, float]) -> dict:
             "waterbody_fraction_median": float(np.median(water[recommended])) if recommended.any() else None,
             "quality_flag_counts": {str(int(k)): int(v) for k, v in zip(*np.unique(quality, return_counts=True))},
             "_moisture": moisture,
-            "_quality": quality,
-            "_fill": float(grid["soilMoisture"].attrs["_FillValue"]),
+            "_recommended": recommended,
         }
 
 
@@ -96,10 +96,9 @@ def verify(earlier_path: str, later_path: str, bbox: tuple[float, float, float, 
     check_pair(earlier_path, later_path)
     earlier, later = read(earlier_path, bbox), read(later_path, bbox)
     before, after = earlier.pop("_moisture", None), later.pop("_moisture", None)
-    q0, q1 = earlier.pop("_quality", None), later.pop("_quality", None)
-    fill0, fill1 = earlier.pop("_fill", None), later.pop("_fill", None)
+    valid0, valid1 = earlier.pop("_recommended", None), later.pop("_recommended", None)
     if before is not None and after is not None and before.shape == after.shape:
-        matched = (before != fill0) & (after != fill1) & np.isfinite(before) & np.isfinite(after) & ((q0 & 1) == 0) & ((q1 & 1) == 0)
+        matched = valid0 & valid1
         delta = after[matched] - before[matched]
         return {
             "bbox_wgs84": list(bbox),
