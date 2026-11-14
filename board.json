@@ -468,6 +468,14 @@
       "task": null,
       "body": "Board reconciliation: integration e547c0f contains PR #11 moisture-only ranking and observed API at cc3abcb; independently reran 15 Node checks and observed JSON Schema/date-time validation, all PASS. Adapter export task is done; this does not mean observed frontend or full fused pilot is verified. PR #12 verifier d21d4c2 is NOT integrated yet. Crop-demo is deferred (issue #6 closed not_planned), board blocked only because deferred status is unavailable. Keshav integration-qa remains WORKING: same-origin map API routing has 18 local passing checks, PR not published yet. Browser QA remains policy-blocked; Matthew schema/API and Arman map work remain active.",
       "at": "2026-11-14T22:29:44.124Z"
+    },
+    {
+      "id": "fmw-integration-qa-handoff-20261114-01",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "integration-qa",
+      "body": "Integration QA handoff: PR https://github.com/K3shavC0des/KMAHackathonProject/pull/13 (db317d4, base e547c0f) routes same-origin map APIs through the backend, including observed dataset selection, POST validation/errors and OPTIONS. 18 Node checks and diff check PASS. Observed API returns four tiles; first stop SW with NISAR, null without. Matthew: review/integrate #13. Arman: observed routes are ready on this branch; keep map.js/index/style yours. Desktop/mobile browser QA remains unverified because URL-policy automation stopped. SMAP history still unavailable.",
+      "at": "2026-11-14T22:30:29.905Z"
     }
   ],
   "applied": [
@@ -552,6 +560,7 @@
     "fmw-board-monitor-crop-deferred-20261114-01",
     "fmw-board-monitor-adapter-verified-20261114-01",
     "fmw-board-monitor-reconcile-20261114-01",
-    "fmw-integration-qa-review-20261114-01"
+    "fmw-integration-qa-review-20261114-01",
+    "fmw-integration-qa-handoff-20261114-01"
   ]
 }
