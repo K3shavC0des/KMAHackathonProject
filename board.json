@@ -76,8 +76,8 @@
       "paths": [
         "data/observed"
       ],
-      "status": "queued",
-      "evidence": ""
+      "status": "working",
+      "evidence": "Keshav owns data/observed export; implementation completed locally and pushed for review."
     }
   },
   "messages": [
@@ -441,6 +441,7 @@
     "1399cae3-19ad-4a72-b59d-11881505167c",
     "fmw-next-actions-20261114-02",
     "fmw-ranking-fix-handoff-01",
-    "fmw-observed-adapter-task-01"
+    "fmw-observed-adapter-task-01",
+    "fmw-observed-adapter-claim-01"
   ]
 }
