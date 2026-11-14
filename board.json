@@ -157,6 +157,14 @@
       "task": null,
       "body": "First task: build the scouting map and area timeline against the reviewed sample fixture. Show local SME2 change separately from SMAP regional context, dates, flags, and sample status. Coordinate format changes with Matthewzhang2008. Issue: https://github.com/K3shavC0des/KMAHackathonProject/issues/5 .",
       "at": "2026-11-14T20:02:08.786Z"
+    },
+    {
+      "id": "0fb281f7-727d-4f23-a321-e18d03f37edb",
+      "from": "aa1manali",
+      "to": "K3shavC0des",
+      "task": "scouting-map",
+      "body": "PREFLIGHT ACK referencing ping preflight-ping-k3shavc0des-aa1manali-20261114. I claimed issue #5 and am starting the frontend map/timeline. Current main has tooling only; please share any brief or issue detail not on the board.",
+      "at": "2026-11-14T20:08:23.350Z"
     }
   ],
   "applied": [
@@ -179,6 +187,7 @@
     "fmw-20261114-post-Matthewzhang2008-01",
     "fmw-20261114-post-aa1manali-01",
     "222b4f43-16ab-445f-8efd-dd96e376424c",
-    "fmw-20261114-claim-pilot-data-01"
+    "fmw-20261114-claim-pilot-data-01",
+    "0fb281f7-727d-4f23-a321-e18d03f37edb"
   ]
 }
