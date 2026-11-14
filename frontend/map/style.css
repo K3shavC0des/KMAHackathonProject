@@ -38,7 +38,7 @@ ol { padding-left: 22px; }
 li { margin: 0 0 14px; font-size: .85rem; }
 li span, li details { display: block; margin-top: 4px; color: #5f6368; font-size: .76rem; line-height: 1.35; }
 li summary { cursor: pointer; color: #1967d2; }
-.area-tooltip { border: 0; border-radius: 3px; box-shadow: 0 1px 4px #0005; color: #202124; font-size: .72rem; font-weight: 700; }
-.leaflet-control-attribution { font-size: .62rem; }
+.maplibregl-ctrl-group { box-shadow: 0 1px 4px #0004; }
+.maplibregl-ctrl-attrib { font-size: .62rem; }
 @media (max-width: 900px) { .map-app { grid-template-columns: 1fr; height: auto; } .map-canvas { height: 68vh; min-height: 500px; } #map { min-height: 500px; } .inspector { border-top: 1px solid #dadce0; border-left: 0; } .map-search { top: auto; bottom: 52px; left: 12px; } .map-title { top: 12px; left: 12px; max-width: 280px; } }
 @media (max-width: 560px) { .map-title { max-width: calc(100% - 24px); } .map-search { left: 12px; right: 12px; min-width: 0; } }

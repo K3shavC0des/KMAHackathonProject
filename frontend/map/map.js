@@ -1,15 +1,15 @@
 import { inspectionSummary, latestReading, observationInstant } from './map-data.mjs';
 
 const byId = id => document.getElementById(id);
-const pilotBounds = [[10.70, 79.74], [10.76, 79.80]];
-const indiaCenter = [22.6, 79.7];
-const pilotCenter = [10.73, 79.77];
+const pilotBounds = [[79.74, 10.70], [79.80, 10.76]];
+const stateBounds = [[79.20, 10.30], [80.35, 11.10]];
+const pilotCenter = [79.77, 10.73];
 const collections = {};
 let mode = 'sample';
 let areas = [];
 let selectedId;
 let map;
-let overlayLayer;
+let maplibregl;
 
 function readingText(item) {
   if (!item) return 'Unavailable';
@@ -27,31 +27,24 @@ function labelFor(area) {
   return `Sample ${area.label.match(/field\s+([A-Za-z0-9]+)/i)?.[1] ?? area.area_id}`;
 }
 
-function toLatLngs(ring) { return ring.map(([longitude, latitude]) => [latitude, longitude]); }
-
 function displayPilotPanel() {
   byId('pilot-panel').hidden = false;
   byId('pilot-panel').scrollIntoView({ block: 'nearest' });
 }
 
-function drawOverlays() {
-  if (!map || !window.L) return;
-  overlayLayer?.clearLayers();
-  overlayLayer = window.L.layerGroup().addTo(map);
-  const pilot = window.L.rectangle(pilotBounds, { color: '#f9ab00', weight: 2, dashArray: '6 5', fillOpacity: 0.05 });
-  pilot.bindTooltip('Nagapattinam development window', { className: 'area-tooltip', sticky: true });
-  pilot.on('click', displayPilotPanel);
-  pilot.addTo(overlayLayer);
-  for (const area of areas) {
-    const selected = area.area_id === selectedId;
-    const polygon = window.L.polygon(toLatLngs(area.geometry.coordinates[0]), {
-      color: selected ? '#c5221f' : '#1967d2', weight: selected ? 3 : 2,
-      fillColor: selected ? '#ea4335' : '#1a73e8', fillOpacity: selected ? 0.42 : 0.28
-    });
-    polygon.bindTooltip(labelFor(area), { className: 'area-tooltip', sticky: true });
-    polygon.on('click', () => selectArea(area.area_id, true));
-    polygon.addTo(overlayLayer);
-  }
+function featureCollection() {
+  return {
+    type: 'FeatureCollection',
+    features: areas.map(area => ({ type: 'Feature', properties: { area_id: area.area_id, label: labelFor(area) }, geometry: area.geometry }))
+  };
+}
+
+function updateMapData() {
+  if (!map?.isStyleLoaded()) return;
+  map.getSource('areas')?.setData(featureCollection());
+  map.setPaintProperty('area-fill', 'fill-color', ['case', ['==', ['get', 'area_id'], selectedId], '#ea4335', '#1a73e8']);
+  map.setPaintProperty('area-line', 'line-color', ['case', ['==', ['get', 'area_id'], selectedId], '#c5221f', '#1967d2']);
+  map.setPaintProperty('area-line', 'line-width', ['case', ['==', ['get', 'area_id'], selectedId], 3, 2]);
 }
 
 function render() {
@@ -60,7 +53,7 @@ function render() {
   select.value = selectedId;
   const area = areas.find(item => item.area_id === selectedId);
   if (!area) return;
-  drawOverlays();
+  updateMapData();
   const sme2 = latestReading(area, 'NISAR_SME2', 'soil_moisture_change');
   const smap = latestReading(area, 'SMAP', 'seasonal_baseline');
   const statuses = new Set(area.observations.map(item => item.data_status));
@@ -103,8 +96,11 @@ function render() {
 function selectArea(id, panToArea = false) {
   selectedId = id;
   render();
-  const area = areas.find(item => item.area_id === id);
-  if (panToArea && map && area) map.panTo(window.L.polygon(toLatLngs(area.geometry.coordinates[0])).getBounds().getCenter());
+  if (panToArea) {
+    const area = areas.find(item => item.area_id === id);
+    const ring = area?.geometry.coordinates[0];
+    if (ring) map.easeTo({ center: ring[0], duration: 450 });
+  }
 }
 
 function useCollection(nextMode) {
@@ -113,44 +109,65 @@ function useCollection(nextMode) {
   selectedId = areas[0].area_id;
   byId('data-mode').value = mode;
   render();
-  if (mode === 'observed') map.fitBounds(pilotBounds, { padding: [38, 38] });
+  if (mode === 'observed') map.fitBounds(pilotBounds, { padding: 48, maxZoom: 13, duration: 600 });
 }
 
-function initializeMap() {
-  if (!window.L) {
-    byId('map').textContent = 'The live basemap could not load. Check the network connection and refresh.';
+async function initializeMap() {
+  try {
+    ({ default: maplibregl } = await import('https://unpkg.com/maplibre-gl@6.18.0/dist/maplibre-gl.mjs'));
+  } catch (error) {
+    byId('map').textContent = `The live basemap could not load: ${error.message}. Check the network connection and refresh.`;
     byId('map').setAttribute('role', 'status');
     return false;
   }
-  map = window.L.map('map', { zoomControl: true, scrollWheelZoom: true }).setView(pilotCenter, 11);
-  window.L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
+  map = new maplibregl.Map({
+    container: 'map', center: pilotCenter, zoom: 11, minZoom: 9, maxZoom: 16,
+    maxBounds: stateBounds, bearing: 0, pitch: 0, pitchWithRotate: true,
+    style: { version: 8, sources: { osm: { type: 'raster', tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'], tileSize: 256, attribution: '© OpenStreetMap contributors' } }, layers: [{ id: 'osm', type: 'raster', source: 'osm' }] }
+  });
+  map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-left');
+  await new Promise(resolve => map.once('load', resolve));
+  map.addSource('pilot-window', { type: 'geojson', data: { type: 'Feature', properties: {}, geometry: { type: 'Polygon', coordinates: [[[79.74, 10.70], [79.80, 10.70], [79.80, 10.76], [79.74, 10.76], [79.74, 10.70]]] } } });
+  map.addLayer({ id: 'pilot-fill', type: 'fill', source: 'pilot-window', paint: { 'fill-color': '#f9ab00', 'fill-opacity': 0.05 } });
+  map.addLayer({ id: 'pilot-outline', type: 'line', source: 'pilot-window', paint: { 'line-color': '#f9ab00', 'line-width': 2, 'line-dasharray': [2, 2] } });
+  map.addSource('areas', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+  map.addLayer({ id: 'area-fill', type: 'fill', source: 'areas', paint: { 'fill-color': '#1a73e8', 'fill-opacity': 0.30 } });
+  map.addLayer({ id: 'area-line', type: 'line', source: 'areas', paint: { 'line-color': '#1967d2', 'line-width': 2 } });
+  map.on('mouseenter', 'area-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseleave', 'area-fill', () => { map.getCanvas().style.cursor = ''; });
+  map.on('click', 'area-fill', event => selectArea(event.features[0].properties.area_id, true));
+  map.on('click', 'pilot-outline', displayPilotPanel);
   return true;
 }
 
 byId('area-select').addEventListener('change', event => selectArea(event.target.value, true));
 byId('data-mode').addEventListener('change', event => useCollection(event.target.value));
-byId('india-view').addEventListener('click', () => map?.setView(indiaCenter, 5));
-byId('pilot-view').addEventListener('click', () => map?.fitBounds(pilotBounds, { padding: [38, 38] }));
+byId('state-view').addEventListener('click', () => map?.fitBounds(stateBounds, { padding: 48, duration: 600 }));
+byId('pilot-view').addEventListener('click', () => map?.fitBounds(pilotBounds, { padding: 48, maxZoom: 13, duration: 600 }));
+byId('camera-view').addEventListener('click', () => {
+  const tilted = map?.getPitch() > 0;
+  map?.easeTo({ pitch: tilted ? 0 : 45, bearing: tilted ? 0 : -20, duration: 600 });
+  byId('camera-view').textContent = tilted ? 'Tilt' : 'Top-down';
+});
 
-const mapReady = initializeMap();
-try {
-  const sampleResponse = await fetch('./sample-areas.json');
-  if (!sampleResponse.ok) throw new Error(`Sample HTTP ${sampleResponse.status}`);
-  collections.sample = await sampleResponse.json();
+const mapReady = await initializeMap();
+if (mapReady) {
   try {
-    const observedResponse = await fetch('./observed-areas.json');
-    if (!observedResponse.ok) throw new Error(`Observed HTTP ${observedResponse.status}`);
-    collections.observed = await observedResponse.json();
-    byId('mode-note').textContent = 'Observed NISAR tiles are separate from the synthetic sample. SMAP history is unavailable.';
-    if (mapReady) useCollection('observed');
+    const sampleResponse = await fetch('./sample-areas.json');
+    if (!sampleResponse.ok) throw new Error(`Sample HTTP ${sampleResponse.status}`);
+    collections.sample = await sampleResponse.json();
+    try {
+      const observedResponse = await fetch('./observed-areas.json');
+      if (!observedResponse.ok) throw new Error(`Observed HTTP ${observedResponse.status}`);
+      collections.observed = await observedResponse.json();
+      byId('mode-note').textContent = 'Observed NISAR tiles are separate from the synthetic sample. SMAP history is unavailable.';
+      useCollection('observed');
+    } catch (error) {
+      byId('data-mode').querySelector('[value="observed"]').disabled = true;
+      byId('mode-note').textContent = `Observed view unavailable: ${error.message}. Synthetic sample is shown.`;
+      useCollection('sample');
+    }
   } catch (error) {
-    byId('data-mode').querySelector('[value="observed"]').disabled = true;
-    byId('mode-note').textContent = `Observed view unavailable: ${error.message}. Synthetic sample is shown.`;
-    if (mapReady) useCollection('sample');
+    byId('area-description').textContent = `Could not load areas: ${error.message}`;
   }
-} catch (error) {
-  byId('area-description').textContent = `Could not load areas: ${error.message}`;
 }

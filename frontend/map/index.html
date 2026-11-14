@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Farm Moisture Watch | Scouting map</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.18.0/dist/maplibre-gl.css">
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -17,7 +17,7 @@
         <p>Pan, zoom, and tap an area to inspect evidence.</p>
       </header>
       <section class="map-search" aria-label="Map navigation">
-        <div class="view-actions"><button type="button" id="india-view">India</button><button type="button" id="pilot-view">Nagapattinam</button></div>
+        <div class="view-actions"><button type="button" id="state-view">Tamil Nadu</button><button type="button" id="pilot-view">Nagapattinam</button><button type="button" id="camera-view">Tilt</button></div>
         <label for="data-mode">Evidence view</label>
         <select id="data-mode" aria-describedby="mode-note"><option value="sample">Synthetic sample areas</option><option value="observed">Observed NISAR tiles</option></select>
         <p id="mode-note">Choose the observed view when the verified tile export is available.</p>
@@ -34,7 +34,6 @@
       <section class="timeline-section"><h3>Observation timeline</h3><ol id="timeline"></ol></section>
     </aside>
   </main>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script type="module" src="./map.js"></script>
 </body>
 </html>
