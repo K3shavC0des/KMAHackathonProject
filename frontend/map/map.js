@@ -2,6 +2,7 @@ const byId = id => document.getElementById(id);
 const svgNs = 'http://www.w3.org/2000/svg';
 let areas = [];
 let selectedId;
+let comparison;
 
 function observation(area, source) {
   return area.observations.find(item => item.source === source && item.quality !== 'missing') || null;
@@ -64,6 +65,16 @@ function render() {
   const statuses = new Set(area.observations.map(item => item.data_status));
   byId('sample-badge').textContent = statuses.size === 1 ? [...statuses][0].toUpperCase() : 'MIXED STATUS';
   byId('area-description').textContent = `${area.label}. Crop stage: ${area.crop_stage}. Polygon coordinates are from the sample fixture; no pilot has been selected.`;
+  if (comparison) {
+    const withArea = comparison.with_nisar.ranking.find(item => item.area_id === selectedId);
+    const withoutArea = comparison.without_nisar.ranking.find(item => item.area_id === selectedId);
+    byId('with-first').textContent = comparison.with_nisar.ranking[0].label.split(' (')[0];
+    byId('without-first').textContent = comparison.without_nisar.ranking[0].label.split(' (')[0];
+    byId('value-change').textContent = comparison.first_stop_changes
+      ? 'Adding NISAR changes the first stop in this synthetic example.'
+      : 'Adding NISAR does not change the first stop in this example.';
+    byId('rank-explanation').textContent = `${area.label.split(' (')[0]} ranks ${withArea.rank} with NISAR and ${withoutArea.rank} without it. ${withArea.explanation}`;
+  }
   byId('sme2-value').textContent = readingText(sme2);
   byId('sme2-meta').textContent = metadata(sme2);
   byId('smap-value').textContent = readingText(smap);
@@ -101,9 +112,10 @@ export function setAreas(collection) {
 }
 
 try {
-  const response = await fetch('./sample-areas.json');
-  if (!response.ok) throw new Error(`Fixture HTTP ${response.status}`);
-  setAreas(await response.json());
+  const [fixtureResponse, rankingResponse] = await Promise.all([fetch('./sample-areas.json'), fetch('./api/rank')]);
+  if (!fixtureResponse.ok || !rankingResponse.ok) throw new Error(`Fixture or ranking request failed`);
+  comparison = await rankingResponse.json();
+  setAreas(await fixtureResponse.json());
 } catch (error) {
   byId('area-description').textContent = `Could not load sample areas: ${error.message}`;
 }
