@@ -90,6 +90,20 @@
       ],
       "status": "done",
       "evidence": "Integrated at https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/integration commit 629db6a. Matthew merged Keshav release e85c6ab while retaining PR12 quality-fill follow-up. Combined verification: Node 25/25; NISAR HDF5 11/11; SMAP context 6/6; observed exporter/schema 5/5; diff check PASS. Observed map default, sample separate, pan/zoom/tap details, strict backend routing; no invented SMAP history/crop priority. Limitation recorded: real quality-valid SMAP history and agricultural validation remain external/pending."
+    },
+    "google-maps-layout": {
+      "id": "google-maps-layout",
+      "owner": "K3shavC0des",
+      "goal": "Make the desktop map a Google Maps-style, map-first inspection experience without changing evidence semantics.",
+      "acceptance": "Desktop map is primary canvas; floating controls and focused inspector work with observed and sample modes; existing map/API tests pass.",
+      "paths": [
+        "frontend/map/index.html",
+        "frontend/map/style.css",
+        "frontend/map/map.js",
+        "frontend/map/map-data.test.mjs"
+      ],
+      "status": "queued",
+      "evidence": ""
     }
   },
   "messages": [
@@ -680,6 +694,7 @@
     "fmw-integration-qa-done-20261114-01",
     "fmw-google-maps-layout-post-20261114-01",
     "fmw-google-maps-layout-handoff-request-20261114-01",
-    "fmw-scouting-map-done-reconcile-20261114-01"
+    "fmw-scouting-map-done-reconcile-20261114-01",
+    "fmw-google-maps-layout-task-20261114-02"
   ]
 }
