@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Farm Moisture Watch | Crop-stage scenario</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Farm Moisture Watch · sample demonstration</p>
+      <h1>Crop-stage scenario</h1>
+      <p>Change a crop stage to see how an illustrative scouting priority responds. This does not change moisture observations.</p>
+    </header>
+    <div class="notice">Synthetic sample areas and readings. No Indian pilot is selected. Priority points are not irrigation advice.</div>
+    <section class="panel" aria-labelledby="controls-heading">
+      <h2 id="controls-heading">Scenario inputs</h2>
+      <p>Choose a hypothetical crop stage for each area. Local SME2 and regional SMAP evidence stays fixed.</p>
+      <div id="controls" class="controls"></div>
+      <button id="reset" type="button">Reset stages</button>
+    </section>
+    <section class="panel" aria-labelledby="result-heading">
+      <h2 id="result-heading">First scouting stop</h2>
+      <div class="comparison">
+        <article><h3>With local NISAR SME2</h3><strong id="with-first">Loading…</strong></article>
+        <article><h3>Without local NISAR SME2</h3><strong id="without-first">Loading…</strong></article>
+      </div>
+      <p id="change"></p>
+      <div id="rankings" aria-live="polite"></div>
+    </section>
+    <p class="footnote">SMAP is 9 km regional context only and does not contribute field-scale priority points. <a href="../map/">Open the scouting map</a>.</p>
+  </main>
+  <script type="module" src="./scenario.js"></script>
+</body>
+</html>
