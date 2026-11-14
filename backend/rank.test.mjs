@@ -8,6 +8,16 @@ import { validateCollection } from './validate.mjs';
 const fixture = JSON.parse(await readFile(new URL('../contracts/sample-areas.json', import.meta.url), 'utf8'));
 const observed = JSON.parse(await readFile(new URL('../data/observed/nagapattinam-areas.json', import.meta.url), 'utf8'));
 
+test('newest observation is selected by instant across UTC timestamp forms', () => {
+  const changed = structuredClone(fixture);
+  const observation = changed.areas[0].observations.find(item => item.source === 'NISAR_SME2');
+  observation.observed_at = '2026-07-02T00:00:00Z';
+  changed.areas[0].observations.push({ ...observation, observation_id: 'newer', observed_at: '2026-07-02T00:00:00.500+00:00', value: .02 });
+  const result = compareScoutingStops(changed).with_nisar.ranking.find(item => item.area_id === changed.areas[0].area_id);
+  assert.equal(result.priority_points, 0);
+  assert.equal(result.eligible_for_first_stop, false);
+});
+
 test('local drying supports inspection priority while regional context alone does not', () => {
   const result = compareScoutingStops(fixture);
   assert.equal(result.with_nisar.first_stop, 'illustrative-field-a');
@@ -152,4 +162,16 @@ test('API serves fixture and rejects unlabeled input', async () => {
   } finally {
     await new Promise(resolve => server.close(resolve));
   }
+});
+
+test('known crop stage without local evidence cannot nominate a stop', () => {
+  const changed = structuredClone(fixture);
+  for (const area of changed.areas) area.observations = [];
+  assert.equal(compareScoutingStops(changed).with_nisar.first_stop, null);
+});
+
+test('wetting readings do not nominate a drying inspection stop', () => {
+  const changed = structuredClone(fixture);
+  for (const area of changed.areas) area.observations[0].value = 0.02;
+  assert.equal(compareScoutingStops(changed).with_nisar.first_stop, null);
 });
