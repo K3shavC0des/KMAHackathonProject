@@ -1,6 +1,6 @@
 # Nagapattinam candidate data check
 
-**Status: candidate only; pilot not selected.** Verified 2026-11-14 using opened HDF5 files. This is a reproducibility note, not a field-level scouting recommendation.
+**Status: Nagapattinam selected as development geography; fully fused observed pilot not validated.** See [the pilot decision](PILOT_DECISION.md) for the smaller analysis window and current gates. Verified 2026-11-14 using opened HDF5 files. This is a reproducibility note, not a field-level scouting recommendation.
 
 ## Source granules
 
@@ -16,7 +16,7 @@ Both NISAR SME2 HDF5 files opened; each has a 1935 × 1530 `soilMoisture` grid i
 
 The July 2 SMAP file opened with 1624 × 3856 AM arrays. NSIDC defines recommended, attempted retrievals by `retrieval_qual_flag` bits 0 and 1 both zero; reject fill values. No recommended retrieval pixels fell inside the same Nagapattinam window. The nearest recommended pixel was about 267 km away. CMR point queries returned this same granule for all three city candidates, so the CMR hit is not proof of useful local SMAP coverage.
 
-Next: check nearby SMAP dates and pixel geolocation/QC against small agricultural AOIs inside each NISAR pair. Compare Nagapattinam, Ludhiana, and Ahmedabad, then select a pilot only if field-region pixels and crop context are usable. Otherwise omit SMAP anomaly from the demo rather than fabricate local context. No S-band file was opened.
+Next: check nearby SMAP dates and pixel geolocation/QC against small agricultural AOIs inside each NISAR pair. Nagapattinam is the development geography; validate field-region pixels and crop context before calling it a fully fused observed pilot. Ludhiana and Ahmedabad remain alternatives. Otherwise omit SMAP anomaly from the demo rather than fabricate local context. No S-band file was opened.
 
 ## Reproduction
 
@@ -27,3 +27,15 @@ python data/pilot/verify_pair.py earlier.h5 later.h5 --bbox 79.70 10.60 80.00 10
 ```
 
 The script reports counts and change for the supplied geographic box and labels the result as not field validation. Keep downloaded HDF5 files and credentials out of Git.
+
+## Integration regression check (2026-11-14)
+
+The reconciled verifier retains PR #12's coordinate, acquisition-metadata,
+units and chronological-order guards. Both per-date summaries and the pair
+delta exclude dataset-specific moisture and quality fill values plus nonfinite
+moisture. The `verify_pair` import remains available alongside `verify`.
+Run `python -m unittest discover -s data/pilot -p test_verify_pair.py` (11 checks).
+
+Reopened the local June 20 / July 2 pair at the selected development bounds:
+920 matched recommended cells, median change -0.01749463379383087 m3/m3.
+The exporter independently reproduces all four committed observed tiles exactly.

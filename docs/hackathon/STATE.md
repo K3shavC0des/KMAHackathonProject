@@ -6,7 +6,7 @@ Updated 2026-11-14. Integration owner: matthewzhang2008. Current integration bra
 
 NASA Space Apps Ottawa 2026, Dancing with the SARs. Help a farmer or adviser decide which area to scout for possible moisture change before watering. The user confirmed submission is due **2026-11-16 00:00 America/Toronto**. Judging criteria supplied by the user: Impact, Creativity, Validity, Relevance, Presentation. The NASA project page is especially important. No paid services authorized.
 
-Core demo: labeled sample areas, local NISAR SME2 change separate from regional SMAP context, explained scouting rank with and without NISAR, area timeline, and a crop-stage scenario. Satellite surface moisture is not root-zone moisture, plant stress, yield, or an irrigation prescription. Observed-data display remains gated on quality checks.
+Current scope: a navigable map centered on the observed Nagapattinam analysis tiles, simple inspection-priority explanations and area details, with regional historical context kept at its real scale. Crop-stage scenarios are deferred from the active journey. Satellite surface moisture is not root-zone moisture, plant stress, yield, or an irrigation prescription. Observed-data display remains gated on quality checks.
 
 ## Current evidence
 
@@ -33,3 +33,15 @@ The integration branch combines the published contract, API, map, crop-stage sce
 Node tests: 11/11 passed, covering missing evidence, observed-data separation, strict UTC timestamps, latest-valid map readings, and scenario observation immutability. Three pure-Python seasonal-window checks passed; Python source compiled. NASA CMR nearby-date query returned 31 catalog granules. HDF5 tests and real-file SMAP check remain blocked by application control and absent source files. The map/scenario browser visual check and final project page publication remain open; `SUBMISSION_DRAFT.md` is ready for review.
 
 Next: coordinate with Manali on the explicit observed dataset path, review the combined UI at desktop/mobile, rehearse the sample scenario journey, and finalize the NASA project page from `SUBMISSION_DRAFT.md`. If accessible source files and an HDF5-capable runtime arrive, test nearby SMAP dates and at least five historical quality-valid years before computing an anomaly. Preserve local edits and never commit `.tools/`, `.local/`, credentials, or downloaded granules.
+
+## Data reconciliation review (2026-11-14, Keshav)
+
+Combined current main's observed-export schema validation with integration's
+UTC normalization, nearby-date catalog helper and backend ranking fixes.
+Included PR #12's acquisition guards and quality-fill regression; applied the
+same fill exclusion to the exporter. Preserved both verifier import names.
+On Keshav's HDF5-capable runtime, 28 Python tests and 15 Node tests pass.
+The actual downloaded pair reproduces the 920-cell statistic and the complete
+committed four-tile observed collection. This is NISAR development evidence;
+same-cell SMAP history, crop validation and browser verification remain open.
+Map-server routing is being handled separately on the integration-QA branch.
