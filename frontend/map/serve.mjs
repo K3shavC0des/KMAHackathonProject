@@ -11,12 +11,23 @@ const files = new Map([
   ['/style.css', ['style.css', 'text/css; charset=utf-8']],
   ['/map.js', ['map.js', 'text/javascript; charset=utf-8']],
   ['/observations.mjs', ['observations.mjs', 'text/javascript; charset=utf-8']],
-  ['/sample-areas.json', ['../../contracts/sample-areas.json', 'application/json; charset=utf-8']]
+  ['/sample-areas.json', ['../../contracts/sample-areas.json', 'application/json; charset=utf-8']],
+  ['/map/', ['index.html', 'text/html; charset=utf-8']],
+  ['/map/style.css', ['style.css', 'text/css; charset=utf-8']],
+  ['/map/map.js', ['map.js', 'text/javascript; charset=utf-8']],
+  ['/map/observations.mjs', ['observations.mjs', 'text/javascript; charset=utf-8']],
+  ['/map/sample-areas.json', ['../../contracts/sample-areas.json', 'application/json; charset=utf-8']],
+  ['/scenario/', ['../scenario/index.html', 'text/html; charset=utf-8']],
+  ['/scenario/style.css', ['../scenario/style.css', 'text/css; charset=utf-8']],
+  ['/scenario/scenario.js', ['../scenario/scenario.js', 'text/javascript; charset=utf-8']],
+  ['/scenario/scenario.mjs', ['../scenario/scenario.mjs', 'text/javascript; charset=utf-8']],
+  ['/backend/rank.mjs', ['../../backend/rank.mjs', 'text/javascript; charset=utf-8']],
+  ['/contracts/sample-areas.json', ['../../contracts/sample-areas.json', 'application/json; charset=utf-8']]
 ]);
 
 export function makeServer() { return createServer(async (request, response) => {
   const path = new URL(request.url, 'http://localhost').pathname;
-  if (path === '/api/rank' && request.method === 'GET') {
+  if ((path === '/api/rank' || path === '/map/api/rank') && request.method === 'GET') {
     try {
       const collection = JSON.parse(await readFile(fileURLToPath(new URL('../../contracts/sample-areas.json', root)), 'utf8'));
       response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });

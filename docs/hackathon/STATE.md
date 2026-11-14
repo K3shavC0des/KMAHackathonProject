@@ -22,13 +22,13 @@ This checkout reproduced the public Nagapattinam CMR catalog query: four hits, t
 | `smap-crop` | matthewzhang2008 | blocked | Quality-valid same-cell AM baseline with at least five years, then source crop stage or leave unknown. |
 | `area-contract` | matthewzhang2008 | done | Merged as PR #8; fixture/schema and API tests pass. |
 | `fusion-api` | matthewzhang2008 | done | Merged as PR #9; Node tests 3/3 pass on sample inputs. |
-| `scouting-map` | aa1manali | review | Browser visual check and integration. |
-| `crop-demo` | aa1manali | queued | Add crop-stage scenario without changing satellite observations. |
+| `scouting-map` | aa1manali | review | Integrated locally; desktop/mobile visual check remains. |
+| `crop-demo` | aa1manali | review | Integrated locally; browser scenario journey and visual check remain. |
 
-The integration branch combines the published contract, API, map, Keshav data scripts/report, and the SMAP checker. It loads the canonical `contracts/sample-areas.json` and serves `/api/rank` from the map server. On synthetic inputs, the first stop changes from illustrative field B without NISAR to field A with NISAR. This is a demo heuristic, not calibrated advice.
+The integration branch combines the published contract, API, map, crop-stage scenario, Keshav data scripts/report, and the SMAP checker. It loads the canonical `contracts/sample-areas.json` and serves `/api/rank` from the map server. The map links to `/scenario/`, which changes only hypothetical crop stage and offers a return link. On synthetic inputs, the first stop changes from illustrative field B without NISAR to field A with NISAR. This is a demo heuristic, not calibrated advice.
 
 ## Last verification and next action
 
-Node tests: 4/4 passed, including the regression that excludes suspect/missing headline readings. Map server returned HTTP 200 for page, script, quality-filter module, canonical fixture and `/api/rank`; response reported the expected first-stop change. Python source compiled; public CMR preflight returned four hits and two repeat pairs. HDF5 tests blocked by application control. Browser visual check could not run because this session's browser access host was unavailable. Crop scenario, final project page publication and real-data pilot remain to do. `SUBMISSION_DRAFT.md` is ready for review.
+Node tests: 6/6 passed, including suspect/missing headline exclusion and scenario observation immutability. Integrated map server returned HTTP 200 for map, scenario, scripts, shared rank module, canonical fixture and both ranking paths. Brave accessibility tree rendered the map's sample labels, first-stop comparison, and area timeline. A reliable screenshot and interactive desktop/mobile visual check remain pending because UI control was interrupted by user activity. Python source compiled; public CMR preflight returned four hits and two repeat pairs. HDF5 tests blocked by application control. Final project page publication and real-data pilot remain to do. `SUBMISSION_DRAFT.md` is ready for review.
 
-Next: ask aa1manali to add the scenario against the integration branch, review the combined UI at desktop/mobile, rehearse the sample demo, and finalize the NASA project page from `SUBMISSION_DRAFT.md`. If accessible source files and an HDF5-capable runtime arrive, resume the pilot gate. Preserve local edits and never commit `.tools/`, `.local/`, credentials, or downloaded granules.
+Next: review the combined UI at desktop/mobile, rehearse the sample scenario journey, and finalize the NASA project page from `SUBMISSION_DRAFT.md`. If accessible source files and an HDF5-capable runtime arrive, resume the pilot gate. Preserve local edits and never commit `.tools/`, `.local/`, credentials, or downloaded granules.

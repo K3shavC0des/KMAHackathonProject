@@ -33,7 +33,8 @@ The project uses SAR-derived NISAR moisture change for a concrete scouting decis
 2. Select field A; show local SME2 drying, timestamp, unit, quality and source label. Point to SMAP as 9 km regional context.
 3. Show first stop with NISAR (A) versus without NISAR (B). Explain that the fallback is a crop-stage scenario, not an observed field-moisture estimate.
 4. Select field B and show its timeline; explain the quality/provenance fields and missing-data behavior.
-5. If the network or browser fails, run the local server and show `GET /api/rank` plus `contracts/sample-areas.json`. Keep screenshots/video of the verified final UI as a fallback.
+5. Open the crop-stage scenario from the map. Change one field's hypothetical stage, show the priority change, then reset it. The moisture observations and provenance stay fixed.
+6. If the network or browser fails, run the local server and show `GET /api/rank` plus `contracts/sample-areas.json`. Keep screenshots/video of the verified final UI as a fallback.
 
 ## Team and sources
 
@@ -41,4 +42,4 @@ Team: K3shavC0des (candidate data verification), matthewzhang2008 (contract, ran
 
 ## Remaining before submission
 
-Integrate and verify the crop-stage scenario, visually inspect desktop/mobile, capture a demo artifact, and fill the final NASA project URL/video. If no quality-valid SMAP match and agricultural AOI are available, submit the clearly labeled sample demonstration and describe the pilot-data gap as future work. Never silently promote the broad-window candidate to a field-level pilot.
+Visually inspect the integrated map and crop-stage scenario at desktop/mobile, rehearse the scenario journey, capture a demo artifact, and fill the final NASA project URL/video. If no quality-valid SMAP match and agricultural AOI are available, submit the clearly labeled sample demonstration and describe the pilot-data gap as future work. Never silently promote the broad-window candidate to a field-level pilot.
