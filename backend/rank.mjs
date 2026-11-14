@@ -25,6 +25,7 @@ function rankOne(area, withNisar) {
     area_id: area.area_id,
     label: area.label,
     priority_points: priority,
+    eligible_for_first_stop: Boolean(nisar) || area.crop_stage !== 'unknown',
     basis: nisar ? 'local_drying_plus_crop_stage' : 'crop_stage_scenario_only',
     explanation: nisar
       ? `Crop stage ${area.crop_stage} contributes ${stage} point(s); local NISAR moisture change ${nisar.value} m3/m3 contributes ${Math.round(drying * 100) / 100} drying point(s). SMAP regional baseline is context only.`
@@ -46,7 +47,9 @@ export function rankAreas(collection, withNisar = true) {
     for (const observation of area.observations) {
       if (!observation || !['sample', 'observed'].includes(observation.data_status) ||
           !['valid', 'suspect', 'missing'].includes(observation.quality) ||
-          typeof observation.observed_at !== 'string' || Number.isNaN(Date.parse(observation.observed_at)) ||
+          typeof observation.observed_at !== 'string' ||
+          !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|\+00:00)$/.test(observation.observed_at) ||
+          Number.isNaN(Date.parse(observation.observed_at)) ||
           typeof observation.source_ref !== 'string' || !observation.source_ref) {
         throw new TypeError('Every observation needs labeled status, quality, timestamp, and source_ref');
       }
@@ -61,12 +64,17 @@ export function rankAreas(collection, withNisar = true) {
 export function compareScoutingStops(collection) {
   const withNisar = rankAreas(collection, true);
   const withoutNisar = rankAreas(collection, false);
+  const withFirst = withNisar.find(area => area.eligible_for_first_stop)?.area_id ?? null;
+  const withoutFirst = withoutNisar.find(area => area.eligible_for_first_stop)?.area_id ?? null;
+  const hasObserved = collection.areas.some(area => area.observations.some(item => item.data_status === 'observed'));
   return {
     schema_version: '1.0.0',
     method: 'illustrative_priority_heuristic_v1',
-    warning: 'Scenario priority points are illustrative, not calibrated irrigation advice. Sample inputs are synthetic.',
-    with_nisar: { first_stop: withNisar[0].area_id, ranking: withNisar },
-    without_nisar: { first_stop: withoutNisar[0].area_id, ranking: withoutNisar },
-    first_stop_changes: withNisar[0].area_id !== withoutNisar[0].area_id
+    warning: hasObserved
+      ? 'Priority points are illustrative, not calibrated irrigation advice. Observed NISAR analysis tiles are not verified fields; missing SMAP or crop context remains unavailable.'
+      : 'Scenario priority points are illustrative, not calibrated irrigation advice. Sample inputs are synthetic.',
+    with_nisar: { first_stop: withFirst, ranking: withNisar },
+    without_nisar: { first_stop: withoutFirst, ranking: withoutNisar },
+    first_stop_changes: withFirst !== null && withoutFirst !== null && withFirst !== withoutFirst
   };
 }

@@ -83,10 +83,31 @@ def summarize_window(year: int) -> dict:
     }
 
 
+def nearby_current() -> dict:
+    """Catalog nearby dates for follow-up; availability is not retrieval quality."""
+    start = PILOT_DATE - timedelta(days=WINDOW_DAYS)
+    end = PILOT_DATE + timedelta(days=WINDOW_DAYS)
+    url = cmr_query(start, end)
+    entries, hits = get_entries(url)
+    dated = sorted(((entry_date(item), item) for item in entries if entry_date(item)),
+                   key=lambda pair: (abs((pair[0] - PILOT_DATE).days), pair[0]))
+    return {
+        "query_url": url,
+        "cmr_hits": hits,
+        "closest_granules": [entry_summary(item) for _, item in dated[:7]],
+        "evidence_status": "catalog_only",
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--current-only", action="store_true", help="Query only the pilot date")
+    parser.add_argument("--nearby", action="store_true", help="List closest catalog granules within 15 days of the pilot date")
     args = parser.parse_args()
+
+    if args.nearby:
+        print(json.dumps(nearby_current(), indent=2))
+        return
 
     current_url = cmr_query(PILOT_DATE, PILOT_DATE)
     current_entries, current_hits = get_entries(current_url)

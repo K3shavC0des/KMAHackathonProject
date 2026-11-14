@@ -24,10 +24,20 @@ const root = new URL('./', import.meta.url);
 const port = Number(process.env.PORT || 8002);
 
 createServer(async (request, response) => {
-  const path = new URL(request.url, 'http://localhost').pathname;
+  const url = new URL(request.url, 'http://localhost');
+  const path = url.pathname;
   if (request.method !== 'GET') { response.writeHead(405); response.end('Method not allowed'); return; }
   if (path === '/') { response.writeHead(302, { Location: '/frontend/map/' }); response.end(); return; }
   try {
+    if (path === '/frontend/map/api/areas') {
+      const dataset = url.searchParams.get('dataset') ?? 'sample';
+      const source = dataset === 'observed' ? '../../data/observed/nagapattinam-areas.json'
+        : dataset === 'sample' ? '../../contracts/sample-areas.json' : null;
+      if (!source) { response.writeHead(400); response.end('Unknown dataset'); return; }
+      response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      response.end(await readFile(fileURLToPath(new URL(source, root))));
+      return;
+    }
     if (path === '/frontend/map/api/rank') {
       const collection = JSON.parse(await readFile(fileURLToPath(new URL('../../contracts/sample-areas.json', root)), 'utf8'));
       response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });

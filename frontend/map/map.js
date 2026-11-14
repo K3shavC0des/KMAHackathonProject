@@ -20,7 +20,7 @@ function addSvg(tag, attributes, parent) {
 function readingText(item) {
   if (!item) return 'Unavailable';
   const sign = item.metric === 'soil_moisture_change' && item.value > 0 ? '+' : '';
-  return `${sign}${item.value} ${item.unit}`;
+  return `${sign}${typeof item.value === 'number' ? item.value.toFixed(4) : item.value} ${item.unit}`;
 }
 
 function metadata(item) {
@@ -141,6 +141,13 @@ function useCollection(nextMode) {
   selectedId = areas[0].area_id;
   viewport = [0, 0, 640, 390];
   byId('data-mode').value = mode;
+  document.querySelector('.eyebrow').textContent = mode === 'observed'
+    ? 'Farm Moisture Watch · observed NISAR development data'
+    : 'Farm Moisture Watch · synthetic sample demonstration';
+  document.querySelector('.notice').textContent = mode === 'observed'
+    ? 'These four Nagapattinam analysis tiles use opened NISAR observations. They are not surveyed fields or a crop mask. SMAP seasonal history and an irrigation-risk flag are unavailable.'
+    : 'The selectable field areas and inspection order use synthetic sample data. Nagapattinam is a separate development window with opened NISAR evidence.';
+  byId('map').setAttribute('aria-label', mode === 'observed' ? 'Observed Nagapattinam analysis tiles' : 'Synthetic sample area polygons');
   byId('map-note').textContent = mode === 'observed'
     ? 'Four observed NISAR analysis tiles divide the Nagapattinam window. They are not surveyed fields. Drag to pan; scroll or use buttons to zoom.'
     : 'Dashed outline: Nagapattinam development window. Solid polygons: synthetic sample areas outside it. Drag to pan; scroll or use buttons to zoom.';
@@ -169,14 +176,21 @@ map.addEventListener('pointermove', event => {
 map.addEventListener('pointerup', () => { drag = null; });
 map.addEventListener('pointercancel', () => { drag = null; });
 
+async function loadCollection(dataset) {
+  const response = await fetch(`./api/areas?dataset=${dataset}`);
+  if (!response.ok) throw new Error(`${dataset} API HTTP ${response.status}`);
+  const collection = await response.json();
+  if (collection?.schema_version !== '1.0.0' || !Array.isArray(collection.areas) || !collection.areas.length ||
+      collection.areas.some(area => !area.area_id || !area.geometry?.coordinates?.[0] || !Array.isArray(area.observations))) {
+    throw new Error(`${dataset} API returned an unsupported area contract`);
+  }
+  return collection;
+}
+
 try {
-  const sampleResponse = await fetch('./sample-areas.json');
-  if (!sampleResponse.ok) throw new Error(`Sample HTTP ${sampleResponse.status}`);
-  collections.sample = await sampleResponse.json();
+  collections.sample = await loadCollection('sample');
   try {
-    const observedResponse = await fetch('./observed-areas.json');
-    if (!observedResponse.ok) throw new Error(`Observed HTTP ${observedResponse.status}`);
-    collections.observed = await observedResponse.json();
+    collections.observed = await loadCollection('observed');
     byId('mode-note').textContent = 'Observed NISAR tiles are separate from the synthetic sample. SMAP history is unavailable.';
     useCollection('observed');
   } catch {

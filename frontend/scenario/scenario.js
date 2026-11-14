@@ -27,8 +27,10 @@ function renderRankings(name, ranking) {
 
 function update() {
   const { comparison } = evaluateScenario(fixture, stageChanges);
-  byId('with-first').textContent = shortLabel(comparison.with_nisar.ranking[0]);
-  byId('without-first').textContent = shortLabel(comparison.without_nisar.ranking[0]);
+  for (const [id, result] of [['with-first', comparison.with_nisar], ['without-first', comparison.without_nisar]]) {
+    const stop = result.ranking.find(item => item.area_id === result.first_stop);
+    byId(id).textContent = stop ? shortLabel(stop) : 'Insufficient evidence';
+  }
   byId('change').textContent = comparison.first_stop_changes
     ? 'Including local NISAR changes the first stop in this sample scenario.'
     : 'Including local NISAR does not change the first stop in this sample scenario.';
