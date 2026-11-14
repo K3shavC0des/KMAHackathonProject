@@ -15,14 +15,14 @@
     },
     "area-contract": {
       "id": "area-contract",
-      "owner": "Matthewzhang2008",
+      "owner": "matthewzhang2008",
       "goal": "Define shared area contract and labeled fixture; https://github.com/K3shavC0des/KMAHackathonProject/issues/2",
       "acceptance": "Reviewed schema and validated labeled sample fixture",
       "paths": [
         "contracts"
       ],
-      "status": "queued",
-      "evidence": ""
+      "status": "working",
+      "evidence": "Starting issue #2 in isolated contract task branch; will share schema and validated labeled fixture"
     },
     "smap-crop": {
       "id": "smap-crop",
@@ -215,6 +215,7 @@
     "0fb281f7-727d-4f23-a321-e18d03f37edb",
     "da79f273-9612-4835-9d53-aaf66f82e2aa",
     "cc6c3d04-c3d9-4cf6-bfc0-e4d219d76a2b",
-    "fmw-20261114-post-pilot-progress-01"
+    "fmw-20261114-post-pilot-progress-01",
+    "f93b8b2f-1e4a-4b63-bb5d-403b62992a20"
   ]
 }
