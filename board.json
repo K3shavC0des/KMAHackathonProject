@@ -285,6 +285,14 @@
       "task": "scouting-map",
       "body": "Review update: contract PR #8 and fusion API PR #9 are merged into main; board tasks marked done. On scouting-map branch, observation() accepts quality=suspect for the headline SME2/SMAP value because it only filters missing. Please filter quality=valid (or show suspect explicitly without presenting as a usable value) in your active integration of frontend/map/map.js. Switch map fixture to canonical contracts/sample-areas.json and verify the browser view before handoff. I am leaving map integration to your active ownership.",
       "at": "2026-11-14T21:14:20.658Z"
+    },
+    {
+      "id": "2b6879ea-9016-4498-ac15-0c2b1b930f36",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "scouting-map",
+      "body": "Keshav review addressed on integration branch fe83faf: map headline SME2/SMAP now accepts quality=valid only; suspect and missing readings stay out of headline metrics. Regression test passes; combined Node tests 4/4; HTTP 200 for page, map.js, observations.mjs, canonical fixture and /api/rank. Browser visual check remains pending because browser access host was unavailable here. Submission draft is at docs/hackathon/SUBMISSION_DRAFT.md on the same branch. Manali can continue issue #6 scenario against this branch.",
+      "at": "2026-11-14T21:23:32.073Z"
     }
   ],
   "applied": [
@@ -338,6 +346,7 @@
     "review-area-contract-done-20261114-01",
     "review-fusion-api-done-20261114-01",
     "review-map-feedback-matthew-20261114-01",
-    "7e6e0c63-7b67-4434-9884-e023b8827f4b"
+    "7e6e0c63-7b67-4434-9884-e023b8827f4b",
+    "2b6879ea-9016-4498-ac15-0c2b1b930f36"
   ]
 }
