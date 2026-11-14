@@ -2,6 +2,14 @@
 
 The project keeps auxiliary runtimes under `.tools/` and runtime data under `.local/`. Both are ignored by Git.
 
+For a new Windows teammate, run this once from the repository root:
+
+```powershell
+.\scripts\setup-aux-skills.ps1
+```
+
+The script installs the project-local runtimes and packages, configures Headroom with a project-local `uv` cache, and prepares Claude Mem for Codex. It is safe to rerun.
+
 Claude Mem is configured for the Codex provider and runs on port `37778`:
 
 ```powershell
