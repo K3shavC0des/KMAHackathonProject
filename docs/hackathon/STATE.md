@@ -2,6 +2,25 @@
 
 Updated 2026-11-14. Team handoff published and updated. Earthdata access works; pilot-data has opened NISAR and SMAP granules and continues AOI/date matching. Sample-data contract/fusion and map work are unblocked.
 
+## Current scope override (user revision)
+
+Crop-stage scenarios are deferred and must not influence default priority. The
+product centers on a Google Maps-style pan/zoom/tap experience for irrigation
+inspection priorities, observed drying, and verified historical anomaly flags.
+Use plain-language explanations and support expansion by selected region after
+Nagapattinam. Regional SMAP history stays at its true scale; unavailable history
+must not generate an at-risk flag. Issue #6 is closed as not planned; #5 and #3
+were rewritten for this scope. Earlier crop-scenario statements below are historical.
+
+PR #11 commit d5a0a19 removes crop-stage priority points; 11 Node checks pass.
+Arman owns map UI, Matthew owns baseline/API integration, Keshav owns observed
+export. JSON Schema v1 is the common contract: exporter now validates before
+writing, including required fields, enums, unknown keys, finite numbers and
+explicit date-time format checking. Five validation regression tests pass.
+This caught and corrected missing UTC Z suffixes in exported source timestamps.
+API-boundary and frontend-boundary schema enforcement are still pending with
+Matthew/Arman; do not claim full-pipeline enforcement yet.
+
 ## Goal and scope
 
 NASA Space Apps Ottawa 2026, Dancing with the SARs. Help a farmer or crop adviser decide where to **check root-zone moisture** before watering. Core demo: one crop, one Indian agricultural district, two usable NISAR SME2 observations, a scouting-priority map, an area timeline, and a crop-stage scenario. SMAP supplies a regional seasonal baseline at its own scale. Crop comparisons and L/S-band analysis are optional. Satellite surface moisture is not root-zone water, plant stress, yield, or an irrigation prescription.
@@ -41,3 +60,7 @@ Read-only CMR queries and both local scripts cover NISAR repeat-pair and SMAP se
 
 ## Pilot decision update
 Nagapattinam selected as development geography; bbox [79.74,10.70,79.80,10.76]. Identical NISAR coordinate grids and 920 matched recommended cells verified; median change -0.0174946 m3/m3. SMAP seasonal anomaly unavailable; full fusion validation pending. See data/pilot/PILOT_DECISION.md. Product direction: navigable geographic map with tap-to-inspect moisture evidence. Matthew retains data ownership; Arman owns frontend. The UI in PR #10 uses a synthetic fixture; an observed-data adapter remains pending.
+
+## Observed adapter handoff
+K3shavC0des exported data/observed/nagapattinam-areas.json using data/observed/export_nagapattinam.py. Four half-open analysis tiles hold 920 total matched recommended cells from the opened SME2 pair; each has change and two dated moisture medians with granule provenance. Shared v1 schema/date validation passed. Ranking PR #11 chooses southwest with NISAR; without NISAR first_stop is null (unknown crop), so no supported two-stop-change claim. SMAP omitted/unavailable. Frontend integration remains pending; select by source AND metric, retain sample/observed mode labels. See data/observed/README.md. Unrelated local .codex/config.toml, README.md and PROJECT_CONTEXT.md edits are excluded from this handoff.
+
