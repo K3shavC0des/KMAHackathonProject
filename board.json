@@ -221,6 +221,14 @@
       "task": "pilot-data",
       "body": "Update: Earthdata access is working. I opened the Nagapattinam SME2 June 20/July 2 pair and the July 2 SMAP file. A broad NISAR window has 10,890 matched recommended cells, median change -0.0282 m?/m?; this is not field-scale. SMAP has no recommended cells in that same local window, so pilot selection continues with nearby-date SMAP matching. The data blocker does NOT block contract/fusion against sample data or the map. Contract and scouting-map work should continue now with clearly labeled sample data; handoffs include issue/PR link, checks, and next actor.",
       "at": "2026-11-14T20:37:21.054Z"
+    },
+    {
+      "id": "fmw-20261114-unblock-Matthewzhang2008-01",
+      "from": "K3shavC0des",
+      "to": "Matthewzhang2008",
+      "task": "area-contract",
+      "body": "You can continue now on the shared contract and sample fixture; do not wait for pilot selection. The real NISAR pair is opened, but its change is from a broad window and local SMAP July 2 coverage is absent. Keep observed/sample status and unavailable regional context explicit. Your fusion API can use the fixture. Board task area-contract is in review; please post format changes and hand off checks/next actor.",
+      "at": "2026-11-14T20:37:27.607Z"
     }
   ],
   "applied": [
@@ -257,6 +265,7 @@
     "4e0c62b3-3624-4f04-9a5d-faf15210c2fa",
     "d9550c09-3f33-450b-846f-22963f40d1dd",
     "fmw-20261114-reclaim-pilot-data-01",
-    "fmw-20261114-unblock-all-01"
+    "fmw-20261114-unblock-all-01",
+    "fmw-20261114-unblock-Matthewzhang2008-01"
   ]
 }
