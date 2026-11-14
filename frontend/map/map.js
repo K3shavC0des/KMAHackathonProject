@@ -1,21 +1,15 @@
 import { inspectionSummary, latestReading, observationInstant } from './map-data.mjs';
 
 const byId = id => document.getElementById(id);
-const svgNs = 'http://www.w3.org/2000/svg';
-const pilotBounds = [79.74, 10.70, 79.80, 10.76];
+const pilotBounds = [[10.70, 79.74], [10.76, 79.80]];
+const indiaCenter = [22.6, 79.7];
+const pilotCenter = [10.73, 79.77];
 const collections = {};
 let mode = 'sample';
 let areas = [];
 let selectedId;
-let viewport = [0, 0, 640, 390];
-let drag;
-
-function addSvg(tag, attributes, parent) {
-  const element = document.createElementNS(svgNs, tag);
-  for (const [key, value] of Object.entries(attributes)) element.setAttribute(key, String(value));
-  parent.append(element);
-  return element;
-}
+let map;
+let overlayLayer;
 
 function readingText(item) {
   if (!item) return 'Unavailable';
@@ -33,63 +27,40 @@ function labelFor(area) {
   return `Sample ${area.label.match(/field\s+([A-Za-z0-9]+)/i)?.[1] ?? area.area_id}`;
 }
 
-function setViewport() { byId('map').setAttribute('viewBox', viewport.join(' ')); }
+function toLatLngs(ring) { return ring.map(([longitude, latitude]) => [latitude, longitude]); }
 
-function zoom(factor) {
-  const nextWidth = Math.max(80, Math.min(640, viewport[2] * factor));
-  const ratio = nextWidth / viewport[2];
-  const nextHeight = viewport[3] * ratio;
-  viewport = [viewport[0] + (viewport[2] - nextWidth) / 2,
-    viewport[1] + (viewport[3] - nextHeight) / 2, nextWidth, nextHeight];
-  setViewport();
+function displayPilotPanel() {
+  byId('pilot-panel').hidden = false;
+  byId('pilot-panel').scrollIntoView({ block: 'nearest' });
 }
 
-function drawMap() {
-  const map = byId('map');
-  map.replaceChildren();
-  addSvg('rect', { width: 640, height: 390, fill: '#e6e9df' }, map);
-  const points = areas.flatMap(area => area.geometry.coordinates.flat(1));
-  const longitudes = points.map(point => point[0]);
-  const latitudes = points.map(point => point[1]);
-  const minLon = Math.min(...longitudes), maxLon = Math.max(...longitudes);
-  const minLat = Math.min(...latitudes), maxLat = Math.max(...latitudes);
-  const lonRange = Math.max(maxLon - minLon, 0.01);
-  const latRange = Math.max(maxLat - minLat, 0.01);
-  const x = lon => 80 + 480 * (lon - minLon) / lonRange;
-  const y = lat => 320 - 250 * (lat - minLat) / latRange;
-  const pilot = addSvg('g', { class: 'pilot-window', role: 'button', tabindex: 0,
-    'aria-label': 'Show Nagapattinam development window evidence' }, map);
-  addSvg('rect', { x: x(pilotBounds[0]), y: y(pilotBounds[3]),
-    width: x(pilotBounds[2]) - x(pilotBounds[0]), height: y(pilotBounds[1]) - y(pilotBounds[3]) }, pilot);
-  addSvg('text', { x: x(pilotBounds[0]) + 5, y: y(pilotBounds[3]) - 12 }, pilot).textContent = 'Nagapattinam window';
-  const showPilot = () => { byId('pilot-panel').hidden = false; byId('pilot-panel').scrollIntoView({ block: 'nearest' }); };
-  pilot.addEventListener('click', showPilot);
-  pilot.addEventListener('keydown', event => {
-    if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); showPilot(); }
-  });
+function drawOverlays() {
+  if (!map || !window.L) return;
+  overlayLayer?.clearLayers();
+  overlayLayer = window.L.layerGroup().addTo(map);
+  const pilot = window.L.rectangle(pilotBounds, { color: '#f9ab00', weight: 2, dashArray: '6 5', fillOpacity: 0.05 });
+  pilot.bindTooltip('Nagapattinam development window', { className: 'area-tooltip', sticky: true });
+  pilot.on('click', displayPilotPanel);
+  pilot.addTo(overlayLayer);
   for (const area of areas) {
-    const ring = area.geometry.coordinates[0];
-    const group = addSvg('g', { class: 'marker', tabindex: 0, role: 'button',
-      'aria-label': `Show evidence for ${area.label}`, 'aria-current': area.area_id === selectedId }, map);
-    addSvg('polygon', { points: ring.map(point => `${x(point[0])},${y(point[1])}`).join(' ') }, group);
-    const midLon = ring.reduce((total, point) => total + point[0], 0) / ring.length;
-    const midLat = ring.reduce((total, point) => total + point[1], 0) / ring.length;
-    addSvg('text', { x: x(midLon), y: y(midLat) - 58, 'text-anchor': 'middle' }, group).textContent = labelFor(area);
-    const select = () => selectArea(area.area_id, true);
-    group.addEventListener('click', select);
-    group.addEventListener('keydown', event => {
-      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); select(); }
+    const selected = area.area_id === selectedId;
+    const polygon = window.L.polygon(toLatLngs(area.geometry.coordinates[0]), {
+      color: selected ? '#c5221f' : '#1967d2', weight: selected ? 3 : 2,
+      fillColor: selected ? '#ea4335' : '#1a73e8', fillOpacity: selected ? 0.42 : 0.28
     });
+    polygon.bindTooltip(labelFor(area), { className: 'area-tooltip', sticky: true });
+    polygon.on('click', () => selectArea(area.area_id, true));
+    polygon.addTo(overlayLayer);
   }
-  setViewport();
 }
 
 function render() {
   const select = byId('area-select');
   select.replaceChildren(...areas.map(area => new Option(area.label, area.area_id)));
   select.value = selectedId;
-  drawMap();
   const area = areas.find(item => item.area_id === selectedId);
+  if (!area) return;
+  drawOverlays();
   const sme2 = latestReading(area, 'NISAR_SME2', 'soil_moisture_change');
   const smap = latestReading(area, 'SMAP', 'seasonal_baseline');
   const statuses = new Set(area.observations.map(item => item.data_status));
@@ -99,7 +70,6 @@ function render() {
     : `${area.label}. This synthetic fixture area is outside the Nagapattinam development window.`;
   const candidate = inspectionSummary(areas);
   byId('with-first').textContent = candidate ? candidate.area.label.split(' (')[0] : 'Insufficient local evidence';
-  byId('without-first').textContent = 'Unavailable';
   byId('value-change').textContent = candidate
     ? `${candidate.area.label.split(' (')[0]} has the strongest quality-valid local drying signal (${readingText(candidate.change)}). Inspect this area first if a visit is needed; this is not a watering decision.`
     : 'No quality-valid local drying signal supports a first inspection area.';
@@ -127,53 +97,45 @@ function render() {
     li.append(details);
     timeline.append(li);
   }
-  if (!smap) {
-    const li = document.createElement('li');
-    li.textContent = 'Regional SMAP context: unavailable';
-    timeline.append(li);
-  }
+  if (!smap) timeline.append(Object.assign(document.createElement('li'), { textContent: 'Regional SMAP context: unavailable' }));
 }
 
-function selectArea(id, scroll = false) {
+function selectArea(id, panToArea = false) {
   selectedId = id;
   render();
-  if (scroll) byId('detail-heading').scrollIntoView({ block: 'nearest' });
+  const area = areas.find(item => item.area_id === id);
+  if (panToArea && map && area) map.panTo(window.L.polygon(toLatLngs(area.geometry.coordinates[0])).getBounds().getCenter());
 }
 
 function useCollection(nextMode) {
   mode = nextMode;
   areas = collections[mode].areas;
   selectedId = areas[0].area_id;
-  viewport = [0, 0, 640, 390];
   byId('data-mode').value = mode;
-  byId('map-note').textContent = mode === 'observed'
-    ? 'Four observed NISAR analysis tiles divide the Nagapattinam window. They are not surveyed fields. Drag to pan; scroll or use buttons to zoom.'
-    : 'Dashed outline: Nagapattinam development window. Solid polygons: synthetic sample areas outside it. Drag to pan; scroll or use buttons to zoom.';
   render();
+  if (mode === 'observed') map.fitBounds(pilotBounds, { padding: [38, 38] });
 }
 
-byId('area-select').addEventListener('change', event => selectArea(event.target.value));
-byId('data-mode').addEventListener('change', event => useCollection(event.target.value));
-byId('zoom-in').addEventListener('click', () => zoom(0.75));
-byId('zoom-out').addEventListener('click', () => zoom(1.25));
-byId('reset-view').addEventListener('click', () => { viewport = [0, 0, 640, 390]; setViewport(); });
-const map = byId('map');
-map.addEventListener('wheel', event => { event.preventDefault(); zoom(event.deltaY < 0 ? 0.85 : 1.15); }, { passive: false });
-map.addEventListener('pointerdown', event => {
-  if (event.target.parentNode !== map) return;
-  drag = { x: event.clientX, y: event.clientY, view: [...viewport] };
-  map.setPointerCapture(event.pointerId);
-});
-map.addEventListener('pointermove', event => {
-  if (!drag) return;
-  const rect = map.getBoundingClientRect();
-  viewport[0] = drag.view[0] - (event.clientX - drag.x) * drag.view[2] / rect.width;
-  viewport[1] = drag.view[1] - (event.clientY - drag.y) * drag.view[3] / rect.height;
-  setViewport();
-});
-map.addEventListener('pointerup', () => { drag = null; });
-map.addEventListener('pointercancel', () => { drag = null; });
+function initializeMap() {
+  if (!window.L) {
+    byId('map').textContent = 'The live basemap could not load. Check the network connection and refresh.';
+    byId('map').setAttribute('role', 'status');
+    return false;
+  }
+  map = window.L.map('map', { zoomControl: true, scrollWheelZoom: true }).setView(pilotCenter, 11);
+  window.L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  return true;
+}
 
+byId('area-select').addEventListener('change', event => selectArea(event.target.value, true));
+byId('data-mode').addEventListener('change', event => useCollection(event.target.value));
+byId('india-view').addEventListener('click', () => map?.setView(indiaCenter, 5));
+byId('pilot-view').addEventListener('click', () => map?.fitBounds(pilotBounds, { padding: [38, 38] }));
+
+const mapReady = initializeMap();
 try {
   const sampleResponse = await fetch('./sample-areas.json');
   if (!sampleResponse.ok) throw new Error(`Sample HTTP ${sampleResponse.status}`);
@@ -183,11 +145,11 @@ try {
     if (!observedResponse.ok) throw new Error(`Observed HTTP ${observedResponse.status}`);
     collections.observed = await observedResponse.json();
     byId('mode-note').textContent = 'Observed NISAR tiles are separate from the synthetic sample. SMAP history is unavailable.';
-    useCollection('observed');
+    if (mapReady) useCollection('observed');
   } catch (error) {
     byId('data-mode').querySelector('[value="observed"]').disabled = true;
     byId('mode-note').textContent = `Observed view unavailable: ${error.message}. Synthetic sample is shown.`;
-    useCollection('sample');
+    if (mapReady) useCollection('sample');
   }
 } catch (error) {
   byId('area-description').textContent = `Could not load areas: ${error.message}`;

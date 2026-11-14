@@ -4,62 +4,37 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Farm Moisture Watch | Scouting map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <main class="shell">
-    <header>
-      <p class="eyebrow">Farm Moisture Watch · sample demonstration</p>
-      <h1>Scouting map</h1>
-      <p>Inspect local moisture change alongside regional context before choosing where to scout.</p>
-    </header>
-    <div class="notice" role="status">The selectable field areas and rankings use synthetic sample data. Nagapattinam is a development analysis window with a verified NISAR summary; field validation and matching SMAP context are pending.</div>
-    <label for="data-mode">Evidence view</label>
-    <select id="data-mode" aria-describedby="mode-note">
-      <option value="sample">Synthetic sample areas</option>
-      <option value="observed">Nagapattinam observed NISAR tiles</option>
-    </select>
-    <p id="mode-note">Choose the observed view when the verified tile export is available.</p>
-    <div class="layout">
-      <section class="panel" aria-labelledby="map-heading">
-        <div class="panel-head"><h2 id="map-heading">Areas</h2><span>Tap an area for evidence</span></div>
-        <div class="map-tools" aria-label="Map controls">
-          <button type="button" id="zoom-in" aria-label="Zoom in">+</button>
-          <button type="button" id="zoom-out" aria-label="Zoom out">−</button>
-          <button type="button" id="reset-view">Reset view</button>
-        </div>
-        <svg id="map" viewBox="0 0 640 390" role="img" aria-label="Sample area polygons"></svg>
-        <p class="map-note" id="map-note">Dashed outline: Nagapattinam development window. Solid polygons: synthetic sample areas outside that window. Drag to pan; scroll or use buttons to zoom. Coordinates use longitude and latitude; this is not a basemap.</p>
-        <div class="pilot-panel" id="pilot-panel" hidden>
-          <h3>Nagapattinam development window · observed NISAR summary</h3>
-          <p>79.74–79.80° E, 10.70–10.76° N. June 20 to July 2, 2026: median SME2 surface-moisture change <strong>−0.0175 m³/m³</strong> across 920 matched recommended cells. This window spans multiple areas; it is not a validated farm field.</p>
-          <p>SMAP regional anomaly: <strong>unavailable</strong>. Crop stage: <strong>unknown</strong>. This window is excluded from the sample ranking.</p>
-          <a href="https://github.com/K3shavC0des/KMAHackathonProject/blob/hackathon/K3shavC0des/ingest-candidate-data-and-select-indian-pilot/data/pilot/PILOT_DECISION.md">Read the source decision and quality limits</a>
-        </div>
+  <main class="map-app">
+    <section class="map-canvas" aria-label="Interactive geographic scouting map">
+      <div id="map" aria-label="Interactive map centered on Nagapattinam, India"></div>
+      <header class="map-title">
+        <p class="eyebrow">Farm Moisture Watch</p>
+        <h1>Moisture inspection map</h1>
+        <p>Pan, zoom, and tap an area to inspect evidence.</p>
+      </header>
+      <section class="map-search" aria-label="Map navigation">
+        <div class="view-actions"><button type="button" id="india-view">India</button><button type="button" id="pilot-view">Nagapattinam</button></div>
+        <label for="data-mode">Evidence view</label>
+        <select id="data-mode" aria-describedby="mode-note"><option value="sample">Synthetic sample areas</option><option value="observed">Observed NISAR tiles</option></select>
+        <p id="mode-note">Choose the observed view when the verified tile export is available.</p>
       </section>
-      <section class="panel detail" aria-labelledby="detail-heading">
-        <div class="panel-head"><h2 id="detail-heading">Area timeline</h2><span id="sample-badge" class="badge"></span></div>
-        <label for="area-select">Scouting area</label>
-        <select id="area-select"></select>
-        <p id="area-description"></p>
-        <div class="metrics">
-          <article><h3>Local SME2 change</h3><strong id="sme2-value"></strong><small id="sme2-meta"></small></article>
-          <article><h3>Regional SMAP context</h3><strong id="smap-value"></strong><small id="smap-meta"></small></article>
-        </div>
-        <h3>Observation timeline</h3>
-        <ol id="timeline"></ol>
-      </section>
-    </div>
-    <section class="panel value-check" aria-labelledby="value-heading">
-      <div class="panel-head"><h2 id="value-heading">Moisture inspection</h2><span>Evidence for a field visit, not watering advice</span></div>
-      <div class="metrics">
-        <article><h3>Strongest local drying signal</h3><strong id="with-first">Loading…</strong></article>
-        <article><h3>Below historical standard?</h3><strong id="without-first">Loading…</strong></article>
-      </div>
-      <p id="value-change"></p>
-      <p id="rank-explanation"></p>
+      <div class="map-status" role="status">Real basemap tiles © OpenStreetMap contributors. Evidence overlays are clearly labeled as observed or synthetic.</div>
     </section>
+    <aside class="inspector" aria-labelledby="detail-heading">
+      <div class="inspector-head"><p class="eyebrow">Selected area</p><span id="sample-badge" class="badge"></span></div>
+      <h2 id="detail-heading">Area evidence</h2>
+      <label for="area-select">Scouting area</label><select id="area-select"></select><p id="area-description"></p>
+      <div class="metrics"><article><h3>Local SME2 change</h3><strong id="sme2-value"></strong><small id="sme2-meta"></small></article><article><h3>Regional SMAP context</h3><strong id="smap-value"></strong><small id="smap-meta"></small></article></div>
+      <section class="inspection-summary" aria-labelledby="value-heading"><p class="eyebrow">Inspection priority</p><h3 id="value-heading">Where to check first</h3><strong id="with-first">Loading…</strong><p id="value-change"></p><p id="rank-explanation"></p></section>
+      <section class="pilot-panel" id="pilot-panel" hidden><h3>Nagapattinam development window · observed NISAR summary</h3><p>79.74–79.80° E, 10.70–10.76° N. June 20 to July 2, 2026: median SME2 surface-moisture change <strong>−0.0175 m³/m³</strong> across 920 matched recommended cells. This window spans multiple areas; it is not a validated farm field.</p><p>SMAP regional anomaly: <strong>unavailable</strong>. Crop stage: <strong>unknown</strong>. This window is excluded from the sample ranking.</p><a href="https://github.com/K3shavC0des/KMAHackathonProject/blob/hackathon/K3shavC0des/ingest-candidate-data-and-select-indian-pilot/data/pilot/PILOT_DECISION.md">Read the source decision and quality limits</a></section>
+      <section class="timeline-section"><h3>Observation timeline</h3><ol id="timeline"></ol></section>
+    </aside>
   </main>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script type="module" src="./map.js"></script>
 </body>
 </html>
