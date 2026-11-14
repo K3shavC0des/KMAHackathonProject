@@ -253,6 +253,14 @@
       "task": "pilot-data",
       "body": "Takeover files are now pushed on draft PR #7: data/pilot/VERIFICATION.md has exact granule IDs, direct download URLs, methods, findings and limits; data/pilot/verify_pair.py reproduces the NISAR box summary. Run: python data/pilot/verify_pair.py earlier.h5 later.h5 --bbox 79.70 10.60 80.00 10.90 . Raw HDF5s are large/protected and are not in Git; download links are in the report. Latest commit 964c066. Contract/fusion and sample map remain ready to continue.",
       "at": "2026-11-14T20:44:26.504Z"
+    },
+    {
+      "id": "dc9dc21d-70a6-40a7-a7d1-7882db4fc34a",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "pilot-data",
+      "body": "Taking over Keshav data work. Public CMR Nagapattinam preflight reproduced: 4 hits, 2 repeat pairs, catalog only. Continuation branch https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/pilot-continuation at bd3d6c8 adds data/context/smap_baseline.py, a local-file SPL3SMP_E AM QC and >=5-year baseline gate. Python compile and diff checks pass. HDF5 tests could not run because this Windows application-control policy blocks the newly installed h5py DLL; Keshav downloaded source HDF5 files are not in this checkout. No pilot selected or real regional anomaly claimed. Continue sample-labeled demo; please share authorized files through an accessible path, never credentials.",
+      "at": "2026-11-14T21:05:03.175Z"
     }
   ],
   "applied": [
@@ -297,6 +305,7 @@
     "f4b79b48-6b83-4db7-bdb7-4e49f61e753b",
     "fmw-20261114-pushed-verification-files-01",
     "d36031c4-6bd2-4f65-988b-46fd4493cc9f",
-    "803dc3f9-c664-4e66-803d-f5183a726cb0"
+    "803dc3f9-c664-4e66-803d-f5183a726cb0",
+    "dc9dc21d-70a6-40a7-a7d1-7882db4fc34a"
   ]
 }
