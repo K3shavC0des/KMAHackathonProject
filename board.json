@@ -133,6 +133,14 @@
       "task": null,
       "body": "Farm Moisture Watch kickoff. Read your board inbox when starting work, when a dependency changes, and before handoff. Post blockers and shared-format changes as they happen. Keep sample and observed data labeled. Each handoff needs an issue or PR link, checks run, and who can act next. Select the Indian pilot only after ingesting and checking source data.",
       "at": "2026-11-14T20:01:49.771Z"
+    },
+    {
+      "id": "fmw-20261114-post-K3shavC0des-01",
+      "from": "K3shavC0des",
+      "to": "K3shavC0des",
+      "task": null,
+      "body": "First task: ingest candidate India data and select a pilot by usable SME2 overlap, SMAP history, crop context, quality, and access. Start with Nagapattinam; assess Ludhiana and Ahmedabad if needed. Check same-area S-band separately. Issue: https://github.com/K3shavC0des/KMAHackathonProject/issues/1 . Hand the manifest to Matthewzhang2008 and ask aa1manali to review.",
+      "at": "2026-11-14T20:01:56.177Z"
     }
   ],
   "applied": [
@@ -150,6 +158,7 @@
     "fmw-20261114-task-fusion-api-01",
     "fmw-20261114-task-scouting-map-01",
     "fmw-20261114-task-crop-demo-01",
-    "fmw-20261114-post-all-01"
+    "fmw-20261114-post-all-01",
+    "fmw-20261114-post-K3shavC0des-01"
   ]
 }
