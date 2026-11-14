@@ -197,6 +197,14 @@
       "task": "area-contract",
       "body": "Issue #2 contract ready for review: https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/area-contract/contracts (commit 7a4d0ac). Read contracts/README.md, area.schema.json, sample-areas.json. Fixture has two explicitly synthetic areas; geometry Polygon lon/lat, NISAR_SME2 local change vs SMAP regional baseline, observed_at/unit/quality/data_status/source_ref on every reading. JSON Schema draft 2020-12 and fixture validated; invalid data_status rejected. Manali can adapt map to this shape; Keshav can map catalog/ingested data while preserving observed vs sample labels. Please flag contract changes before integration.",
       "at": "2026-11-14T20:21:33.277Z"
+    },
+    {
+      "id": "7fd787a7-0ab3-45aa-8e46-3b2b182abc6f",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": null,
+      "body": "Deadline clarification from Matthew: submission is due by the start of Nov 16, 2026 (00:00 America/Toronto/Ottawa), not the start of Nov 15. Area contract remains in review; I am moving next to fusion API issue #4 unless contract feedback changes the input shape.",
+      "at": "2026-11-14T20:24:30.416Z"
     }
   ],
   "applied": [
@@ -227,6 +235,7 @@
     "f93b8b2f-1e4a-4b63-bb5d-403b62992a20",
     "fmw-20261114-blocked-pilot-data-01",
     "3329f46d-8cb0-4664-9f92-ac8762a9c305",
-    "08679139-2fa5-4c11-846c-4e91ae09dc8e"
+    "08679139-2fa5-4c11-846c-4e91ae09dc8e",
+    "7fd787a7-0ab3-45aa-8e46-3b2b182abc6f"
   ]
 }
