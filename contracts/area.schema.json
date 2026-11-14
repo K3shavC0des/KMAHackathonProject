@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/K3shavC0des/KMAHackathonProject/blob/main/contracts/area.schema.json",
+  "title": "Farm Moisture Watch area collection v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "areas"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "areas": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/area" } }
+  },
+  "$defs": {
+    "point": {
+      "type": "array", "prefixItems": [
+        { "type": "number", "minimum": -180, "maximum": 180 },
+        { "type": "number", "minimum": -90, "maximum": 90 }
+      ], "items": false
+    },
+    "area": {
+      "type": "object", "additionalProperties": false,
+      "required": ["area_id", "label", "geometry", "crop_stage", "observations"],
+      "properties": {
+        "area_id": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "geometry": {
+          "type": "object", "additionalProperties": false,
+          "required": ["type", "coordinates"],
+          "properties": {
+            "type": { "const": "Polygon" },
+            "coordinates": { "type": "array", "minItems": 1, "items": {
+              "type": "array", "minItems": 4, "items": { "$ref": "#/$defs/point" }
+            } }
+          }
+        },
+        "crop_stage": { "enum": ["unknown", "planting", "vegetative", "flowering", "harvest"] },
+        "observations": { "type": "array", "items": { "$ref": "#/$defs/observation" } }
+      }
+    },
+    "observation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["observation_id", "source", "metric", "value", "unit", "observed_at", "spatial_scale", "quality", "data_status", "source_ref"],
+      "properties": {
+        "observation_id": { "type": "string", "minLength": 1 },
+        "source": { "enum": ["NISAR_SME2", "SMAP", "CROP_CONTEXT"] },
+        "metric": { "enum": ["soil_moisture", "soil_moisture_change", "seasonal_baseline", "crop_stage"] },
+        "value": { "oneOf": [{ "type": "number" }, { "type": "string", "minLength": 1 }] },
+        "unit": { "enum": ["m3/m3", "percentage_points", "stage"] },
+        "observed_at": { "type": "string", "format": "date-time" },
+        "spatial_scale": { "enum": ["local", "regional"] },
+        "quality": { "enum": ["valid", "suspect", "missing"] },
+        "data_status": { "enum": ["sample", "observed"] },
+        "source_ref": { "type": "string", "minLength": 1 },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}
