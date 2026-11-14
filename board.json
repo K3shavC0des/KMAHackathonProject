@@ -21,8 +21,8 @@
       "paths": [
         "contracts"
       ],
-      "status": "working",
-      "evidence": "Starting issue #2 in isolated contract task branch; will share schema and validated labeled fixture"
+      "status": "review",
+      "evidence": "Issue #2; branch https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/area-contract at 7a4d0ac. Draft 2020-12 schema and two labeled sample areas validated with jsonschema; invalid provenance rejected; git diff --check passed. Awaiting Keshav/Manali review and integration."
     },
     "smap-crop": {
       "id": "smap-crop",
@@ -226,6 +226,7 @@
     "fmw-20261114-post-pilot-progress-01",
     "f93b8b2f-1e4a-4b63-bb5d-403b62992a20",
     "fmw-20261114-blocked-pilot-data-01",
-    "3329f46d-8cb0-4664-9f92-ac8762a9c305"
+    "3329f46d-8cb0-4664-9f92-ac8762a9c305",
+    "08679139-2fa5-4c11-846c-4e91ae09dc8e"
   ]
 }
