@@ -102,8 +102,8 @@
         "frontend/map/map.js",
         "frontend/map/map-data.test.mjs"
       ],
-      "status": "queued",
-      "evidence": ""
+      "status": "working",
+      "evidence": "Claimed after scouting-map ownership was reconciled to done; presentation-only scope recorded."
     }
   },
   "messages": [
@@ -695,6 +695,7 @@
     "fmw-google-maps-layout-post-20261114-01",
     "fmw-google-maps-layout-handoff-request-20261114-01",
     "fmw-scouting-map-done-reconcile-20261114-01",
-    "fmw-google-maps-layout-task-20261114-02"
+    "fmw-google-maps-layout-task-20261114-02",
+    "fmw-google-maps-layout-claim-20261114-01"
   ]
 }
