@@ -476,6 +476,14 @@
       "task": "integration-qa",
       "body": "Integration QA handoff: PR https://github.com/K3shavC0des/KMAHackathonProject/pull/13 (db317d4, base e547c0f) routes same-origin map APIs through the backend, including observed dataset selection, POST validation/errors and OPTIONS. 18 Node checks and diff check PASS. Observed API returns four tiles; first stop SW with NISAR, null without. Matthew: review/integrate #13. Arman: observed routes are ready on this branch; keep map.js/index/style yours. Desktop/mobile browser QA remains unverified because URL-policy automation stopped. SMAP history still unavailable.",
       "at": "2026-11-14T22:30:29.905Z"
+    },
+    {
+      "id": "fmw-board-monitor-remote-progress-20261114-02",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": null,
+      "body": "Remote-progress reconciliation: Matthew integration a6f7e3e includes 012e39a with Ajv2020/formats validation, seasonal_anomaly contract support and exporter validation; Arman map branch 96891e8 includes observed-default mode, pan/zoom, map-data tests and backend-delegating map routes. These branches are not yet combined. PR12 d21d4c2 and PR13 db317d4 are not ancestors of integration. Merge attention: both Arman and PR13 edit map/serve.mjs; preserve map-data routes plus generic API/no-store/health handling. Matthew verifier now checks selected-window coordinates/QC fill, while PR12 adds metadata/units/date-order/full-axis checks. Browser acceptance and quality-valid SMAP history remain pending; no new delivery marked done.",
+      "at": "2026-11-14T22:32:56.828Z"
     }
   ],
   "applied": [
@@ -561,6 +569,7 @@
     "fmw-board-monitor-adapter-verified-20261114-01",
     "fmw-board-monitor-reconcile-20261114-01",
     "fmw-integration-qa-review-20261114-01",
-    "fmw-integration-qa-handoff-20261114-01"
+    "fmw-integration-qa-handoff-20261114-01",
+    "fmw-board-monitor-remote-progress-20261114-02"
   ]
 }
