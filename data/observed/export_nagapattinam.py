@@ -60,6 +60,9 @@ def export(earlier, later):
             raise ValueError('Pair coordinate grids differ')
         if lat.ndim != 1 or lon.ndim != 1:
             raise ValueError('Expected geographic one-dimensional coordinate axes')
+        for axis in (lat, lon):
+            if not np.isfinite(axis).all() or not (np.all(np.diff(axis) > 0) or np.all(np.diff(axis) < 0)):
+                raise ValueError('Expected finite strictly monotonic coordinate axes')
         # NISAR zero-Doppler acquisition times are UTC; some files omit the Z.
         dates = [utc_timestamp(scalar(handle, 'zeroDopplerStartTime')) for handle in [before, after]]
         if datetime.fromisoformat(dates[0].replace('Z', '+00:00')) >= datetime.fromisoformat(dates[1].replace('Z', '+00:00')):
@@ -75,11 +78,16 @@ def export(earlier, later):
             values, masks = [], []
             for handle in [before, after]:
                 dataset = handle[GRID + 'soilMoisture']
-                if dataset.attrs['units'].decode() != 'meter^3/meter^3':
+                unit = dataset.attrs['units']
+                if isinstance(unit, bytes):
+                    unit = unit.decode()
+                if unit != 'meter^3/meter^3':
                     raise ValueError('Unexpected soil moisture units')
                 value = dataset[region]
-                flag = handle[GRID + 'retrievalQualityFlag'][region]
-                masks.append(np.isfinite(value) & (value != dataset.attrs['_FillValue']) & ((flag & 1) == 0))
+                quality = handle[GRID + 'retrievalQualityFlag']
+                flag = quality[region]
+                masks.append(np.isfinite(value) & (value != dataset.attrs['_FillValue'])
+                             & (flag != quality.attrs.get('_FillValue', -9999)) & ((flag & 1) == 0))
                 values.append(value)
             matched = masks[0] & masks[1]
             count = int(matched.sum())

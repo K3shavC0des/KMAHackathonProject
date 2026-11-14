@@ -53,3 +53,16 @@ agricultural polygon validation and full fused pilot acceptance remain pending.
 Node tests: 22/22 passed, covering moisture-only ranking, canonical JSON Schema validation with Ajv, conditional regional anomaly gate, observed-data separation, latest-valid map readings, legacy scenario isolation, and same-origin API routing from the map server. NISAR pair-verifier tests: 11/11; SMAP context tests: 6/6. NASA CMR nearby-date query returned 31 catalog granules. The real-file SMAP history check remains blocked by absent source files. Combined observed frontend review and final project page publication remain open. `SUBMISSION_DRAFT.md` requires the revised scope before publication.
 
 Next: coordinate with Manali on the explicit observed dataset path and map navigation, review desktop/mobile behavior, and revise the NASA page for the map-first moisture inspection story. If accessible source files and an HDF5-capable runtime arrive, test nearby SMAP dates and at least five historical quality-valid years before computing an anomaly. Preserve local edits and never commit `.tools/`, `.local/`, credentials, or downloaded granules.
+
+## Data reconciliation review (2026-11-14, Keshav)
+
+Combined main's observed-export validation with current integration a6f7e3e,
+including UTC normalization, canonical schema enforcement and moisture-only
+ranking. PR #14 also incorporates PR #12's acquisition guards and quality-fill
+correction, applies the fill exclusion to the exporter, and preserves both
+verifier import names. On Keshav's runtime, 28 Python and 19 Node tests pass.
+The local June 20 / July 2 HDF5 pair reproduces 920 matched recommended cells
+and -0.01749463379383087 m3/m3 median change; the four-tile export exactly
+matches the committed observed collection. This is NISAR development evidence;
+same-cell SMAP history and browser verification remain open. Map-server routing
+is handled separately in PR #13.

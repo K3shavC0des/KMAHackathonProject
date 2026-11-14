@@ -22,7 +22,8 @@ Set `FMW_AREA_SCHEMA` to the same canonical schema path if using a separate chec
 
 The exporter checks matching coordinate axes, track, frame, pass, radar band,
 look direction, product type, units, and date order. It uses each dataset's fill
-value, finite values, and retrievalQualityFlag bit 0=0 on both dates. Tile bounds
+value, finite values, and retrievalQualityFlag bit 0=0 on both dates. Quality-flag
+fill values are excluded even when their low bit is zero. Tile bounds
 are half-open to prevent double counting shared edges. The four tiles contain
 194, 235, 238, and 253 matched recommended cells (920 total).
 
@@ -36,7 +37,7 @@ it does not establish crop identity or agricultural decision accuracy.
 
 SMAP observations are omitted because usable regional seasonal context is still
 unverified. Show **Regional context unavailable**. Crop stage stays `unknown`.
-Use the separate crop scenario for assumptions. Paddy water management can
+Crop-stage scenarios are deferred from the active map journey. Paddy water management can
 affect surface moisture; do not present drying as measured root-zone stress.
 
 ## Frontend/backend handoff
@@ -50,3 +51,9 @@ affect surface moisture; do not present drying as measured root-zone stress.
 - Validate against `contracts/area.schema.json`. Schema/date validation passed;
   the export was run against the actual opened HDF5 pair. This export has not
   yet been wired into the browser interface or validated in the field.
+
+Integration reconciliation checks: 11 exporter/schema regressions, 11 pair
+regressions and 6 seasonal-window checks pass. The June 20 / July 2 local HDF5
+pair still yields 920 matched recommended cells and -0.01749463379383087 m3/m3
+median change. The schema-validated four-tile export exactly reproduces the
+committed observed collection. This does not validate missing SMAP context.
