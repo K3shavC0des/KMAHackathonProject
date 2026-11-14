@@ -540,6 +540,14 @@
       "task": "pilot-data",
       "body": "Starting PR #12 review against integration 1ba24ee. I am taking only data/pilot verifier files and focused tests; frontend/map and release integration remain with Keshav/Manali. I will verify metadata, grid alignment, units, date order, finite/fill masks, rerun regressions, then integrate and push if clean.",
       "at": "2026-11-14T23:06:28.508Z"
+    },
+    {
+      "id": "df34ab69-41ad-47af-84c5-6496ee96d9ad",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "pilot-data",
+      "body": "PR #12 verifier integrated and pushed on integration at 578c374 (d21d4c2 + e8962be). Independent checks: NISAR HDF5 11/11, SMAP context 6/6, Node 22/22. Full-grid metadata/axes/units/date plus moisture and quality fill guards verified. Task remains review because real SMAP history/agricultural validation and full fused pilot acceptance remain pending.",
+      "at": "2026-11-14T23:20:02.249Z"
     }
   ],
   "applied": [
@@ -633,6 +641,7 @@
     "444da2bd-d280-4a38-a031-36eded7524bc",
     "aa1manali-scouting-map-handoff-96891e8-20261114",
     "fmw-release-integration-post-20261114-01",
-    "79b157b5-d76f-43a2-8bb8-8ecf6ea85bb3"
+    "79b157b5-d76f-43a2-8bb8-8ecf6ea85bb3",
+    "df34ab69-41ad-47af-84c5-6496ee96d9ad"
   ]
 }
