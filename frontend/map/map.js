@@ -66,8 +66,10 @@ function render() {
   if (comparison) {
     const withArea = comparison.with_nisar.ranking.find(item => item.area_id === selectedId);
     const withoutArea = comparison.without_nisar.ranking.find(item => item.area_id === selectedId);
-    byId('with-first').textContent = comparison.with_nisar.ranking[0].label.split(' (')[0];
-    byId('without-first').textContent = comparison.without_nisar.ranking[0].label.split(' (')[0];
+    for (const [id, result] of [['with-first', comparison.with_nisar], ['without-first', comparison.without_nisar]]) {
+      const stop = result.ranking.find(item => item.area_id === result.first_stop);
+      byId(id).textContent = stop ? stop.label.split(' (')[0] : 'Insufficient evidence';
+    }
     byId('value-change').textContent = comparison.first_stop_changes
       ? 'Adding NISAR changes the first stop in this synthetic example.'
       : 'Adding NISAR does not change the first stop in this example.';
