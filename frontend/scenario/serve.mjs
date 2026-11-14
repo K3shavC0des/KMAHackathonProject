@@ -15,8 +15,10 @@ const files = new Map([
   ['/frontend/map/', ['../map/index.html', 'text/html; charset=utf-8']],
   ['/frontend/map/style.css', ['../map/style.css', 'text/css; charset=utf-8']],
   ['/frontend/map/map.js', ['../map/map.js', 'text/javascript; charset=utf-8']],
+  ['/frontend/map/map-data.mjs', ['../map/map-data.mjs', 'text/javascript; charset=utf-8']],
   ['/frontend/map/observations.mjs', ['../map/observations.mjs', 'text/javascript; charset=utf-8']],
-  ['/frontend/map/sample-areas.json', ['../../contracts/sample-areas.json', 'application/json; charset=utf-8']]
+  ['/frontend/map/sample-areas.json', ['../../contracts/sample-areas.json', 'application/json; charset=utf-8']],
+  ['/frontend/map/observed-areas.json', ['../../data/observed/nagapattinam-areas.json', 'application/json; charset=utf-8']]
 ]);
 const root = new URL('./', import.meta.url);
 const port = Number(process.env.PORT || 8002);
@@ -24,7 +26,7 @@ const port = Number(process.env.PORT || 8002);
 createServer(async (request, response) => {
   const path = new URL(request.url, 'http://localhost').pathname;
   if (request.method !== 'GET') { response.writeHead(405); response.end('Method not allowed'); return; }
-  if (path === '/') { response.writeHead(302, { Location: '/frontend/scenario/' }); response.end(); return; }
+  if (path === '/') { response.writeHead(302, { Location: '/frontend/map/' }); response.end(); return; }
   try {
     if (path === '/frontend/map/api/rank') {
       const collection = JSON.parse(await readFile(fileURLToPath(new URL('../../contracts/sample-areas.json', root)), 'utf8'));
@@ -36,7 +38,7 @@ createServer(async (request, response) => {
     if (!file) { response.writeHead(404); response.end('Not found'); return; }
     response.writeHead(200, { 'Content-Type': file[1], 'Cache-Control': 'no-store' });
     response.end(await readFile(fileURLToPath(new URL(file[0], root))));
-  } catch {
-    response.writeHead(500); response.end('Could not load demo');
+  } catch (error) {
+    response.writeHead(error.code === 'ENOENT' ? 404 : 500); response.end('Could not load demo');
   }
 }).listen(port, '127.0.0.1', () => console.log(`Scenario demo: http://127.0.0.1:${port}/`));

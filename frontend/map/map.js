@@ -1,10 +1,21 @@
-import { usableObservation } from './observations.mjs';
+import { inspectionSummary, latestReading } from './map-data.mjs';
 
 const byId = id => document.getElementById(id);
 const svgNs = 'http://www.w3.org/2000/svg';
+const pilotBounds = [79.74, 10.70, 79.80, 10.76];
+const collections = {};
+let mode = 'sample';
 let areas = [];
 let selectedId;
-let comparison;
+let viewport = [0, 0, 640, 390];
+let drag;
+
+function addSvg(tag, attributes, parent) {
+  const element = document.createElementNS(svgNs, tag);
+  for (const [key, value] of Object.entries(attributes)) element.setAttribute(key, String(value));
+  parent.append(element);
+  return element;
+}
 
 function readingText(item) {
   if (!item) return 'Unavailable';
@@ -13,15 +24,24 @@ function readingText(item) {
 }
 
 function metadata(item) {
-  if (!item) return 'No quality-valid reading for this area';
+  if (!item) return 'No quality-valid reading';
   return `${item.observed_at.slice(0, 10)} · ${item.spatial_scale} · ${item.quality} · ${item.data_status} · ${item.source_ref}`;
 }
 
-function addSvg(tag, attributes, parent) {
-  const element = document.createElementNS(svgNs, tag);
-  for (const [key, value] of Object.entries(attributes)) element.setAttribute(key, String(value));
-  parent.append(element);
-  return element;
+function labelFor(area) {
+  if (mode === 'observed') return area.area_id.split('-').at(-1).toUpperCase();
+  return `Sample ${area.label.match(/field\s+([A-Za-z0-9]+)/i)?.[1] ?? area.area_id}`;
+}
+
+function setViewport() { byId('map').setAttribute('viewBox', viewport.join(' ')); }
+
+function zoom(factor) {
+  const nextWidth = Math.max(80, Math.min(640, viewport[2] * factor));
+  const ratio = nextWidth / viewport[2];
+  const nextHeight = viewport[3] * ratio;
+  viewport = [viewport[0] + (viewport[2] - nextWidth) / 2,
+    viewport[1] + (viewport[3] - nextHeight) / 2, nextWidth, nextHeight];
+  setViewport();
 }
 
 function drawMap() {
@@ -37,19 +57,31 @@ function drawMap() {
   const latRange = Math.max(maxLat - minLat, 0.01);
   const x = lon => 80 + 480 * (lon - minLon) / lonRange;
   const y = lat => 320 - 250 * (lat - minLat) / latRange;
+  const pilot = addSvg('g', { class: 'pilot-window', role: 'button', tabindex: 0,
+    'aria-label': 'Show Nagapattinam development window evidence' }, map);
+  addSvg('rect', { x: x(pilotBounds[0]), y: y(pilotBounds[3]),
+    width: x(pilotBounds[2]) - x(pilotBounds[0]), height: y(pilotBounds[1]) - y(pilotBounds[3]) }, pilot);
+  addSvg('text', { x: x(pilotBounds[0]) + 5, y: y(pilotBounds[3]) - 12 }, pilot).textContent = 'Nagapattinam window';
+  const showPilot = () => { byId('pilot-panel').hidden = false; byId('pilot-panel').scrollIntoView({ block: 'nearest' }); };
+  pilot.addEventListener('click', showPilot);
+  pilot.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); showPilot(); }
+  });
   for (const area of areas) {
     const ring = area.geometry.coordinates[0];
     const group = addSvg('g', { class: 'marker', tabindex: 0, role: 'button',
-      'aria-label': `Select ${area.label}`, 'aria-current': area.area_id === selectedId }, map);
+      'aria-label': `Show evidence for ${area.label}`, 'aria-current': area.area_id === selectedId }, map);
     addSvg('polygon', { points: ring.map(point => `${x(point[0])},${y(point[1])}`).join(' ') }, group);
     const midLon = ring.reduce((total, point) => total + point[0], 0) / ring.length;
     const midLat = ring.reduce((total, point) => total + point[1], 0) / ring.length;
-    addSvg('text', { x: x(midLon) - 55, y: y(midLat) - 72 }, group).textContent = area.label.split(' (')[0];
-    group.addEventListener('click', () => selectArea(area.area_id));
+    addSvg('text', { x: x(midLon), y: y(midLat) - 58, 'text-anchor': 'middle' }, group).textContent = labelFor(area);
+    const select = () => selectArea(area.area_id, true);
+    group.addEventListener('click', select);
     group.addEventListener('keydown', event => {
-      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectArea(area.area_id); }
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); select(); }
     });
   }
+  setViewport();
 }
 
 function render() {
@@ -58,64 +90,98 @@ function render() {
   select.value = selectedId;
   drawMap();
   const area = areas.find(item => item.area_id === selectedId);
-  const sme2 = usableObservation(area, 'NISAR_SME2');
-  const smap = usableObservation(area, 'SMAP');
+  const sme2 = latestReading(area, 'NISAR_SME2', 'soil_moisture_change');
+  const smap = latestReading(area, 'SMAP', 'seasonal_baseline');
   const statuses = new Set(area.observations.map(item => item.data_status));
   byId('sample-badge').textContent = statuses.size === 1 ? [...statuses][0].toUpperCase() : 'MIXED STATUS';
-  byId('area-description').textContent = `${area.label}. Crop stage: ${area.crop_stage}. Polygon coordinates are from the sample fixture; no pilot has been selected.`;
-  if (comparison) {
-    const withArea = comparison.with_nisar.ranking.find(item => item.area_id === selectedId);
-    const withoutArea = comparison.without_nisar.ranking.find(item => item.area_id === selectedId);
-    for (const [id, result] of [['with-first', comparison.with_nisar], ['without-first', comparison.without_nisar]]) {
-      const stop = result.ranking.find(item => item.area_id === result.first_stop);
-      byId(id).textContent = stop ? stop.label.split(' (')[0] : 'Insufficient evidence';
-    }
-    byId('value-change').textContent = comparison.first_stop_changes
-      ? 'Adding NISAR changes the first stop in this synthetic example.'
-      : 'Adding NISAR does not change the first stop in this example.';
-    byId('rank-explanation').textContent = `${area.label.split(' (')[0]} ranks ${withArea.rank} with NISAR and ${withoutArea.rank} without it. ${withArea.explanation}`;
-  }
+  byId('area-description').textContent = mode === 'observed'
+    ? `${area.label}. This is an analysis tile, not a surveyed field or verified crop. Local surface moisture only; crop stage unknown.`
+    : `${area.label}. This synthetic fixture area is outside the Nagapattinam development window.`;
+  const candidate = inspectionSummary(areas);
+  byId('with-first').textContent = candidate ? candidate.area.label.split(' (')[0] : 'Insufficient local evidence';
+  byId('without-first').textContent = 'Unavailable';
+  byId('value-change').textContent = candidate
+    ? `${candidate.area.label.split(' (')[0]} has the strongest quality-valid local drying signal (${readingText(candidate.change)}). Inspect this area first if a visit is needed; this is not a watering decision.`
+    : 'No quality-valid local drying signal supports a first inspection area.';
+  byId('rank-explanation').textContent = 'A below-historical-standard flag needs quality-valid current and same-cell seasonal SMAP history. That comparison is unavailable, so no historical-risk claim is shown. Crop stage does not set this priority.';
   byId('sme2-value').textContent = readingText(sme2);
   byId('sme2-meta').textContent = metadata(sme2);
   byId('smap-value').textContent = readingText(smap);
-  byId('smap-meta').textContent = smap ? `9 km regional context · ${metadata(smap)}` : '9 km regional context unavailable · no quality-valid SMAP reading';
+  byId('smap-meta').textContent = smap ? `9 km regional context · ${metadata(smap)}` : 'Regional SMAP context unavailable for this area';
   const timeline = byId('timeline');
   timeline.replaceChildren();
-  const events = area.observations.filter(item => item.quality !== 'missing')
-    .sort((a, b) => b.observed_at.localeCompare(a.observed_at));
-  for (const item of events) {
+  for (const item of [...area.observations].sort((a, b) => b.observed_at.localeCompare(a.observed_at))) {
     const li = document.createElement('li');
-    const label = item.source === 'NISAR_SME2' ? 'Local SME2' : item.source === 'SMAP' ? 'Regional SMAP (9 km)' : 'Crop context';
-    li.textContent = `${label}: ${readingText(item)}`;
+    const source = item.source === 'NISAR_SME2' ? 'Local SME2' : item.source === 'SMAP' ? 'Regional SMAP' : 'Crop context';
+    const metric = item.metric === 'soil_moisture_change' ? 'change' : item.metric === 'soil_moisture' ? 'surface moisture' : item.metric.replaceAll('_', ' ');
+    li.textContent = `${source} ${metric}: ${item.quality === 'missing' ? 'Unavailable' : readingText(item)}`;
     const meta = document.createElement('span');
-    meta.textContent = metadata(item);
+    meta.textContent = `${metadata(item)}${item.quality === 'valid' ? '' : ' · excluded from inspection priority'}`;
     li.append(meta);
     timeline.append(li);
   }
   if (!smap) {
     const li = document.createElement('li');
-    li.textContent = 'Regional SMAP (9 km): unavailable';
+    li.textContent = 'Regional SMAP context: unavailable';
     timeline.append(li);
   }
 }
 
-function selectArea(id) { selectedId = id; render(); }
-byId('area-select').addEventListener('change', event => selectArea(event.target.value));
+function selectArea(id, scroll = false) {
+  selectedId = id;
+  render();
+  if (scroll) byId('detail-heading').scrollIntoView({ block: 'nearest' });
+}
 
-export function setAreas(collection) {
-  if (collection?.schema_version !== '1.0.0' || !Array.isArray(collection.areas) || !collection.areas.length) {
-    throw new Error('Expected area collection v1');
-  }
-  areas = collection.areas;
+function useCollection(nextMode) {
+  mode = nextMode;
+  areas = collections[mode].areas;
   selectedId = areas[0].area_id;
+  viewport = [0, 0, 640, 390];
+  byId('data-mode').value = mode;
+  byId('map-note').textContent = mode === 'observed'
+    ? 'Four observed NISAR analysis tiles divide the Nagapattinam window. They are not surveyed fields. Drag to pan; scroll or use buttons to zoom.'
+    : 'Dashed outline: Nagapattinam development window. Solid polygons: synthetic sample areas outside it. Drag to pan; scroll or use buttons to zoom.';
   render();
 }
 
+byId('area-select').addEventListener('change', event => selectArea(event.target.value));
+byId('data-mode').addEventListener('change', event => useCollection(event.target.value));
+byId('zoom-in').addEventListener('click', () => zoom(0.75));
+byId('zoom-out').addEventListener('click', () => zoom(1.25));
+byId('reset-view').addEventListener('click', () => { viewport = [0, 0, 640, 390]; setViewport(); });
+const map = byId('map');
+map.addEventListener('wheel', event => { event.preventDefault(); zoom(event.deltaY < 0 ? 0.85 : 1.15); }, { passive: false });
+map.addEventListener('pointerdown', event => {
+  if (event.target.parentNode !== map) return;
+  drag = { x: event.clientX, y: event.clientY, view: [...viewport] };
+  map.setPointerCapture(event.pointerId);
+});
+map.addEventListener('pointermove', event => {
+  if (!drag) return;
+  const rect = map.getBoundingClientRect();
+  viewport[0] = drag.view[0] - (event.clientX - drag.x) * drag.view[2] / rect.width;
+  viewport[1] = drag.view[1] - (event.clientY - drag.y) * drag.view[3] / rect.height;
+  setViewport();
+});
+map.addEventListener('pointerup', () => { drag = null; });
+map.addEventListener('pointercancel', () => { drag = null; });
+
 try {
-  const [fixtureResponse, rankingResponse] = await Promise.all([fetch('./sample-areas.json'), fetch('./api/rank')]);
-  if (!fixtureResponse.ok || !rankingResponse.ok) throw new Error(`Fixture or ranking request failed`);
-  comparison = await rankingResponse.json();
-  setAreas(await fixtureResponse.json());
+  const sampleResponse = await fetch('./sample-areas.json');
+  if (!sampleResponse.ok) throw new Error(`Sample HTTP ${sampleResponse.status}`);
+  collections.sample = await sampleResponse.json();
+  try {
+    const observedResponse = await fetch('./observed-areas.json');
+    if (!observedResponse.ok) throw new Error(`Observed HTTP ${observedResponse.status}`);
+    collections.observed = await observedResponse.json();
+    byId('mode-note').textContent = 'Observed NISAR tiles are separate from the synthetic sample. SMAP history is unavailable.';
+    useCollection('observed');
+  } catch {
+    byId('data-mode').querySelector('[value="observed"]').disabled = true;
+    byId('mode-note').textContent = 'Observed export is awaiting integration; synthetic sample view remains available.';
+    useCollection('sample');
+  }
 } catch (error) {
-  byId('area-description').textContent = `Could not load sample areas: ${error.message}`;
+  byId('area-description').textContent = `Could not load areas: ${error.message}`;
 }
