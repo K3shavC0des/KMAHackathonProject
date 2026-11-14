@@ -1,7 +1,19 @@
 {
   "version": 1,
   "coordinator": "K3shavC0des",
-  "tasks": {},
+  "tasks": {
+    "pilot-data": {
+      "id": "pilot-data",
+      "owner": "K3shavC0des",
+      "goal": "Ingest candidate data and select Indian pilot; https://github.com/K3shavC0des/KMAHackathonProject/issues/1",
+      "acceptance": "Opened SME2 and SMAP evidence selects or rejects a pilot",
+      "paths": [
+        "data/pilot"
+      ],
+      "status": "queued",
+      "evidence": ""
+    }
+  },
   "messages": [
     {
       "id": "preflight-ping-k3shavc0des-matthew-20261114",
@@ -68,6 +80,7 @@
     "preflight-ping-aa1manali-k3shavc0des-20261114-01",
     "preflight-ping-aa1manali-mathewzhang2008-20261114-01",
     "2ad715f2-64d7-4e87-a19b-5cee6e81661f",
-    "c03e9a84-85f8-4a04-a8a8-3d54bd50d769"
+    "c03e9a84-85f8-4a04-a8a8-3d54bd50d769",
+    "fmw-20261114-task-pilot-data-01"
   ]
 }
