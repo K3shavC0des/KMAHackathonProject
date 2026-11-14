@@ -103,6 +103,18 @@ class PairTests(unittest.TestCase):
         self.assertEqual(result["matched_recommended_pixels"], 0)
         self.assertIsNone(result["delta_median_m3m3"])
 
+    def test_quality_fill_excluded_on_either_date(self):
+        for path, cell, fill in ((self.before, (0, 0), 254), (self.after, (0, 1), 252)):
+            with h5py.File(path, "r+") as handle:
+                quality = handle[GRID + "retrievalQualityFlag"]
+                quality.attrs["_FillValue"] = fill
+                quality[cell] = fill
+        result = self.run_pair()
+        self.assertEqual(result["matched_recommended_pixels"], 2)
+        for date in ("earlier", "later"):
+            self.assertEqual(result[date]["valid_recommended_pixels"], 3)
+            self.assertEqual(result[date]["valid_any_pixels"], 3)
+
     def test_no_coverage(self):
         result = verify(str(self.before), str(self.after), (0, 0, 1, 1))
         self.assertEqual(result["evidence_status"], "no_comparable_grid_window")
