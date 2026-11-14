@@ -23,6 +23,17 @@
       ],
       "status": "queued",
       "evidence": ""
+    },
+    "smap-crop": {
+      "id": "smap-crop",
+      "owner": "K3shavC0des",
+      "goal": "Build SMAP seasonal and crop context ingest; https://github.com/K3shavC0des/KMAHackathonProject/issues/3",
+      "acceptance": "Quality-valid baseline and sourced crop state",
+      "paths": [
+        "data/context"
+      ],
+      "status": "queued",
+      "evidence": ""
     }
   },
   "messages": [
@@ -93,6 +104,7 @@
     "2ad715f2-64d7-4e87-a19b-5cee6e81661f",
     "c03e9a84-85f8-4a04-a8a8-3d54bd50d769",
     "fmw-20261114-task-pilot-data-01",
-    "fmw-20261114-task-area-contract-01"
+    "fmw-20261114-task-area-contract-01",
+    "fmw-20261114-task-smap-crop-01"
   ]
 }
