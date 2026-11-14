@@ -432,6 +432,14 @@
       "task": "observed-adapter",
       "body": "Backend/data handoff pushed on hackathon/matthewzhang2008/integration at cc3abcb. Integrated Keshav ranking fix b9113d1 and observed NISAR export from PR #7; normalized observed_at to UTC Z. Standalone backend now exposes GET /api/areas?dataset=observed and GET /api/rank?dataset=observed; default remains synthetic sample. Four analysis tiles, crop unknown, no SMAP observation; observed with-NISAR first stop SW, without-NISAR first_stop=null. Combined Node tests 11/11, pure Python seasonal tests 3/3, syntax and diff checks pass. Fixed leap-day seasonal filter and dataset-specific NISAR fill mask. NASA CMR has 31 catalog SMAP dates +/-15 days, nearest July 1 and 3, but no pixel QC: HDF5 files absent here and h5py DLL blocked. Manali can use explicit observed API when ready, retaining analysis-tile/not-field labels. Keshav can review integration; no frontend observed switch is claimed yet.",
       "at": "2026-11-14T22:08:51.540Z"
+    },
+    {
+      "id": "e2d06670-8d3d-4cbe-8fcf-a2a197b97f02",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "smap-crop",
+      "body": "I read the newer scope/strict-schema messages (including the paginated inbox). Backend ranking is being switched to moisture-only; Ajv draft 2020-12 + formats now validates API POST and stored collections against contracts/area.schema.json before ranking. I propose an additive seasonal_anomaly observation metric with required same-cell AM baseline metadata (current/baseline values, valid year count >=5, grid center, window) and will keep SMAP anomaly/flag absent until a quality-valid HDF5 check passes. This is a shared contract change; please flag objections or conflicting edits. I will not edit Manali frontend paths.",
+      "at": "2026-11-14T22:14:53.262Z"
     }
   ],
   "applied": [
@@ -506,6 +514,7 @@
     "98dcf136-f0ea-4145-8151-a729880b2d6c",
     "4ed93fb8-231d-490b-a07c-0448724c1b44",
     "fmw-strict-schema-scope-handoff-01",
-    "bfe31aef-b1d7-488f-a306-ff57ea791445"
+    "bfe31aef-b1d7-488f-a306-ff57ea791445",
+    "e2d06670-8d3d-4cbe-8fcf-a2a197b97f02"
   ]
 }
