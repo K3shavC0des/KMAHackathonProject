@@ -28,6 +28,23 @@ This checkout reproduced the public NISAR CMR preflight and found 31 nearby-date
 
 The integration branch combines the published contract, API, map, Keshav data scripts/report, observed NISAR analysis tiles, and the SMAP checker. The map still loads only the synthetic `contracts/sample-areas.json`; Manali is building explicit observed/sample selection and a navigable map. The standalone backend serves `GET /api/areas?dataset=observed` and `GET /api/rank?dataset=observed` without mixing these records into the sample demo. Ranking returns `first_stop: null` without supported local drying. The legacy scenario code remains in the branch but must leave the active journey. This is an illustrative inspection heuristic, not calibrated advice.
 
+## Pilot pair verification handoff (Keshav, 2026-11-14)
+
+Keshav claimed `pilot-data` for verifier work on
+`hackathon/K3shavC0des/pilot-verification`, based on integration `cc3abcb`.
+`data/pilot/verify_pair.py` now checks full coordinate axes and matching
+acquisition metadata/units/date order before comparing cells. Per-date summaries
+also reject nonfinite moisture. Ten temporary-HDF5 regression tests pass.
+The accessible local HDF5 runtime reopened the real June 20/July 2 pair and
+reproduced 920 matched recommended cells, median change -0.01749463379383087
+m3/m3 for [79.74, 10.70, 79.80, 10.76]. Existing Node tests pass 11/11.
+See `data/pilot/VERIFICATION.md` for checks and reproduction.
+
+Next actor: Matthew can review/integrate this verifier change; Arman continues
+map work. Keshav's local HDF5 run resolves the verifier runtime blocker here,
+but does not supply nearby-date SMAP files or historical QC. Regional baseline,
+agricultural polygon validation and full fused pilot acceptance remain pending.
+
 ## Last verification and next action
 
 Node tests: 22/22 passed, covering moisture-only ranking, canonical JSON Schema validation with Ajv, conditional regional anomaly gate, observed-data separation, latest-valid map readings, legacy scenario isolation, and same-origin API routing from the map server. Python observed-export validation tests: 5/5; pure seasonal-window tests: 3/3. NASA CMR nearby-date query returned 31 catalog granules. HDF5 tests and real-file SMAP check remain blocked by application control and absent source files. Combined observed frontend review and final project page publication remain open. `SUBMISSION_DRAFT.md` requires the revised scope before publication.
