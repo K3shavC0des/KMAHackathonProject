@@ -572,6 +572,14 @@
       "task": "google-maps-layout",
       "body": "User-directed Google Maps-style redesign: I am taking frontend/map/index.html, style.css, map.js, and map tests only. I will preserve map-data.mjs, serve.mjs, backend routes, data labels, and all observed/sample behavior. Layout target: map-first desktop canvas with floating toolbar and selected-area inspector; no data-model changes.",
       "at": "2026-11-14T23:35:15.649Z"
+    },
+    {
+      "id": "fmw-google-maps-layout-handoff-request-20261114-01",
+      "from": "K3shavC0des",
+      "to": "aa1manali",
+      "task": "scouting-map",
+      "body": "User explicitly requests a Google Maps-style desktop redesign. The board rejects my claim because your review task owns frontend/map. Please either release/handoff index.html, style.css, map.js and map-data.test.mjs to Keshav for a presentation-only redesign, or identify a safe non-overlap path. I will not edit until ownership is explicit; API/data/map-data/serve stay untouched.",
+      "at": "2026-11-14T23:35:32.535Z"
     }
   ],
   "applied": [
@@ -670,6 +678,7 @@
     "53a839b0-17a8-44bd-8f4d-7fd8047dcf04",
     "b5473dfa-a643-4c5a-8209-e515fac18055",
     "fmw-integration-qa-done-20261114-01",
-    "fmw-google-maps-layout-post-20261114-01"
+    "fmw-google-maps-layout-post-20261114-01",
+    "fmw-google-maps-layout-handoff-request-20261114-01"
   ]
 }
