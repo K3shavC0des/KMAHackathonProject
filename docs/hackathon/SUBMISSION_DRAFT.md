@@ -1,6 +1,6 @@
 # Farm Moisture Watch - NASA project page draft
 
-Status: draft for team review. Replace bracketed links and the demo screenshot/video after the final browser rehearsal. Do not describe Nagapattinam as a selected pilot or the sample fixture as measured satellite data.
+Status: **needs rewrite for the revised map-first scope before publication**. Crop-stage comparisons and the former A-versus-B first-stop claim below are historical draft text. Replace them with the reviewed moisture-only ranking, explicit insufficient-evidence state, and verified regional-anomaly status. Add the final demo screenshot/video after browser rehearsal. Nagapattinam is a development geography, not a validated agricultural field.
 
 ## One-line summary
 

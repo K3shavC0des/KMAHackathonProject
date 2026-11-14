@@ -2,15 +2,36 @@
 import argparse
 from datetime import datetime, timezone
 import json
+import re
 from pathlib import Path
 
-import h5py
 import numpy as np
+from jsonschema import Draft202012Validator, FormatChecker
 
 GRID = 'science/LSAR/SME2/grids/'
 IDENT = 'science/LSAR/identification/'
 TILES = [('sw', 79.74, 10.70, 79.77, 10.73), ('se', 79.77, 10.70, 79.80, 10.73),
          ('nw', 79.74, 10.73, 79.77, 10.76), ('ne', 79.77, 10.73, 79.80, 10.76)]
+
+
+def validate_collection(collection, schema_path):
+    schema = json.loads(Path(schema_path).read_text(encoding='utf-8-sig'))
+    Draft202012Validator.check_schema(schema)
+    # JSON serialization rejects NaN/Infinity, which Python's JSON parser permits.
+    json.dumps(collection, allow_nan=False)
+    checker = FormatChecker()
+
+    @checker.checks('date-time', raises=ValueError)
+    def timestamp(value):
+        if not isinstance(value, str):
+            return True  # JSON Schema's type rule reports nonstrings.
+        if not re.fullmatch(r'\d{4}-\d{2}-\d{2}[Tt]\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:[Zz]|[+-]\d{2}:\d{2})', value):
+            return False
+        datetime.fromisoformat(value.upper().replace('Z', '+00:00'))
+        return True
+
+    Draft202012Validator(schema, format_checker=checker).validate(collection)
+    return collection
 
 
 def scalar(handle, name):
@@ -27,6 +48,8 @@ def utc_timestamp(value):
 
 
 def export(earlier, later):
+    import h5py
+
     areas = []
     with h5py.File(earlier) as before, h5py.File(later) as after:
         for key in ['productType', 'trackNumber', 'frameNumber', 'orbitPassDirection', 'radarBand', 'lookDirection']:
@@ -37,6 +60,7 @@ def export(earlier, later):
             raise ValueError('Pair coordinate grids differ')
         if lat.ndim != 1 or lon.ndim != 1:
             raise ValueError('Expected geographic one-dimensional coordinate axes')
+        # NISAR zero-Doppler acquisition times are UTC; some files omit the Z.
         dates = [utc_timestamp(scalar(handle, 'zeroDopplerStartTime')) for handle in [before, after]]
         if datetime.fromisoformat(dates[0].replace('Z', '+00:00')) >= datetime.fromisoformat(dates[1].replace('Z', '+00:00')):
             raise ValueError('Inputs must be in chronological order')
@@ -87,5 +111,7 @@ if __name__ == '__main__':
     parser.add_argument('earlier', type=Path)
     parser.add_argument('later', type=Path)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--schema', type=Path, default=Path(__file__).resolve().parents[2] / 'contracts/area.schema.json')
     args = parser.parse_args()
-    args.output.write_text(json.dumps(export(args.earlier, args.later), indent=2, allow_nan=False) + '\n', encoding='utf-8')
+    collection = validate_collection(export(args.earlier, args.later), args.schema)
+    args.output.write_text(json.dumps(collection, indent=2, allow_nan=False) + '\n', encoding='utf-8')

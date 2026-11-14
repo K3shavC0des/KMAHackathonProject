@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { compareScoutingStops } from './rank.mjs';
+import { validateCollection } from './validate.mjs';
 
 const collections = new Map([
   ['sample', new URL('../contracts/sample-areas.json', import.meta.url)],
@@ -38,10 +39,14 @@ export function makeServer() {
       if ((url.pathname === '/api/rank' || url.pathname === '/api/areas') && request.method === 'GET') {
         const dataset = url.searchParams.get('dataset') ?? 'sample';
         if (!collections.has(dataset)) return send(response, 400, { error: 'Unknown dataset' });
-        const collection = JSON.parse(await readFile(collections.get(dataset), 'utf8'));
+        let collection;
+        try { collection = validateCollection(JSON.parse(await readFile(collections.get(dataset), 'utf8'))); }
+        catch { return send(response, 500, { error: 'Stored area collection failed validation' }); }
         return send(response, 200, url.pathname === '/api/rank' ? compareScoutingStops(collection) : collection);
       }
-      if (url.pathname === '/api/rank' && request.method === 'POST') return send(response, 200, compareScoutingStops(await readBody(request)));
+      if (url.pathname === '/api/rank' && request.method === 'POST') {
+        return send(response, 200, compareScoutingStops(validateCollection(await readBody(request))));
+      }
       return send(response, 404, { error: 'Not found' });
     } catch (error) {
       if (error instanceof SyntaxError || error instanceof TypeError) return send(response, 400, { error: error.message });
