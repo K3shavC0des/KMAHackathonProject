@@ -65,8 +65,8 @@
       "paths": [
         "frontend/scenario"
       ],
-      "status": "review",
-      "evidence": "Issue #6 branch https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/aa1manali/crop-demo at 0c04ff1, based on latest integration 6beec6a. Standalone scenario serves map and crop-stage selectors, compares with/without NISAR first stop using shared rank module. Only crop_stage changes; observations remain unchanged, tested. Combined Node tests 6/6 pass; scenario and map HTTP 200; browser visual check remains pending (headless Chrome produced no screenshot). Matthew or Keshav can review/integrate; add map-to-scenario navigation in app shell. Globe polish remains later."
+      "status": "blocked",
+      "evidence": "DEFERRED by user scope change, not a delivery blocker or completed feature. GitHub issue #6 verified closed with state_reason=not_planned on 2026-11-14. Stop scenario feature work and remove it from active demo navigation; retain compatibility code only. Board supports no deferred status, so blocked records this pause without claiming verification."
     },
     "observed-adapter": {
       "id": "observed-adapter",
@@ -540,6 +540,7 @@
     "fmw-pilot-alignment-review-20261114-01",
     "fmw-integration-qa-task-20261114-01",
     "fmw-integration-qa-claim-20261114-01",
-    "fmw-map-api-route-claim-20261114-01"
+    "fmw-map-api-route-claim-20261114-01",
+    "fmw-board-monitor-crop-deferred-20261114-01"
   ]
 }
