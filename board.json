@@ -10,8 +10,8 @@
       "paths": [
         "data/pilot"
       ],
-      "status": "blocked",
-      "evidence": "Draft PR https://github.com/K3shavC0des/KMAHackathonProject/pull/7 includes live NISAR+SMAP catalog preflights; syntax and diff checks passed. Direct NISAR HDF5 returned HTTP 401. Need authorized Earthdata access to inspect SME2 and SMAP pixels and quality before selecting pilot. K3shavC0des can resume; Matthewzhang2008 can review contract implications."
+      "status": "working",
+      "evidence": "Earthdata access restored. Opened June 20/July 2 SME2 and July 2 SMAP. NISAR broad-window pair is verified; SMAP July 2 has no recommended pixels near candidate AOIs. Continuing date/AOI matching; contract and sample map proceed independently."
     },
     "area-contract": {
       "id": "area-contract",
@@ -247,6 +247,7 @@
     "7fd787a7-0ab3-45aa-8e46-3b2b182abc6f",
     "e2a91b7c-3500-4a45-af59-4d199e7baf56",
     "4e0c62b3-3624-4f04-9a5d-faf15210c2fa",
-    "d9550c09-3f33-450b-846f-22963f40d1dd"
+    "d9550c09-3f33-450b-846f-22963f40d1dd",
+    "fmw-20261114-reclaim-pilot-data-01"
   ]
 }
