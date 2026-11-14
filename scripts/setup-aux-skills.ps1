@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([switch]$SkipDownloads)
+param([switch]$SkipDownloads, [string]$Actor)
 
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
@@ -39,12 +39,20 @@ $env:UV_TOOL_DIR = $uvTools
 if (Get-Command uv -ErrorAction SilentlyContinue) {
     uv tool install --python 3.13 'headroom-ai[all]'
     if ($LASTEXITCODE -ne 0) { Write-Warning 'Headroom install failed; rerun this script after fixing uv.' }
+    uv tool install --python 3.13 graphifyy
+    if ($LASTEXITCODE -ne 0) { Write-Warning 'Graphify install failed; rerun this script after fixing uv.' }
 } else { Write-Warning 'uv is missing; install uv, then rerun to enable Headroom.' }
 
 New-Item -ItemType Directory -Force (Join-Path $root '.local/claude-mem') | Out-Null
+if ($Actor) {
+    $request = @{ actor = $Actor; action = 'init' } | ConvertTo-Json -Compress
+    $request | & $node (Join-Path $root '.agents/skills/hackathon-autopilot/scripts/board.mjs')
+    if ($LASTEXITCODE -ne 0) { Write-Warning 'Hackathon board initialization failed; rerun with -Actor.' }
+}
 Write-Host ''
 Write-Host 'Auxiliary skills are ready for this project.' -ForegroundColor Green
 Write-Host 'Start memory: .\scripts\memory.ps1 start'
 Write-Host 'Check memory: .\scripts\memory.ps1 status'
 Write-Host 'Codex MCP config: .codex\config.toml'
 Write-Host 'Provider sign-in: run codex login if Codex is not authenticated.'
+Write-Host 'Optional team board: .\scripts\setup-aux-skills.ps1 -SkipDownloads -Actor your-handle'

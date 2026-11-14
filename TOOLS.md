@@ -8,7 +8,9 @@ For a new Windows teammate, run this once from the repository root:
 .\scripts\setup-aux-skills.ps1
 ```
 
-The script installs the project-local runtimes and packages, configures Headroom with a project-local `uv` cache, and prepares Claude Mem for Codex. It is safe to rerun.
+The script installs the project-local runtimes and packages, installs Headroom and Graphify with a project-local `uv` cache, and prepares Claude Mem for Codex. It is safe to rerun. Add `-Actor your-handle` to initialize the shared Hackathon Autopilot board.
+
+ECC is already available in the Codex installation. Claude Code Setup is a read-only recommender and needs no runtime. Task Observer is bundled, but its checkout does not include the activation scripts required for automatic observation setup, so use its environment instructions before enabling a persistent log.
 
 Claude Mem is configured for the Codex provider and runs on port `37778`:
 
