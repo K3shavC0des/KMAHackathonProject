@@ -32,8 +32,8 @@
       "paths": [
         "data/context"
       ],
-      "status": "working",
-      "evidence": "Taking over the queued context task after Keshav reached his session limit; local SMAP baseline checker in progress"
+      "status": "blocked",
+      "evidence": "Checker published at bd3d6c8; HDF5 execution blocked by local application control and source files absent. No quality-valid seasonal baseline or crop stage can be claimed yet."
     },
     "fusion-api": {
       "id": "fusion-api",
@@ -307,6 +307,7 @@
     "d36031c4-6bd2-4f65-988b-46fd4493cc9f",
     "803dc3f9-c664-4e66-803d-f5183a726cb0",
     "dc9dc21d-70a6-40a7-a7d1-7882db4fc34a",
-    "70f777fa-671e-4837-8b0a-c620fdc5c2be"
+    "70f777fa-671e-4837-8b0a-c620fdc5c2be",
+    "986998b4-ff55-4be0-882d-0bbcd3eb35e6"
   ]
 }
