@@ -5,6 +5,7 @@ const svgNs = 'http://www.w3.org/2000/svg';
 let areas = [];
 let selectedId;
 let comparison;
+const pilotBounds = [79.74, 10.70, 79.80, 10.76];
 
 function readingText(item) {
   if (!item) return 'Unavailable';
@@ -28,7 +29,9 @@ function drawMap() {
   const map = byId('map');
   map.replaceChildren();
   addSvg('rect', { width: 640, height: 390, fill: '#e6e9df' }, map);
-  const points = areas.flatMap(area => area.geometry.coordinates.flat(1));
+  const points = areas.flatMap(area => area.geometry.coordinates.flat(1)).concat([
+    [pilotBounds[0], pilotBounds[1]], [pilotBounds[2], pilotBounds[3]]
+  ]);
   const longitudes = points.map(point => point[0]);
   const latitudes = points.map(point => point[1]);
   const minLon = Math.min(...longitudes), maxLon = Math.max(...longitudes);
@@ -37,6 +40,16 @@ function drawMap() {
   const latRange = Math.max(maxLat - minLat, 0.01);
   const x = lon => 80 + 480 * (lon - minLon) / lonRange;
   const y = lat => 320 - 250 * (lat - minLat) / latRange;
+  const pilot = addSvg('g', { class: 'pilot-window', role: 'button', tabindex: 0,
+    'aria-label': 'Show Nagapattinam development window evidence' }, map);
+  addSvg('rect', { x: x(pilotBounds[0]), y: y(pilotBounds[3]),
+    width: x(pilotBounds[2]) - x(pilotBounds[0]), height: y(pilotBounds[1]) - y(pilotBounds[3]) }, pilot);
+  addSvg('text', { x: x(pilotBounds[0]) + 5, y: y(pilotBounds[3]) - 12 }, pilot).textContent = 'Nagapattinam development window';
+  const showPilot = () => { byId('pilot-panel').hidden = false; byId('pilot-panel').scrollIntoView({ block: 'nearest' }); };
+  pilot.addEventListener('click', showPilot);
+  pilot.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); showPilot(); }
+  });
   for (const area of areas) {
     const ring = area.geometry.coordinates[0];
     const group = addSvg('g', { class: 'marker', tabindex: 0, role: 'button',
@@ -62,7 +75,7 @@ function render() {
   const smap = usableObservation(area, 'SMAP');
   const statuses = new Set(area.observations.map(item => item.data_status));
   byId('sample-badge').textContent = statuses.size === 1 ? [...statuses][0].toUpperCase() : 'MIXED STATUS';
-  byId('area-description').textContent = `${area.label}. Crop stage: ${area.crop_stage}. Polygon coordinates are from the sample fixture; no pilot has been selected.`;
+  byId('area-description').textContent = `${area.label}. Crop stage: ${area.crop_stage}. This synthetic fixture area is outside the Nagapattinam development window and is not an observed field.`;
   if (comparison) {
     const withArea = comparison.with_nisar.ranking.find(item => item.area_id === selectedId);
     const withoutArea = comparison.without_nisar.ranking.find(item => item.area_id === selectedId);
@@ -79,14 +92,13 @@ function render() {
   byId('smap-meta').textContent = smap ? `9 km regional context · ${metadata(smap)}` : '9 km regional context unavailable · no quality-valid SMAP reading';
   const timeline = byId('timeline');
   timeline.replaceChildren();
-  const events = area.observations.filter(item => item.quality !== 'missing')
-    .sort((a, b) => b.observed_at.localeCompare(a.observed_at));
+  const events = [...area.observations].sort((a, b) => b.observed_at.localeCompare(a.observed_at));
   for (const item of events) {
     const li = document.createElement('li');
     const label = item.source === 'NISAR_SME2' ? 'Local SME2' : item.source === 'SMAP' ? 'Regional SMAP (9 km)' : 'Crop context';
-    li.textContent = `${label}: ${readingText(item)}`;
+    li.textContent = `${label}: ${item.quality === 'missing' ? 'Unavailable' : readingText(item)}`;
     const meta = document.createElement('span');
-    meta.textContent = metadata(item);
+    meta.textContent = `${metadata(item)}${item.quality === 'valid' ? '' : ' · excluded from headline and ranking'}`;
     li.append(meta);
     timeline.append(li);
   }

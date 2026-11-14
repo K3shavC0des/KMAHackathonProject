@@ -19,6 +19,12 @@ svg { width: 100%; height: auto; border-radius: 8px; }
 .marker text { fill: #193a2b; font-size: 16px; font-weight: 700; paint-order: stroke; stroke: #e6e9df; stroke-width: 4; }
 .marker:focus { outline: none; }
 .marker:focus polygon { stroke: #132a20; }
+.pilot-window { cursor: pointer; }
+.pilot-window rect { fill: #4e81a222; stroke: #256a87; stroke-width: 4; stroke-dasharray: 10 7; }
+.pilot-window text { fill: #164c65; font-size: 15px; font-weight: 700; paint-order: stroke; stroke: #e6e9df; stroke-width: 4; }
+.pilot-window:focus rect { stroke: #102e3d; }
+.pilot-panel { margin-top: 14px; padding: 12px 16px; border-left: 4px solid #256a87; background: #eef5f7; border-radius: 4px; line-height: 1.45; }
+.pilot-panel h3 { margin: 0 0 8px; }
 label { display: block; font-weight: 700; margin: 4px 0 8px; }
 select { width: 100%; padding: 10px; border: 1px solid #8ca495; border-radius: 6px; background: white; font: inherit; }
 #area-description { line-height: 1.45; }

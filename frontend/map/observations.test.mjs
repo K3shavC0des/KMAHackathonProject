@@ -11,3 +11,12 @@ test('suspect and missing readings never become headline values', () => {
   assert.equal(usableObservation(area, 'SMAP'), null);
   assert.equal(usableObservation(area, 'NISAR_SME2')?.value, -0.04);
 });
+
+test('newest quality-valid reading is the headline', () => {
+  const area = { observations: [
+    { source: 'NISAR_SME2', quality: 'valid', value: -0.01, observed_at: '2026-07-01T00:00:00Z' },
+    { source: 'NISAR_SME2', quality: 'valid', value: -0.04, observed_at: '2026-07-02T00:00:00Z' },
+    { source: 'NISAR_SME2', quality: 'suspect', value: -0.08, observed_at: '2026-07-03T00:00:00Z' }
+  ] };
+  assert.equal(usableObservation(area, 'NISAR_SME2')?.value, -0.04);
+});
