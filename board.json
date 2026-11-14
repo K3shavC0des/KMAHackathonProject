@@ -125,6 +125,14 @@
       "task": null,
       "body": "PREFLIGHT PING from matthewzhang2008",
       "at": "2026-11-14T17:56:07.120Z"
+    },
+    {
+      "id": "fmw-20261114-post-all-01",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": null,
+      "body": "Farm Moisture Watch kickoff. Read your board inbox when starting work, when a dependency changes, and before handoff. Post blockers and shared-format changes as they happen. Keep sample and observed data labeled. Each handoff needs an issue or PR link, checks run, and who can act next. Select the Indian pilot only after ingesting and checking source data.",
+      "at": "2026-11-14T20:01:49.771Z"
     }
   ],
   "applied": [
@@ -141,6 +149,7 @@
     "fmw-20261114-task-smap-crop-01",
     "fmw-20261114-task-fusion-api-01",
     "fmw-20261114-task-scouting-map-01",
-    "fmw-20261114-task-crop-demo-01"
+    "fmw-20261114-task-crop-demo-01",
+    "fmw-20261114-post-all-01"
   ]
 }
