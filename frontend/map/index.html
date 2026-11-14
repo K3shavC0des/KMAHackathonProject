@@ -20,15 +20,6 @@
       <option value="observed">Nagapattinam observed NISAR tiles</option>
     </select>
     <p id="mode-note">Choose the observed view when the verified tile export is available.</p>
-    <section class="panel value-check" aria-labelledby="value-heading">
-      <div class="panel-head"><h2 id="value-heading">Moisture inspection</h2><span>Evidence for a field visit, not watering advice</span></div>
-      <div class="metrics">
-        <article><h3>Strongest local drying signal</h3><strong id="with-first">Loading…</strong></article>
-        <article><h3>Below historical standard?</h3><strong id="without-first">Loading…</strong></article>
-      </div>
-      <p id="value-change"></p>
-      <p id="rank-explanation"></p>
-    </section>
     <div class="layout">
       <section class="panel" aria-labelledby="map-heading">
         <div class="panel-head"><h2 id="map-heading">Areas</h2><span>Tap an area for evidence</span></div>
@@ -59,6 +50,15 @@
         <ol id="timeline"></ol>
       </section>
     </div>
+    <section class="panel value-check" aria-labelledby="value-heading">
+      <div class="panel-head"><h2 id="value-heading">Moisture inspection</h2><span>Evidence for a field visit, not watering advice</span></div>
+      <div class="metrics">
+        <article><h3>Strongest local drying signal</h3><strong id="with-first">Loading…</strong></article>
+        <article><h3>Below historical standard?</h3><strong id="without-first">Loading…</strong></article>
+      </div>
+      <p id="value-change"></p>
+      <p id="rank-explanation"></p>
+    </section>
   </main>
   <script type="module" src="./map.js"></script>
 </body>

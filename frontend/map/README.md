@@ -1,15 +1,22 @@
-# Scouting map slice
+# Scouting map
 
-Run from the repository root with
+From the project root, run
 `.\.tools\node-v24.15.0-win-x64\node.exe frontend/map/serve.mjs`, then open
-`http://localhost:8000/`.
+`http://127.0.0.1:8000/`.
 
-This is an interface fixture, not an Indian pilot or live measurement. The sample
-polygons load from the canonical `contracts/sample-areas.json`; the simple SVG is not a
-geographic basemap. `map.js` keeps local SME2 change and 9 km regional SMAP
-context distinct, with separate dates, units, quality, status, and source refs.
-The same server exposes `/api/rank` from `backend/rank.mjs`, showing the first
-scouting stop with and without NISAR and the selected area's explanation.
+The map defaults to four observed NISAR analysis tiles from Nagapattinam and
+keeps the synthetic sample areas in a separate evidence view. The tiles are
+not surveyed fields or verified crops. Tap a tile to inspect the local
+surface-moisture change and its two acquisition readings; expand source notes
+for granule IDs and quality details. Pan by dragging and zoom with the buttons
+or wheel. The map is a coordinate sketch, not a geographic basemap.
 
-Issue #2 owns the shared area contract. Do not infer SMAP field-scale values or
-label sample data as observed.
+The map requests collections through `/api/areas?dataset=observed` or
+`dataset=sample`, served by the shared backend handler. It checks the contract
+version and basic shape before rendering. The strongest valid local drying
+signal is an **inspection candidate**, not watering advice. SMAP seasonal
+history and a below-historical-standard flag remain unavailable until a
+quality-valid same-cell comparison is established.
+
+Run the focused checks with
+`node --test backend/rank.test.mjs frontend/map/map-data.test.mjs frontend/map/observations.test.mjs`.
