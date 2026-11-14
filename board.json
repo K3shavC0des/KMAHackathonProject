@@ -141,6 +141,14 @@
       "task": null,
       "body": "First task: ingest candidate India data and select a pilot by usable SME2 overlap, SMAP history, crop context, quality, and access. Start with Nagapattinam; assess Ludhiana and Ahmedabad if needed. Check same-area S-band separately. Issue: https://github.com/K3shavC0des/KMAHackathonProject/issues/1 . Hand the manifest to Matthewzhang2008 and ask aa1manali to review.",
       "at": "2026-11-14T20:01:56.177Z"
+    },
+    {
+      "id": "fmw-20261114-post-Matthewzhang2008-01",
+      "from": "K3shavC0des",
+      "to": "Matthewzhang2008",
+      "task": null,
+      "body": "First task: own the shared area response contract and labeled sample fixture. Agree units, grid and CRS, dates, flags, missing values, and provenance with both teammates. You own contract integration. Issue: https://github.com/K3shavC0des/KMAHackathonProject/issues/2 .",
+      "at": "2026-11-14T20:02:02.555Z"
     }
   ],
   "applied": [
@@ -159,6 +167,7 @@
     "fmw-20261114-task-scouting-map-01",
     "fmw-20261114-task-crop-demo-01",
     "fmw-20261114-post-all-01",
-    "fmw-20261114-post-K3shavC0des-01"
+    "fmw-20261114-post-K3shavC0des-01",
+    "fmw-20261114-post-Matthewzhang2008-01"
   ]
 }
