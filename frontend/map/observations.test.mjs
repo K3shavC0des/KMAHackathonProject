@@ -6,16 +6,27 @@ test('suspect and missing readings never become headline values', () => {
   const area = { observations: [
     { source: 'SMAP', quality: 'suspect', value: 0.1 },
     { source: 'SMAP', quality: 'missing', value: null },
-    { source: 'NISAR_SME2', quality: 'valid', value: -0.04 }
+    { source: 'NISAR_SME2', quality: 'valid', value: -0.04, metric: 'soil_moisture_change', spatial_scale: 'local', unit: 'm3/m3' }
   ] };
   assert.equal(usableObservation(area, 'SMAP'), null);
   assert.equal(usableObservation(area, 'NISAR_SME2')?.value, -0.04);
 });
 
 test('headline selects newest valid numeric reading without mutating source order', () => {
-  const older = { source: 'NISAR_SME2', quality: 'valid', value: -0.01, observed_at: '2026-07-01T00:00:00Z' };
+  const older = { source: 'NISAR_SME2', quality: 'valid', value: -0.01, observed_at: '2026-07-01T00:00:00Z', metric: 'soil_moisture_change', spatial_scale: 'local', unit: 'm3/m3' };
   const newer = { ...older, value: -0.03, observed_at: '2026-07-02T00:00:00Z' };
   const area = { observations: [older, newer, { ...newer, value: null, observed_at: '2026-07-03T00:00:00Z' }] };
   assert.equal(usableObservation(area, 'NISAR_SME2'), newer);
   assert.equal(area.observations[0], older);
+});
+
+test('absolute moisture and incompatible units cannot become the change headline', () => {
+  const change = { source: 'NISAR_SME2', quality: 'valid', value: -.02, observed_at: '2026-07-02T00:00:00Z', metric: 'soil_moisture_change', spatial_scale: 'local', unit: 'm3/m3' };
+  const area = { observations: [
+    { ...change, metric: 'soil_moisture', value: .24 },
+    { ...change, unit: 'percent', value: 24 },
+    { ...change, spatial_scale: 'regional' },
+    change
+  ] };
+  assert.equal(usableObservation(area, 'NISAR_SME2'), change);
 });
