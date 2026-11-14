@@ -113,8 +113,8 @@
       "paths": [
         "data/observed"
       ],
-      "status": "queued",
-      "evidence": ""
+      "status": "working",
+      "evidence": "Claiming reproducible real observed regional coverage. I will retain analysis-tile labeling and unavailable SMAP/crop state."
     }
   },
   "messages": [
@@ -736,6 +736,7 @@
     "fmw-google-maps-camera-post-20261114-01",
     "fmw-maplibre-startup-fix-50f53eb-01",
     "67d46275-dd7e-4ff7-89a7-fa33fa225d63",
-    "490606ab-63b5-4df4-8211-75e1c29247ac"
+    "490606ab-63b5-4df4-8211-75e1c29247ac",
+    "69a0e5d0-a78e-4cd9-b487-56125c21655b"
   ]
 }
