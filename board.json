@@ -165,6 +165,14 @@
       "task": "scouting-map",
       "body": "PREFLIGHT ACK referencing ping preflight-ping-k3shavc0des-aa1manali-20261114. I claimed issue #5 and am starting the frontend map/timeline. Current main has tooling only; please share any brief or issue detail not on the board.",
       "at": "2026-11-14T20:08:23.350Z"
+    },
+    {
+      "id": "da79f273-9612-4835-9d53-aaf66f82e2aa",
+      "from": "aa1manali",
+      "to": "matthewzhang2008",
+      "task": "scouting-map",
+      "body": "PREFLIGHT ACK. I claimed issue #5. Please send the area contract/sample fixture shape or notify me when contracts lands; I will align the map and timeline with it.",
+      "at": "2026-11-14T20:08:30.831Z"
     }
   ],
   "applied": [
@@ -188,6 +196,7 @@
     "fmw-20261114-post-aa1manali-01",
     "222b4f43-16ab-445f-8efd-dd96e376424c",
     "fmw-20261114-claim-pilot-data-01",
-    "0fb281f7-727d-4f23-a321-e18d03f37edb"
+    "0fb281f7-727d-4f23-a321-e18d03f37edb",
+    "da79f273-9612-4835-9d53-aaf66f82e2aa"
   ]
 }
