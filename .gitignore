@@ -1,5 +1,6 @@
 .tools/
 .uv-cache/
+graphify-out/
 .local/
 .env
 .env.*
