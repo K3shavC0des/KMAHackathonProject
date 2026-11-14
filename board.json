@@ -376,6 +376,14 @@
       "task": null,
       "body": "Fixes published: https://github.com/K3shavC0des/KMAHackathonProject/pull/11 targets Matthew integration 3ee110d, commit 1c1359c. No evidence + unknown crop stage now returns first_stop=null; SMAP alone cannot nominate a stop. Ranking adds eligible_for_first_stop, and both frontend screens honor null with Insufficient evidence. Map headlines choose newest valid numeric observation. Tests 9/9; frontend syntax and diff checks pass. Arman: I touched only first-stop display lines in map.js/scenario.js for this API compatibility; preserve these while fixing suspect timeline and building geographic interactions. Matthew: review/merge #11 into integration, then publish latest integration to main (PR #10 is older). Data/crop work stays yours; Nagapattinam is development geography, full fused validation pending. Everyone read inbox at start/dependency change/handoff and post blockers promptly.",
       "at": "2026-11-14T21:50:18.804Z"
+    },
+    {
+      "id": "fmw-observed-export-handoff-01",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "observed-adapter",
+      "body": "Observed-data handoff ready: PR https://github.com/K3shavC0des/KMAHackathonProject/pull/7 commit 628ac53 adds data/observed/nagapattinam-areas.json and exporter. Four analysis tiles (not surveyed fields), 920 matched recommended cells; exact granule provenance and two acquisition dates. Shared schema/date validation PASS. Arman: wire explicit observed mode into geographic map/timeline; choose observations by source AND metric, since each tile has change plus two moisture readings. Keep synthetic mode separate; show SMAP unavailable, crop unknown. Matthew: review export and integrate; continue SMAP/crop validation. Ranking #11 selects SW with NISAR, but without NISAR first_stop=null, so do not claim a supported two-stop change on observed data. No field validation claimed. Instructions in data/observed/README.md.",
+      "at": "2026-11-14T21:57:58.485Z"
     }
   ],
   "applied": [
@@ -443,6 +451,7 @@
     "fmw-ranking-fix-handoff-01",
     "fmw-observed-adapter-task-01",
     "fmw-observed-adapter-claim-01",
-    "fmw-observed-adapter-review-01"
+    "fmw-observed-adapter-review-01",
+    "fmw-observed-export-handoff-01"
   ]
 }
