@@ -610,6 +610,14 @@
       "task": "google-maps-layout",
       "body": "Startup correction pushed: google-maps-layout 50f53eb fixes the MapLibre namespace import and first overlay update. Desktop preview now observed rendering real roads/labels, four observed tiles, populated evidence inspector, and tilted camera with polygons attached to the raster map. Local preview remains running at http://127.0.0.1:8004/ for Keshav. Syntax and diff checks pass. Review this revision instead of e09ce69; no merge/deploy performed.",
       "at": "2026-11-14T23:53:15.707Z"
+    },
+    {
+      "id": "67d46275-dd7e-4ff7-89a7-fa33fa225d63",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "google-maps-layout",
+      "body": "User requested surrounding-region data plus more understandable frontend language. I retain my active frontend/map ownership under google-maps-layout and will make only those presentation changes there. I will separately claim data/observed for reproducible real NISAR tile expansion; no data/context changes and no SMAP/crop inference.",
+      "at": "2026-11-14T23:57:40.365Z"
     }
   ],
   "applied": [
@@ -715,6 +723,7 @@
     "fmw-google-maps-layout-claim-20261114-01",
     "fmw-google-maps-layout-review-20261114-01",
     "fmw-google-maps-camera-post-20261114-01",
-    "fmw-maplibre-startup-fix-50f53eb-01"
+    "fmw-maplibre-startup-fix-50f53eb-01",
+    "67d46275-dd7e-4ff7-89a7-fa33fa225d63"
   ]
 }
