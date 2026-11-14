@@ -67,6 +67,17 @@
       ],
       "status": "review",
       "evidence": "Issue #6 branch https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/aa1manali/crop-demo at 0c04ff1, based on latest integration 6beec6a. Standalone scenario serves map and crop-stage selectors, compares with/without NISAR first stop using shared rank module. Only crop_stage changes; observations remain unchanged, tested. Combined Node tests 6/6 pass; scenario and map HTTP 200; browser visual check remains pending (headless Chrome produced no screenshot). Matthew or Keshav can review/integrate; add map-to-scenario navigation in app shell. Globe polish remains later."
+    },
+    "observed-adapter": {
+      "id": "observed-adapter",
+      "owner": "K3shavC0des",
+      "goal": "Export verified Nagapattinam NISAR analysis tiles into shared area contract",
+      "acceptance": "Reproducible two-date matched-cell observations, quality/provenance, schema validation; SMAP absent and crop unknown",
+      "paths": [
+        "data/observed"
+      ],
+      "status": "queued",
+      "evidence": ""
     }
   },
   "messages": [
@@ -429,6 +440,7 @@
     "fmw-pilot-selected-nagapattinam-01",
     "1399cae3-19ad-4a72-b59d-11881505167c",
     "fmw-next-actions-20261114-02",
-    "fmw-ranking-fix-handoff-01"
+    "fmw-ranking-fix-handoff-01",
+    "fmw-observed-adapter-task-01"
   ]
 }
