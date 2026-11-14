@@ -65,8 +65,8 @@
       "paths": [
         "frontend/scenario"
       ],
-      "status": "queued",
-      "evidence": ""
+      "status": "working",
+      "evidence": "Starting issue #6 scenario against Matthew integration branch ebfe953; will keep edits in frontend/scenario and preserve observation values."
     }
   },
   "messages": [
@@ -337,6 +337,7 @@
     "cf302acb-b8c9-4f27-87d2-c16bbaf20839",
     "review-area-contract-done-20261114-01",
     "review-fusion-api-done-20261114-01",
-    "review-map-feedback-matthew-20261114-01"
+    "review-map-feedback-matthew-20261114-01",
+    "7e6e0c63-7b67-4434-9884-e023b8827f4b"
   ]
 }
