@@ -37,7 +37,7 @@ per-date summaries and matched mask exclude nonfinite values and each dataset's
 own fill value. Coordinate axes must be finite, one-dimensional and monotonic.
 
 Run `python -m unittest discover -s data/pilot -p test_verify_pair.py`.
-Ten HDF5 regression tests pass, including shifted same-size grids, independent
+Eleven HDF5 regression tests pass, including shifted same-size grids, independent
 fill values, NaN/Infinity, quality failures and empty coverage.
 
 Rerunning the actual downloaded June 20/July 2 pair with

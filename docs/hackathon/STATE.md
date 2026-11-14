@@ -34,19 +34,22 @@ Keshav claimed `pilot-data` for verifier work on
 `hackathon/K3shavC0des/pilot-verification`, based on integration `cc3abcb`.
 `data/pilot/verify_pair.py` now checks full coordinate axes and matching
 acquisition metadata/units/date order before comparing cells. Per-date summaries
-also reject nonfinite moisture. Ten temporary-HDF5 regression tests pass.
+also reject nonfinite moisture and quality fill values. Eleven temporary-HDF5
+regression tests pass.
 The accessible local HDF5 runtime reopened the real June 20/July 2 pair and
 reproduced 920 matched recommended cells, median change -0.01749463379383087
-m3/m3 for [79.74, 10.70, 79.80, 10.76]. Existing Node tests pass 11/11.
+m3/m3 for [79.74, 10.70, 79.80, 10.76]. Matthew integrated and reviewed the
+two verifier commits on the shared integration branch; the full Node suite
+passes 22/22.
 See `data/pilot/VERIFICATION.md` for checks and reproduction.
 
-Next actor: Matthew can review/integrate this verifier change; Arman continues
-map work. Keshav's local HDF5 run resolves the verifier runtime blocker here,
-but does not supply nearby-date SMAP files or historical QC. Regional baseline,
+Keshav's local HDF5 run and Matthew's independent 11/11 regression rerun resolve
+the verifier runtime blocker here. The frontend owners continue the map work.
+These checks do not supply nearby-date SMAP files or historical QC. Regional baseline,
 agricultural polygon validation and full fused pilot acceptance remain pending.
 
 ## Last verification and next action
 
-Node tests: 22/22 passed, covering moisture-only ranking, canonical JSON Schema validation with Ajv, conditional regional anomaly gate, observed-data separation, latest-valid map readings, legacy scenario isolation, and same-origin API routing from the map server. Python observed-export validation tests: 5/5; pure seasonal-window tests: 3/3. NASA CMR nearby-date query returned 31 catalog granules. HDF5 tests and real-file SMAP check remain blocked by application control and absent source files. Combined observed frontend review and final project page publication remain open. `SUBMISSION_DRAFT.md` requires the revised scope before publication.
+Node tests: 22/22 passed, covering moisture-only ranking, canonical JSON Schema validation with Ajv, conditional regional anomaly gate, observed-data separation, latest-valid map readings, legacy scenario isolation, and same-origin API routing from the map server. NISAR pair-verifier tests: 11/11; SMAP context tests: 6/6. NASA CMR nearby-date query returned 31 catalog granules. The real-file SMAP history check remains blocked by absent source files. Combined observed frontend review and final project page publication remain open. `SUBMISSION_DRAFT.md` requires the revised scope before publication.
 
 Next: coordinate with Manali on the explicit observed dataset path and map navigation, review desktop/mobile behavior, and revise the NASA page for the map-first moisture inspection story. If accessible source files and an HDF5-capable runtime arrive, test nearby SMAP dates and at least five historical quality-valid years before computing an anomaly. Preserve local edits and never commit `.tools/`, `.local/`, credentials, or downloaded granules.
