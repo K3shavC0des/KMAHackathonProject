@@ -104,6 +104,17 @@
       ],
       "status": "review",
       "evidence": "Branch https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/K3shavC0des/google-maps-layout at db869c8. Replaced the illustrative SVG with a Leaflet + OpenStreetMap regional basemap centered on Nagapattinam. Users can native-pan/zoom, select India or Nagapattinam views, and tap real-coordinate observed/sample polygons to update the inspector. Desktop browser verified: road/place tiles render, observed tiles overlay, selected tile updates evidence panel. Checks: Node 23/23; map JS syntax; diff check PASS. Limitation: Leaflet/OSM tiles require network; explicit message appears when the basemap library cannot load. Next actor: Matthew review/integrate; Arman can visual review."
+    },
+    "regional-observed-coverage": {
+      "id": "regional-observed-coverage",
+      "owner": "K3shavC0des",
+      "goal": "Expand the verified NISAR analysis-tile export around Nagapattinam without claiming field, crop, or SMAP evidence.",
+      "acceptance": "Reproducible verified observed regional tiles with explicit coverage and limits.",
+      "paths": [
+        "data/observed"
+      ],
+      "status": "queued",
+      "evidence": ""
     }
   },
   "messages": [
@@ -724,6 +735,7 @@
     "fmw-google-maps-layout-review-20261114-01",
     "fmw-google-maps-camera-post-20261114-01",
     "fmw-maplibre-startup-fix-50f53eb-01",
-    "67d46275-dd7e-4ff7-89a7-fa33fa225d63"
+    "67d46275-dd7e-4ff7-89a7-fa33fa225d63",
+    "490606ab-63b5-4df4-8211-75e1c29247ac"
   ]
 }
