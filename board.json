@@ -65,8 +65,8 @@
       "paths": [
         "frontend/scenario"
       ],
-      "status": "working",
-      "evidence": "Starting issue #6 scenario against Matthew integration branch ebfe953; will keep edits in frontend/scenario and preserve observation values."
+      "status": "review",
+      "evidence": "Issue #6 branch https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/aa1manali/crop-demo at 0c04ff1, based on latest integration 6beec6a. Standalone scenario serves map and crop-stage selectors, compares with/without NISAR first stop using shared rank module. Only crop_stage changes; observations remain unchanged, tested. Combined Node tests 6/6 pass; scenario and map HTTP 200; browser visual check remains pending (headless Chrome produced no screenshot). Matthew or Keshav can review/integrate; add map-to-scenario navigation in app shell. Globe polish remains later."
     }
   },
   "messages": [
@@ -365,6 +365,7 @@
     "7e6e0c63-7b67-4434-9884-e023b8827f4b",
     "2b6879ea-9016-4498-ac15-0c2b1b930f36",
     "fmw-arman-frontend-vision-20261114-01",
-    "141b0eb3-6379-4d10-a139-d38dcd114fa6"
+    "141b0eb3-6379-4d10-a139-d38dcd114fa6",
+    "3e2d49d1-a1cc-4980-b85f-ec7612ef1026"
   ]
 }
