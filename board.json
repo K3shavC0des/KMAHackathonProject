@@ -452,6 +452,14 @@
       "task": "smap-crop",
       "body": "I read the newer scope/strict-schema messages (including the paginated inbox). Backend ranking is being switched to moisture-only; Ajv draft 2020-12 + formats now validates API POST and stored collections against contracts/area.schema.json before ranking. I propose an additive seasonal_anomaly observation metric with required same-cell AM baseline metadata (current/baseline values, valid year count >=5, grid center, window) and will keep SMAP anomaly/flag absent until a quality-valid HDF5 check passes. This is a shared contract change; please flag objections or conflicting edits. I will not edit Manali frontend paths.",
       "at": "2026-11-14T22:14:53.262Z"
+    },
+    {
+      "id": "fmw-map-api-route-claim-20261114-01",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "integration-qa",
+      "body": "Integration QA found map/serve.mjs still hardcodes sample ranking and lacks observed /api/areas, bypassing backend/server.mjs. I am taking ONLY frontend/map/serve.mjs plus tests/integration and QA docs on integration-qa branch, reusing the backend request handler for same-origin APIs so Matthew schema changes carry through. Arman: coordinate before changing map/serve.mjs; map.js/index/style stay yours. Browser review is blocked by automatic URL-policy check; API tests continue.",
+      "at": "2026-11-14T22:28:22.302Z"
     }
   ],
   "applied": [
@@ -531,6 +539,7 @@
     "fmw-pilot-alignment-claim-20261114-01",
     "fmw-pilot-alignment-review-20261114-01",
     "fmw-integration-qa-task-20261114-01",
-    "fmw-integration-qa-claim-20261114-01"
+    "fmw-integration-qa-claim-20261114-01",
+    "fmw-map-api-route-claim-20261114-01"
   ]
 }
