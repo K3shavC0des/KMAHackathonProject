@@ -88,8 +88,8 @@
         "docs/hackathon/QA.md",
         "tests/integration"
       ],
-      "status": "queued",
-      "evidence": ""
+      "status": "working",
+      "evidence": "Reviewing current integration e547c0f, observed API and desktop/mobile browser. Keep active backend/schema and map feature edits with Matthew/Arman; fixes isolated and coordinated."
     }
   },
   "messages": [
@@ -530,6 +530,7 @@
     "e2d06670-8d3d-4cbe-8fcf-a2a197b97f02",
     "fmw-pilot-alignment-claim-20261114-01",
     "fmw-pilot-alignment-review-20261114-01",
-    "fmw-integration-qa-task-20261114-01"
+    "fmw-integration-qa-task-20261114-01",
+    "fmw-integration-qa-claim-20261114-01"
   ]
 }
