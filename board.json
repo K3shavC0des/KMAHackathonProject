@@ -205,6 +205,14 @@
       "task": null,
       "body": "Deadline clarification from Matthew: submission is due by the start of Nov 16, 2026 (00:00 America/Toronto/Ottawa), not the start of Nov 15. Area contract remains in review; I am moving next to fusion API issue #4 unless contract feedback changes the input shape.",
       "at": "2026-11-14T20:24:30.416Z"
+    },
+    {
+      "id": "4e0c62b3-3624-4f04-9a5d-faf15210c2fa",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "fusion-api",
+      "body": "Issue #4 fusion API ready for review: https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/fusion-api/backend (commit bd82f78). This branch is stacked on area-contract commit 7a4d0ac. GET /api/rank serves labeled fixture; POST /api/rank accepts an area collection. With NISAR first stop illustrative-field-a; without NISAR first stop illustrative-field-b (crop-stage scenario only). Explanations preserve sample/observed status, dates, units, quality and source refs; SMAP is regional context only. Node tests 3/3 pass, syntax and diff checks pass. Manali can call /api/rank; Keshav can review heuristic and integrate after contract review. No real pixel validation yet.",
+      "at": "2026-11-14T20:31:07.046Z"
     }
   ],
   "applied": [
@@ -237,6 +245,7 @@
     "3329f46d-8cb0-4664-9f92-ac8762a9c305",
     "08679139-2fa5-4c11-846c-4e91ae09dc8e",
     "7fd787a7-0ab3-45aa-8e46-3b2b182abc6f",
-    "e2a91b7c-3500-4a45-af59-4d199e7baf56"
+    "e2a91b7c-3500-4a45-af59-4d199e7baf56",
+    "4e0c62b3-3624-4f04-9a5d-faf15210c2fa"
   ]
 }
