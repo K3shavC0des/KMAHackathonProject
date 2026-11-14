@@ -54,8 +54,8 @@
       "paths": [
         "frontend/map"
       ],
-      "status": "working",
-      "evidence": "Starting issue #5 scouting map and area timeline; will use reviewed contracts fixture when available."
+      "status": "review",
+      "evidence": "Issue #5 review: https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/aa1manali/scouting-map at bcbdbc2. Uses exact issue #2 sample fixture 7a4d0ac; local SME2 vs 9 km regional SMAP, dates/units/quality/status/source refs, unavailable SMAP state. Node syntax checks pass; HTTP 200 for page, JS, fixture; two fixture areas confirmed. Keshav or Matthew can review/integrate after contract; browser visual check still needed."
     },
     "crop-demo": {
       "id": "crop-demo",
@@ -295,6 +295,7 @@
     "fmw-20261114-takeover-handoff-01",
     "2ee589ec-d805-4d2b-b698-47e4d36d1ec0",
     "f4b79b48-6b83-4db7-bdb7-4e49f61e753b",
-    "fmw-20261114-pushed-verification-files-01"
+    "fmw-20261114-pushed-verification-files-01",
+    "d36031c4-6bd2-4f65-988b-46fd4493cc9f"
   ]
 }
