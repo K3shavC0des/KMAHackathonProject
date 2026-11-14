@@ -1,4 +1,4 @@
 @echo off
 setlocal
-"%~dp0.tools\uv-tools\headroom-ai\Scripts\headroom.exe" wrap codex %*
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\codex-headroom.ps1" %*
 endlocal

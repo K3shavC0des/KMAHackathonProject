@@ -28,9 +28,10 @@ if (-not $SkipDownloads) {
 $node = Join-Path $nodeDir 'node.exe'
 $npm = Join-Path $nodeDir 'npm.cmd'
 if (-not (Test-Path $node) -or -not (Test-Path $npm)) { throw "Node.js runtime missing. Rerun without -SkipDownloads." }
+$env:Path = "$nodeDir;$bunDir;$env:Path"
 
 if (-not (Test-Path (Join-Path $runtime 'node_modules/claude-mem'))) {
-    & $npm install --prefix $runtime claude-mem --no-audit --no-fund
+    & $npm install --prefix $runtime claude-mem@15.18.3 --no-audit --no-fund
     if ($LASTEXITCODE -ne 0) { throw 'Claude Mem installation failed.' }
 }
 
@@ -40,13 +41,19 @@ $uvPython = Join-Path $tools 'uv-python'
 $env:UV_CACHE_DIR = $uvCache
 $env:UV_TOOL_DIR = $uvTools
 $env:UV_PYTHON_INSTALL_DIR = $uvPython
-if (Get-Command uv -ErrorAction SilentlyContinue) {
-    uv python install 3.13
-    uv tool install --python 3.13 'headroom-ai[all]'
-    if ($LASTEXITCODE -ne 0) { Write-Warning 'Headroom install failed; rerun this script after fixing uv.' }
-    uv tool install --python 3.13 graphifyy
-    if ($LASTEXITCODE -ne 0) { Write-Warning 'Graphify install failed; rerun this script after fixing uv.' }
-} else { Write-Warning 'uv is missing; install uv, then rerun to enable Headroom and Graphify.' }
+$uv = Get-Command uv -ErrorAction SilentlyContinue
+if (-not $uv -and -not $SkipDownloads) {
+    Get-Archive 'https://github.com/astral-sh/uv/releases/download/0.9.17/uv-x86_64-pc-windows-msvc.zip' 'uv-windows.zip' (Join-Path $tools 'uv.exe')
+}
+$uvBinary = if ($uv) { $uv.Source } else { Join-Path $tools 'uv.exe' }
+if (Test-Path $uvBinary) {
+    & $uvBinary python install 3.13
+    if ($LASTEXITCODE -ne 0) { throw 'Python installation failed.' }
+    & $uvBinary tool install --python 3.13 'headroom-ai[all]==0.44.0'
+    if ($LASTEXITCODE -ne 0) { throw 'Headroom installation failed.' }
+    & $uvBinary tool install --python 3.13 graphifyy==0.9.108
+    if ($LASTEXITCODE -ne 0) { throw 'Graphify installation failed.' }
+} else { throw 'uv is missing. Rerun without -SkipDownloads.' }
 
 New-Item -ItemType Directory -Force (Join-Path $root '.local/claude-mem') | Out-Null
 if ($Actor) {
@@ -56,6 +63,7 @@ if ($Actor) {
 }
 Write-Host ''
 Write-Host 'Auxiliary skills are ready for this project.' -ForegroundColor Green
+Write-Host 'Packages installed; recording hooks and live model requests require separate verification.'
 Write-Host 'Start memory: .\scripts\memory.ps1 start'
 Write-Host 'Check memory: .\scripts\memory.ps1 status'
 Write-Host 'Codex MCP config: .codex\config.toml'
