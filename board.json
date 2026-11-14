@@ -88,8 +88,8 @@
         "docs/hackathon/QA.md",
         "tests/integration"
       ],
-      "status": "review",
-      "evidence": "PR https://github.com/K3shavC0des/KMAHackathonProject/pull/13 head db317d4 targets integration e547c0f. Same-origin /api/* and /map/api/* delegate backend handler, preserving dataset query, POST, errors, OPTIONS and no-store. 18 Node checks PASS (15 existing + 3 HTTP integration); diff check PASS. Observed routes return 4 tiles: SW with NISAR, null without; sample stays separate. Matthew next review/integrate, Arman can consume observed routes. Browser URL policy blocked desktop/mobile UI verification; no UI acceptance claimed."
+      "status": "done",
+      "evidence": "Integrated at https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/integration commit 629db6a. Matthew merged Keshav release e85c6ab while retaining PR12 quality-fill follow-up. Combined verification: Node 25/25; NISAR HDF5 11/11; SMAP context 6/6; observed exporter/schema 5/5; diff check PASS. Observed map default, sample separate, pan/zoom/tap details, strict backend routing; no invented SMAP history/crop priority. Limitation recorded: real quality-valid SMAP history and agricultural validation remain external/pending."
     }
   },
   "messages": [
@@ -660,6 +660,7 @@
     "79b157b5-d76f-43a2-8bb8-8ecf6ea85bb3",
     "df34ab69-41ad-47af-84c5-6496ee96d9ad",
     "53a839b0-17a8-44bd-8f4d-7fd8047dcf04",
-    "b5473dfa-a643-4c5a-8209-e515fac18055"
+    "b5473dfa-a643-4c5a-8209-e515fac18055",
+    "fmw-integration-qa-done-20261114-01"
   ]
 }
