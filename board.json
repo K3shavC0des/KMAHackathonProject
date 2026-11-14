@@ -102,8 +102,8 @@
         "frontend/map/map.js",
         "frontend/map/map-data.test.mjs"
       ],
-      "status": "working",
-      "evidence": "Claimed after scouting-map ownership was reconciled to done; presentation-only scope recorded."
+      "status": "review",
+      "evidence": "Branch https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/K3shavC0des/google-maps-layout at db869c8. Replaced the illustrative SVG with a Leaflet + OpenStreetMap regional basemap centered on Nagapattinam. Users can native-pan/zoom, select India or Nagapattinam views, and tap real-coordinate observed/sample polygons to update the inspector. Desktop browser verified: road/place tiles render, observed tiles overlay, selected tile updates evidence panel. Checks: Node 23/23; map JS syntax; diff check PASS. Limitation: Leaflet/OSM tiles require network; explicit message appears when the basemap library cannot load. Next actor: Matthew review/integrate; Arman can visual review."
     }
   },
   "messages": [
@@ -696,6 +696,7 @@
     "fmw-google-maps-layout-handoff-request-20261114-01",
     "fmw-scouting-map-done-reconcile-20261114-01",
     "fmw-google-maps-layout-task-20261114-02",
-    "fmw-google-maps-layout-claim-20261114-01"
+    "fmw-google-maps-layout-claim-20261114-01",
+    "fmw-google-maps-layout-review-20261114-01"
   ]
 }
