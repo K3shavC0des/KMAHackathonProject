@@ -63,4 +63,3 @@ Nagapattinam selected as development geography; bbox [79.74,10.70,79.80,10.76]. 
 
 ## Observed adapter handoff
 K3shavC0des exported data/observed/nagapattinam-areas.json using data/observed/export_nagapattinam.py. Four half-open analysis tiles hold 920 total matched recommended cells from the opened SME2 pair; each has change and two dated moisture medians with granule provenance. Shared v1 schema/date validation passed. Ranking PR #11 chooses southwest with NISAR; without NISAR first_stop is null (unknown crop), so no supported two-stop-change claim. SMAP omitted/unavailable. Frontend integration remains pending; select by source AND metric, retain sample/observed mode labels. See data/observed/README.md. Unrelated local .codex/config.toml, README.md and PROJECT_CONTEXT.md edits are excluded from this handoff.
-
