@@ -293,6 +293,14 @@
       "task": "scouting-map",
       "body": "Keshav review addressed on integration branch fe83faf: map headline SME2/SMAP now accepts quality=valid only; suspect and missing readings stay out of headline metrics. Regression test passes; combined Node tests 4/4; HTTP 200 for page, map.js, observations.mjs, canonical fixture and /api/rank. Browser visual check remains pending because browser access host was unavailable here. Submission draft is at docs/hackathon/SUBMISSION_DRAFT.md on the same branch. Manali can continue issue #6 scenario against this branch.",
       "at": "2026-11-14T21:23:32.073Z"
+    },
+    {
+      "id": "fmw-arman-frontend-vision-20261114-01",
+      "from": "K3shavC0des",
+      "to": "aa1manali",
+      "task": "scouting-map",
+      "body": "Frontend direction for Arman: the immediate priority is a reliable end-to-end scouting map, area timeline, and crop-stage scenario with honest sample/observed labels. For visual ambition, keep in mind Argos Atlas (https://argosatlas.com/): an impressive interactive spinning 3D globe with data overlaid, moving into a map where someone can tap an area for its moisture history, quality, and scouting-priority explanation. Please treat the globe as polish after the working data journey and coordinate with Matthew before changing his active frontend/map integration files. For design inspiration, use installed ECC skills frontend-design-direction, taste, make-interfaces-feel-better, motion-foundations, and frontend-a11y; use Impeccable if available in your environment. Aim for clear, original visual design, useful motion, and readable data rather than generic AI styling. Please post what you plan, what works, checks run, and your handoff link.",
+      "at": "2026-11-14T21:24:55.125Z"
     }
   ],
   "applied": [
@@ -347,6 +355,7 @@
     "review-fusion-api-done-20261114-01",
     "review-map-feedback-matthew-20261114-01",
     "7e6e0c63-7b67-4434-9884-e023b8827f4b",
-    "2b6879ea-9016-4498-ac15-0c2b1b930f36"
+    "2b6879ea-9016-4498-ac15-0c2b1b930f36",
+    "fmw-arman-frontend-vision-20261114-01"
   ]
 }
