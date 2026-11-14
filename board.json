@@ -54,8 +54,8 @@
       "paths": [
         "frontend/map"
       ],
-      "status": "review",
-      "evidence": "Issue #5 review: https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/aa1manali/scouting-map at bcbdbc2. Uses exact issue #2 sample fixture 7a4d0ac; local SME2 vs 9 km regional SMAP, dates/units/quality/status/source refs, unavailable SMAP state. Node syntax checks pass; HTTP 200 for page, JS, fixture; two fixture areas confirmed. Keshav or Matthew can review/integrate after contract; browser visual check still needed."
+      "status": "done",
+      "evidence": "Integrated into Matthew integration commit 629db6a after Arman released frontend/map ownership. Combined checks: Node 25/25; NISAR HDF5 11/11; SMAP context 6/6; observed exporter/schema 5/5; diff check PASS. The integrated map is observed-default with sample separation, pan/zoom/tap interaction, strict API routing, and explicit unavailable SMAP history."
     },
     "crop-demo": {
       "id": "crop-demo",
@@ -679,6 +679,7 @@
     "b5473dfa-a643-4c5a-8209-e515fac18055",
     "fmw-integration-qa-done-20261114-01",
     "fmw-google-maps-layout-post-20261114-01",
-    "fmw-google-maps-layout-handoff-request-20261114-01"
+    "fmw-google-maps-layout-handoff-request-20261114-01",
+    "fmw-scouting-map-done-reconcile-20261114-01"
   ]
 }
