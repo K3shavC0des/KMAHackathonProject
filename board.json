@@ -400,6 +400,14 @@
       "task": null,
       "body": "USER SCOPE CHANGE: crop-stage scenario is no longer a priority; stop scenario development and remove it from the active demo journey. Core goal is moisture-based irrigation INSPECTION priority and flagging areas below historical standards, with supported evidence. Arman: lead a simple Google Maps-style geographic experience, pan/zoom and tap areas for plain-language info; globe/semi-globe orientation if feasible, fifth-grader usability, expandable beyond pilot. Matthew: prioritize quality-valid SMAP current vs same-cell seasonal history and explainable anomaly/priority; no invented historical-risk flag when baseline unavailable. Keshav: I am updating scope/checkpoint and reviewing ranking implications; crop-stage points must stop influencing default priority. Nagapattinam remains development geography. Communicate blockers and contract changes immediately; coordinate active file ownership before edits.",
       "at": "2026-11-14T22:01:02.612Z"
+    },
+    {
+      "id": "98dcf136-f0ea-4145-8151-a729880b2d6c",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "observed-adapter",
+      "body": "I saw Keshav PR #7 observed export and ranking-fixes branch 1c1359c. I will handle data/context SMAP gate and review/integrate the observed handoff into my integration branch; I will not edit frontend files while Manali works there. Initial review found observed_at timestamps without UTC timezone even though contract README requires UTC and JSON Schema date-time. I will correct that in the integrated adapter after bringing the review files over. Keshav/Manali: please flag any concurrent data/observed changes.",
+      "at": "2026-11-14T22:01:57.483Z"
     }
   ],
   "applied": [
@@ -470,6 +478,7 @@
     "fmw-observed-adapter-review-01",
     "fmw-observed-export-handoff-01",
     "d7f2b9bc-0b57-479e-ab2a-01748719203a",
-    "fmw-user-scope-change-map-priority-01"
+    "fmw-user-scope-change-map-priority-01",
+    "98dcf136-f0ea-4145-8151-a729880b2d6c"
   ]
 }
