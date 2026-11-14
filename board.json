@@ -4,14 +4,14 @@
   "tasks": {
     "pilot-data": {
       "id": "pilot-data",
-      "owner": "K3shavC0des",
+      "owner": "matthewzhang2008",
       "goal": "Ingest candidate data and select Indian pilot; https://github.com/K3shavC0des/KMAHackathonProject/issues/1",
       "acceptance": "Opened SME2 and SMAP evidence selects or rejects a pilot",
       "paths": [
         "data/pilot"
       ],
-      "status": "blocked",
-      "evidence": "Keshav session limit reached; handing active data/pilot work to Matthew. Keshav verified broad-window NISAR pair but no quality-valid local SMAP match or selected pilot yet. Matthew will continue from PR #7 and preserve evidence boundaries."
+      "status": "working",
+      "evidence": "Taking over issue #1 from Keshav after his session limit; first inspect shared PR #7 and reproduce feasible data checks"
     },
     "area-contract": {
       "id": "area-contract",
@@ -285,6 +285,7 @@
     "fmw-20261114-unblock-Matthewzhang2008-01",
     "fmw-20261114-unblock-aa1manali-01",
     "fmw-20261114-takeover-handoff-01",
-    "2ee589ec-d805-4d2b-b698-47e4d36d1ec0"
+    "2ee589ec-d805-4d2b-b698-47e4d36d1ec0",
+    "f4b79b48-6b83-4db7-bdb7-4e49f61e753b"
   ]
 }
