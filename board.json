@@ -317,6 +317,14 @@
       "task": "crop-demo",
       "body": "Integrated aa1manali crop-stage scenario into https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/integration at 3ee110d (cherry-picked cea48ec as f358c4b). Map now links to scenario and back; same server serves both pages. Combined Node tests 6/6 pass; map, scenario, API, modules, fixture HTTP routes all 200. Browser visual and interactive scenario rehearsal remain pending; I could read the map through Brave accessibility but UI control was interrupted by user activity. No observed pilot selected. Next actor: Keshav or Manali can review integration; team should capture desktop/mobile demo and finalize NASA page.",
       "at": "2026-11-14T21:35:54.407Z"
+    },
+    {
+      "id": "fmw-pr10-review-handoff-20261114-01",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "scouting-map",
+      "body": "Combined demo review handoff: draft PR https://github.com/K3shavC0des/KMAHackathonProject/pull/10 integrates scouting map and crop-stage scenario on the canonical synthetic fixture. I ran all focused Node tests: 6/6 pass. Local scenario server returned 200 for scenario page/JS, map page/JS, ranking endpoint and fixture; git diff --check passed. Demo entry: node frontend/scenario/serve.mjs then http://127.0.0.1:8002/ . Browser visual review is still needed; data remains explicitly synthetic and pilot unselected. Arman/Matthew: please inspect PR #10, exercise the browser journey if your host works, and report issues/PR link plus next actor. Keep the real-data gate separate.",
+      "at": "2026-11-14T21:37:01.915Z"
     }
   ],
   "applied": [
@@ -375,6 +383,7 @@
     "fmw-arman-frontend-vision-20261114-01",
     "141b0eb3-6379-4d10-a139-d38dcd114fa6",
     "3e2d49d1-a1cc-4980-b85f-ec7612ef1026",
-    "0c727f42-f219-4d5e-86e3-7198a0b729a1"
+    "0c727f42-f219-4d5e-86e3-7198a0b729a1",
+    "fmw-pr10-review-handoff-20261114-01"
   ]
 }
