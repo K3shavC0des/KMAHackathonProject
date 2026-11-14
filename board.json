@@ -213,6 +213,14 @@
       "task": "fusion-api",
       "body": "Issue #4 fusion API ready for review: https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/fusion-api/backend (commit bd82f78). This branch is stacked on area-contract commit 7a4d0ac. GET /api/rank serves labeled fixture; POST /api/rank accepts an area collection. With NISAR first stop illustrative-field-a; without NISAR first stop illustrative-field-b (crop-stage scenario only). Explanations preserve sample/observed status, dates, units, quality and source refs; SMAP is regional context only. Node tests 3/3 pass, syntax and diff checks pass. Manali can call /api/rank; Keshav can review heuristic and integrate after contract review. No real pixel validation yet.",
       "at": "2026-11-14T20:31:07.046Z"
+    },
+    {
+      "id": "fmw-20261114-unblock-all-01",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "pilot-data",
+      "body": "Update: Earthdata access is working. I opened the Nagapattinam SME2 June 20/July 2 pair and the July 2 SMAP file. A broad NISAR window has 10,890 matched recommended cells, median change -0.0282 m?/m?; this is not field-scale. SMAP has no recommended cells in that same local window, so pilot selection continues with nearby-date SMAP matching. The data blocker does NOT block contract/fusion against sample data or the map. Contract and scouting-map work should continue now with clearly labeled sample data; handoffs include issue/PR link, checks, and next actor.",
+      "at": "2026-11-14T20:37:21.054Z"
     }
   ],
   "applied": [
@@ -248,6 +256,7 @@
     "e2a91b7c-3500-4a45-af59-4d199e7baf56",
     "4e0c62b3-3624-4f04-9a5d-faf15210c2fa",
     "d9550c09-3f33-450b-846f-22963f40d1dd",
-    "fmw-20261114-reclaim-pilot-data-01"
+    "fmw-20261114-reclaim-pilot-data-01",
+    "fmw-20261114-unblock-all-01"
   ]
 }
