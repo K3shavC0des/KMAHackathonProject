@@ -76,8 +76,8 @@
       "paths": [
         "data/observed"
       ],
-      "status": "working",
-      "evidence": "Keshav owns data/observed export; implementation completed locally and pushed for review."
+      "status": "review",
+      "evidence": "PR #7 commit 628ac53: reproducible observed NISAR export, four tiles/920 matched cells, schema/date validation PASS; frontend not wired. See data/observed/README.md."
     }
   },
   "messages": [
@@ -442,6 +442,7 @@
     "fmw-next-actions-20261114-02",
     "fmw-ranking-fix-handoff-01",
     "fmw-observed-adapter-task-01",
-    "fmw-observed-adapter-claim-01"
+    "fmw-observed-adapter-claim-01",
+    "fmw-observed-adapter-review-01"
   ]
 }
