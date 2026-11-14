@@ -40,7 +40,7 @@ function featureCollection() {
 }
 
 function updateMapData() {
-  if (!map?.isStyleLoaded()) return;
+  if (!map?.getSource('areas')) return;
   map.getSource('areas')?.setData(featureCollection());
   map.setPaintProperty('area-fill', 'fill-color', ['case', ['==', ['get', 'area_id'], selectedId], '#ea4335', '#1a73e8']);
   map.setPaintProperty('area-line', 'line-color', ['case', ['==', ['get', 'area_id'], selectedId], '#c5221f', '#1967d2']);
@@ -114,7 +114,7 @@ function useCollection(nextMode) {
 
 async function initializeMap() {
   try {
-    ({ default: maplibregl } = await import('https://unpkg.com/maplibre-gl@6.18.0/dist/maplibre-gl.mjs'));
+    maplibregl = await import('https://unpkg.com/maplibre-gl@6.18.0/dist/maplibre-gl.mjs');
   } catch (error) {
     byId('map').textContent = `The live basemap could not load: ${error.message}. Check the network connection and refresh.`;
     byId('map').setAttribute('role', 'status');
