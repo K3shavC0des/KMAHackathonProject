@@ -6,6 +6,16 @@ import { makeServer } from './server.mjs';
 
 const fixture = JSON.parse(await readFile(new URL('../contracts/sample-areas.json', import.meta.url), 'utf8'));
 
+test('newest observation is selected by instant across timezone offsets', () => {
+  const changed = structuredClone(fixture);
+  const observation = changed.areas[0].observations.find(item => item.source === 'NISAR_SME2');
+  observation.observed_at = '2026-07-02T00:00:00Z';
+  changed.areas[0].observations.push({ ...observation, observation_id: 'newer', observed_at: '2026-07-01T23:00:00-02:00', value: .02 });
+  const result = compareScoutingStops(changed).with_nisar.ranking.find(item => item.area_id === changed.areas[0].area_id);
+  assert.equal(result.priority_points, 0);
+  assert.equal(result.eligible_for_first_stop, false);
+});
+
 test('local drying supports inspection priority while regional context alone does not', () => {
   const result = compareScoutingStops(fixture);
   assert.equal(result.with_nisar.first_stop, 'illustrative-field-a');

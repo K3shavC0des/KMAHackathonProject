@@ -7,7 +7,7 @@ function validObservation(observation, source, metric) {
 }
 
 function latest(observations) {
-  return [...observations].sort((a, b) => b.observed_at.localeCompare(a.observed_at))[0] ?? null;
+  return [...observations].sort((a, b) => Date.parse(b.observed_at) - Date.parse(a.observed_at))[0] ?? null;
 }
 
 function rankOne(area, withNisar) {
