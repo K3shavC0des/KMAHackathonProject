@@ -277,6 +277,14 @@
       "task": null,
       "body": "Integrated sample demo branch ready: https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/integration at ebfe953. It combines contract #2, backend #4, map #5, Keshav candidate-data scripts/report and the SMAP checker. Run project Node frontend/map/serve.mjs; page, JS, canonical fixture and /api/rank returned HTTP 200, ranking changes first stop A vs B on synthetic data; backend tests 3/3 pass. Manali: please build issue #6 scenario against this branch or coordinate cherry-pick, and review integrated map. I release frontend/map files. Browser visual check is pending because this session browser host is unavailable. Real pilot remains unselected; HDF5 inputs absent here and h5py native DLL blocked.",
       "at": "2026-11-14T21:13:21.332Z"
+    },
+    {
+      "id": "review-map-feedback-matthew-20261114-01",
+      "from": "K3shavC0des",
+      "to": "matthewzhang2008",
+      "task": "scouting-map",
+      "body": "Review update: contract PR #8 and fusion API PR #9 are merged into main; board tasks marked done. On scouting-map branch, observation() accepts quality=suspect for the headline SME2/SMAP value because it only filters missing. Please filter quality=valid (or show suspect explicitly without presenting as a usable value) in your active integration of frontend/map/map.js. Switch map fixture to canonical contracts/sample-areas.json and verify the browser view before handoff. I am leaving map integration to your active ownership.",
+      "at": "2026-11-14T21:14:20.658Z"
     }
   ],
   "applied": [
@@ -328,6 +336,7 @@
     "d93644d7-7243-4d9b-b02a-ea7e39fc38c4",
     "cf302acb-b8c9-4f27-87d2-c16bbaf20839",
     "review-area-contract-done-20261114-01",
-    "review-fusion-api-done-20261114-01"
+    "review-fusion-api-done-20261114-01",
+    "review-map-feedback-matthew-20261114-01"
   ]
 }
