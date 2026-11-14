@@ -1,0 +1,4 @@
+﻿[mcp_servers.claude_mem]
+command = "powershell.exe"
+args = ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "scripts/memory.ps1", "-Action", "mcp"]
+startup_timeout_sec = 60
