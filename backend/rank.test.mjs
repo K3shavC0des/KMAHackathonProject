@@ -23,6 +23,25 @@ test('suspect local observation cannot raise priority', () => {
   assert.equal(compareScoutingStops(changed).with_nisar.first_stop, 'illustrative-field-b');
 });
 
+test('unknown crop stage and absent local evidence cannot nominate a first stop', () => {
+  const changed = structuredClone(fixture);
+  for (const area of changed.areas) { area.crop_stage = 'unknown'; area.observations = []; }
+  const result = compareScoutingStops(changed);
+  assert.equal(result.with_nisar.first_stop, null);
+  assert.equal(result.without_nisar.first_stop, null);
+  assert.equal(result.first_stop_changes, false);
+  assert.ok(result.with_nisar.ranking.every(area => !area.eligible_for_first_stop));
+});
+
+test('regional context alone cannot nominate a first stop', () => {
+  const changed = structuredClone(fixture);
+  for (const area of changed.areas) {
+    area.crop_stage = 'unknown';
+    area.observations = area.observations.filter(item => item.source === 'SMAP');
+  }
+  assert.equal(compareScoutingStops(changed).with_nisar.first_stop, null);
+});
+
 test('API serves fixture and rejects unlabeled input', async () => {
   const server = makeServer();
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
