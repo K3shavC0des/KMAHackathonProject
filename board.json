@@ -26,14 +26,14 @@
     },
     "smap-crop": {
       "id": "smap-crop",
-      "owner": "K3shavC0des",
+      "owner": "matthewzhang2008",
       "goal": "Build SMAP seasonal and crop context ingest; https://github.com/K3shavC0des/KMAHackathonProject/issues/3",
       "acceptance": "Quality-valid baseline and sourced crop state",
       "paths": [
         "data/context"
       ],
-      "status": "queued",
-      "evidence": ""
+      "status": "working",
+      "evidence": "Taking over the queued context task after Keshav reached his session limit; local SMAP baseline checker in progress"
     },
     "fusion-api": {
       "id": "fusion-api",
@@ -296,6 +296,7 @@
     "2ee589ec-d805-4d2b-b698-47e4d36d1ec0",
     "f4b79b48-6b83-4db7-bdb7-4e49f61e753b",
     "fmw-20261114-pushed-verification-files-01",
-    "d36031c4-6bd2-4f65-988b-46fd4493cc9f"
+    "d36031c4-6bd2-4f65-988b-46fd4493cc9f",
+    "803dc3f9-c664-4e66-803d-f5183a726cb0"
   ]
 }
