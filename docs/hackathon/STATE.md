@@ -1,6 +1,6 @@
 # Farm Moisture Watch — team checkpoint
 
-Updated 2026-11-14. Approved team handoff published and read back. Pilot-data preflights are in draft PR #7; `pilot-data` is blocked on Earthdata file access before pixel validation.
+Updated 2026-11-14. Team handoff published and updated. Earthdata access works; pilot-data has opened NISAR and SMAP granules and continues AOI/date matching. Sample-data contract/fusion and map work are unblocked.
 
 ## Goal and scope
 
@@ -12,7 +12,7 @@ Submission deadline: **unknown**; user supplied a placeholder, not a date/time. 
 
 ## Pilot selection status
 
-**Candidate, not selected:** Nagapattinam agricultural area, Tamil Nadu. A reproducible `data/pilot/catalog.py` CMR preflight found same-track/frame SME2 candidates for 2026-06-20 and 2026-07-02. CMR IDs are `G4249557322-ASF` and `G4255109928-ASF`; advertised sizes are about 60 and 72 MB. A separate `data/pilot/smap_catalog.py` preflight found July 2 SPL3SMP_E v6 granule `SMAP_L3_SM_P_E_20260702_R19240_004.h5` (`G4321334815-NSIDC_CPRD`) and catalog granules in every proposed 2016–2025 seasonal window; 2019 has only three catalog dates in that window. ISRO illustrates a Nagapattinam S-band GCOV acquisition on July 2, but says routine S-band downloads begin July 8 and earlier data are reprocessed in phases. This is catalog/publication evidence, not valid-pixel evidence. The NISAR HDF5 download returned HTTP 401 without Earthdata authentication; no HDF5 pixels were opened. The S-band GCOV backscatter is not directly comparable to SME2 volumetric moisture. See `PLAN.md` for IDs and decision gate.
+**Candidate, not selected:** Nagapattinam agricultural area, Tamil Nadu. Opened SME2 granules on 2026-06-20 and 2026-07-02 (CMR IDs `G4249557322-ASF`, `G4255109928-ASF`), each about 60–72 MB. In a broad 0.3° × 0.3° window centered near Nagapattinam, 10,890 recommended cells match across dates; median later-minus-earlier surface moisture is −0.0282 m³/m³ (10th/90th percentiles −0.0625/0.0009). This is not field-level evidence. Opened July 2 SMAP SPL3SMP_E v6 (`SMAP_L3_SM_P_E_20260702_R19240_004.h5`). It has no recommended retrieval pixels in the same window; nearest recommended pixel is ~267 km away. Point CMR queries returned the same SMAP granule for Nagapattinam, Ludhiana, and Ahmedabad, so catalog selection alone does not demonstrate local usable coverage. Continue searching nearby SMAP dates and small agricultural AOIs before choosing a site. S-band raster remains unopened; July 2 GCOV backscatter is not directly comparable to SME2 moisture. See `PLAN.md` and [draft PR #7](https://github.com/K3shavC0des/KMAHackathonProject/pull/7).
 
 Alternates: Ludhiana/Punjab and Ahmedabad/Gujarat have repeat SME2 catalog candidates; ISRO has demonstrated L/S-derived moisture over North India and Ahmedabad. No candidate has passed pixel/quality, SMAP, crop-calendar, and access checks. Do not describe any as a verified pilot.
 
@@ -37,4 +37,4 @@ Board: `hackathon-board` branch in the shared repository, accessed with `.agents
 
 ## Verification and limitations
 
-Read-only CMR catalog queries ran for Ludhiana, Ahmedabad, and Nagapattinam; two scripts reproduce NISAR repeat-pair and SMAP temporal-coverage discovery. CMR metadata is not raster verification. A direct NISAR file download returned HTTP 401; Earthdata sign-in or an authorized download path is needed to inspect pixels. SMAP and ISRO files have not been ingested. Draft PR: https://github.com/K3shavC0des/KMAHackathonProject/pull/7 . Board task `pilot-data` was marked blocked with the PR, checks, and next actor. The memory semantic backend was offline. Graphify was unnecessary because there was no app code to map; bounded output made Headroom compression unnecessary. Do not commit `.tools/`, `.local/`, credentials, or downloaded granules.
+Read-only CMR queries and both local scripts cover NISAR repeat-pair and SMAP seasonal catalog discovery. Three HDF5 files were downloaded to ignored `.tools/downloads/fmw`; both NISAR files and the July 2 SMAP file were opened with h5py. Pixel-level limits and current findings are in the pilot section and draft PR #7. Board task `pilot-data` was reopened; sample-data contract/fusion and map tasks can continue while AOI/date matching proceeds. No S-band product was opened. The memory semantic backend was offline. Graphify was unnecessary because there is no app code to map; bounded output made Headroom compression unnecessary. Do not commit `.tools/`, `.local/`, credentials, or downloaded granules.
