@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Farm Moisture Watch | Scouting map</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p class="eyebrow">Farm Moisture Watch · sample demonstration</p>
+      <h1>Scouting map</h1>
+      <p>Inspect local moisture change alongside regional context before choosing where to scout.</p>
+    </header>
+    <div class="notice" role="status">Sample data for interface review. No pilot area or live observation has been selected.</div>
+    <div class="layout">
+      <section class="panel" aria-labelledby="map-heading">
+        <div class="panel-head"><h2 id="map-heading">Areas</h2><span>Illustrative locations</span></div>
+        <svg id="map" viewBox="0 0 640 390" role="img" aria-label="Sample area polygons"></svg>
+        <p class="map-note">Fixture polygons use longitude and latitude. This simplified view has no basemap or selected pilot.</p>
+      </section>
+      <section class="panel detail" aria-labelledby="detail-heading">
+        <div class="panel-head"><h2 id="detail-heading">Area timeline</h2><span id="sample-badge" class="badge"></span></div>
+        <label for="area-select">Scouting area</label>
+        <select id="area-select"></select>
+        <p id="area-description"></p>
+        <div class="metrics">
+          <article><h3>Local SME2 change</h3><strong id="sme2-value"></strong><small id="sme2-meta"></small></article>
+          <article><h3>Regional SMAP context</h3><strong id="smap-value"></strong><small id="smap-meta"></small></article>
+        </div>
+        <h3>Observation timeline</h3>
+        <ol id="timeline"></ol>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="./map.js"></script>
+</body>
+</html>
