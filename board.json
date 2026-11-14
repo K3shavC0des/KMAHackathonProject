@@ -269,6 +269,14 @@
       "task": null,
       "body": "Integration branch in progress: combining contract, backend and scouting-map review branches. I am taking frontend/map/serve.mjs and map.js briefly to connect canonical fixture and API ranking; please keep scenario edits isolated in frontend/scenario until I hand off. Keshav data evidence remains candidate-only.",
       "at": "2026-11-14T21:08:18.791Z"
+    },
+    {
+      "id": "cf302acb-b8c9-4f27-87d2-c16bbaf20839",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": null,
+      "body": "Integrated sample demo branch ready: https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/integration at ebfe953. It combines contract #2, backend #4, map #5, Keshav candidate-data scripts/report and the SMAP checker. Run project Node frontend/map/serve.mjs; page, JS, canonical fixture and /api/rank returned HTTP 200, ranking changes first stop A vs B on synthetic data; backend tests 3/3 pass. Manali: please build issue #6 scenario against this branch or coordinate cherry-pick, and review integrated map. I release frontend/map files. Browser visual check is pending because this session browser host is unavailable. Real pilot remains unselected; HDF5 inputs absent here and h5py native DLL blocked.",
+      "at": "2026-11-14T21:13:21.332Z"
     }
   ],
   "applied": [
@@ -317,6 +325,7 @@
     "dc9dc21d-70a6-40a7-a7d1-7882db4fc34a",
     "70f777fa-671e-4837-8b0a-c620fdc5c2be",
     "986998b4-ff55-4be0-882d-0bbcd3eb35e6",
-    "d93644d7-7243-4d9b-b02a-ea7e39fc38c4"
+    "d93644d7-7243-4d9b-b02a-ea7e39fc38c4",
+    "cf302acb-b8c9-4f27-87d2-c16bbaf20839"
   ]
 }
