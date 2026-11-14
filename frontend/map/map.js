@@ -25,7 +25,7 @@ function readingText(item) {
 
 function metadata(item) {
   if (!item) return 'No quality-valid reading';
-  return `${item.observed_at.slice(0, 10)} · ${item.spatial_scale} · ${item.quality} · ${item.data_status} · ${item.source_ref}`;
+  return `${item.observed_at.slice(0, 10)} · ${item.spatial_scale} · ${item.quality} · ${item.data_status}`;
 }
 
 function labelFor(area) {
@@ -120,6 +120,13 @@ function render() {
     const meta = document.createElement('span');
     meta.textContent = `${metadata(item)}${item.quality === 'valid' ? '' : ' · excluded from inspection priority'}`;
     li.append(meta);
+    const details = document.createElement('details');
+    const summary = document.createElement('summary');
+    summary.textContent = 'Satellite source and quality notes';
+    const provenance = document.createElement('p');
+    provenance.textContent = `Source: ${item.source_ref}. ${item.note ?? ''}`;
+    details.append(summary, provenance);
+    li.append(details);
     timeline.append(li);
   }
   if (!smap) {
@@ -193,9 +200,9 @@ try {
     collections.observed = await loadCollection('observed');
     byId('mode-note').textContent = 'Observed NISAR tiles are separate from the synthetic sample. SMAP history is unavailable.';
     useCollection('observed');
-  } catch {
+  } catch (error) {
     byId('data-mode').querySelector('[value="observed"]').disabled = true;
-    byId('mode-note').textContent = 'Observed export is awaiting integration; synthetic sample view remains available.';
+    byId('mode-note').textContent = `Observed view unavailable: ${error.message}. Synthetic sample is shown.`;
     useCollection('sample');
   }
 } catch (error) {

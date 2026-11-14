@@ -2,9 +2,10 @@ import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
-import { compareScoutingStops } from '../../backend/rank.mjs';
+import { makeServer as makeApiServer } from '../../backend/server.mjs';
 
 const root = new URL('./', import.meta.url);
+const apiServer = makeApiServer();
 const files = new Map([
   ['/', ['index.html', 'text/html; charset=utf-8']],
   ['/index.html', ['index.html', 'text/html; charset=utf-8']],
@@ -32,30 +33,9 @@ const files = new Map([
 export function makeServer() { return createServer(async (request, response) => {
   const url = new URL(request.url, 'http://localhost');
   const path = url.pathname;
-  if ((path === '/api/areas' || path === '/map/api/areas') && request.method === 'GET') {
-    const dataset = url.searchParams.get('dataset') ?? 'sample';
-    const source = dataset === 'observed' ? '../../data/observed/nagapattinam-areas.json'
-      : dataset === 'sample' ? '../../contracts/sample-areas.json' : null;
-    if (!source) { response.writeHead(400); response.end('Unknown dataset'); return; }
-    try {
-      const body = await readFile(fileURLToPath(new URL(source, root)));
-      const collection = JSON.parse(body.toString('utf8'));
-      if (collection.schema_version !== '1.0.0') throw new Error('Unsupported area contract');
-      response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
-      response.end(body);
-    } catch (error) {
-      response.writeHead(error.code === 'ENOENT' ? 404 : 500); response.end('Could not load area collection');
-    }
-    return;
-  }
-  if ((path === '/api/rank' || path === '/map/api/rank') && request.method === 'GET') {
-    try {
-      const collection = JSON.parse(await readFile(fileURLToPath(new URL('../../contracts/sample-areas.json', root)), 'utf8'));
-      response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
-      response.end(JSON.stringify(compareScoutingStops(collection)));
-    } catch {
-      response.writeHead(500); response.end('Could not calculate ranking');
-    }
+  if (path === '/api/areas' || path === '/api/rank' || path === '/map/api/areas' || path === '/map/api/rank') {
+    request.url = path.replace(/^\/map/, '') + url.search;
+    apiServer.emit('request', request, response);
     return;
   }
   const file = files.get(path);
