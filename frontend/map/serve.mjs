@@ -5,7 +5,6 @@ import { resolve } from 'node:path';
 import { makeServer as makeApiServer } from '../../backend/server.mjs';
 
 const root = new URL('./', import.meta.url);
-const apiServer = makeApiServer();
 const files = new Map([
   ['/', ['index.html', 'text/html; charset=utf-8']],
   ['/index.html', ['index.html', 'text/html; charset=utf-8']],
@@ -30,24 +29,29 @@ const files = new Map([
   ['/contracts/sample-areas.json', ['../../contracts/sample-areas.json', 'application/json; charset=utf-8']]
 ]);
 
-export function makeServer() { return createServer(async (request, response) => {
-  const url = new URL(request.url, 'http://localhost');
-  const path = url.pathname;
-  if (path === '/api/areas' || path === '/api/rank' || path === '/map/api/areas' || path === '/map/api/rank') {
-    request.url = path.replace(/^\/map/, '') + url.search;
-    apiServer.emit('request', request, response);
-    return;
-  }
-  const file = files.get(path);
-  if (!file) { response.writeHead(404); response.end('Not found'); return; }
-  try {
-    const body = await readFile(fileURLToPath(new URL(file[0], root)));
-    response.writeHead(200, { 'Content-Type': file[1], 'Cache-Control': 'no-store' });
-    response.end(body);
-  } catch (error) {
-    response.writeHead(error.code === 'ENOENT' ? 404 : 500); response.end('Could not load page');
-  }
-}); }
+export function makeServer() {
+  // Use the backend's collection selection and validation at every map API path.
+  // This server is only a request dispatcher; it never opens a second listener.
+  const api = makeApiServer();
+  return createServer(async (request, response) => {
+    const path = new URL(request.url, 'http://localhost').pathname;
+    if (path.startsWith('/api/') || path.startsWith('/map/api/') || path === '/health') {
+      if (path.startsWith('/map/api/')) request.url = request.url.slice('/map'.length);
+      response.setHeader('Cache-Control', 'no-store');
+      api.emit('request', request, response);
+      return;
+    }
+    const file = files.get(path);
+    if (!file) { response.writeHead(404); response.end('Not found'); return; }
+    try {
+      const body = await readFile(fileURLToPath(new URL(file[0], root)));
+      response.writeHead(200, { 'Content-Type': file[1], 'Cache-Control': 'no-store' });
+      response.end(body);
+    } catch (error) {
+      response.writeHead(error.code === 'ENOENT' ? 404 : 500); response.end('Could not load page');
+    }
+  });
+}
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
   const port = Number(process.env.PORT || 8000);

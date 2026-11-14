@@ -5,11 +5,20 @@ All readings are derived from the opened NISAR SME2 June 20 / July 2, 2026
 granules listed in `data/pilot/VERIFICATION.md`. These four rectangular analysis
 tiles divide the development window; they are not surveyed fields or a crop mask.
 
-Reproduce from the repository root (Python requires h5py and numpy):
+Reproduce from the repository root (Python requires h5py, numpy and jsonschema):
 
 ```powershell
 python data/observed/export_nagapattinam.py earlier.h5 later.h5 --output data/observed/nagapattinam-areas.json
 ```
+
+Before writing, the exporter validates the complete collection against the shared
+`contracts/area.schema.json` with date-time format checking and rejects nonfinite
+numbers. No output is written on validation failure. On a pilot-only branch that
+does not yet contain contracts, pass `--schema path/to/contracts/area.schema.json`
+from the reviewed contract checkout; absence of a schema is an error.
+
+Run validation regressions with `python -m unittest discover -s data/observed -p test_validation.py`.
+Set `FMW_AREA_SCHEMA` to the same canonical schema path if using a separate checkout.
 
 The exporter checks matching coordinate axes, track, frame, pass, radar band,
 look direction, product type, units, and date order. It uses each dataset's fill
@@ -24,7 +33,6 @@ of per-cell differences. Values use m3/m3; polygon coordinates are WGS84 lon/lat
 Each reading retains exact acquisition start time, source granule ID, quality
 rule, and matched count. `quality=valid` means the retrieval passed this mask;
 it does not establish crop identity or agricultural decision accuracy.
-Acquisition times are normalized to UTC (`Z`) in the shared contract.
 
 SMAP observations are omitted because usable regional seasonal context is still
 unverified. Show **Regional context unavailable**. Crop stage stays `unknown`.
