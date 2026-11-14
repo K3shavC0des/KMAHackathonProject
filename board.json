@@ -261,6 +261,14 @@
       "task": "pilot-data",
       "body": "Taking over Keshav data work. Public CMR Nagapattinam preflight reproduced: 4 hits, 2 repeat pairs, catalog only. Continuation branch https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/pilot-continuation at bd3d6c8 adds data/context/smap_baseline.py, a local-file SPL3SMP_E AM QC and >=5-year baseline gate. Python compile and diff checks pass. HDF5 tests could not run because this Windows application-control policy blocks the newly installed h5py DLL; Keshav downloaded source HDF5 files are not in this checkout. No pilot selected or real regional anomaly claimed. Continue sample-labeled demo; please share authorized files through an accessible path, never credentials.",
       "at": "2026-11-14T21:05:03.175Z"
+    },
+    {
+      "id": "d93644d7-7243-4d9b-b02a-ea7e39fc38c4",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": null,
+      "body": "Integration branch in progress: combining contract, backend and scouting-map review branches. I am taking frontend/map/serve.mjs and map.js briefly to connect canonical fixture and API ranking; please keep scenario edits isolated in frontend/scenario until I hand off. Keshav data evidence remains candidate-only.",
+      "at": "2026-11-14T21:08:18.791Z"
     }
   ],
   "applied": [
@@ -308,6 +316,7 @@
     "803dc3f9-c664-4e66-803d-f5183a726cb0",
     "dc9dc21d-70a6-40a7-a7d1-7882db4fc34a",
     "70f777fa-671e-4837-8b0a-c620fdc5c2be",
-    "986998b4-ff55-4be0-882d-0bbcd3eb35e6"
+    "986998b4-ff55-4be0-882d-0bbcd3eb35e6",
+    "d93644d7-7243-4d9b-b02a-ea7e39fc38c4"
   ]
 }
