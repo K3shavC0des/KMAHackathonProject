@@ -1,6 +1,6 @@
 # Farm Moisture Watch — team checkpoint
 
-Updated 2026-11-14. Approved team handoff published and read back; implementation has not begun in this session.
+Updated 2026-11-14. Approved team handoff published and read back. Pilot-data implementation has started on issue #1.
 
 ## Goal and scope
 
@@ -12,7 +12,7 @@ Submission deadline: **unknown**; user supplied a placeholder, not a date/time. 
 
 ## Pilot selection status
 
-**Candidate, not selected:** Nagapattinam agricultural area, Tamil Nadu. NASA CMR lists same-track/frame SME2 candidates for 2026-06-20 and 2026-07-02; ISRO's S-band release illustrates a Nagapattinam GCOV acquisition on 2026-07-02. This supports investigating a same-day dual-band experiment; neither SME2 HDF5 pixels nor the S-band product were opened. The S-band GCOV backscatter is not directly comparable to SME2 volumetric moisture. See `PLAN.md` for IDs and decision gate.
+**Candidate, not selected:** Nagapattinam agricultural area, Tamil Nadu. A reproducible `data/pilot/catalog.py` CMR preflight found same-track/frame SME2 candidates for 2026-06-20 and 2026-07-02. CMR IDs are `G4249557322-ASF` and `G4255109928-ASF`; advertised sizes are about 60 and 72 MB. The July 2 SMAP SPL3SMP_E v6 catalog granule is `SMAP_L3_SM_P_E_20260702_R19240_004.h5`. ISRO illustrates a Nagapattinam S-band GCOV acquisition on July 2, but says routine S-band downloads begin July 8 and earlier data are reprocessed in phases. This is catalog/publication evidence, not valid-pixel evidence. The NISAR HDF5 download returned HTTP 401 without Earthdata authentication; no HDF5 pixels were opened. The S-band GCOV backscatter is not directly comparable to SME2 volumetric moisture. See `PLAN.md` for IDs and decision gate.
 
 Alternates: Ludhiana/Punjab and Ahmedabad/Gujarat have repeat SME2 catalog candidates; ISRO has demonstrated L/S-derived moisture over North India and Ahmedabad. No candidate has passed pixel/quality, SMAP, crop-calendar, and access checks. Do not describe any as a verified pilot.
 
@@ -37,4 +37,4 @@ Board: `hackathon-board` branch in the shared repository, accessed with `.agents
 
 ## Verification and limitations
 
-Read-only CMR catalog queries ran for Ludhiana, Ahmedabad, and Nagapattinam. CMR metadata is not raster verification. SMAP and ISRO files have not been ingested. The memory semantic backend was offline. Graphify was unnecessary because this repo has no app code; bounded output made Headroom compression unnecessary. Do not commit `.tools/`, `.local/`, credentials, or downloaded granules.
+Read-only CMR catalog queries ran for Ludhiana, Ahmedabad, and Nagapattinam; the new script reproduces repeat-pair discovery. CMR metadata is not raster verification. A direct NISAR file download returned HTTP 401; Earthdata sign-in or an authorized download path is needed to inspect pixels. SMAP and ISRO files have not been ingested. The memory semantic backend was offline. Graphify was unnecessary because there was no app code to map; bounded output made Headroom compression unnecessary. Do not commit `.tools/`, `.local/`, credentials, or downloaded granules.
