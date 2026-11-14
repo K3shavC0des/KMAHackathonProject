@@ -5,11 +5,11 @@ import { evaluateScenario } from './scenario.mjs';
 
 const fixture = JSON.parse(await readFile(new URL('../../contracts/sample-areas.json', import.meta.url), 'utf8'));
 
-test('changing crop stage changes priority without changing observations', () => {
+test('legacy crop-stage changes do not affect moisture priority or observations', () => {
   const before = JSON.stringify(fixture.areas.map(area => area.observations));
   const original = evaluateScenario(fixture);
   const changed = evaluateScenario(fixture, { 'illustrative-field-b': 'harvest' });
-  assert.notDeepEqual(changed.comparison.without_nisar.ranking, original.comparison.without_nisar.ranking);
+  assert.deepEqual(changed.comparison, original.comparison);
   assert.equal(JSON.stringify(changed.scenario.areas.map(area => area.observations)), before);
   assert.equal(JSON.stringify(fixture.areas.map(area => area.observations)), before);
   assert.equal(fixture.areas[1].crop_stage, 'flowering');
