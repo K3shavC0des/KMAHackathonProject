@@ -10,8 +10,8 @@
       "paths": [
         "data/pilot"
       ],
-      "status": "review",
-      "evidence": "PR https://github.com/K3shavC0des/KMAHackathonProject/pull/12 targets integration cc3abcb, commit d21d4c2. Verifier rejects shifted same-shape grids and incompatible metadata/units/date order; finite per-date masks. HDF5 regressions 10/10, existing Node tests 11/11, diff check PASS. Actual pair reopened locally: 920 matched recommended cells, median change -0.01749463379383087 m3/m3. Matthew can review/integrate; full fused pilot remains pending SMAP history/agricultural validation. data/context and frontend untouched."
+      "status": "blocked",
+      "evidence": "Blocked pending usable SMAP history. The only inspected Nagapattinam AM file (2026-07-02) has zero non-fill retrievals in the pilot bbox; the nearest quality-recommended cell is about 265 km away and is not local evidence. Nearby catalog dates do not establish pixel coverage or quality. No quality-screened multi-year local baseline is available, so no SMAP anomaly or fused pilot can be claimed. Reopen when an Earthdata-authorized operator provides quality-screened local history; preserve the NISAR-only development geography and its limits."
     },
     "area-contract": {
       "id": "area-contract",
@@ -1273,6 +1273,7 @@
     "cec13359-f3e6-47a3-befe-df534931b3fa",
     "d6f003e1-c483-420d-b525-0f3518ecb31f",
     "40666e45-a36f-4873-af05-bbfb29564ae7",
-    "52a8b89c-1cd1-4cd8-b3f2-112235655eca"
+    "52a8b89c-1cd1-4cd8-b3f2-112235655eca",
+    "95c7d732-fcfc-4197-ba8d-2dc15a86ece6"
   ]
 }
