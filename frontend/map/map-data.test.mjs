@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { latestReading, inspectionBand, inspectionSummary, cropBlocks, cropInspectionBand } from './map-data.mjs';
+import { latestReading, inspectionBand, inspectionSummary, cropBlocks, cropContextAvailable, cropInspectionBand } from './map-data.mjs';
 
 test('headline selects newest valid change, never a moisture level or suspect reading', () => {
   const area = { area_id: 'a', observations: [
@@ -55,4 +55,17 @@ test('crop block colours order relative drying without calling green safe', () =
   assert.equal(cropInspectionBand(block(-.04)), 'review');
   assert.equal(cropInspectionBand(block(-.025)), 'watch');
   assert.equal(cropInspectionBand(block(-.01)), 'steady');
+});
+
+test('crop context is available only when reports match observed city data and include weather cues', () => {
+  const report = {
+    nisar: { matched_cells: 20 },
+    crop_context: { candidates: [{ name: 'Rice' }] },
+    temperature: { seven_day_mean_daily_max_c: 30, seven_day_mean_humidity_percent: 60, seven_day_rain_mm: 2, percentile: .8, baseline_rain_median_mm: 4 },
+    fusion: { signals: { nisar_drying: true, unusual_heat: false, low_rain: false } }
+  };
+  assert.equal(cropContextAvailable(report, 20, 1), true);
+  assert.equal(cropContextAvailable(report, 19, 1), false);
+  assert.equal(cropContextAvailable({ ...report, temperature: null }, 20, 1), false);
+  assert.equal(cropContextAvailable(report, 20, 0), false);
 });

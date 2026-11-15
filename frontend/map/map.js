@@ -1,18 +1,17 @@
-import { cropBlocks, cropInspectionBand, inspectionBand, inspectionSummary, latestReading, observationInstant } from './map-data.mjs';
+import { cropBlocks, cropContextAvailable, cropInspectionBand, inspectionBand, inspectionSummary, latestReading, observationInstant } from './map-data.mjs';
 
 const byId = id => document.getElementById(id);
 const pilotBounds = [[79.68, 10.64], [79.86, 10.82]];
 const stateBounds = [[79.20, 10.30], [80.35, 11.10]];
 const pilotCenter = [79.77, 10.73];
 const cityViews = {
-  sample: { name: 'Synthetic example', bounds: pilotBounds, region: stateBounds },
   observed: { name: 'Nagapattinam', bounds: pilotBounds, region: stateBounds },
   ludhiana: { name: 'Ludhiana', bounds: [[75.76, 30.81], [75.94, 30.99]], region: [[75.35, 30.4], [76.35, 31.4]] },
   nairobi: { name: 'Nairobi', bounds: [[36.70, -1.40], [36.95, -1.15]], region: [[36.3, -1.8], [37.4, -0.7]] },
   ahmedabad: { name: 'Ahmedabad', bounds: [[72.49, 22.93], [72.67, 23.11]], region: [[72.08, 22.52], [73.08, 23.52]] },
 };
 const collections = {};
-let mode = 'sample';
+let mode = 'observed';
 let areas = [];
 let selectedId;
 let map;
@@ -56,8 +55,7 @@ function metadata(item) {
 }
 
 function labelFor(area) {
-  if (mode !== 'sample') return area.label.replace(/^.* satellite (?:analysis square|pixel) — /, '');
-  return `Sample ${area.label.match(/field\s+([A-Za-z0-9]+)/i)?.[1] ?? area.area_id}`;
+  return area.label.replace(/^.* satellite (?:analysis square|pixel) — /, '');
 }
 
 function featureCollection() {
@@ -89,12 +87,12 @@ function render() {
   const select = byId('area-select');
   const shown = visibleAreas();
   byId('visible-count').textContent = `${shown.length} / ${areas.length}`;
-  byId('map-status').textContent = `NISAR SME2 · ${cityViews[mode].name} · ${mode === 'sample' ? 'SYNTHETIC EXAMPLE' : 'OBSERVED'} · ${shown.length} visible squares · Analysis areas, not farm boundaries`;
+  byId('map-status').textContent = `NISAR SME2 · ${cityViews[mode].name} · ${shown.length} visible squares · Analysis areas, not farm boundaries`;
   if (!shown.some(area => area.area_id === selectedId)) selectedId = shown[0]?.area_id;
   const area = areas.find(item => item.area_id === selectedId);
   if (!area) {
     byId('area-description').textContent = 'No squares match the selected colour filters.';
-    for (const id of ['sample-badge', 'sme2-meta', 'value-change', 'rank-explanation']) byId(id).textContent = '';
+    for (const id of ['data-badge', 'sme2-meta', 'value-change', 'rank-explanation']) byId(id).textContent = '';
     byId('sme2-value').textContent = 'Unavailable';
     byId('selected-square-name').textContent = 'No square selected';
     updateSelectionSpotlight(null);
@@ -107,10 +105,8 @@ function render() {
   updateMapData();
   const sme2 = latestReading(area, 'NISAR_SME2', 'soil_moisture_change');
   const statuses = new Set(area.observations.map(item => item.data_status));
-  byId('sample-badge').textContent = statuses.size === 1 ? [...statuses][0].toUpperCase() : 'MIXED STATUS';
-  byId('area-description').textContent = mode !== 'sample'
-    ? `${area.label}. Surface soil moisture was lower or higher between the two satellite dates.`
-    : `${area.label}. Example data.`;
+  byId('data-badge').textContent = statuses.size === 1 ? [...statuses][0].toUpperCase() : 'MIXED STATUS';
+  byId('area-description').textContent = `${area.label}. Surface soil moisture was lower or higher between the two satellite dates.`;
   byId('sme2-value').textContent = readingText(sme2);
   byId('selected-square-name').textContent = labelFor(area);
   byId('sme2-meta').textContent = metadata(sme2);
@@ -140,13 +136,13 @@ function render() {
 
 function renderCropMode() {
   const report = cropReports[mode];
-  const available = mode !== 'sample' && report?.nisar?.matched_cells === collections[mode]?.areas.length && cropAreas.length > 0;
+  const available = cropContextAvailable(report, collections[mode]?.areas.length, cropAreas.length);
   byId('view-mode').querySelector('[value="crop"]').disabled = !available;
   if (!available) viewMode = 'moisture';
   byId('view-mode').value = viewMode;
   byId('view-mode-note').textContent = available
     ? `Crop and weather context for ${cityViews[mode].name}. Map blocks summarize measured NISAR cells.`
-    : mode === 'sample' ? 'Crop mode needs observed satellite measurements.' : 'Crop context is unavailable for this city.';
+    : 'Crop and weather context is unavailable for this city.';
   const active = viewMode === 'crop' && available;
   document.body.classList.toggle('crop-mode', active);
   byId('crop-panel').hidden = !active;
@@ -232,14 +228,12 @@ function useCollection(nextMode) {
   const keepCropMode = viewMode === 'crop';
   mode = nextMode;
   cropAreas = cropBlocks(collections[mode].areas);
-  viewMode = keepCropMode && mode !== 'sample' && cropReports[mode] ? 'crop' : 'moisture';
+  viewMode = keepCropMode && cropContextAvailable(cropReports[mode], collections[mode].areas.length, cropAreas.length) ? 'crop' : 'moisture';
   areas = viewMode === 'crop' ? cropAreas : collections[mode].areas;
-  selectedId = areas[0].area_id;
+  selectedId = areas[0]?.area_id;
   byId('data-mode').value = mode;
   const dates = [...new Set(areas.flatMap(area => area.observations.map(item => item.observed_at.slice(0, 10))))].sort();
-  cityNote = mode === 'sample'
-    ? 'Synthetic example, not satellite measurements. Kept separate from observed cities.'
-    : `${cityViews[mode].name} · ${dates.join(' / ')} · ${areas.length} measured squares. ${areas[0].area_id.includes('-pixel-') ? 'One matched satellite pixel per square.' : 'Each square summarizes a larger analysis area.'} Gaps have no usable paired reading.`;
+  cityNote = `${cityViews[mode].name} · ${dates.join(' / ')} · ${collections[mode].areas.length} measured squares. ${collections[mode].areas[0].area_id.includes('-pixel-') ? 'One matched satellite pixel per square.' : 'Each square summarizes a larger analysis area.'} Gaps have no usable paired reading.`;
   byId('mode-note').textContent = cityNote;
   byId('map').setAttribute('aria-label', `Interactive map centered on ${cityViews[mode].name}`);
   render();
@@ -264,9 +258,6 @@ async function initializeMap() {
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'bottom-left');
   await new Promise(resolve => map.once('load', resolve));
   setBasemap(true);
-  map.addSource('pilot-window', { type: 'geojson', data: { type: 'Feature', properties: {}, geometry: { type: 'Polygon', coordinates: [[[79.74, 10.70], [79.80, 10.70], [79.80, 10.76], [79.74, 10.76], [79.74, 10.70]]] } } });
-  map.addLayer({ id: 'pilot-fill', type: 'fill', source: 'pilot-window', paint: { 'fill-color': '#f9ab00', 'fill-opacity': 0.05 } });
-  map.addLayer({ id: 'pilot-outline', type: 'line', source: 'pilot-window', paint: { 'line-color': '#f9ab00', 'line-width': 2, 'line-dasharray': [2, 2] } });
   map.addSource('areas', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
   map.addLayer({ id: 'area-fill', type: 'fill', source: 'areas', paint: { 'fill-color': '#9aa0a6', 'fill-opacity': 0.42 } });
   map.addLayer({ id: 'area-line', type: 'line', source: 'areas', paint: { 'line-color': '#ffffff', 'line-width': 1 } });
@@ -453,46 +444,43 @@ byId('about-view').addEventListener('click', () => {
 });
 
 async function startMap() {
-try {
-  const response = await fetch('./crop-reports.json');
-  if (response.ok) cropReports = await response.json();
-} catch { cropReports = {}; }
-const mapReady = await initializeMap();
-if (mapReady) {
   try {
-    const sampleResponse = await fetch('./sample-areas.json');
-    if (!sampleResponse.ok) throw new Error(`Sample HTTP ${sampleResponse.status}`);
-    collections.sample = await sampleResponse.json();
-    byId('data-mode').querySelector('[value="sample"]').disabled = false;
-    try {
-      const observedResponse = await fetch('./observed-areas.json');
-      if (!observedResponse.ok) throw new Error(`Observed HTTP ${observedResponse.status}`);
-      collections.observed = await observedResponse.json();
-      cropAreas = cropBlocks(collections.observed.areas);
-      byId('data-mode').querySelector('[value="observed"]').disabled = false;
-      byId('mode-note').textContent = 'Measured satellite squares are separate from the example data. Long-term regional history is not available yet.';
-      useCollection('observed');
-    } catch (error) {
-      byId('data-mode').querySelector('[value="observed"]').disabled = true;
-      byId('mode-note').textContent = `Observed view unavailable: ${error.message}. Synthetic sample is shown.`;
-      useCollection('sample');
-    }
-    await Promise.all(['ludhiana', 'ahmedabad', 'nairobi'].map(async city => {
-      const option = byId('data-mode').querySelector(`[value="${city}"]`);
-      try {
-        const response = await fetch(`./${city}-areas.json`);
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const collection = await response.json();
-        if (!collection.areas?.length) throw new Error('No usable squares');
-        collections[city] = collection;
-        option.disabled = false;
-      } catch {
-        option.textContent = `${cityViews[city].name} · unavailable`;
-      }
-    }));
-  } catch (error) {
-    byId('area-description').textContent = `Could not load areas: ${error.message}`;
+    const response = await fetch('./crop-reports.json');
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    cropReports = await response.json();
+  } catch {
+    cropReports = {};
   }
-}
-return mapReady;
+  const mapReady = await initializeMap();
+  if (!mapReady) return false;
+
+  const files = { observed: 'observed-areas.json', ludhiana: 'ludhiana-areas.json', ahmedabad: 'ahmedabad-areas.json', nairobi: 'nairobi-areas.json' };
+  const availableCities = [];
+  await Promise.all(Object.entries(files).map(async ([city, file]) => {
+    const option = byId('data-mode').querySelector(`[value="${city}"]`);
+    try {
+      const response = await fetch(`./${file}`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const collection = await response.json();
+      if (!collection.areas?.length) throw new Error('No measured squares');
+      collections[city] = collection;
+      option.disabled = false;
+      availableCities.push(city);
+    } catch {
+      option.disabled = true;
+      option.textContent = `${cityViews[city].name} · unavailable`;
+    }
+  }));
+
+  const initialCity = availableCities.includes('observed') ? 'observed' : availableCities[0];
+  if (initialCity) {
+    useCollection(initialCity);
+  } else {
+    byId('mode-note').textContent = 'Observed map data could not be loaded. Refresh to try again.';
+    byId('area-description').textContent = 'No observed city data is available.';
+    byId('map-status').textContent = 'Observed map data unavailable';
+    byId('sme2-value').textContent = 'Unavailable';
+    byId('view-mode').querySelector('[value="crop"]').disabled = true;
+  }
+  return true;
 }
