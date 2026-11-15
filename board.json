@@ -125,8 +125,8 @@
         "backend/rank.test.mjs",
         "tests/integration/map-api.test.mjs"
       ],
-      "status": "working",
-      "evidence": "Claiming only count assertions required by the expanded, schema-validated observed NISAR export; semantics stay unchanged."
+      "status": "review",
+      "evidence": "cb79c2a updates observed-area count and deterministic first-stop expectations to the current verified regional fixture. Node suite 23/23 and diff check PASS. Next actor: Matthew review/integrate."
     }
   },
   "messages": [
@@ -752,6 +752,7 @@
     "69a0e5d0-a78e-4cd9-b487-56125c21655b",
     "5a22f52b-7356-4a99-8879-b76c205f1e91",
     "1ecdd4c2-9432-442b-9596-24a7ac626369",
-    "8a31f03f-74fa-42b9-be93-bfc5539158fa"
+    "8a31f03f-74fa-42b9-be93-bfc5539158fa",
+    "bb9f7ecf-e082-43e1-b7e4-8d9a38937893"
   ]
 }
