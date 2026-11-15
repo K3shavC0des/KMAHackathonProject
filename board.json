@@ -164,8 +164,8 @@
         "frontend/map/style.css",
         "tests/integration"
       ],
-      "status": "working",
-      "evidence": "Taking ownership of new Nairobi candidate work. Current evidence: July 2 SMAP has 9 recommended cells within 30km (nearest 19.7km), and ASF CMR SME2 footprints intersect Nairobi June 30 / July 7. Opening actual NISAR pair now; will not add synthetic or infer history."
+      "status": "blocked",
+      "evidence": "PR #16 https://github.com/K3shavC0des/KMAHackathonProject/pull/16: map starts tilted (45° pitch, −20° bearing); Top-down is the alternate control. No Nairobi observations added: ASF CMR confirms compatible 2026-06-30/2026-07-12 SME2 granules (same track/frame/pass/polarization), but direct data retrieval returned HTTP 401 without Earthdata authentication, so pair QC cannot run. July 2 SMAP context has 9 quality-recommended cells within 30 km (nearest 19.7 km), a single date only; no multi-year baseline. No Bhoonidhi used. Existing 0.03° squares aggregate multi-kilometre areas; 200 m SME2 posting is not 100 m accuracy, so no finer measured squares claimed. Checks: git diff --check PASS; Node tests/syntax/browser unavailable (Node not installed). Next actor: Earthdata-authenticated teammate to download the pair and run verifier/exporter."
     },
     "pitch-deck": {
       "id": "pitch-deck",
@@ -932,6 +932,14 @@
       "task": "pitch-deck",
       "body": "PITCH DECK READY: editable 7-slide PPTX at docs/hackathon/Farm_Moisture_Watch_Pitch_Deck.pptx, main da321ec. Uses real intro/map/mobile screenshots. Story: SME2 time change delivered; historical SMAP blocked; crop/weather/auxiliary risk next; matching S-band unavailable due access/technical/overlap constraints. Includes test evidence, scientific limits, NASA resources, team credits and honest ChatGPT/Codex disclosure. Opened in Microsoft PowerPoint on Matthew's computer. Add final public demo/repo links and perform team visual review before submission.",
       "at": "2026-11-15T18:37:36.434Z"
+    },
+    {
+      "id": "nairobi-data-and-map-post-20261115-01",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "nairobi-data-and-map",
+      "body": "Nairobi/data and map update: PR #16 https://github.com/K3shavC0des/KMAHackathonProject/pull/16 is open. The map now starts tilted (45° / −20°), with Top-down as the alternate. I found a compatible June 30 / July 12 Nairobi NISAR SME2 pair in ASF CMR, but ASF returned HTTP 401 on file retrieval without Earthdata authentication; no city data or inferred measurements were added. July 2 SMAP has 9 quality-recommended nearby cells within 30 km (nearest 19.7 km), but this is one date and not a historical baseline. Existing 0.03° squares aggregate multi-kilometre areas; 200 m posting is not 100 m accuracy, so I kept the data scale honest. No Bhoonidhi used. Checks: diff check passed; Node tests/syntax and browser journey unavailable because Node.js is absent. Next actor: Earthdata-authenticated teammate to retrieve the pair and run the existing verifier/exporter before deciding whether Nairobi qualifies.",
+      "at": "2026-11-15T18:40:50.000Z"
     }
   ],
   "applied": [
@@ -1087,6 +1095,8 @@
     "cceecb5a-4cbc-4799-ac9b-17e856edf73f",
     "matt-pitch-deck-post-20261115-01",
     "matt-pitch-deck-review-20261115-01",
-    "matt-pitch-deck-done-20261115-02"
+    "matt-pitch-deck-done-20261115-02",
+    "nairobi-data-and-map-blocked-20261115-01",
+    "nairobi-data-and-map-post-20261115-01"
   ]
 }
