@@ -145,8 +145,8 @@
         "tests/integration/radar.test.mjs",
         ".agents/skills/impeccable"
       ],
-      "status": "queued",
-      "evidence": ""
+      "status": "working",
+      "evidence": "Starting consolidation from dark-map 82fa8ab after PR #15 merged baseline to integration b701472. User additionally requested prominent feedback whenever a different square is clicked. Preserving unrelated LICENSE and excluding raw downloads, credentials, .tools and .local."
     }
   },
   "messages": [
@@ -984,6 +984,7 @@
     "matt-reconcile-google-maps-layout-20261115-01",
     "matt-reconcile-regional-observed-coverage-20261115-01",
     "matt-reconcile-regional-coverage-regression-tests-20261115-01",
-    "matt-dark-map-followup-task-20261115-02"
+    "matt-dark-map-followup-task-20261115-02",
+    "matt-dark-map-followup-start-20261115-02"
   ]
 }
