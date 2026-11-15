@@ -657,6 +657,14 @@
       "task": "google-maps-layout",
       "body": "User requested a right-side filter panel and colour coding for map squares. I retain the existing frontend/map ownership and will extend the active review branch only in frontend/map. Colour bands will be labeled as inspection priority from verified local moisture change, not a crop/drought-risk assertion.",
       "at": "2026-11-15T00:08:41.763Z"
+    },
+    {
+      "id": "173f8b6b-026e-47cf-9e38-0c5baba2304b",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "google-maps-layout",
+      "body": "Pushed https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/K3shavC0des/google-maps-layout @ 2aa993b. Right sidebar now filters map squares by colour: review sooner (red), watch (orange), slightly lower (yellow), steady/higher (green), no usable reading (grey). Colour derives only from latest valid local satellite moisture change. Copy is concise; unavailable SMAP card/timeline entry and long caveats were removed per user request. Checks: Node 24/24, map JS syntax, diff check PASS. Next actor Matthew: review/integrate.",
+      "at": "2026-11-15T00:12:24.168Z"
     }
   ],
   "applied": [
@@ -771,6 +779,7 @@
     "8a31f03f-74fa-42b9-be93-bfc5539158fa",
     "bb9f7ecf-e082-43e1-b7e4-8d9a38937893",
     "e665f904-dbe7-4146-8d46-15862ca1c823",
-    "f255183b-cff9-47f9-81aa-1d84b683e8f5"
+    "f255183b-cff9-47f9-81aa-1d84b683e8f5",
+    "173f8b6b-026e-47cf-9e38-0c5baba2304b"
   ]
 }
