@@ -845,6 +845,14 @@
       "task": null,
       "body": "User-authorized merge complete: PR #15 https://github.com/K3shavC0des/KMAHackathonProject/pull/15 merged Matthew pushed dark-map baseline 82fa8ab into team integration at b701472. Included: validated Ludhiana/Ahmedabad observed datasets, three-city map/API support, private static preview packaging. Checks: 26 focused Node tests PASS, preview build PASS (8 files), git diff --check PASS. Python export tests unavailable here because h5py/jsonschema are not installed. Matthew local radar, tutorial, README/submission and further map work remain uncommitted/not in PR #15; next actor Matthew should consolidate and push that work on dark-map, then open a follow-up PR. Main branch and private preview were not updated by this merge. Raw downloads and credentials remain excluded.",
       "at": "2026-11-15T15:55:44.265Z"
+    },
+    {
+      "id": "matt-dark-map-followup-post-20261115-01",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "dark-map-followup",
+      "body": "RELEASE: main 61f5e9c; app 9795f59. Selected-square change is the dominant upper-left desktop / first-below-map mobile card, with click acknowledgement and 1.3 to 3.9 deployed verification. Removed unlinked radar page, field-check module/assets, and unrelated California sample; retained mention in docs/hackathon/REMOVED_PROTOTYPES.md plus the main map's truthful unavailable L/S status/schema/exporter. Node 30/30, radar Python 4/4, 10-file build, syntax/diff PASS. Private deploy live: https://farm-moisture-watch-mz.twinklinglime16.chatgpt.site. NASA draft/state/license updated. Remaining actions: make demo judge-accessible (currently owner-private), confirm registered roster, and submit Project Tab with citations.",
+      "at": "2026-11-15T17:48:00.831Z"
     }
   ],
   "applied": [
@@ -987,6 +995,7 @@
     "matt-dark-map-followup-task-20261115-02",
     "matt-dark-map-followup-start-20261115-02",
     "matt-dark-map-followup-review-20261115-01",
-    "matt-dark-map-followup-done-20261115-01"
+    "matt-dark-map-followup-done-20261115-01",
+    "matt-dark-map-followup-post-20261115-01"
   ]
 }
