@@ -164,8 +164,8 @@
         "frontend/map/style.css",
         "tests/integration"
       ],
-      "status": "blocked",
-      "evidence": "PR #16 https://github.com/K3shavC0des/KMAHackathonProject/pull/16: map starts tilted (45° pitch, −20° bearing); Top-down is the alternate control. No Nairobi observations added: ASF CMR confirms compatible 2026-06-30/2026-07-12 SME2 granules (same track/frame/pass/polarization), but direct data retrieval returned HTTP 401 without Earthdata authentication, so pair QC cannot run. July 2 SMAP context has 9 quality-recommended cells within 30 km (nearest 19.7 km), a single date only; no multi-year baseline. No Bhoonidhi used. Existing 0.03° squares aggregate multi-kilometre areas; 200 m SME2 posting is not 100 m accuracy, so no finer measured squares claimed. Checks: git diff --check PASS; Node tests/syntax/browser unavailable (Node not installed). Next actor: Earthdata-authenticated teammate to download the pair and run verifier/exporter."
+      "status": "working",
+      "evidence": "Earthdata browser authentication restored file access; downloaded both raw files for Ludhiana, Ahmedabad and Nairobi. Recalculated all four cities at native grid spacing."
     },
     "pitch-deck": {
       "id": "pitch-deck",
@@ -1124,6 +1124,7 @@
     "nairobi-data-and-map-post-20261115-01",
     "705b439a-af63-4dbd-9b43-22565887040e",
     "3c273173-01ef-4dc2-856a-c45e2cbde6d4",
-    "bfdec065-b29e-41b8-a639-3172aecea4c4"
+    "bfdec065-b29e-41b8-a639-3172aecea4c4",
+    "355dc52a-bf23-4dab-aaa6-252222baa91b"
   ]
 }
