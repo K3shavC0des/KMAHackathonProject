@@ -115,6 +115,18 @@
       ],
       "status": "working",
       "evidence": "Claiming reproducible real observed regional coverage. I will retain analysis-tile labeling and unavailable SMAP/crop state."
+    },
+    "regional-coverage-regression-tests": {
+      "id": "regional-coverage-regression-tests",
+      "owner": "K3shavC0des",
+      "goal": "Update fixed observed-tile-count assertions to the verified 36-square regional observed export.",
+      "acceptance": "Backend and integration tests validate observed provenance/semantics and current regional coverage count.",
+      "paths": [
+        "backend/rank.test.mjs",
+        "tests/integration/map-api.test.mjs"
+      ],
+      "status": "queued",
+      "evidence": ""
     }
   },
   "messages": [
@@ -737,6 +749,7 @@
     "fmw-maplibre-startup-fix-50f53eb-01",
     "67d46275-dd7e-4ff7-89a7-fa33fa225d63",
     "490606ab-63b5-4df4-8211-75e1c29247ac",
-    "69a0e5d0-a78e-4cd9-b487-56125c21655b"
+    "69a0e5d0-a78e-4cd9-b487-56125c21655b",
+    "5a22f52b-7356-4a99-8879-b76c205f1e91"
   ]
 }
