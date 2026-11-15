@@ -176,8 +176,8 @@
         "docs/hackathon/Farm_Moisture_Watch_Pitch_Deck.pptx",
         "docs/hackathon/STATE.md"
       ],
-      "status": "working",
-      "evidence": "Creating native editable PowerPoint with project screenshots and seven-slide limit. PowerPoint is installed locally; no public upload or submission in this task."
+      "status": "review",
+      "evidence": "Deck integrated to main at da321ec. Exactly 7 English 16:9 slides; real project screenshots; delivered/blocked/roadmap framing; L/S and SMAP limits; NASA resources, team and candid AI disclosure. Structural QA found 7 slide XML, 98 editable text/shape elements, 3 embedded media files, no out-of-bounds shapes, valid package; opened in installed Microsoft PowerPoint."
     }
   },
   "messages": [
@@ -1085,6 +1085,7 @@
     "matt-pitch-deck-task-20261115-01",
     "matt-pitch-deck-start-20261115-01",
     "cceecb5a-4cbc-4799-ac9b-17e856edf73f",
-    "matt-pitch-deck-post-20261115-01"
+    "matt-pitch-deck-post-20261115-01",
+    "matt-pitch-deck-review-20261115-01"
   ]
 }
