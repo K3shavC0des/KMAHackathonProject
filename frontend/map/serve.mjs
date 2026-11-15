@@ -6,18 +6,8 @@ import { makeServer as makeApiServer } from '../../backend/server.mjs';
 
 const root = new URL('./', import.meta.url);
 const files = new Map([
-  ['/radar.html', ['radar.html', 'text/html; charset=utf-8']],
-  ['/radar.js', ['radar.js', 'text/javascript; charset=utf-8']],
-  ['/radar.css', ['radar.css', 'text/css; charset=utf-8']],
-  ['/irrigation.mjs', ['irrigation.mjs', 'text/javascript; charset=utf-8']],
   ['/radar-evidence.json', ['../../data/radar/nagapattinam.json', 'application/json; charset=utf-8']],
-  ['/public-sband-sample.json', ['../../data/radar/public-sband-sample.json', 'application/json; charset=utf-8']],
-  ['/map/radar.html', ['radar.html', 'text/html; charset=utf-8']],
-  ['/map/radar.js', ['radar.js', 'text/javascript; charset=utf-8']],
-  ['/map/radar.css', ['radar.css', 'text/css; charset=utf-8']],
-  ['/map/irrigation.mjs', ['irrigation.mjs', 'text/javascript; charset=utf-8']],
   ['/map/radar-evidence.json', ['../../data/radar/nagapattinam.json', 'application/json; charset=utf-8']],
-  ['/map/public-sband-sample.json', ['../../data/radar/public-sband-sample.json', 'application/json; charset=utf-8']],
   ['/', ['index.html', 'text/html; charset=utf-8']],
   ['/index.html', ['index.html', 'text/html; charset=utf-8']],
   ['/style.css', ['style.css', 'text/css; charset=utf-8']],

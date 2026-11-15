@@ -1,11 +1,12 @@
 // Build only the browser map and derived observations. Never include raw data or tooling.
-import { mkdir, copyFile, readFile } from 'node:fs/promises';
+import { mkdir, copyFile, readFile, rm } from 'node:fs/promises';
 import { loadRadar } from '../backend/radar.mjs';
 const root = new URL('../', import.meta.url);
 const output = new URL('dist/', root);
+await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 await loadRadar();
-for (const name of ['index.html', 'style.css', 'tutorial.css', 'map.js', 'map-data.mjs', 'radar.html', 'radar.js', 'radar.css', 'irrigation.mjs']) {
+for (const name of ['index.html', 'style.css', 'tutorial.css', 'map.js', 'map-data.mjs']) {
   await copyFile(new URL(`frontend/map/${name}`, root), new URL(name, output));
 }
 for (const [source, name] of [
@@ -19,5 +20,4 @@ for (const [source, name] of [
   await copyFile(new URL(source, root), new URL(name, output));
 }
 await copyFile(new URL('data/radar/nagapattinam.json', root), new URL('radar-evidence.json', output));
-await copyFile(new URL('data/radar/public-sband-sample.json', root), new URL('public-sband-sample.json', output));
-console.log('Static map and radar preview built in dist/ (14 files; no server or raw downloads).');
+console.log('Static map preview built in dist/ (10 files; no server, orphaned prototypes, or raw downloads).');

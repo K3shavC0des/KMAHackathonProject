@@ -5,10 +5,10 @@ feature. No agricultural polygon or independent field validation is claimed.
 The committed JSON deliberately contains no measurements. SME2 is a different
 geophysical variable and cannot substitute for GCOV backscatter.
 
-`public-sband-sample.json` is a metadata-only reference to ISRO's public S-band
-GCOV sample. The UI shows it to prove the S-band inspection path, but excludes
-it from Nagapattinam fusion because it is California from 2008, not a matching
-2026 observation. It must not drive a field or irrigation decision.
+An earlier metadata-only California S-band sample was removed from the active
+artifact because it was not co-located or time-matched with Nagapattinam and
+could not participate in the map result. Its purpose is retained in the
+removed-prototype notes.
 
 ## Obtain and prepare data
 
@@ -72,24 +72,13 @@ the masks before replacing `data/radar/nagapattinam.json`. The API and static
 build validate that artifact. Cite agricultural land-cover evidence per area
 in `land_cover_sources`; absent evidence leaves the analysis-area label.
 
-## Field check
-
-`/radar.html` includes a session-only scenario/current-field form. A documented
-crop/soil root-zone VWC trigger and matching field measurement determine its
-conditional result. No satellite value supplies the field measurement or trigger.
-The operator confirms recency; no universal age cutoff is asserted. Changes
-since measurement, unknown regimes, and flooded rice require more information.
-No rain forecast, water balance, irrigation volume or accuracy estimate is inferred.
-
 Before judging: obtain the actual GCOV inputs, verify geolocation and values,
 source an agricultural case, compare with independent field observations, and
 rehearse both map sizes. These are outstanding data and validation tasks.
 
-Implementation checks: Node contract/API/recommendation tests and four synthetic
-Python raster tests passed. A headless Edge rehearsal verified the unavailable
-state, scenario submission, flooded-rice guard, mobile layout without horizontal
-overflow, and synthetic paired-map rendering/date selection. Synthetic fixtures
-were intercepted only in the browser test; they are not shipped as observations.
+Implementation checks: Node contract/API tests and four synthetic Python raster
+tests passed. The active map shows the unavailable state without shipping a
+separate radar page or synthetic paired-map controls.
 Run Python checks with `python -m unittest discover -s data/radar -p test_*.py`.
 
 Sources: [ISRO S-band release](https://www.isro.gov.in/NISARS_Band_SAR_Data_Products_Release.html),

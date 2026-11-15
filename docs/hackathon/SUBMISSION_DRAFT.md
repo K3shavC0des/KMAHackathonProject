@@ -38,18 +38,18 @@ NISAR supplies repeated local surface-moisture retrievals that can be compared o
 
 ## Scientific limits
 
-### Experimental L/S evidence and field check
+### Experimental L/S evidence
 
-The map links to a new L/S radar evidence page with synchronized band maps,
-acquisition selection, source notes and a conditional irrigation form. Actual
-matching GCOV rasters have not yet been supplied, so the released artifact
-explicitly reports radar evidence unavailable. No dual-band observed result,
-agricultural polygon validation, accuracy improvement or water saving is claimed.
+The main map explains the roles of L- and S-band and reports matching radar
+evidence unavailable. Actual matching GCOV rasters have not yet been supplied.
+No dual-band observed result, agricultural polygon validation, accuracy
+improvement or water saving is claimed.
 The exporter accepts reviewed calibrated HH linear-power rasters, masks them
-on a common grid and reports within-band changes in dB. The field form compares
-an entered root-zone measurement with an entered documented crop/soil trigger;
-satellite values do not determine that trigger. Scenario results are labelled.
-Independent field validation remains open. The unavailable-evidence UI and the main map's desktop/mobile journey have been rehearsed in a real browser.
+on a common grid and reports within-band changes in dB. Independent field
+validation remains open. The unavailable-evidence UI and the main map's
+desktop/mobile journey have been rehearsed in a real browser. A standalone
+radar/field-check experiment was intentionally removed because it was not part
+of the demonstrated map journey.
 
 NISAR SME2 is a provisional surface-moisture product. A lower retrieved value is not proof of root-zone water stress or a need to irrigate. The analysis squares may include non-agricultural land and have not been matched to surveyed fields or crop masks. Irrigation, flooding, rainfall, land cover, and retrieval uncertainty can affect the signal. The views show historical acquisitions, not live conditions. SMAP's regional scale cannot be treated as field-scale evidence, and no quality-valid seasonal SMAP anomaly has been established for these views. A farmer or adviser would need local observations before acting on a water decision.
 
@@ -65,7 +65,7 @@ Run the local map with `node frontend/map/serve.mjs` and open `http://127.0.0.1:
 
 ## Build and validation
 
-The interface uses MapLibre GL JS with OpenStreetMap raster tiles. A shared JSON Schema validates derived area collections, and the Node API ranks observed cities separately from the synthetic example. The Python pair verifier checks acquisition metadata, coordinate alignment, dates, units, and valid-cell masks before export. The published multi-city baseline passed **28 Node tests and 31 Python tests**. The current combined tree passed **31/31 Node tests** and **4/4 radar-exporter Python tests**, plus syntax and static build checks. Headless Edge at 1440x900 and 390x844 verified the introduction, tour, and selected-square feedback; consecutive selections changed the headline from 1.3 to 3.9 percentage points lower. [Review details](MULTICITY_REVIEW.md).
+The interface uses MapLibre GL JS with OpenStreetMap raster tiles. A shared JSON Schema validates derived area collections, and the Node API ranks observed cities separately from the synthetic example. The Python pair verifier checks acquisition metadata, coordinate alignment, dates, units, and valid-cell masks before export. The published multi-city baseline passed **28 Node tests and 31 Python tests**. After removing the orphaned prototype, the current combined tree passed **30/30 Node tests** and **4/4 radar-exporter Python tests**, plus syntax and static build checks. Headless Edge at 1440x900 and 390x844 verified the introduction, tour, and selected-square feedback; consecutive selections changed the headline from 1.3 to 3.9 percentage points lower. [Review details](MULTICITY_REVIEW.md).
 
 ## Team and references
 
