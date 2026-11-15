@@ -164,8 +164,8 @@
         "frontend/map/style.css",
         "tests/integration"
       ],
-      "status": "queued",
-      "evidence": ""
+      "status": "working",
+      "evidence": "Taking ownership of new Nairobi candidate work. Current evidence: July 2 SMAP has 9 recommended cells within 30km (nearest 19.7km), and ASF CMR SME2 footprints intersect Nairobi June 30 / July 7. Opening actual NISAR pair now; will not add synthetic or infer history."
     }
   },
   "messages": [
@@ -1052,6 +1052,7 @@
     "8d5006b9-29e3-4bdb-84cf-ef59456d4910",
     "78ea4aa3-9e4a-4bd7-9695-49fd7ebd245f",
     "52eac511-96bb-4c8b-9b2c-986e4898edbe",
-    "5fe0b42b-cc74-42ea-b542-4d621c77743a"
+    "5fe0b42b-cc74-42ea-b542-4d621c77743a",
+    "3a02cad1-7f47-4faf-963f-07784b50755e"
   ]
 }
