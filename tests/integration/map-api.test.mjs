@@ -112,12 +112,10 @@ test('map server forwards API validation errors, POST and preflight to the backe
 
 test('map and its module assets still load from root and nested routes', async () => {
   await withServer(async base => {
-    for (const path of ['/', '/map/', '/map.js', '/map/map.js', '/observations.mjs', '/map/observations.mjs', '/style.css', '/map/style.css', '/crop-report.json', '/map/crop-report.json', '/ludhiana-areas.json', '/map/ludhiana-areas.json', '/ahmedabad-areas.json', '/map/ahmedabad-areas.json']) {
+    for (const path of ['/', '/map/', '/map.js', '/map/map.js', '/observations.mjs', '/map/observations.mjs', '/style.css', '/map/style.css', '/crop-reports.json', '/map/crop-reports.json', '/ludhiana-areas.json', '/map/ludhiana-areas.json', '/ahmedabad-areas.json', '/map/ahmedabad-areas.json']) {
       assert.equal((await fetch(`${base}${path}`)).status, 200, path);
     }
-    const report = await (await fetch(`${base}/crop-report.json`)).json();
-    assert.equal(report.status, 'experimental_screening');
-    assert.equal(report.nisar.matched_cells, 7415);
-    assert.equal(report.crop_context.field_crop_verified, false);
+    const reports = await (await fetch(`${base}/crop-reports.json`)).json();
+    assert.deepEqual(Object.keys(reports).sort(), ['ahmedabad', 'ludhiana', 'nairobi', 'observed']);
   });
 });

@@ -19,7 +19,7 @@ let map;
 let maplibregl;
 let detailMode = 'easy';
 let radarEvidence = null;
-let cropReport = null;
+let cropReports = {};
 let viewMode = 'moisture';
 let cropAreas = [];
 let cityNote = '';
@@ -141,14 +141,14 @@ function render() {
 }
 
 function renderCropMode() {
-  const available = mode === 'observed' && cropReport?.status === 'experimental_screening'
-    && cropReport.nisar?.matched_cells === collections.observed?.areas.length && cropAreas.length > 0;
+  const report = cropReports[mode];
+  const available = mode !== 'sample' && report?.nisar?.matched_cells === collections[mode]?.areas.length && cropAreas.length > 0;
   byId('view-mode').querySelector('[value="crop"]').disabled = !available;
   if (!available) viewMode = 'moisture';
   byId('view-mode').value = viewMode;
   byId('view-mode-note').textContent = available
-    ? 'Experimental crop context for Nagapattinam. Map blocks summarize measured NISAR cells.'
-    : mode === 'observed' ? 'Crop report unavailable for these cells.' : 'Crop mode is available for Nagapattinam.';
+    ? `Crop and weather context for ${cityViews[mode].name}. Map blocks summarize measured NISAR cells.`
+    : mode === 'sample' ? 'Crop mode needs observed satellite measurements.' : 'Crop context is unavailable for this city.';
   const active = viewMode === 'crop' && available;
   document.body.classList.toggle('crop-mode', active);
   byId('crop-panel').hidden = !active;
@@ -160,19 +160,31 @@ function renderCropMode() {
     ? `${cropAreas.length} roughly 1 km blocks from measured NISAR cells. Select a block to inspect its median change.`
     : cityNote;
   if (!active) return;
-  const crop = cropReport.crop_context.candidates.find(item => item.name === byId('crop-select').value);
-  byId('crop-season').textContent = `${crop.name}: ${crop.season_possible ? 'local guidance includes this season' : 'outside the cited local season'}. Field crop is unverified.`;
-  byId('crop-concern').textContent = 'Watch — confirm locally';
-  const weather = cropReport.temperature;
+  const previousCrop = byId('crop-select').value;
+  const candidates = report.crop_context.candidates;
+  byId('crop-select').replaceChildren(...candidates.map(item => {
+    const option = document.createElement('option'); option.value = item.name; option.textContent = item.name; return option;
+  }));
+  const crop = candidates.find(item => item.name === previousCrop) ?? candidates[0];
+  byId('crop-select').value = crop.name;
+  byId('crop-season').textContent = `${crop.name}: ${crop.season}. Crop presence and growth stage are unknown.`;
+  byId('crop-concern').textContent = report.concern;
+  byId('crop-source').href = crop.source;
+  byId('crop-source').textContent = `${cityViews[mode].name} crop guidance`;
+  const weather = report.temperature;
   byId('crop-weather').textContent = `${weather.seven_day_mean_daily_max_c.toFixed(1)}°C average daily high · ${weather.seven_day_mean_humidity_percent.toFixed(0)}% humidity · ${weather.seven_day_rain_mm.toFixed(1)} mm rain in seven days.`;
-  const nisar = cropReport.nisar;
-  byId('crop-nisar').textContent = `${nisar.matched_cells.toLocaleString()} matched NISAR cells, median ${Math.abs(nisar.median_change_m3m3 * 100).toFixed(1)} points lower. Only ${(nisar.uncertainty.fraction_change_exceeds_sum_of_uncertainties * 100).toFixed(1)}% exceed summed per-date uncertainty.`;
+  const nisar = report.nisar;
+  const direction = nisar.median_change_m3m3 < 0 ? 'lower' : 'higher';
+  const uncertainty = nisar.uncertainty
+    ? `Only ${(nisar.uncertainty.fraction_change_exceeds_sum_of_uncertainties * 100).toFixed(1)}% exceed summed per-date uncertainty.`
+    : 'NISAR uncertainty was not checked for this city.';
+  byId('crop-nisar').textContent = `${nisar.matched_cells.toLocaleString()} matched NISAR cells, median ${Math.abs(nisar.median_change_m3m3 * 100).toFixed(1)} points ${direction}. ${uncertainty}`;
   const selected = areas.find(item => item.area_id === selectedId);
   const band = selected ? cropInspectionBand(selected) : null;
   const signal = band === 'review' ? 'Review sooner: strongest drying cue' : band === 'watch' ? 'Watch: drying cue' : band === 'steady' ? 'Lower concern from moisture change; crop risk is still unknown' : 'Select a block';
   byId('crop-block-summary').textContent = selected ? `${signal}. Median of ${selected.cell_count} matched cells; change is uncertain.` : signal;
   byId('area-description').textContent = selected ? `This block summarizes ${selected.cell_count} measured NISAR cells. It is not a farm boundary or identified crop.` : 'No block selected.';
-  byId('map-status').textContent = `Experimental crop watch · ${cityViews[mode].name} · ${visibleAreas().length} derived blocks shown · Crop presence unknown`;
+  byId('map-status').textContent = `Crop and weather view · ${cityViews[mode].name} · ${visibleAreas().length} derived blocks shown · Crop presence unknown`;
 }
 
 function updateSelectionSpotlight(reading) {
@@ -227,9 +239,11 @@ function selectArea(id, panToArea = false) {
 
 function useCollection(nextMode) {
   if (!collections[nextMode]) return;
-  viewMode = 'moisture';
+  const keepCropMode = viewMode === 'crop';
   mode = nextMode;
-  areas = collections[mode].areas;
+  cropAreas = cropBlocks(collections[mode].areas);
+  viewMode = keepCropMode && mode !== 'sample' && cropReports[mode] ? 'crop' : 'moisture';
+  areas = viewMode === 'crop' ? cropAreas : collections[mode].areas;
   selectedId = areas[0].area_id;
   byId('data-mode').value = mode;
   const dates = [...new Set(areas.flatMap(area => area.observations.map(item => item.observed_at.slice(0, 10))))].sort();
@@ -454,9 +468,9 @@ byId('about-view').addEventListener('click', () => {
 
 async function startMap() {
 try {
-  const response = await fetch('./crop-report.json');
-  if (response.ok) cropReport = await response.json();
-} catch { cropReport = null; }
+  const response = await fetch('./crop-reports.json');
+  if (response.ok) cropReports = await response.json();
+} catch { cropReports = {}; }
 const mapReady = await initializeMap();
 if (mapReady) {
   try {

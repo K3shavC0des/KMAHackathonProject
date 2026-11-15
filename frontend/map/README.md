@@ -25,17 +25,16 @@ Run the same-origin API regressions with
 sample/observed separation, missing evidence, bad requests and static assets.
 The observed-mode selector uses these same-origin routes.
 
-The experimental **Crop + weather** map mode is available for Nagapattinam.
-It groups the observed 200 m SME2 cells into approximately 1 km blocks, keeps
-blocks with at least 10 matched cells, and colours each block green (median
-fell under 2 points or rose), yellow (fell 2–3.5 points), or red (fell 3.5+
-points). These are relative inspection priorities from median surface-moisture
-change. The July 2026 regional NASA POWER weather and
-rice/black gram season context appear in the right panel. Block colours are
-inspection cues, not confirmed crop stress; crop presence and growth stage are
-unknown, and the report shows that most cell changes are within the summed
-per-date uncertainty. The source report and method live under
-`experiments/crop-weather-risk/`. Changing city returns to moisture mode.
+The **Crop + weather** map mode is available for every observed city. It groups
+observed 200 m SME2 cells into approximately 1 km blocks, keeps blocks with at
+least 10 matched cells, and colours each block by median moisture change:
+green for under 2 points lower or higher, yellow for 2 to under 3.5 points
+lower, and red for 3.5+ points lower. The right panel loads NASA POWER weather,
+a NISAR summary, and locally sourced crop choices for the selected city. Crop presence and
+growth stage remain unknown. NISAR uncertainty was checked for Nagapattinam;
+other cities say when it has not been checked. These colours are inspection
+cues, not confirmed crop stress. City reports can be regenerated with
+`python experiments/crop-weather-risk/build_city_reports.py`.
 
 The map requests collections through `/api/areas?dataset=observed` or
 `dataset=sample`, served by the shared backend handler. It checks the contract
