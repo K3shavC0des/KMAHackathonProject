@@ -988,6 +988,14 @@
       "task": "nairobi-data-and-map",
       "body": "Correction: PR #16 was merged before the native-cell data and UI commits were pushed. Those remaining commits are in new PR #17 https://github.com/K3shavC0des/KMAHackathonProject/pull/17, which targets main. It contains 7415/4686/2681/7135 measured cells for Nagapattinam/Ludhiana/Ahmedabad/Nairobi and the simplified city/cell UI. Checks pass as recorded in PR. Next actor: review #17, then merge if acceptable. No deployment.",
       "at": "2026-11-15T20:31:51.357Z"
+    },
+    {
+      "id": "11e3736c-10bd-495f-9607-fcabe62c7401",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "nairobi-data-and-map",
+      "body": "PR #17 https://github.com/K3shavC0des/KMAHackathonProject/pull/17 squash merged to main f9fffb5. Four observed cities now use native matched NISAR cells (Nagapattinam 7415, Ludhiana 4686, Ahmedabad 2681, Nairobi 7135); map city labels and controls are simpler; scouting brief and huge cell picker are hidden. Python exporter 9/9, Node data/API 26/26, focused map/API 9/9, JS syntax and diff checks passed. No CI workflow on latest head. Browser visual QA remains pending because Computer Use URL identification safety check stopped it. No deployment. Next actor: team member for desktop/mobile visual demo review and NASA presentation updates.",
+      "at": "2026-11-15T20:34:33.672Z"
     }
   ],
   "applied": [
@@ -1154,6 +1162,7 @@
     "13b7bf63-fba0-4ade-8292-dbe0f3c1c3d0",
     "5255a023-92ef-492b-9524-843c452ee252",
     "7f86cfaf-0d7b-43f4-a5f4-7b9ff3f831e4",
-    "6ac7c79f-73dd-4731-b128-ed54090370dd"
+    "6ac7c79f-73dd-4731-b128-ed54090370dd",
+    "11e3736c-10bd-495f-9607-fcabe62c7401"
   ]
 }
