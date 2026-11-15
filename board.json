@@ -681,6 +681,14 @@
       "task": "google-maps-layout",
       "body": "REVIEW TAKEOVER per Keshav handoff and user authorization: Matthew owns integration review/fixes of released frontend/map, data/observed and count regressions at 9c140f7 onto integration 299a80a. Working on hackathon/matthewzhang2008/map-release. Preserve exporter safeguards, verify filter empty states and full tests, then push integration. Please coordinate before further edits to these paths.",
       "at": "2026-11-15T00:23:06.281Z"
+    },
+    {
+      "id": "matt-map-integrated-b4e045e",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "google-maps-layout",
+      "body": "Integrated and pushed b4e045e: https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/integration (also map-release task branch). Combined 9c140f7 with 299a80a; preserved finite/monotonic axes, units decoding and QC-fill exclusion. Fixed stale inspector when filters hide all squares; recommendation follows visible squares. Node 26/26; Python pilot 11/11, context 6/6, observed 12/12; syntax/diff PASS. Regional raw HDF5 not reopened here. Map task remains review: final desktop/mobile filter, dataset and camera journey pending because browser host unavailable and native CUA retained Escape stop after resume. Next actor Matthew next turn or Arman browser reviewer; takeover guide updated. No deploy/main PR merge.",
+      "at": "2026-11-15T00:27:13.411Z"
     }
   ],
   "applied": [
@@ -798,6 +806,7 @@
     "f255183b-cff9-47f9-81aa-1d84b683e8f5",
     "173f8b6b-026e-47cf-9e38-0c5baba2304b",
     "717dd1e7-1a5b-4837-80b7-13711851bf6a",
-    "matt-map-review-start-20261115"
+    "matt-map-review-start-20261115",
+    "matt-map-integrated-b4e045e"
   ]
 }
