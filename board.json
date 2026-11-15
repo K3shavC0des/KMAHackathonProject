@@ -705,6 +705,14 @@
       "task": null,
       "body": "User requests UI matching Downloads reference: dark full-screen geographic dashboard with floating controls, right legend/inspector and bottom evidence panel. Matthew continuing released frontend/map ownership on dark-map task branch. Also checking newly authorized NASA account access for additional-city source files; no new observed records until QC passes.",
       "at": "2026-11-15T00:38:38.675Z"
+    },
+    {
+      "id": "matt-city-ingest-20261115",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": null,
+      "body": "Earthdata source files now downloaded locally with user authorization. Both Ludhiana Nov21-Dec3 2025 and Ahmedabad Dec12-Dec24 2025 pairs passed verifier: 4686 and 2681 matched recommended cells. Continuing released frontend/data ownership and backend API/tests on dark-map branch for per-city datasets and bounded navigation; raw HDF5 stays ignored. Other-city dates/priority remain separate; no invented empty-cell values or SMAP/crop context.",
+      "at": "2026-11-15T00:48:58.066Z"
     }
   ],
   "applied": [
@@ -825,6 +833,7 @@
     "matt-map-review-start-20261115",
     "matt-map-integrated-b4e045e",
     "matt-multicity-start-20261115",
-    "matt-dark-map-start-20261115"
+    "matt-dark-map-start-20261115",
+    "matt-city-ingest-20261115"
   ]
 }
