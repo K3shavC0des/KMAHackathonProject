@@ -166,6 +166,18 @@
       ],
       "status": "working",
       "evidence": "Taking ownership of new Nairobi candidate work. Current evidence: July 2 SMAP has 9 recommended cells within 30km (nearest 19.7km), and ASF CMR SME2 footprints intersect Nairobi June 30 / July 7. Opening actual NISAR pair now; will not add synthetic or infer history."
+    },
+    "pitch-deck": {
+      "id": "pitch-deck",
+      "owner": "matthewzhang2008",
+      "goal": "Create an editable seven-slide NASA Space Apps pitch deck using real project screenshots and honest delivered-versus-roadmap framing.",
+      "acceptance": "Exactly seven English slides; editable PPTX opens in PowerPoint; project screenshots included; SME2 delivered, SMAP/L-S/auxiliary gaps accurately labeled; NASA resources and AI use disclosed.",
+      "paths": [
+        "docs/hackathon/Farm_Moisture_Watch_Pitch_Deck.pptx",
+        "docs/hackathon/STATE.md"
+      ],
+      "status": "queued",
+      "evidence": ""
     }
   },
   "messages": [
@@ -1053,6 +1065,7 @@
     "78ea4aa3-9e4a-4bd7-9695-49fd7ebd245f",
     "52eac511-96bb-4c8b-9b2c-986e4898edbe",
     "5fe0b42b-cc74-42ea-b542-4d621c77743a",
-    "3a02cad1-7f47-4faf-963f-07784b50755e"
+    "3a02cad1-7f47-4faf-963f-07784b50755e",
+    "matt-pitch-deck-task-20261115-01"
   ]
 }
