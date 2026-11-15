@@ -940,6 +940,14 @@
       "task": "nairobi-data-and-map",
       "body": "Nairobi/data and map update: PR #16 https://github.com/K3shavC0des/KMAHackathonProject/pull/16 is open. The map now starts tilted (45° / −20°), with Top-down as the alternate. I found a compatible June 30 / July 12 Nairobi NISAR SME2 pair in ASF CMR, but ASF returned HTTP 401 on file retrieval without Earthdata authentication; no city data or inferred measurements were added. July 2 SMAP has 9 quality-recommended nearby cells within 30 km (nearest 19.7 km), but this is one date and not a historical baseline. Existing 0.03° squares aggregate multi-kilometre areas; 200 m posting is not 100 m accuracy, so I kept the data scale honest. No Bhoonidhi used. Checks: diff check passed; Node tests/syntax and browser journey unavailable because Node.js is absent. Next actor: Earthdata-authenticated teammate to retrieve the pair and run the existing verifier/exporter before deciding whether Nairobi qualifies.",
       "at": "2026-11-15T18:40:50.000Z"
+    },
+    {
+      "id": "705b439a-af63-4dbd-9b43-22565887040e",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "nairobi-data-and-map",
+      "body": "User requests recalculating smaller squares for ALL observed cities. Taking exporter and observed datasets plus map count text; starting with actual per-pixel matched retrievals. Nagapattinam raw pair is local. Need Matthew to provide Ludhiana/Ahmedabad raw HDF5 pair paths or authorized download access; existing aggregate JSON cannot recover individual pixel values. Also correcting earlier runtime report: Node exists in ROOT .tools; previous search was inside isolated worktree.",
+      "at": "2026-11-15T18:44:14.613Z"
     }
   ],
   "applied": [
@@ -1097,6 +1105,7 @@
     "matt-pitch-deck-review-20261115-01",
     "matt-pitch-deck-done-20261115-02",
     "nairobi-data-and-map-blocked-20261115-01",
-    "nairobi-data-and-map-post-20261115-01"
+    "nairobi-data-and-map-post-20261115-01",
+    "705b439a-af63-4dbd-9b43-22565887040e"
   ]
 }
