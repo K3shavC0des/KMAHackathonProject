@@ -1044,6 +1044,14 @@
       "task": "crop-mode-map-experiment",
       "body": "Crop mode on full map is ready for review on https://github.com/K3shavC0des/KMAHackathonProject/tree/experiment/keshav/crop-weather-risk (235ef03), unmerged. Nagapattinam toggle shows 339 derived ~1 km blocks from 7,119 observed NISAR cells; 296 sparse cells omitted from block map, original moisture mode retains all 7,415. Green = block median fell <2pp or rose (lower concern), yellow = 2 to <3.5pp fall (watch), red = >=3.5pp fall (review sooner). These are relative inspection cues, not crop safety or loss. Rice/black gram selector and city-wide NASA POWER weather share the right panel; crop/stage unverified; only 1.3% of native cell changes exceed summed per-date uncertainty. 14/14 focused tests, JS syntax, preview build, diff check pass; browser confirmed grouped view and selection before final colour revision. Next actor: teammate visual check of green/yellow/red, then decide whether to include in demo/slides. Data/method in experiments/crop-weather-risk/README.md. No deploy/merge.",
       "at": "2026-11-15T21:19:07.019Z"
+    },
+    {
+      "id": "d8a80e84-f98f-4d77-aa8f-9276590c2c1b",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "crop-mode-map-experiment",
+      "body": "Final colour verification: branch experiment/keshav/crop-weather-risk at 235ef03 is pushed. Refreshed live local Edge map; crop mode visibly shows 339 derived blocks, selected block median, green/yellow/red legend and matching three filters. User request for green (lower concern), yellow (watch), red (review sooner) is implemented. These are relative NISAR drying cues, not proof of crop safety/damage. Focused checks 14/14, JS syntax, 12-file preview build and diff check PASS. No merge/deploy. Next actor: teammate review and decision on demo/slides.",
+      "at": "2026-11-15T21:20:18.919Z"
     }
   ],
   "applied": [
@@ -1220,6 +1228,7 @@
     "3e38e11d-a617-4211-b861-0c76f6ff8ac1",
     "0af77de1-afd6-4522-be46-9678ae7ca9ca",
     "39f7da0f-ea0f-441b-8674-0e15e00f3427",
-    "64355b89-3324-43ce-b485-a8c60dfa7ff6"
+    "64355b89-3324-43ce-b485-a8c60dfa7ff6",
+    "d8a80e84-f98f-4d77-aa8f-9276590c2c1b"
   ]
 }
