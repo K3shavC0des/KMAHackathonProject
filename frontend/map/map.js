@@ -220,7 +220,7 @@ if (mapReady) {
     await Promise.all(['ludhiana', 'ahmedabad'].map(async city => {
       const option = byId('data-mode').querySelector(`[value="${city}"]`);
       try {
-        const response = await fetch(`./api/areas?dataset=${city}`);
+        const response = await fetch(`./${city}-areas.json`);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const collection = await response.json();
         if (!collection.areas?.length) throw new Error('No usable squares');
