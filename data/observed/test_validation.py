@@ -6,7 +6,7 @@ from pathlib import Path
 import unittest
 
 from jsonschema import ValidationError
-from export_nagapattinam import validate_collection
+from export_nagapattinam import REGION_BOUNDS, analysis_tiles, validate_collection
 
 
 class ContractTests(unittest.TestCase):
@@ -41,3 +41,10 @@ class ContractTests(unittest.TestCase):
         self.collection['areas'][0]['unexpected'] = True
         with self.assertRaises(ValidationError):
             validate_collection(self.collection, self.schema)
+
+    def test_regional_grid_is_a_contiguous_six_by_six_analysis_grid(self):
+        tiles = analysis_tiles()
+        self.assertEqual(len(tiles), 36)
+        self.assertEqual(tiles[0], ('r01c01', 79.68, 10.64, 79.71, 10.67))
+        self.assertEqual(tiles[-1], ('r06c06', 79.83, 10.79, 79.86, 10.82))
+        self.assertEqual(REGION_BOUNDS, (79.68, 10.64, 79.86, 10.82))

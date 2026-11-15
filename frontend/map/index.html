@@ -13,14 +13,14 @@
       <div id="map" aria-label="Interactive map centered on Nagapattinam, India"></div>
       <header class="map-title">
         <p class="eyebrow">Farm Moisture Watch</p>
-        <h1>Moisture inspection map</h1>
-        <p>Pan, zoom, and tap an area to inspect evidence.</p>
+        <h1>Soil moisture map</h1>
+        <p>Move the map, zoom in, then select a coloured square to see what the satellite measured.</p>
       </header>
       <section class="map-search" aria-label="Map navigation">
         <div class="view-actions"><button type="button" id="state-view">Tamil Nadu</button><button type="button" id="pilot-view">Nagapattinam</button><button type="button" id="camera-view">Tilt</button></div>
-        <label for="data-mode">Evidence view</label>
-        <select id="data-mode" aria-describedby="mode-note"><option value="sample">Synthetic sample areas</option><option value="observed">Observed NISAR tiles</option></select>
-        <p id="mode-note">Choose the observed view when the verified tile export is available.</p>
+        <label for="data-mode">Data shown</label>
+        <select id="data-mode" aria-describedby="mode-note"><option value="sample">Example data (not real measurements)</option><option value="observed">Satellite measurements (Nagapattinam)</option></select>
+        <p id="mode-note">Satellite squares are measured areas, not farm boundaries.</p>
       </section>
       <div class="map-status" role="status">Real basemap tiles © OpenStreetMap contributors. Evidence overlays are clearly labeled as observed or synthetic.</div>
     </section>

@@ -10,8 +10,22 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 GRID = 'science/LSAR/SME2/grids/'
 IDENT = 'science/LSAR/identification/'
-TILES = [('sw', 79.74, 10.70, 79.77, 10.73), ('se', 79.77, 10.70, 79.80, 10.73),
-         ('nw', 79.74, 10.73, 79.77, 10.76), ('ne', 79.77, 10.73, 79.80, 10.76)]
+# Development analysis grid only: this is not a farm-boundary dataset.
+REGION_BOUNDS = (79.68, 10.64, 79.86, 10.82)
+TILE_DEGREES = 0.03
+
+
+def analysis_tiles(bounds=REGION_BOUNDS, tile_degrees=TILE_DEGREES):
+    """Return stable west-to-east, south-to-north regional analysis squares."""
+    west, south, east, north = bounds
+    columns = round((east - west) / tile_degrees)
+    rows = round((north - south) / tile_degrees)
+    if columns <= 0 or rows <= 0 or abs(west + columns * tile_degrees - east) > 1e-9 or abs(south + rows * tile_degrees - north) > 1e-9:
+        raise ValueError('Region bounds must divide evenly into analysis squares')
+    return [
+        (f'r{row + 1:02}c{column + 1:02}', round(west + column * tile_degrees, 6), round(south + row * tile_degrees, 6), round(west + (column + 1) * tile_degrees, 6), round(south + (row + 1) * tile_degrees, 6))
+        for row in range(rows) for column in range(columns)
+    ]
 
 
 def validate_collection(collection, schema_path):
@@ -65,7 +79,7 @@ def export(earlier, later):
         if datetime.fromisoformat(dates[0].replace('Z', '+00:00')) >= datetime.fromisoformat(dates[1].replace('Z', '+00:00')):
             raise ValueError('Inputs must be in chronological order')
         ids = [scalar(handle, 'granuleId') for handle in [before, after]]
-        for tile, west, south, east, north in TILES:
+        for tile, west, south, east, north in analysis_tiles():
             # Half-open bounds prevent shared-edge cells from appearing twice.
             rows = np.flatnonzero((lat >= south) & (lat < north))
             cols = np.flatnonzero((lon >= west) & (lon < east))
@@ -100,7 +114,8 @@ def export(earlier, later):
             for index in [0, 1]:
                 observations.append(observation(f'date-{index}', 'soil_moisture',
                     float(np.median(values[index][matched])), dates[index], ids[index]))
-            areas.append(dict(area_id=area_id, label=f'Nagapattinam analysis tile {tile.upper()} (observed)',
+            row, column = int(tile[1:3]), int(tile[4:6])
+            areas.append(dict(area_id=area_id, label=f'Nagapattinam satellite analysis square — row {row}, column {column}',
                 geometry=dict(type='Polygon', coordinates=[[[west, south], [east, south], [east, north], [west, north], [west, south]]]),
                 crop_stage='unknown', observations=observations))
     return dict(schema_version='1.0.0', areas=areas)

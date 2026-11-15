@@ -13,8 +13,12 @@ let maplibregl;
 
 function readingText(item) {
   if (!item) return 'Unavailable';
+  if (item.metric === 'soil_moisture_change') {
+    const direction = item.value < 0 ? 'lower' : item.value > 0 ? 'higher' : 'unchanged';
+    return `${Math.abs(item.value * 100).toFixed(1)} percentage points ${direction}`;
+  }
   const sign = item.metric === 'soil_moisture_change' && item.value > 0 ? '+' : '';
-  return `${sign}${item.value} ${item.unit}`;
+  return `${sign}${item.value.toFixed?.(3) ?? item.value} ${item.unit}`;
 }
 
 function metadata(item) {
@@ -23,7 +27,7 @@ function metadata(item) {
 }
 
 function labelFor(area) {
-  if (mode === 'observed') return area.area_id.split('-').at(-1).toUpperCase();
+  if (mode === 'observed') return area.label.replace('Nagapattinam satellite analysis square — ', '');
   return `Sample ${area.label.match(/field\s+([A-Za-z0-9]+)/i)?.[1] ?? area.area_id}`;
 }
 
@@ -59,14 +63,14 @@ function render() {
   const statuses = new Set(area.observations.map(item => item.data_status));
   byId('sample-badge').textContent = statuses.size === 1 ? [...statuses][0].toUpperCase() : 'MIXED STATUS';
   byId('area-description').textContent = mode === 'observed'
-    ? `${area.label}. This is an analysis tile, not a surveyed field or verified crop. Local surface moisture only; crop stage unknown.`
-    : `${area.label}. This synthetic fixture area is outside the Nagapattinam development window.`;
+    ? `${area.label}. This is a satellite analysis square, not a farm boundary. It measures surface soil moisture only; the crop and growth stage have not been verified.`
+    : `${area.label}. This is example data for demonstrating the app; it is not a real measurement.`;
   const candidate = inspectionSummary(areas);
   byId('with-first').textContent = candidate ? candidate.area.label.split(' (')[0] : 'Insufficient local evidence';
   byId('value-change').textContent = candidate
-    ? `${candidate.area.label.split(' (')[0]} has the strongest quality-valid local drying signal (${readingText(candidate.change)}). Inspect this area first if a visit is needed; this is not a watering decision.`
-    : 'No quality-valid local drying signal supports a first inspection area.';
-  byId('rank-explanation').textContent = 'A below-historical-standard flag needs quality-valid current and same-cell seasonal SMAP history. That comparison is unavailable, so no historical-risk claim is shown. Crop stage does not set this priority.';
+    ? `${candidate.area.label.split(' (')[0]} shows the largest measured decrease (${readingText(candidate.change)}). It may be a sensible place to look first, but this is not irrigation advice.`
+    : 'There is not enough quality-approved local evidence to suggest a first place to inspect.';
+  byId('rank-explanation').textContent = 'We cannot compare this change with a long-term seasonal record yet. The map therefore does not make a drought-risk claim or identify a crop stage.';
   byId('sme2-value').textContent = readingText(sme2);
   byId('sme2-meta').textContent = metadata(sme2);
   byId('smap-value').textContent = readingText(smap);
@@ -160,7 +164,7 @@ if (mapReady) {
       const observedResponse = await fetch('./observed-areas.json');
       if (!observedResponse.ok) throw new Error(`Observed HTTP ${observedResponse.status}`);
       collections.observed = await observedResponse.json();
-      byId('mode-note').textContent = 'Observed NISAR tiles are separate from the synthetic sample. SMAP history is unavailable.';
+      byId('mode-note').textContent = 'Measured satellite squares are separate from the example data. Long-term regional history is not available yet.';
       useCollection('observed');
     } catch (error) {
       byId('data-mode').querySelector('[value="observed"]').disabled = true;

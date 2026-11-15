@@ -2,8 +2,9 @@
 
 `nagapattinam-areas.json` implements the reviewed area collection v1 contract.
 All readings are derived from the opened NISAR SME2 June 20 / July 2, 2026
-granules listed in `data/pilot/VERIFICATION.md`. These four rectangular analysis
-tiles divide the development window; they are not surveyed fields or a crop mask.
+granules listed in `data/pilot/VERIFICATION.md`. The 36 rectangular analysis
+squares cover a 0.18° × 0.18° development region around Nagapattinam (79.68–79.86° E,
+10.64–10.82° N); they are not surveyed fields or a crop mask.
 
 Reproduce from the repository root (Python requires h5py, numpy and jsonschema):
 
@@ -22,9 +23,10 @@ Set `FMW_AREA_SCHEMA` to the same canonical schema path if using a separate chec
 
 The exporter checks matching coordinate axes, track, frame, pass, radar band,
 look direction, product type, units, and date order. It uses each dataset's fill
-value, finite values, and retrievalQualityFlag bit 0=0 on both dates. Tile bounds
-are half-open to prevent double counting shared edges. The four tiles contain
-194, 235, 238, and 253 matched recommended cells (920 total).
+value, finite values, and retrievalQualityFlag bit 0=0 on both dates. Square bounds
+are half-open to prevent double counting shared edges. The 36 exported squares contain
+7,415 matched recommended cells in total. A square is shown only when it has qualified
+common cells in both acquisition dates; values are never filled in or estimated.
 
 For each tile, the change is the median of per-cell later-minus-earlier moisture
 on the common valid mask. Two additional observations record each date's median
