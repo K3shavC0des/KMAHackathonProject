@@ -1,4 +1,4 @@
-import { cropBlocks, inspectionBand, inspectionSummary, latestReading, observationInstant } from './map-data.mjs';
+import { cropBlocks, cropInspectionBand, inspectionBand, inspectionSummary, latestReading, observationInstant } from './map-data.mjs';
 
 const byId = id => document.getElementById(id);
 const pilotBounds = [[79.68, 10.64], [79.86, 10.82]];
@@ -66,12 +66,8 @@ function featureCollection() {
   const visibleBands = new Set([...document.querySelectorAll(`input[name="${filter}"]:checked`)].map(input => input.value));
   return {
     type: 'FeatureCollection',
-    features: areas.filter(area => visibleBands.has(viewMode === 'crop' ? cropBand(area) : inspectionBand(area))).map(area => ({ type: 'Feature', properties: { area_id: area.area_id, label: labelFor(area), band: viewMode === 'crop' ? cropBand(area) : inspectionBand(area) }, geometry: area.geometry }))
+    features: areas.filter(area => visibleBands.has(viewMode === 'crop' ? cropInspectionBand(area) : inspectionBand(area))).map(area => ({ type: 'Feature', properties: { area_id: area.area_id, label: labelFor(area), band: viewMode === 'crop' ? cropInspectionBand(area) : inspectionBand(area) }, geometry: area.geometry }))
   };
-}
-
-function cropBand(area) {
-  return latestReading(area, 'NISAR_SME2', 'soil_moisture_change')?.value <= -0.02 ? 'watch' : 'lower';
 }
 
 function visibleAreas() {
@@ -83,7 +79,7 @@ function updateMapData() {
   if (!map?.getSource('areas')) return;
   map.getSource('areas')?.setData(featureCollection());
   map.setPaintProperty('area-fill', 'fill-color', viewMode === 'crop'
-    ? ['match', ['get', 'band'], 'watch', '#efb352', '#5f8296']
+    ? ['match', ['get', 'band'], 'review', '#f07861', 'watch', '#efb352', 'steady', '#82c7a5', '#8997a8']
     : ['match', ['get', 'band'], 'review', '#f07861', 'watch', '#efb352', 'lower', '#e4d57b', 'steady', '#82c7a5', '#8997a8']);
   map.setPaintProperty('area-fill', 'fill-opacity', ['case', ['==', ['get', 'area_id'], selectedId], 0.72, 0.42]);
   map.setPaintProperty('area-line', 'line-color', ['case', ['==', ['get', 'area_id'], selectedId], '#b9e2ff', '#c8d9e4']);
@@ -172,7 +168,8 @@ function renderCropMode() {
   const nisar = cropReport.nisar;
   byId('crop-nisar').textContent = `${nisar.matched_cells.toLocaleString()} matched NISAR cells, median ${Math.abs(nisar.median_change_m3m3 * 100).toFixed(1)} points lower. Only ${(nisar.uncertainty.fraction_change_exceeds_sum_of_uncertainties * 100).toFixed(1)}% exceed summed per-date uncertainty.`;
   const selected = areas.find(item => item.area_id === selectedId);
-  const signal = selected ? cropBand(selected) === 'watch' ? 'Drier block — inspect locally' : 'No strong NISAR drying signal; crop risk is still unknown' : 'Select a block';
+  const band = selected ? cropInspectionBand(selected) : null;
+  const signal = band === 'review' ? 'Review sooner: strongest drying cue' : band === 'watch' ? 'Watch: drying cue' : band === 'steady' ? 'Lower concern from moisture change; crop risk is still unknown' : 'Select a block';
   byId('crop-block-summary').textContent = selected ? `${signal}. Median of ${selected.cell_count} matched cells; change is uncertain.` : signal;
   byId('area-description').textContent = selected ? `This block summarizes ${selected.cell_count} measured NISAR cells. It is not a farm boundary or identified crop.` : 'No block selected.';
   byId('map-status').textContent = `Experimental crop watch · ${cityViews[mode].name} · ${visibleAreas().length} derived blocks shown · Crop presence unknown`;

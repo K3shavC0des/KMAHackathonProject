@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { latestReading, inspectionBand, inspectionSummary, cropBlocks } from './map-data.mjs';
+import { latestReading, inspectionBand, inspectionSummary, cropBlocks, cropInspectionBand } from './map-data.mjs';
 
 test('headline selects newest valid change, never a moisture level or suspect reading', () => {
   const area = { area_id: 'a', observations: [
@@ -48,4 +48,11 @@ test('crop blocks use medians of observed cells and leave sparse blocks out', ()
   assert.equal(blocks[0].cell_count, 10);
   assert.equal(blocks[0].observations[0].value, -.02);
   assert.equal(blocks[0].observations[0].data_status, 'derived');
+});
+
+test('crop block colours order relative drying without calling green safe', () => {
+  const block = value => ({ observations: [{ source: 'NISAR_SME2', metric: 'soil_moisture_change', spatial_scale: 'local', unit: 'm3/m3', quality: 'valid', value, observed_at: '2026-07-02T00:00:00Z' }] });
+  assert.equal(cropInspectionBand(block(-.04)), 'review');
+  assert.equal(cropInspectionBand(block(-.025)), 'watch');
+  assert.equal(cropInspectionBand(block(-.01)), 'steady');
 });

@@ -27,8 +27,10 @@ The observed-mode selector uses these same-origin routes.
 
 The experimental **Crop + weather** map mode is available for Nagapattinam.
 It groups the observed 200 m SME2 cells into approximately 1 km blocks, keeps
-blocks with at least 10 matched cells, and colours each block by its median
-surface-moisture change. The July 2026 regional NASA POWER weather and
+blocks with at least 10 matched cells, and colours each block green (median
+fell under 2 points or rose), yellow (fell 2–3.5 points), or red (fell 3.5+
+points). These are relative inspection priorities from median surface-moisture
+change. The July 2026 regional NASA POWER weather and
 rice/black gram season context appear in the right panel. Block colours are
 inspection cues, not confirmed crop stress; crop presence and growth stage are
 unknown, and the report shows that most cell changes are within the summed

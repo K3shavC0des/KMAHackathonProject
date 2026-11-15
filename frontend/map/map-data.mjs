@@ -57,3 +57,11 @@ export function cropBlocks(areas) {
     };
   });
 }
+
+export function cropInspectionBand(area) {
+  const change = latestReading(area, 'NISAR_SME2', 'soil_moisture_change');
+  if (!change) return 'unavailable';
+  if (change.value <= -0.035) return 'review';
+  if (change.value <= -0.02) return 'watch';
+  return 'steady';
+}
