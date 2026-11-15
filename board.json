@@ -737,6 +737,14 @@
       "task": null,
       "body": "User-authorized private preview deployed successfully: https://farm-moisture-watch-mz.twinklinglime16.chatgpt.site . Sites reports succeeded. GitHub dark-map branch pushed at 82fa8ab; static route integration checks 5/5 pass, syntax/diff pass. All three observed cities and synthetic example included; deployment only contains eight frontend/derived-data assets plus manifest. Browser QA remains pending after earlier URL-policy blocker. Next actor: Matthew/user open private preview and review city selection/layout. No main merge or NASA submission.",
       "at": "2026-11-15T00:56:54.637Z"
+    },
+    {
+      "id": "matthewzhang2008-update-2026-11-15",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "dark-map",
+      "body": "Progress update (2026-11-15): current branch hackathon/matthewzhang2008/dark-map. Added dark dashboard, multi-city observed NISAR datasets for Ludhiana (35 squares) and Ahmedabad (36) alongside Nagapattinam (36), with new radar UI/API/schema/data, irrigation view, tutorial styles, and site preview updates. Current working tree also has README, submission draft, backend/map changes and new integration coverage. Recorded verification from current checkpoint: Node 28/28 and Python 31/31 pass; observed city HDF5 pairs opened and passed QC, raw downloads remain ignored. Still open: browser verification (previous URL-policy blocker) and final review/integration of all current uncommitted work. Next: inspect and consolidate pending edits, complete browser pass when access allows, then update submission page.",
+      "at": "2026-11-15T03:08:29.344Z"
     }
   ],
   "applied": [
@@ -861,6 +869,7 @@
     "matt-city-ingest-20261115",
     "matt-city-pushed-600d46e",
     "matt-preview-deploy-start",
-    "matt-preview-live-82fa8ab"
+    "matt-preview-live-82fa8ab",
+    "matthewzhang2008-update-2026-11-15"
   ]
 }
