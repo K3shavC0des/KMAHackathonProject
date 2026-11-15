@@ -214,7 +214,7 @@ async function initializeMap() {
   }
   map = new maplibregl.Map({
     container: 'map', center: pilotCenter, zoom: 11, minZoom: 9, maxZoom: 16,
-    maxBounds: stateBounds, bearing: 0, pitch: 0, pitchWithRotate: true,
+    maxBounds: stateBounds, bearing: -20, pitch: 45, pitchWithRotate: true,
     style: { version: 8, sources: { osm: { type: 'raster', tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'], tileSize: 256, attribution: '© OpenStreetMap contributors' } }, layers: [{ id: 'osm', type: 'raster', source: 'osm' }] }
   });
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'bottom-left');
@@ -248,6 +248,8 @@ byId('state-view').addEventListener('click', () => fitRegion(cityViews[mode].reg
 byId('pilot-view').addEventListener('click', () => fitRegion(cityViews[mode].bounds));
 byId('dark-view').addEventListener('click', () => setBasemap(true));
 byId('street-view').addEventListener('click', () => setBasemap(false));
+byId('camera-view').textContent = 'Top-down';
+byId('camera-view').setAttribute('aria-pressed', 'true');
 byId('camera-view').addEventListener('click', () => {
   const tilted = map?.getPitch() > 0;
   map?.easeTo({ pitch: tilted ? 0 : 45, bearing: tilted ? 0 : -20, duration: 600 });
