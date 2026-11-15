@@ -58,6 +58,17 @@ export function cropBlocks(areas) {
   });
 }
 
+export function cropContextAvailable(report, measuredAreaCount, blockCount) {
+  const temperature = report?.temperature;
+  const signals = report?.fusion?.signals;
+  return Number.isInteger(measuredAreaCount) && measuredAreaCount > 0 &&
+    report?.nisar?.matched_cells === measuredAreaCount && blockCount > 0 &&
+    report?.crop_context?.candidates?.length > 0 &&
+    ['seven_day_mean_daily_max_c', 'seven_day_mean_humidity_percent', 'seven_day_rain_mm', 'percentile', 'baseline_rain_median_mm']
+      .every(key => Number.isFinite(temperature?.[key])) &&
+    ['nisar_drying', 'unusual_heat', 'low_rain'].every(key => typeof signals?.[key] === 'boolean');
+}
+
 export function cropInspectionBand(area) {
   const change = latestReading(area, 'NISAR_SME2', 'soil_moisture_change');
   if (!change) return 'unavailable';
