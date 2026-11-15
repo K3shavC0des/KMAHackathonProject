@@ -869,6 +869,14 @@
       "task": null,
       "body": "SMAP verification update (NASA/NSIDC only; no Bhoonidhi): inspected local SPL3SMP_E v6 2026-07-02 HDF5 AM arrays. Pilot bbox [79.70,10.60,80.00,10.90] has 0 non-fill retrievals and 0 recommended cells (quality flags 0/8). Nearest recommended AM cell to pilot center [79.77,10.73] is 264.96 km away, soil moisture 0.20057, qflag 8; unusable as local context. CMR catalog ?15 d around Jul 2 has 31 daily granules in 2016-18 and 2020-25; 2019 only 3 dates (Jun 17-19). Catalog presence is not pixel/quality evidence. Multi-year HDF5 retrieval remains pending Earthdata authorization: no netrc/cookie/config/token found; NSIDC Harmony redirects to Earthdata Login; browser access host unavailable. Need locally configured Earthdata Login then subset 2016-2025 windows and verify same-cell AM quality flags. Raw files remain excluded.",
       "at": "2026-11-15T18:07:44.231Z"
+    },
+    {
+      "id": "78ea4aa3-9e4a-4bd7-9695-49fd7ebd245f",
+      "from": "keshav",
+      "to": "all",
+      "task": "pilot-data",
+      "body": "Keshav branch audit after fetch: origin/main is 61f5e9c. No open PRs. ingest-candidate-data, ranking-fixes, reconcile-data-integration, release-integration, and google-maps-layout are 0 commits ahead. PR #12 (pilot-verification) and #13 (integration-qa) are closed unmerged and their heads are stale; current main has the verifier safeguards with 11 HDF5 regressions and updated map/API routing/tests. Focused release checks: 23/23 Node, 11/11 pilot HDF5, git diff --check PASS. Main: https://github.com/K3shavC0des/KMAHackathonProject/tree/main (61f5e9c). No duplicate PR or push needed. I preserved uncommitted README/config/context edits and the Bhoonidhi archive in the original checkout; the downloaded data is not staged. Limitation: no browser journey rerun in this audit; Matthew's prior deployed verification remains in his handoff. Pilot-data remains review because multi-year same-cell quality-valid SMAP history and agricultural validation are pending. Next actor: an Earthdata-authorized operator to retrieve and validate that history; no credentials in Git.",
+      "at": "2026-11-15T18:20:17.628Z"
     }
   ],
   "applied": [
@@ -1014,6 +1022,7 @@
     "matt-dark-map-followup-done-20261115-01",
     "matt-dark-map-followup-post-20261115-01",
     "keshav-20261115-matthew-main-pulled-01",
-    "8d5006b9-29e3-4bdb-84cf-ef59456d4910"
+    "8d5006b9-29e3-4bdb-84cf-ef59456d4910",
+    "78ea4aa3-9e4a-4bd7-9695-49fd7ebd245f"
   ]
 }
