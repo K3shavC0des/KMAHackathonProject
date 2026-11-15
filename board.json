@@ -200,8 +200,8 @@
         "scripts/build-site-preview.mjs",
         "tests/integration/map-api.test.mjs"
       ],
-      "status": "queued",
-      "evidence": ""
+      "status": "working",
+      "evidence": "Taking frontend/map, static preview build, and focused integration test on experiment/keshav/crop-weather-risk; experiment report remains owned separately."
     }
   },
   "messages": [
@@ -1209,6 +1209,7 @@
     "b023213c-286f-4305-830c-e6403af70dc8",
     "d6669085-d9e8-405c-94b3-f93abf5a5618",
     "16dfa06f-15bd-4781-ad65-e4e0634ffeb1",
-    "3e38e11d-a617-4211-b861-0c76f6ff8ac1"
+    "3e38e11d-a617-4211-b861-0c76f6ff8ac1",
+    "0af77de1-afd6-4522-be46-9678ae7ca9ca"
   ]
 }
