@@ -200,8 +200,8 @@
         "scripts/build-site-preview.mjs",
         "tests/integration/map-api.test.mjs"
       ],
-      "status": "working",
-      "evidence": "Taking frontend/map, static preview build, and focused integration test on experiment/keshav/crop-weather-risk; experiment report remains owned separately."
+      "status": "review",
+      "evidence": "Pushed experimental branch https://github.com/K3shavC0des/KMAHackathonProject/tree/experiment/keshav/crop-weather-risk at 235ef03. Full map has crop toggle for Nagapattinam, 339 approximately 1 km derived blocks from 7,119 of 7,415 observed NISAR cells (minimum 10/block), rice/black gram season context, NASA POWER weather, uncertainty and block filters. Green/yellow/red order reflects median drying thresholds <2, 2-<3.5, >=3.5 percentage points; no confirmed crop safety/stress. Browser AX verified crop toggle, 339 blocks, selected-block details and 1.3% uncertainty statement before final colour change; 14/14 focused Node tests, JS syntax, 12-file preview build and diff checks pass. No main merge or deployment. Next actor: teammate review and visual rehearsal of final colours."
     }
   },
   "messages": [
@@ -1210,6 +1210,7 @@
     "d6669085-d9e8-405c-94b3-f93abf5a5618",
     "16dfa06f-15bd-4781-ad65-e4e0634ffeb1",
     "3e38e11d-a617-4211-b861-0c76f6ff8ac1",
-    "0af77de1-afd6-4522-be46-9678ae7ca9ca"
+    "0af77de1-afd6-4522-be46-9678ae7ca9ca",
+    "39f7da0f-ea0f-441b-8674-0e15e00f3427"
   ]
 }
