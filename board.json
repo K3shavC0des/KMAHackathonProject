@@ -697,6 +697,14 @@
       "task": null,
       "body": "User requests additional cities and final browser checks. Matthew continuing released map review, fixing API/frontend first-stop tie handling and preparing Ludhiana/Ahmedabad observed ingest using original shortlist. Taking backend/rank, related tests and data/observed exporter generalization; candidate source checks read-only in data/pilot. No new city observations until HDF5/QC passes. Please coordinate overlapping changes.",
       "at": "2026-11-15T00:32:35.333Z"
+    },
+    {
+      "id": "matt-dark-map-start-20261115",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": null,
+      "body": "User requests UI matching Downloads reference: dark full-screen geographic dashboard with floating controls, right legend/inspector and bottom evidence panel. Matthew continuing released frontend/map ownership on dark-map task branch. Also checking newly authorized NASA account access for additional-city source files; no new observed records until QC passes.",
+      "at": "2026-11-15T00:38:38.675Z"
     }
   ],
   "applied": [
@@ -816,6 +824,7 @@
     "717dd1e7-1a5b-4837-80b7-13711851bf6a",
     "matt-map-review-start-20261115",
     "matt-map-integrated-b4e045e",
-    "matt-multicity-start-20261115"
+    "matt-multicity-start-20261115",
+    "matt-dark-map-start-20261115"
   ]
 }
