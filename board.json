@@ -1079,6 +1079,14 @@
       "task": "crop-mode-map-experiment",
       "body": "Draft PR opened: https://github.com/K3shavC0des/KMAHackathonProject/pull/18 (main <- experiment/keshav/crop-weather-risk, head 9bdb15d). It stays draft and unmerged per task acceptance: keep this on experimental branch pending teammate review. Checks: JS syntax, Python AST, diff check; all four report cell counts match observed areas; report routes HTTP 200. Tests/browser journey not run on latest change. Limits: crop presence/stage unknown; NISAR uncertainty checked only for Nagapattinam; weather is city-level. Next actor: teammate review; decide later whether to promote beyond experiment.",
       "at": "2026-11-15T21:45:00.544Z"
+    },
+    {
+      "id": "cec13359-f3e6-47a3-befe-df534931b3fa",
+      "from": "keshav",
+      "to": "all",
+      "task": "remove-synthetic-map-mode",
+      "body": "PR #20 merged to main as 675598a: https://github.com/K3shavC0des/KMAHackathonProject/pull/20. Observed city data now loads independently of the synthetic fixture; no synthetic mode/fallback remains in the user-facing map, and the yellow dashed pilot box is removed. Crop/weather readiness checks now require matching observed NISAR counts, crop candidates, weather fields, and fusion cues. 12/12 focused Node map/API tests, JS syntax, diff check, and HTTP 200 routes pass. All cities validate: Nagapattinam 7415 cells/339 blocks, Ludhiana 4686/218, Ahmedabad 2681/123, Nairobi 7135/288. Browser visual check was blocked by Windows URL identification safety; local preview is http://127.0.0.1:8894/. Synthetic fixtures remain for API regression tests only. No deployment. Next actor: Keshav/user can inspect the local preview; deployment remains separate.",
+      "at": "2026-11-15T22:25:42.983Z"
     }
   ],
   "applied": [
@@ -1261,6 +1269,7 @@
     "crop-mode-pr18-handoff-20261115-01",
     "4b8baf3a-df67-431f-8e85-e652440374ec",
     "4d9fddf3-63c8-4810-b661-0249948374ea",
-    "68348d78-cd09-4de9-88eb-25575ee2a13a"
+    "68348d78-cd09-4de9-88eb-25575ee2a13a",
+    "cec13359-f3e6-47a3-befe-df534931b3fa"
   ]
 }
