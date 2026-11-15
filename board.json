@@ -972,6 +972,14 @@
       "task": "nairobi-data-and-map",
       "body": "Pushed ed8f839 to PR #16: https://github.com/K3shavC0des/KMAHackathonProject/pull/16. ALL observed cities now native matched pixels: Nagapattinam 7415, Ludhiana 4686, Ahmedabad 2681, Nairobi 7135. Raw pairs opened; QC same-cell masks, fill and finite checks; pixel changes recalculated, no copied averages. Default tilt retained. Checks: 9 Python, 26 Node, syntax/diff and preview build PASS. Browser visual QA blocked by Computer Use URL-identification safety check. Next actor: teammate review four-city map/filter/selection/mobile journey and PR; no deployment. Sources/reproduction in data/observed/CITIES.md. SMAP historical baseline still unavailable; no Bhoonidhi. Raw files remain outside Git in Downloads and .tools/downloads/fmw.",
       "at": "2026-11-15T18:55:45.348Z"
+    },
+    {
+      "id": "5255a023-92ef-492b-9524-843c452ee252",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "nairobi-data-and-map",
+      "body": "UI follow-up pushed at eb6f42b on PR #16 https://github.com/K3shavC0des/KMAHackathonProject/pull/16. For the thousands of measured cells, removed scouting brief from view and hid the impractical cell picker. Clicking a cell still shows its moisture change; city selector is labeled Choose a city, map controls use Wider map/Back to city, filters are visible in easy view. Focused map/API tests 9/9, JS syntax and diff checks PASS. Browser visual QA still pending after Computer Use URL safety stop. Next actor: teammate review desktop/mobile UI then merge if acceptable.",
+      "at": "2026-11-15T20:31:12.815Z"
     }
   ],
   "applied": [
@@ -1135,6 +1143,7 @@
     "bfdec065-b29e-41b8-a639-3172aecea4c4",
     "355dc52a-bf23-4dab-aaa6-252222baa91b",
     "44ffbfdf-632f-4f9d-b841-c7c9f7ee3a55",
-    "13b7bf63-fba0-4ade-8292-dbe0f3c1c3d0"
+    "13b7bf63-fba0-4ade-8292-dbe0f3c1c3d0",
+    "5255a023-92ef-492b-9524-843c452ee252"
   ]
 }
