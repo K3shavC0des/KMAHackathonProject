@@ -2,7 +2,7 @@
   "observed": {
     "place": "Nagapattinam",
     "date": "2026-07-02",
-    "concern": "Watch \u2014 confirm locally",
+    "concern": "2 of 3 city signals coincide",
     "nisar": {
       "matched_cells": 7415,
       "median_change_m3m3": -0.030678361654281616,
@@ -32,6 +32,15 @@
       ],
       "source": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,RH2M,PRECTOTCORR&community=AG&longitude=79.77&latitude=10.73&start=19910101&end=20260702&format=JSON&time-standard=LST"
     },
+    "fusion": {
+      "signals": {
+        "nisar_drying": true,
+        "unusual_heat": true,
+        "low_rain": false
+      },
+      "count": 2,
+      "total": 3
+    },
     "crop_context": {
       "candidates": [
         {
@@ -52,7 +61,7 @@
   "ludhiana": {
     "place": "Ludhiana",
     "date": "2025-12-03",
-    "concern": "No combined heat and drying signal in this comparison",
+    "concern": "0 of 3 city signals coincide",
     "nisar": {
       "matched_cells": 4686,
       "median_change_m3m3": 0.006806090474128723,
@@ -75,6 +84,15 @@
       ],
       "source": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,RH2M,PRECTOTCORR&community=AG&longitude=75.85&latitude=30.9&start=19910101&end=20251203&format=JSON&time-standard=LST"
     },
+    "fusion": {
+      "signals": {
+        "nisar_drying": false,
+        "unusual_heat": false,
+        "low_rain": false
+      },
+      "count": 0,
+      "total": 3
+    },
     "crop_context": {
       "candidates": [
         {
@@ -95,7 +113,7 @@
   "ahmedabad": {
     "place": "Ahmedabad",
     "date": "2025-12-24",
-    "concern": "No combined heat and drying signal in this comparison",
+    "concern": "0 of 3 city signals coincide",
     "nisar": {
       "matched_cells": 2681,
       "median_change_m3m3": 0.006999999284744263,
@@ -118,6 +136,15 @@
       ],
       "source": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,RH2M,PRECTOTCORR&community=AG&longitude=72.58&latitude=23.02&start=19910101&end=20251224&format=JSON&time-standard=LST"
     },
+    "fusion": {
+      "signals": {
+        "nisar_drying": false,
+        "unusual_heat": false,
+        "low_rain": false
+      },
+      "count": 0,
+      "total": 3
+    },
     "crop_context": {
       "candidates": [
         {
@@ -138,7 +165,7 @@
   "nairobi": {
     "place": "Nairobi",
     "date": "2026-07-12",
-    "concern": "Possible concern \u2014 NISAR uncertainty not checked",
+    "concern": "1 of 3 city signals coincide",
     "nisar": {
       "matched_cells": 7135,
       "median_change_m3m3": -0.031115323305130005,
@@ -160,6 +187,15 @@
         36.825
       ],
       "source": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,RH2M,PRECTOTCORR&community=AG&longitude=36.825&latitude=-1.275&start=19910101&end=20260712&format=JSON&time-standard=LST"
+    },
+    "fusion": {
+      "signals": {
+        "nisar_drying": true,
+        "unusual_heat": false,
+        "low_rain": false
+      },
+      "count": 1,
+      "total": 3
     },
     "crop_context": {
       "candidates": [

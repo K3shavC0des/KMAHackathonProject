@@ -29,4 +29,4 @@ for (const [west, south, east, north, change] of image.cells) {
   ctx.fillStyle = change <= -.02 ? '#e86958' : change >= .02 ? '#6bbd9a' : '#edd38b';
   ctx.fillRect(x,y,Math.max(1,w),Math.max(1,h));
 }
-$('status').textContent = `Experimental city-scale screen · ${image.cells.length.toLocaleString()} measured NISAR cells · crop stage unknown`;
+$('status').textContent = `City-scale context · ${image.cells.length.toLocaleString()} measured NISAR cells · crop stage unknown`;

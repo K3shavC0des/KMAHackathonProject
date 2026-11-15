@@ -18,7 +18,6 @@ let selectedId;
 let map;
 let maplibregl;
 let detailMode = 'easy';
-let radarEvidence = null;
 let cropReports = {};
 let viewMode = 'moisture';
 let cropAreas = [];
@@ -116,7 +115,6 @@ function render() {
   byId('selected-square-name').textContent = labelFor(area);
   byId('sme2-meta').textContent = metadata(sme2);
   updateSelectionSpotlight(sme2);
-  renderDualBand(area);
   const timeline = byId('timeline');
   timeline.replaceChildren();
   for (const item of [...area.observations].sort((a, b) => observationInstant(b) - observationInstant(a))) {
@@ -179,6 +177,11 @@ function renderCropMode() {
     ? `Only ${(nisar.uncertainty.fraction_change_exceeds_sum_of_uncertainties * 100).toFixed(1)}% exceed summed per-date uncertainty.`
     : 'NISAR uncertainty was not checked for this city.';
   byId('crop-nisar').textContent = `${nisar.matched_cells.toLocaleString()} matched NISAR cells, median ${Math.abs(nisar.median_change_m3m3 * 100).toFixed(1)} points ${direction}. ${uncertainty}`;
+  const fusion = report.fusion;
+  byId('fusion-nisar').textContent = `NISAR: ${(nisar.fraction_at_least_2_points_drier * 100).toFixed(0)}% of cells fell at least 2 points; counts at 50% or more. ${fusion.signals.nisar_drying ? 'Cue present.' : 'No cue.'}`;
+  byId('fusion-heat').textContent = `Heat: ${Math.round(weather.percentile * 100)}th percentile vs 1991–2020; counts at the 90th percentile or above. ${fusion.signals.unusual_heat ? 'Cue present.' : 'No cue.'}`;
+  byId('fusion-rain').textContent = `Rain: ${weather.seven_day_rain_mm.toFixed(1)} mm vs ${weather.baseline_rain_median_mm.toFixed(1)} mm typical; counts below the baseline median. ${fusion.signals.low_rain ? 'Cue present.' : 'No cue.'}`;
+  byId('fusion-summary').textContent = `${fusion.count} of ${fusion.total} city-level cues coincide. Check local crop and soil conditions; this is not a crop-specific risk result.`;
   const selected = areas.find(item => item.area_id === selectedId);
   const band = selected ? cropInspectionBand(selected) : null;
   const signal = band === 'review' ? 'Review sooner: strongest drying cue' : band === 'watch' ? 'Watch: drying cue' : band === 'steady' ? 'Lower concern from moisture change; crop risk is still unknown' : 'Select a block';
@@ -195,19 +198,6 @@ function updateSelectionSpotlight(reading) {
   // Restart the short acknowledgement animation even when two nearby squares share a value.
   void spotlight.offsetWidth;
   spotlight.classList.add('is-updating');
-}
-
-function renderDualBand(area) {
-  const status = radarEvidence?.status;
-  const paired = status === 'paired' && radarEvidence.areas?.some(item => item.area_id === area.area_id);
-  byId('l-band-status').textContent = paired ? 'Available for this area' : 'Not available here yet';
-  byId('s-band-status').textContent = paired ? 'Available for this area' : 'Waiting for matching data';
-  byId('dual-band-summary').textContent = paired
-    ? 'Both NISAR radar views cover this area. Their agreement can help separate surface change from vegetation effects.'
-    : 'The moisture result is available, but a matched S-band view is not. This map will show both bands here when the compatible product is available.';
-  byId('dual-band-technical').textContent = paired
-    ? 'The paired product passed the same-area, compatible-date, grid, polarization, mask, and processing checks.'
-    : 'No same-area, same-date L/S GCOV pair is currently verified for this map. The public S-band sample is a different place and is excluded from fusion.';
 }
 
 function applyDetailMode() {
@@ -304,10 +294,6 @@ byId('crop-select').addEventListener('change', renderCropMode);
 document.querySelectorAll('input[name="band"]').forEach(input => input.addEventListener('change', render));
 document.querySelectorAll('input[name="crop-band"]').forEach(input => input.addEventListener('change', render));
 
-fetch('./radar-evidence.json').then(response => response.ok ? response.json() : null).then(value => {
-  radarEvidence = value;
-  if (areas.length) render();
-}).catch(() => { radarEvidence = null; });
 byId('state-view').addEventListener('click', () => fitRegion(cityViews[mode].region));
 byId('pilot-view').addEventListener('click', () => fitRegion(cityViews[mode].bounds));
 byId('dark-view').addEventListener('click', () => setBasemap(true));

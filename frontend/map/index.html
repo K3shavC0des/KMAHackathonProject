@@ -61,20 +61,19 @@
         <strong id="crop-concern"></strong>
         <p id="crop-weather"></p>
         <p id="crop-nisar"></p>
+        <details class="crop-fusion">
+          <summary>How this reading is combined</summary>
+          <p id="fusion-nisar"></p>
+          <p id="fusion-heat"></p>
+          <p id="fusion-rain"></p>
+          <p id="fusion-summary"></p>
+          <p>Weather adds city-level context. Only NISAR moisture change colors the map blocks. Crop guidance suggests possible crops; it does not verify what is planted or change the signal.</p>
+        </details>
         <p id="crop-block-summary"></p>
         <p class="crop-key"><span class="swatch steady"></span> Green: lower concern, median fell under 2 points or rose<br><span class="swatch watch"></span> Yellow: watch, median fell 2–3.5 points<br><span class="swatch review"></span> Red: review sooner, median fell 3.5+ points</p>
         <div class="crop-block-filters" aria-label="Filter crop watch blocks"><label><input type="checkbox" name="crop-band" value="steady" checked> Show green blocks</label><label><input type="checkbox" name="crop-band" value="watch" checked> Show yellow blocks</label><label><input type="checkbox" name="crop-band" value="review" checked> Show red blocks</label></div>
         <p class="crop-limit">The weather screen covers the city. Each roughly 1 km block summarizes at least 10 measured cells and can contain gaps. Crop and growth stage are unknown; these colours are inspection cues, not confirmed crop loss.</p>
         <p class="crop-sources"><a href="https://power.larc.nasa.gov/docs/services/api/temporal/daily/">NASA POWER</a> · <a href="https://nisar-docs.asf.alaska.edu/sme2/">NISAR SME2</a> · <a id="crop-source" href="https://www.spaceappschallenge.org/">Local crop source</a></p>
-      </section>
-      <section class="panel-section dual-band-panel" id="dual-band-panel" aria-labelledby="dual-band-heading">
-        <h2 id="dual-band-heading">NISAR’s two radar eyes</h2>
-        <p id="dual-band-summary">Loading L-band and S-band evidence…</p>
-        <div class="dual-band-grid">
-          <article><h3>L-band</h3><strong id="l-band-status">Loading…</strong><p id="l-band-explanation">Longer waves can see deeper through vegetation.</p></article>
-          <article><h3>S-band</h3><strong id="s-band-status">Loading…</strong><p id="s-band-explanation">Shorter waves respond more to the surface and lighter vegetation.</p></article>
-        </div>
-        <details class="technical-only"><summary>Technical radar evidence</summary><p id="dual-band-technical">Same-place, same-date L/S GCOV comparison is required before fusion.</p></details>
       </section>
       <section class="panel-section easy-legend" aria-labelledby="easy-legend-heading">
         <h2 id="easy-legend-heading">What the colours mean</h2>

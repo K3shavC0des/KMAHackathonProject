@@ -91,6 +91,15 @@ def get_weather(place, end):
     }
 
 
+def combine_city_signals(nisar_drying_fraction, temperature):
+    signals = {
+        'nisar_drying': nisar_drying_fraction >= 0.5,
+        'unusual_heat': temperature['percentile'] >= 0.9,
+        'low_rain': temperature['seven_day_rain_mm'] < temperature['baseline_rain_median_mm'],
+    }
+    return {'signals': signals, 'count': sum(signals.values()), 'total': len(signals)}
+
+
 def main():
     result = {}
     for key, place in PLACES.items():
@@ -105,20 +114,19 @@ def main():
         median = statistics.median(changes)
         dryness = sum(value <= -0.02 for value in changes) / len(changes)
         uncertainty = None
-        concern = 'No combined heat and drying signal in this comparison'
+        weather = get_weather(place, end)
         if key == 'observed':
             source_report = json.loads(OUTPUT.with_name('nagapattinam-report.json').read_text(encoding='utf-8'))
             uncertainty = source_report['nisar']['uncertainty']
-            concern = 'Watch — confirm locally'
-        elif key == 'nairobi' and dryness >= 0.5:
-            concern = 'Possible concern — NISAR uncertainty not checked'
+        fusion = combine_city_signals(dryness, weather)
+        concern = f"{fusion['count']} of {fusion['total']} city signals coincide"
         report = {
             'place': place['name'], 'date': end.isoformat(), 'concern': concern,
             'nisar': {'matched_cells': len(changes), 'median_change_m3m3': median,
                       'fraction_at_least_2_points_drier': dryness,
                       'earlier_date': (end - timedelta(days=12)).isoformat(), 'later_date': end.isoformat(),
                       'uncertainty': uncertainty},
-            'temperature': get_weather(place, end),
+            'temperature': weather, 'fusion': fusion,
             'crop_context': {'candidates': place['crops'], 'field_crop_verified': False, 'growth_stage': 'unknown'},
         }
         result[key] = report

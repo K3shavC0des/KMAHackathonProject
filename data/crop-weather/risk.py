@@ -1,4 +1,4 @@
-"""Experimental district screening from NISAR changes and NASA POWER heat."""
+"""District screening from NISAR changes and NASA POWER heat."""
 import json
 import argparse
 import statistics
@@ -115,7 +115,7 @@ def build_report(raw_pair=None):
     clear_fraction = uncertainty['fraction_change_exceeds_sum_of_uncertainties'] if uncertainty else None
     level, drying_fraction, percentile = screen(changes, current, historical, clear_fraction)
     return {
-        'status': 'experimental_screening', 'place': 'Nagapattinam, Tamil Nadu',
+        'status': 'screening', 'place': 'Nagapattinam, Tamil Nadu',
         'date': end.isoformat(), 'concern': level,
         'nisar': {'matched_cells': len(changes), 'median_change_m3m3': statistics.median(changes),
                   'median_earlier_m3m3': statistics.median(area['observations'][1]['value'] for area in cells),
