@@ -187,8 +187,8 @@
       "paths": [
         "experiments/crop-weather-risk"
       ],
-      "status": "queued",
-      "evidence": ""
+      "status": "working",
+      "evidence": "Taking isolated experiment directory; no shared map/data files."
     }
   },
   "messages": [
@@ -1184,6 +1184,7 @@
     "6ac7c79f-73dd-4731-b128-ed54090370dd",
     "11e3736c-10bd-495f-9607-fcabe62c7401",
     "1ed70453-3e88-4fcf-813d-a5ef23b6175a",
-    "44c3e7bf-b759-4e07-a70b-a8138aaced0f"
+    "44c3e7bf-b759-4e07-a70b-a8138aaced0f",
+    "b023213c-286f-4305-830c-e6403af70dc8"
   ]
 }
