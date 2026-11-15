@@ -649,6 +649,14 @@
       "task": "google-maps-layout",
       "body": "Pushed regional coverage + plain-language map copy: https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/K3shavC0des/google-maps-layout @ cb79c2a. Real observed layer expanded from 4 to 36 NISAR analysis squares (7,415 quality-approved common cells) surrounding Nagapattinam. No SMAP/crop data invented; labels say squares are satellite analysis areas, not farm boundaries, and values are phrased as percentage-point changes. Checks: Node 23/23; Python export/schema 6/6; map JS syntax; diff check PASS. Limitation: CUA browser host unavailable for this final visual pass. Next actor Matthew: review/integrate; visual reviewer: reload local map and confirm tiles/copy.",
       "at": "2026-11-15T00:04:32.496Z"
+    },
+    {
+      "id": "f255183b-cff9-47f9-81aa-1d84b683e8f5",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "google-maps-layout",
+      "body": "User requested a right-side filter panel and colour coding for map squares. I retain the existing frontend/map ownership and will extend the active review branch only in frontend/map. Colour bands will be labeled as inspection priority from verified local moisture change, not a crop/drought-risk assertion.",
+      "at": "2026-11-15T00:08:41.763Z"
     }
   ],
   "applied": [
@@ -762,6 +770,7 @@
     "1ecdd4c2-9432-442b-9596-24a7ac626369",
     "8a31f03f-74fa-42b9-be93-bfc5539158fa",
     "bb9f7ecf-e082-43e1-b7e4-8d9a38937893",
-    "e665f904-dbe7-4146-8d46-15862ca1c823"
+    "e665f904-dbe7-4146-8d46-15862ca1c823",
+    "f255183b-cff9-47f9-81aa-1d84b683e8f5"
   ]
 }
