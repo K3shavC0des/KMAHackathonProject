@@ -211,8 +211,8 @@
       "paths": [
         "frontend/map"
       ],
-      "status": "review",
-      "evidence": "Merged PR #20 to main at 675598a. 12/12 focused Node map/API tests, map syntax, diff check, all-four-city report/count validation, and all static data routes pass. Browser visual QA was blocked by Windows URL identification; local preview at http://127.0.0.1:8894/."
+      "status": "done",
+      "evidence": "Merged PR #20 (675598a). Focused Node map/API checks passed 12/12; JS syntax and diff check passed; all four city crop reports match their observed areas and generate crop blocks; map/report/city HTTP routes return 200. Browser automation was blocked by Windows URL identification policy. No deployment."
     }
   },
   "messages": [
@@ -1271,6 +1271,7 @@
     "4d9fddf3-63c8-4810-b661-0249948374ea",
     "68348d78-cd09-4de9-88eb-25575ee2a13a",
     "cec13359-f3e6-47a3-befe-df534931b3fa",
-    "d6f003e1-c483-420d-b525-0f3518ecb31f"
+    "d6f003e1-c483-420d-b525-0f3518ecb31f",
+    "40666e45-a36f-4873-af05-bbfb29564ae7"
   ]
 }
