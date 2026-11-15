@@ -65,7 +65,11 @@ export function rankAreas(collection, withNisar = true) {
     ids.add(area.area_id);
   }
   return collection.areas.map(area => rankOne(area, withNisar))
-    .sort((a, b) => b.priority_points - a.priority_points || a.area_id.localeCompare(b.area_id))
+    .sort((a, b) => Number(b.eligible_for_first_stop) - Number(a.eligible_for_first_stop) ||
+      b.priority_points - a.priority_points ||
+      (a.eligible_for_first_stop && b.eligible_for_first_stop
+        ? a.evidence.find(item => item.role === 'local_drying_signal').value - b.evidence.find(item => item.role === 'local_drying_signal').value
+        : 0) || a.area_id.localeCompare(b.area_id))
     .map((area, index) => ({ rank: index + 1, ...area }));
 }
 

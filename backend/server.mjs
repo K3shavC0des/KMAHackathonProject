@@ -7,7 +7,9 @@ import { validateCollection } from './validate.mjs';
 
 const collections = new Map([
   ['sample', new URL('../contracts/sample-areas.json', import.meta.url)],
-  ['observed', new URL('../data/observed/nagapattinam-areas.json', import.meta.url)]
+  ['observed', new URL('../data/observed/nagapattinam-areas.json', import.meta.url)],
+  ['ludhiana', new URL('../data/observed/ludhiana-areas.json', import.meta.url)],
+  ['ahmedabad', new URL('../data/observed/ahmedabad-areas.json', import.meta.url)]
 ]);
 const maxBodyBytes = 1024 * 1024;
 

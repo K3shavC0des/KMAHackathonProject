@@ -13,6 +13,11 @@ IDENT = 'science/LSAR/identification/'
 # Development analysis grid only: this is not a farm-boundary dataset.
 REGION_BOUNDS = (79.68, 10.64, 79.86, 10.82)
 TILE_DEGREES = 0.03
+CITY_BOUNDS = {
+    'nagapattinam': REGION_BOUNDS,
+    'ludhiana': (75.76, 30.81, 75.94, 30.99),
+    'ahmedabad': (72.49, 22.93, 72.67, 23.11),
+}
 
 
 def analysis_tiles(bounds=REGION_BOUNDS, tile_degrees=TILE_DEGREES):
@@ -61,9 +66,10 @@ def utc_timestamp(value):
     return parsed.astimezone(timezone.utc).isoformat().replace('+00:00', 'Z')
 
 
-def export(earlier, later):
+def export(earlier, later, city='nagapattinam', skip_unavailable=False):
     import h5py
 
+    bounds = CITY_BOUNDS[city]
     areas = []
     with h5py.File(earlier) as before, h5py.File(later) as after:
         for key in ['productType', 'trackNumber', 'frameNumber', 'orbitPassDirection', 'radarBand', 'lookDirection']:
@@ -82,11 +88,13 @@ def export(earlier, later):
         if datetime.fromisoformat(dates[0].replace('Z', '+00:00')) >= datetime.fromisoformat(dates[1].replace('Z', '+00:00')):
             raise ValueError('Inputs must be in chronological order')
         ids = [scalar(handle, 'granuleId') for handle in [before, after]]
-        for tile, west, south, east, north in analysis_tiles():
+        for tile, west, south, east, north in analysis_tiles(bounds):
             # Half-open bounds prevent shared-edge cells from appearing twice.
             rows = np.flatnonzero((lat >= south) & (lat < north))
             cols = np.flatnonzero((lon >= west) & (lon < east))
             if not len(rows) or not len(cols):
+                if skip_unavailable:
+                    continue
                 raise ValueError(f'No grid coverage for tile {tile}')
             region = np.s_[rows.min():rows.max()+1, cols.min():cols.max()+1]
             values, masks = [], []
@@ -106,9 +114,11 @@ def export(earlier, later):
             matched = masks[0] & masks[1]
             count = int(matched.sum())
             if not count:
+                if skip_unavailable:
+                    continue
                 raise ValueError(f'No matched recommended cells in tile {tile}')
             delta = float(np.median(values[1][matched] - values[0][matched]))
-            area_id = f'nagapattinam-analysis-{tile}'
+            area_id = f'{city}-analysis-{tile}'
             note = (f'{count} identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. '
                     'Analysis tile, not a field or verified crop mask. Surface retrieval only. '
                     'Crop stage unknown; SMAP seasonal context unavailable.')
@@ -123,9 +133,11 @@ def export(earlier, later):
                 observations.append(observation(f'date-{index}', 'soil_moisture',
                     float(np.median(values[index][matched])), dates[index], ids[index]))
             row, column = int(tile[1:3]), int(tile[4:6])
-            areas.append(dict(area_id=area_id, label=f'Nagapattinam satellite analysis square — row {row}, column {column}',
+            areas.append(dict(area_id=area_id, label=f'{city.title()} satellite analysis square — row {row}, column {column}',
                 geometry=dict(type='Polygon', coordinates=[[[west, south], [east, south], [east, north], [west, north], [west, south]]]),
                 crop_stage='unknown', observations=observations))
+    if not areas:
+        raise ValueError('No matched recommended cells in city window')
     return dict(schema_version='1.0.0', areas=areas)
 
 
@@ -134,7 +146,9 @@ if __name__ == '__main__':
     parser.add_argument('earlier', type=Path)
     parser.add_argument('later', type=Path)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--city', choices=CITY_BOUNDS, default='nagapattinam')
+    parser.add_argument('--skip-unavailable', action='store_true', help='Omit tiles without matched recommended cells; never impute values')
     parser.add_argument('--schema', type=Path, default=Path(__file__).resolve().parents[2] / 'contracts/area.schema.json')
     args = parser.parse_args()
-    collection = validate_collection(export(args.earlier, args.later), args.schema)
+    collection = validate_collection(export(args.earlier, args.later, args.city, args.skip_unavailable), args.schema)
     args.output.write_text(json.dumps(collection, indent=2, allow_nan=False) + '\n', encoding='utf-8')

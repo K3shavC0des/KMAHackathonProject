@@ -14,7 +14,7 @@ export function latestReading(area, source, metric) {
 export function inspectionSummary(areas) {
   const candidates = areas.map(area => ({ area, change: latestReading(area, 'NISAR_SME2', 'soil_moisture_change') }))
     .filter(item => item.change && item.change.value < 0)
-    .sort((a, b) => a.change.value - b.change.value);
+    .sort((a, b) => a.change.value - b.change.value || a.area.area_id.localeCompare(b.area.area_id));
   return candidates[0] || null;
 }
 

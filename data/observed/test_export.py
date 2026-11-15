@@ -6,7 +6,7 @@ import unittest
 import h5py
 import numpy as np
 
-from export_nagapattinam import GRID, IDENT, export, validate_collection
+from export_nagapattinam import GRID, IDENT, CITY_BOUNDS, REGION_BOUNDS, export, validate_collection
 
 
 class ExportTests(unittest.TestCase):
@@ -50,6 +50,31 @@ class ExportTests(unittest.TestCase):
         change = export(self.before, self.after)['areas'][0]['observations'][0]
         self.assertIn('2 identical matched', change['note'])
         self.assertAlmostEqual(change['value'], -.1)
+
+    def test_city_export_uses_city_geometry_and_provenance(self):
+        west, south, _, _ = CITY_BOUNDS['ludhiana']
+        for path in (self.before, self.after):
+            with h5py.File(path, 'r+') as handle:
+                handle[GRID + 'latitude'][:] += south - REGION_BOUNDS[1]
+                handle[GRID + 'longitude'][:] += west - REGION_BOUNDS[0]
+        result = export(self.before, self.after, city='ludhiana')
+        self.assertEqual(len(result['areas']), 36)
+        for area in result['areas']:
+            self.assertTrue(area['area_id'].startswith('ludhiana-analysis-'))
+            self.assertTrue(area['label'].startswith('Ludhiana'))
+            self.assertEqual(area['observations'][0]['source_ref'], 'before ; after')
+        self.assertEqual(result['areas'][0]['geometry']['coordinates'][0][0], [west, south])
+
+    def test_optional_gaps_omit_tiles_without_inventing_observations(self):
+        with h5py.File(self.after, 'r+') as handle:
+            handle[GRID + 'retrievalQualityFlag'][:2, :2] = 1
+        result = export(self.before, self.after, skip_unavailable=True)
+        self.assertEqual(len(result['areas']), 35)
+        self.assertNotIn('nagapattinam-analysis-r01c01', [area['area_id'] for area in result['areas']])
+        with h5py.File(self.after, 'r+') as handle:
+            handle[GRID + 'retrievalQualityFlag'][:] = 1
+        with self.assertRaisesRegex(ValueError, 'No matched recommended cells in city'):
+            export(self.before, self.after, skip_unavailable=True)
 
     def test_empty_recommended_tile_rejected(self):
         with h5py.File(self.after, 'r+') as handle:

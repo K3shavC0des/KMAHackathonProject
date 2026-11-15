@@ -17,31 +17,37 @@
         <p>Move the map, zoom in, then select a coloured square to see what the satellite measured.</p>
       </header>
       <section class="map-search" aria-label="Map navigation">
-        <div class="view-actions"><button type="button" id="state-view">Tamil Nadu</button><button type="button" id="pilot-view">Nagapattinam</button><button type="button" id="camera-view">Tilt</button></div>
-        <label for="data-mode">Data shown</label>
-        <select id="data-mode" aria-describedby="mode-note"><option value="sample">Example data (not real measurements)</option><option value="observed">Satellite measurements (Nagapattinam)</option></select>
-        <p id="mode-note">Satellite squares are measured areas, not farm boundaries.</p>
+        <div class="view-actions"><span class="control-label">View</span><button type="button" id="state-view">Region</button><button type="button" id="pilot-view">Fit squares</button><button type="button" id="camera-view" aria-pressed="false">Tilt</button></div>
+        <div class="view-actions" aria-label="Basemap style"><span class="control-label">Map</span><button type="button" id="dark-view" aria-pressed="true">Dark</button><button type="button" id="street-view" aria-pressed="false">Street</button></div>
       </section>
-      <div class="map-status" role="status">Real basemap tiles © OpenStreetMap contributors. Evidence overlays are clearly labeled as observed or synthetic.</div>
+      <div class="map-status" role="status" id="map-status">NISAR SME2 · Loading evidence · Analysis squares, not farm boundaries</div>
     </section>
     <aside class="inspector" aria-labelledby="detail-heading">
-      <div class="inspector-head"><p class="eyebrow">Selected square</p><span id="sample-badge" class="badge"></span></div>
-      <h2 id="detail-heading">Moisture overview</h2>
-      <label for="area-select">Map square</label><select id="area-select"></select><p id="area-description"></p>
-      <div class="metrics"><article><h3>Satellite moisture change</h3><strong id="sme2-value"></strong><small id="sme2-meta"></small></article></div>
-      <section class="map-filters" aria-labelledby="filter-heading">
-        <p class="eyebrow">Map filters</p>
-        <h3 id="filter-heading">Show squares by colour</h3>
-        <p>Colours show the local moisture change between the two satellite dates.</p>
+      <section class="panel-section">
+        <p class="eyebrow">Evidence layers</p>
+        <label for="data-mode">Data shown</label>
+        <select id="data-mode" aria-describedby="mode-note"><option value="sample" disabled>Example data (synthetic)</option><option value="observed" disabled>Observed · Nagapattinam</option><option value="ludhiana" disabled>Observed · Ludhiana</option><option value="ahmedabad" disabled>Observed · Ahmedabad</option></select>
+        <p id="mode-note">Satellite squares are measured areas, not farm boundaries.</p>
+      </section>
+      <section class="map-filters panel-section" aria-labelledby="filter-heading">
+        <p class="eyebrow">Legend <span id="visible-count"></span></p>
+        <h3 id="filter-heading">Surface moisture change</h3>
+        <p>Toggle layers to filter the inspection priority.</p>
         <label><input type="checkbox" name="band" value="review" checked> <span class="swatch review"></span> Review sooner: 3.5+ points lower</label>
         <label><input type="checkbox" name="band" value="watch" checked> <span class="swatch watch"></span> Watch: 2.0–3.5 points lower</label>
         <label><input type="checkbox" name="band" value="lower" checked> <span class="swatch lower"></span> Slightly lower: under 2.0 points</label>
         <label><input type="checkbox" name="band" value="steady" checked> <span class="swatch steady"></span> Steady or higher</label>
         <label><input type="checkbox" name="band" value="unavailable" checked> <span class="swatch unavailable"></span> No usable measurement</label>
       </section>
-      <section class="inspection-summary" aria-labelledby="value-heading"><p class="eyebrow">Inspection priority</p><h3 id="value-heading">Where to check first</h3><strong id="with-first">Loading…</strong><p id="value-change"></p><p id="rank-explanation"></p></section>
-      <section class="timeline-section"><h3>Observation timeline</h3><ol id="timeline"></ol></section>
+      <section class="panel-section">
+      <div class="inspector-head"><p class="eyebrow">Selected square</p><span id="sample-badge" class="badge"></span></div>
+      <h2 id="detail-heading">Moisture overview</h2>
+      <label for="area-select">Map square</label><select id="area-select"></select><p id="area-description"></p>
+      <div class="metrics"><article><h3>Satellite moisture change</h3><strong id="sme2-value"></strong><small id="sme2-meta"></small></article></div>
+      </section>
+      <section class="timeline-section panel-section"><p class="eyebrow">Acquisition history</p><h3>Observation timeline</h3><ol id="timeline"></ol></section>
     </aside>
+    <section class="inspection-summary" aria-labelledby="value-heading"><p class="eyebrow">Scouting brief</p><h3 id="value-heading">Where to check first</h3><strong id="with-first">Loading…</strong><p id="value-change"></p><p id="rank-explanation"></p></section>
   </main>
   <script type="module" src="./map.js"></script>
 </body>

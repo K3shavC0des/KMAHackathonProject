@@ -1,0 +1,2560 @@
+{
+  "schema_version": "1.0.0",
+  "areas": [
+    {
+      "area_id": "ludhiana-analysis-r01c01",
+      "label": "Ludhiana satellite analysis square \u2014 row 1, column 1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.76,
+              30.81
+            ],
+            [
+              75.79,
+              30.81
+            ],
+            [
+              75.79,
+              30.84
+            ],
+            [
+              75.76,
+              30.84
+            ],
+            [
+              75.76,
+              30.81
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r01c01-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.009908325970172882,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "244 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r01c01-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.20708420872688293,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "244 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r01c01-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.21845023334026337,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "244 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r01c02",
+      "label": "Ludhiana satellite analysis square \u2014 row 1, column 2",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.79,
+              30.81
+            ],
+            [
+              75.82,
+              30.81
+            ],
+            [
+              75.82,
+              30.84
+            ],
+            [
+              75.79,
+              30.84
+            ],
+            [
+              75.79,
+              30.81
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r01c02-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.01282624900341034,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "230 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r01c02-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2238185703754425,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "230 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r01c02-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23562195897102356,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "230 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r01c03",
+      "label": "Ludhiana satellite analysis square \u2014 row 1, column 3",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.82,
+              30.81
+            ],
+            [
+              75.85,
+              30.81
+            ],
+            [
+              75.85,
+              30.84
+            ],
+            [
+              75.82,
+              30.84
+            ],
+            [
+              75.82,
+              30.81
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r01c03-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.01106172800064087,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "245 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r01c03-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.22264552116394043,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "245 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r01c03-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23594066500663757,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "245 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r01c04",
+      "label": "Ludhiana satellite analysis square \u2014 row 1, column 4",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.85,
+              30.81
+            ],
+            [
+              75.88,
+              30.81
+            ],
+            [
+              75.88,
+              30.84
+            ],
+            [
+              75.85,
+              30.84
+            ],
+            [
+              75.85,
+              30.81
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r01c04-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.00806361436843872,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "221 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r01c04-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.24715986847877502,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "221 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r01c04-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.25770360231399536,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "221 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r01c05",
+      "label": "Ludhiana satellite analysis square \u2014 row 1, column 5",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.88,
+              30.81
+            ],
+            [
+              75.91,
+              30.81
+            ],
+            [
+              75.91,
+              30.84
+            ],
+            [
+              75.88,
+              30.84
+            ],
+            [
+              75.88,
+              30.81
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r01c05-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.009235590696334839,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "242 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r01c05-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23176978528499603,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "242 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r01c05-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2427261769771576,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "242 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r01c06",
+      "label": "Ludhiana satellite analysis square \u2014 row 1, column 6",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.91,
+              30.81
+            ],
+            [
+              75.94,
+              30.81
+            ],
+            [
+              75.94,
+              30.84
+            ],
+            [
+              75.91,
+              30.84
+            ],
+            [
+              75.91,
+              30.81
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r01c06-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.005035698413848877,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "233 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r01c06-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23499667644500732,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "233 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r01c06-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23622913658618927,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "233 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r02c01",
+      "label": "Ludhiana satellite analysis square \u2014 row 2, column 1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.76,
+              30.84
+            ],
+            [
+              75.79,
+              30.84
+            ],
+            [
+              75.79,
+              30.87
+            ],
+            [
+              75.76,
+              30.87
+            ],
+            [
+              75.76,
+              30.84
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r02c01-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.009125404059886932,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "214 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r02c01-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2221938520669937,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "214 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r02c01-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23061725497245789,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "214 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r02c02",
+      "label": "Ludhiana satellite analysis square \u2014 row 2, column 2",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.79,
+              30.84
+            ],
+            [
+              75.82,
+              30.84
+            ],
+            [
+              75.82,
+              30.87
+            ],
+            [
+              75.79,
+              30.87
+            ],
+            [
+              75.79,
+              30.84
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r02c02-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.008106715977191925,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "134 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r02c02-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.25120002031326294,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "134 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r02c02-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2579546570777893,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "134 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r02c03",
+      "label": "Ludhiana satellite analysis square \u2014 row 2, column 3",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.82,
+              30.84
+            ],
+            [
+              75.85,
+              30.84
+            ],
+            [
+              75.85,
+              30.87
+            ],
+            [
+              75.82,
+              30.87
+            ],
+            [
+              75.82,
+              30.84
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r02c03-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.004611857235431671,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "80 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r02c03-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2560552954673767,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "80 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r02c03-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.25616830587387085,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "80 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r02c04",
+      "label": "Ludhiana satellite analysis square \u2014 row 2, column 4",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.85,
+              30.84
+            ],
+            [
+              75.88,
+              30.84
+            ],
+            [
+              75.88,
+              30.87
+            ],
+            [
+              75.85,
+              30.87
+            ],
+            [
+              75.85,
+              30.84
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r02c04-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.009082287549972534,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "62 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r02c04-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2720068693161011,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "62 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r02c04-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2795635461807251,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "62 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r02c05",
+      "label": "Ludhiana satellite analysis square \u2014 row 2, column 5",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.88,
+              30.84
+            ],
+            [
+              75.91,
+              30.84
+            ],
+            [
+              75.91,
+              30.87
+            ],
+            [
+              75.88,
+              30.87
+            ],
+            [
+              75.88,
+              30.84
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r02c05-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.0058793723583221436,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "75 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r02c05-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.30071893334388733,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "75 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r02c05-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.31173768639564514,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "75 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r02c06",
+      "label": "Ludhiana satellite analysis square \u2014 row 2, column 6",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.91,
+              30.84
+            ],
+            [
+              75.94,
+              30.84
+            ],
+            [
+              75.94,
+              30.87
+            ],
+            [
+              75.91,
+              30.87
+            ],
+            [
+              75.91,
+              30.84
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r02c06-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.005982354283332825,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "98 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r02c06-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.24907764792442322,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "98 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r02c06-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.25297269225120544,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "98 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r03c01",
+      "label": "Ludhiana satellite analysis square \u2014 row 3, column 1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.76,
+              30.87
+            ],
+            [
+              75.79,
+              30.87
+            ],
+            [
+              75.79,
+              30.9
+            ],
+            [
+              75.76,
+              30.9
+            ],
+            [
+              75.76,
+              30.87
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r03c01-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.005905508995056152,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "113 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r03c01-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.25423914194107056,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "113 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r03c01-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.260755717754364,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "113 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r03c02",
+      "label": "Ludhiana satellite analysis square \u2014 row 3, column 2",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.79,
+              30.87
+            ],
+            [
+              75.82,
+              30.87
+            ],
+            [
+              75.82,
+              30.9
+            ],
+            [
+              75.79,
+              30.9
+            ],
+            [
+              75.79,
+              30.87
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r03c02-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.009245738387107849,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "31 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r03c02-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.22763216495513916,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "31 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r03c02-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23631645739078522,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "31 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r03c03",
+      "label": "Ludhiana satellite analysis square \u2014 row 3, column 3",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.82,
+              30.87
+            ],
+            [
+              75.85,
+              30.87
+            ],
+            [
+              75.85,
+              30.9
+            ],
+            [
+              75.82,
+              30.9
+            ],
+            [
+              75.82,
+              30.87
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r03c03-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.0006562471389770508,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "1 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r03c03-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.269547700881958,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "1 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r03c03-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.26889145374298096,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "1 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r03c05",
+      "label": "Ludhiana satellite analysis square \u2014 row 3, column 5",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.88,
+              30.87
+            ],
+            [
+              75.91,
+              30.87
+            ],
+            [
+              75.91,
+              30.9
+            ],
+            [
+              75.88,
+              30.9
+            ],
+            [
+              75.88,
+              30.87
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r03c05-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.005320928990840912,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "4 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r03c05-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.22434529662132263,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "4 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r03c05-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.22580647468566895,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "4 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r03c06",
+      "label": "Ludhiana satellite analysis square \u2014 row 3, column 6",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.91,
+              30.87
+            ],
+            [
+              75.94,
+              30.87
+            ],
+            [
+              75.94,
+              30.9
+            ],
+            [
+              75.91,
+              30.9
+            ],
+            [
+              75.91,
+              30.87
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r03c06-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.0038430392742156982,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "14 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r03c06-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.261940598487854,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "14 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r03c06-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2572041153907776,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "14 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r04c01",
+      "label": "Ludhiana satellite analysis square \u2014 row 4, column 1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.76,
+              30.9
+            ],
+            [
+              75.79,
+              30.9
+            ],
+            [
+              75.79,
+              30.93
+            ],
+            [
+              75.76,
+              30.93
+            ],
+            [
+              75.76,
+              30.9
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r04c01-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.0043177008628845215,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "135 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r04c01-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23842038214206696,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "135 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r04c01-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.24366363883018494,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "135 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r04c02",
+      "label": "Ludhiana satellite analysis square \u2014 row 4, column 2",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.79,
+              30.9
+            ],
+            [
+              75.82,
+              30.9
+            ],
+            [
+              75.82,
+              30.93
+            ],
+            [
+              75.79,
+              30.93
+            ],
+            [
+              75.79,
+              30.9
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r04c02-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.0021358057856559753,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "24 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r04c02-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23444221913814545,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "24 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r04c02-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23324763774871826,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "24 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r04c03",
+      "label": "Ludhiana satellite analysis square \u2014 row 4, column 3",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.82,
+              30.9
+            ],
+            [
+              75.85,
+              30.9
+            ],
+            [
+              75.85,
+              30.93
+            ],
+            [
+              75.82,
+              30.93
+            ],
+            [
+              75.82,
+              30.9
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r04c03-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.007254451513290405,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "5 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r04c03-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.20697909593582153,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "5 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r04c03-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.21638046205043793,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "5 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r04c04",
+      "label": "Ludhiana satellite analysis square \u2014 row 4, column 4",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.85,
+              30.9
+            ],
+            [
+              75.88,
+              30.9
+            ],
+            [
+              75.88,
+              30.93
+            ],
+            [
+              75.85,
+              30.93
+            ],
+            [
+              75.85,
+              30.9
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r04c04-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.00562402606010437,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "5 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r04c04-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.26245036721229553,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "5 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r04c04-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2680743932723999,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "5 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r04c05",
+      "label": "Ludhiana satellite analysis square \u2014 row 4, column 5",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.88,
+              30.9
+            ],
+            [
+              75.91,
+              30.9
+            ],
+            [
+              75.91,
+              30.93
+            ],
+            [
+              75.88,
+              30.93
+            ],
+            [
+              75.88,
+              30.9
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r04c05-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.006404608488082886,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "29 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r04c05-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.30057528614997864,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "29 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r04c05-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2961207926273346,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "29 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r04c06",
+      "label": "Ludhiana satellite analysis square \u2014 row 4, column 6",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.91,
+              30.9
+            ],
+            [
+              75.94,
+              30.9
+            ],
+            [
+              75.94,
+              30.93
+            ],
+            [
+              75.91,
+              30.93
+            ],
+            [
+              75.91,
+              30.9
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r04c06-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.0033786743879318237,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "106 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r04c06-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2740846276283264,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "106 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r04c06-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2800956666469574,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "106 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r05c01",
+      "label": "Ludhiana satellite analysis square \u2014 row 5, column 1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.76,
+              30.93
+            ],
+            [
+              75.79,
+              30.93
+            ],
+            [
+              75.79,
+              30.96
+            ],
+            [
+              75.76,
+              30.96
+            ],
+            [
+              75.76,
+              30.93
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r05c01-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.006628148257732391,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "240 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r05c01-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.20567169785499573,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "240 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r05c01-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2159963697195053,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "240 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r05c02",
+      "label": "Ludhiana satellite analysis square \u2014 row 5, column 2",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.79,
+              30.93
+            ],
+            [
+              75.82,
+              30.93
+            ],
+            [
+              75.82,
+              30.96
+            ],
+            [
+              75.79,
+              30.96
+            ],
+            [
+              75.79,
+              30.93
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r05c02-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.004486799240112305,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "169 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r05c02-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.25275564193725586,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "169 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r05c02-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2563118636608124,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "169 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r05c03",
+      "label": "Ludhiana satellite analysis square \u2014 row 5, column 3",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.82,
+              30.93
+            ],
+            [
+              75.85,
+              30.93
+            ],
+            [
+              75.85,
+              30.96
+            ],
+            [
+              75.82,
+              30.96
+            ],
+            [
+              75.82,
+              30.93
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r05c03-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.000643417239189148,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "37 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r05c03-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.26051151752471924,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "37 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r05c03-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.26450788974761963,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "37 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r05c04",
+      "label": "Ludhiana satellite analysis square \u2014 row 5, column 4",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.85,
+              30.93
+            ],
+            [
+              75.88,
+              30.93
+            ],
+            [
+              75.88,
+              30.96
+            ],
+            [
+              75.85,
+              30.96
+            ],
+            [
+              75.85,
+              30.93
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r05c04-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.0019133985042572021,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "73 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r05c04-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2527420222759247,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "73 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r05c04-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2549058794975281,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "73 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r05c05",
+      "label": "Ludhiana satellite analysis square \u2014 row 5, column 5",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.88,
+              30.93
+            ],
+            [
+              75.91,
+              30.93
+            ],
+            [
+              75.91,
+              30.96
+            ],
+            [
+              75.88,
+              30.96
+            ],
+            [
+              75.88,
+              30.93
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r05c05-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.004354134202003479,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "124 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r05c05-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2710850238800049,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "124 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r05c05-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2744554877281189,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "124 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r05c06",
+      "label": "Ludhiana satellite analysis square \u2014 row 5, column 6",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.91,
+              30.93
+            ],
+            [
+              75.94,
+              30.93
+            ],
+            [
+              75.94,
+              30.96
+            ],
+            [
+              75.91,
+              30.96
+            ],
+            [
+              75.91,
+              30.93
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r05c06-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.00345756858587265,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "236 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r05c06-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.24964715540409088,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "236 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r05c06-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.25085532665252686,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "236 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r06c01",
+      "label": "Ludhiana satellite analysis square \u2014 row 6, column 1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.76,
+              30.96
+            ],
+            [
+              75.79,
+              30.96
+            ],
+            [
+              75.79,
+              30.99
+            ],
+            [
+              75.76,
+              30.99
+            ],
+            [
+              75.76,
+              30.96
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r06c01-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.006171613931655884,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "210 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r06c01-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.22328953444957733,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "210 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r06c01-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23034262657165527,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "210 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r06c02",
+      "label": "Ludhiana satellite analysis square \u2014 row 6, column 2",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.79,
+              30.96
+            ],
+            [
+              75.82,
+              30.96
+            ],
+            [
+              75.82,
+              30.99
+            ],
+            [
+              75.79,
+              30.99
+            ],
+            [
+              75.79,
+              30.96
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r06c02-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.006395488977432251,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "179 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r06c02-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2359784096479416,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "179 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r06c02-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23889876902103424,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "179 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r06c03",
+      "label": "Ludhiana satellite analysis square \u2014 row 6, column 3",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.82,
+              30.96
+            ],
+            [
+              75.85,
+              30.96
+            ],
+            [
+              75.85,
+              30.99
+            ],
+            [
+              75.82,
+              30.99
+            ],
+            [
+              75.82,
+              30.96
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r06c03-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.005719572305679321,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "214 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r06c03-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.22834935784339905,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "214 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r06c03-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23563086986541748,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "214 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r06c04",
+      "label": "Ludhiana satellite analysis square \u2014 row 6, column 4",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.85,
+              30.96
+            ],
+            [
+              75.88,
+              30.96
+            ],
+            [
+              75.88,
+              30.99
+            ],
+            [
+              75.85,
+              30.99
+            ],
+            [
+              75.85,
+              30.96
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r06c04-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.007867798209190369,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "221 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r06c04-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.21546311676502228,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "221 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r06c04-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.22457049787044525,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "221 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r06c05",
+      "label": "Ludhiana satellite analysis square \u2014 row 6, column 5",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.88,
+              30.96
+            ],
+            [
+              75.91,
+              30.96
+            ],
+            [
+              75.91,
+              30.99
+            ],
+            [
+              75.88,
+              30.99
+            ],
+            [
+              75.88,
+              30.96
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r06c05-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.008805714547634125,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "228 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r06c05-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.21583092212677002,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "228 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r06c05-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.22344078123569489,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "228 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "ludhiana-analysis-r06c06",
+      "label": "Ludhiana satellite analysis square \u2014 row 6, column 6",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.91,
+              30.96
+            ],
+            [
+              75.94,
+              30.96
+            ],
+            [
+              75.94,
+              30.99
+            ],
+            [
+              75.91,
+              30.99
+            ],
+            [
+              75.91,
+              30.96
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "ludhiana-analysis-r06c06-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.005381196737289429,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "210 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r06c06-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.22880074381828308,
+          "unit": "m3/m3",
+          "observed_at": "2025-11-21T00:13:10Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_005_156_A_017_4005_DHDH_A_20251121T001310_20251121T001345_P05023_N_F_J_001",
+          "note": "210 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "ludhiana-analysis-r06c06-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23231345415115356,
+          "unit": "m3/m3",
+          "observed_at": "2025-12-03T00:13:11Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_006_156_A_017_4005_DHDH_A_20251203T001311_20251203T001345_P05023_N_F_J_001",
+          "note": "210 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    }
+  ]
+}

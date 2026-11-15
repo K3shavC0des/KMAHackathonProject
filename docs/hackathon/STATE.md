@@ -4,6 +4,15 @@ Updated 2026-11-14. Integration owner: matthewzhang2008. Current integration bra
 
 ## Goal and deadline
 
+Latest checkpoint (2026-11-15): `hackathon/matthewzhang2008/dark-map` adds the
+user-requested dark dashboard and separately validated observed Ludhiana (35
+squares) and Ahmedabad (36 squares), alongside Nagapattinam (36 squares).
+Actual new-city HDF5 pairs opened and passed QC; raw downloads remain ignored.
+Node 28/28 and Python 31/31 pass. Browser verification remains pending after the
+Computer Use URL-policy blocker. Current evidence and next actor are recorded
+in `MULTICITY_REVIEW.md` and `../../data/observed/CITIES.md`; earlier checkpoint
+paragraphs below are historical. No SMAP history or crop evidence was invented.
+
 NASA Space Apps Ottawa 2026, Dancing with the SARs. Help a farmer or adviser decide which area to scout for possible moisture change before watering. The user confirmed submission is due **2026-11-16 00:00 America/Toronto**. Judging criteria supplied by the user: Impact, Creativity, Validity, Relevance, Presentation. The NASA project page is especially important. No paid services authorized.
 
 Current scope: a map-first irrigation **inspection** aid with pan, zoom and tappable areas. Priority comes from quality-valid local NISAR surface drying; a regional below-historical flag appears only after same-cell SMAP AM baseline validation. Crop-stage scenarios are deferred and contribute no default priority points. Satellite surface moisture is not root-zone moisture, plant stress, yield, or an irrigation prescription.

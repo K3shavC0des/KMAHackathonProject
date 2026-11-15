@@ -120,7 +120,7 @@ test('observed NISAR analysis tiles keep missing crop and SMAP context unavailab
   const result = compareScoutingStops(observed);
   assert.equal(observed.areas.length, 36);
   assert.ok(observed.areas.every(area => area.crop_stage === 'unknown' && area.observations.every(item => item.data_status === 'observed' && item.observed_at.endsWith('Z'))));
-  assert.equal(result.with_nisar.first_stop, 'nagapattinam-analysis-r01c03');
+  assert.equal(result.with_nisar.first_stop, 'nagapattinam-analysis-r01c04');
   assert.equal(result.without_nisar.first_stop, null);
   assert.equal(result.first_stop_changes, false);
   assert.equal(result.with_nisar.ranking[0].regional_below_historical, null);
