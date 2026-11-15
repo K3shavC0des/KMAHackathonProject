@@ -1,4 +1,4 @@
-import { inspectionBand, inspectionSummary, latestReading, observationInstant } from './map-data.mjs';
+import { cropBlocks, cropInspectionBand, inspectionBand, inspectionSummary, latestReading, observationInstant } from './map-data.mjs';
 
 const byId = id => document.getElementById(id);
 const pilotBounds = [[79.68, 10.64], [79.86, 10.82]];
@@ -18,7 +18,10 @@ let selectedId;
 let map;
 let maplibregl;
 let detailMode = 'easy';
-let radarEvidence = null;
+let cropReports = {};
+let viewMode = 'moisture';
+let cropAreas = [];
+let cityNote = '';
 
 function fitRegion(bounds, maxZoom = 13) {
   if (!map) return;
@@ -48,6 +51,7 @@ function readingText(item) {
 
 function metadata(item) {
   if (!item) return 'No quality-valid reading';
+  if (item.data_status === 'derived') return `${item.observed_at.slice(0, 10)} · median of matched satellite cells`;
   return `${item.observed_at.slice(0, 10)} · local satellite measurement`;
 }
 
@@ -57,10 +61,11 @@ function labelFor(area) {
 }
 
 function featureCollection() {
-  const visibleBands = new Set([...document.querySelectorAll('input[name="band"]:checked')].map(input => input.value));
+  const filter = viewMode === 'crop' ? 'crop-band' : 'band';
+  const visibleBands = new Set([...document.querySelectorAll(`input[name="${filter}"]:checked`)].map(input => input.value));
   return {
     type: 'FeatureCollection',
-    features: areas.filter(area => visibleBands.has(inspectionBand(area))).map(area => ({ type: 'Feature', properties: { area_id: area.area_id, label: labelFor(area), band: inspectionBand(area) }, geometry: area.geometry }))
+    features: areas.filter(area => visibleBands.has(viewMode === 'crop' ? cropInspectionBand(area) : inspectionBand(area))).map(area => ({ type: 'Feature', properties: { area_id: area.area_id, label: labelFor(area), band: viewMode === 'crop' ? cropInspectionBand(area) : inspectionBand(area) }, geometry: area.geometry }))
   };
 }
 
@@ -72,7 +77,9 @@ function visibleAreas() {
 function updateMapData() {
   if (!map?.getSource('areas')) return;
   map.getSource('areas')?.setData(featureCollection());
-  map.setPaintProperty('area-fill', 'fill-color', ['match', ['get', 'band'], 'review', '#f07861', 'watch', '#efb352', 'lower', '#e4d57b', 'steady', '#82c7a5', '#8997a8']);
+  map.setPaintProperty('area-fill', 'fill-color', viewMode === 'crop'
+    ? ['match', ['get', 'band'], 'review', '#f07861', 'watch', '#efb352', 'steady', '#82c7a5', '#8997a8']
+    : ['match', ['get', 'band'], 'review', '#f07861', 'watch', '#efb352', 'lower', '#e4d57b', 'steady', '#82c7a5', '#8997a8']);
   map.setPaintProperty('area-fill', 'fill-opacity', ['case', ['==', ['get', 'area_id'], selectedId], 0.72, 0.42]);
   map.setPaintProperty('area-line', 'line-color', ['case', ['==', ['get', 'area_id'], selectedId], '#b9e2ff', '#c8d9e4']);
   map.setPaintProperty('area-line', 'line-width', ['case', ['==', ['get', 'area_id'], selectedId], 2, 0.5]);
@@ -94,6 +101,7 @@ function render() {
     byId('with-first').textContent = 'No visible squares';
     byId('timeline').replaceChildren();
     updateMapData();
+    renderCropMode();
     return;
   }
   updateMapData();
@@ -107,7 +115,6 @@ function render() {
   byId('selected-square-name').textContent = labelFor(area);
   byId('sme2-meta').textContent = metadata(sme2);
   updateSelectionSpotlight(sme2);
-  renderDualBand(area);
   const timeline = byId('timeline');
   timeline.replaceChildren();
   for (const item of [...area.observations].sort((a, b) => observationInstant(b) - observationInstant(a))) {
@@ -128,6 +135,59 @@ function render() {
     timeline.append(li);
   }
   applyDetailMode();
+  renderCropMode();
+}
+
+function renderCropMode() {
+  const report = cropReports[mode];
+  const available = mode !== 'sample' && report?.nisar?.matched_cells === collections[mode]?.areas.length && cropAreas.length > 0;
+  byId('view-mode').querySelector('[value="crop"]').disabled = !available;
+  if (!available) viewMode = 'moisture';
+  byId('view-mode').value = viewMode;
+  byId('view-mode-note').textContent = available
+    ? `Crop and weather context for ${cityViews[mode].name}. Map blocks summarize measured NISAR cells.`
+    : mode === 'sample' ? 'Crop mode needs observed satellite measurements.' : 'Crop context is unavailable for this city.';
+  const active = viewMode === 'crop' && available;
+  document.body.classList.toggle('crop-mode', active);
+  byId('crop-panel').hidden = !active;
+  byId('map-heading').textContent = active ? 'Crop + weather map' : 'Soil moisture map';
+  byId('map-intro').textContent = active ? 'Click a coloured block to inspect its moisture signal.' : 'Choose a city, zoom in, and click a coloured cell to see its change.';
+  byId('selection-label').textContent = active ? 'Selected block' : 'Selected square';
+  byId('detail-heading').textContent = active ? 'Block moisture signal' : 'Moisture change';
+  byId('mode-note').textContent = active
+    ? `${cropAreas.length} roughly 1 km blocks from measured NISAR cells. Select a block to inspect its median change.`
+    : cityNote;
+  if (!active) return;
+  const previousCrop = byId('crop-select').value;
+  const candidates = report.crop_context.candidates;
+  byId('crop-select').replaceChildren(...candidates.map(item => {
+    const option = document.createElement('option'); option.value = item.name; option.textContent = item.name; return option;
+  }));
+  const crop = candidates.find(item => item.name === previousCrop) ?? candidates[0];
+  byId('crop-select').value = crop.name;
+  byId('crop-season').textContent = `${crop.name}: ${crop.season}. Crop presence and growth stage are unknown.`;
+  byId('crop-concern').textContent = report.concern;
+  byId('crop-source').href = crop.source;
+  byId('crop-source').textContent = `${cityViews[mode].name} crop guidance`;
+  const weather = report.temperature;
+  byId('crop-weather').textContent = `${weather.seven_day_mean_daily_max_c.toFixed(1)}°C average daily high · ${weather.seven_day_mean_humidity_percent.toFixed(0)}% humidity · ${weather.seven_day_rain_mm.toFixed(1)} mm rain in seven days.`;
+  const nisar = report.nisar;
+  const direction = nisar.median_change_m3m3 < 0 ? 'lower' : 'higher';
+  const uncertainty = nisar.uncertainty
+    ? `Only ${(nisar.uncertainty.fraction_change_exceeds_sum_of_uncertainties * 100).toFixed(1)}% exceed summed per-date uncertainty.`
+    : 'NISAR uncertainty was not checked for this city.';
+  byId('crop-nisar').textContent = `${nisar.matched_cells.toLocaleString()} matched NISAR cells, median ${Math.abs(nisar.median_change_m3m3 * 100).toFixed(1)} points ${direction}. ${uncertainty}`;
+  const fusion = report.fusion;
+  byId('fusion-nisar').textContent = `NISAR: ${(nisar.fraction_at_least_2_points_drier * 100).toFixed(0)}% of cells fell at least 2 points; counts at 50% or more. ${fusion.signals.nisar_drying ? 'Cue present.' : 'No cue.'}`;
+  byId('fusion-heat').textContent = `Heat: ${Math.round(weather.percentile * 100)}th percentile vs 1991–2020; counts at the 90th percentile or above. ${fusion.signals.unusual_heat ? 'Cue present.' : 'No cue.'}`;
+  byId('fusion-rain').textContent = `Rain: ${weather.seven_day_rain_mm.toFixed(1)} mm vs ${weather.baseline_rain_median_mm.toFixed(1)} mm typical; counts below the baseline median. ${fusion.signals.low_rain ? 'Cue present.' : 'No cue.'}`;
+  byId('fusion-summary').textContent = `${fusion.count} of ${fusion.total} city-level cues coincide. Check local crop and soil conditions; this is not a crop-specific risk result.`;
+  const selected = areas.find(item => item.area_id === selectedId);
+  const band = selected ? cropInspectionBand(selected) : null;
+  const signal = band === 'review' ? 'Review sooner: strongest drying cue' : band === 'watch' ? 'Watch: drying cue' : band === 'steady' ? 'Lower concern from moisture change; crop risk is still unknown' : 'Select a block';
+  byId('crop-block-summary').textContent = selected ? `${signal}. Median of ${selected.cell_count} matched cells; change is uncertain.` : signal;
+  byId('area-description').textContent = selected ? `This block summarizes ${selected.cell_count} measured NISAR cells. It is not a farm boundary or identified crop.` : 'No block selected.';
+  byId('map-status').textContent = `Crop and weather view · ${cityViews[mode].name} · ${visibleAreas().length} derived blocks shown · Crop presence unknown`;
 }
 
 function updateSelectionSpotlight(reading) {
@@ -138,19 +198,6 @@ function updateSelectionSpotlight(reading) {
   // Restart the short acknowledgement animation even when two nearby squares share a value.
   void spotlight.offsetWidth;
   spotlight.classList.add('is-updating');
-}
-
-function renderDualBand(area) {
-  const status = radarEvidence?.status;
-  const paired = status === 'paired' && radarEvidence.areas?.some(item => item.area_id === area.area_id);
-  byId('l-band-status').textContent = paired ? 'Available for this area' : 'Not available here yet';
-  byId('s-band-status').textContent = paired ? 'Available for this area' : 'Waiting for matching data';
-  byId('dual-band-summary').textContent = paired
-    ? 'Both NISAR radar views cover this area. Their agreement can help separate surface change from vegetation effects.'
-    : 'The moisture result is available, but a matched S-band view is not. This map will show both bands here when the compatible product is available.';
-  byId('dual-band-technical').textContent = paired
-    ? 'The paired product passed the same-area, compatible-date, grid, polarization, mask, and processing checks.'
-    : 'No same-area, same-date L/S GCOV pair is currently verified for this map. The public S-band sample is a different place and is excluded from fusion.';
 }
 
 function applyDetailMode() {
@@ -182,14 +229,18 @@ function selectArea(id, panToArea = false) {
 
 function useCollection(nextMode) {
   if (!collections[nextMode]) return;
+  const keepCropMode = viewMode === 'crop';
   mode = nextMode;
-  areas = collections[mode].areas;
+  cropAreas = cropBlocks(collections[mode].areas);
+  viewMode = keepCropMode && mode !== 'sample' && cropReports[mode] ? 'crop' : 'moisture';
+  areas = viewMode === 'crop' ? cropAreas : collections[mode].areas;
   selectedId = areas[0].area_id;
   byId('data-mode').value = mode;
   const dates = [...new Set(areas.flatMap(area => area.observations.map(item => item.observed_at.slice(0, 10))))].sort();
-  byId('mode-note').textContent = mode === 'sample'
+  cityNote = mode === 'sample'
     ? 'Synthetic example, not satellite measurements. Kept separate from observed cities.'
     : `${cityViews[mode].name} · ${dates.join(' / ')} · ${areas.length} measured squares. ${areas[0].area_id.includes('-pixel-') ? 'One matched satellite pixel per square.' : 'Each square summarizes a larger analysis area.'} Gaps have no usable paired reading.`;
+  byId('mode-note').textContent = cityNote;
   byId('map').setAttribute('aria-label', `Interactive map centered on ${cityViews[mode].name}`);
   render();
   map.setMaxBounds(null);
@@ -230,13 +281,19 @@ byId('data-mode').addEventListener('change', event => useCollection(event.target
 byId('detail-mode').addEventListener('click', () => {
   detailMode = detailMode === 'easy' ? 'technical' : 'easy';
   applyDetailMode();
+  renderCropMode();
 });
+byId('view-mode').addEventListener('change', event => {
+  viewMode = event.target.value;
+  areas = viewMode === 'crop' ? cropAreas : collections[mode].areas;
+  selectedId = areas[0]?.area_id;
+  document.querySelectorAll('input[name="band"]').forEach(input => { input.checked = true; });
+  render();
+});
+byId('crop-select').addEventListener('change', renderCropMode);
 document.querySelectorAll('input[name="band"]').forEach(input => input.addEventListener('change', render));
+document.querySelectorAll('input[name="crop-band"]').forEach(input => input.addEventListener('change', render));
 
-fetch('./radar-evidence.json').then(response => response.ok ? response.json() : null).then(value => {
-  radarEvidence = value;
-  if (areas.length) render();
-}).catch(() => { radarEvidence = null; });
 byId('state-view').addEventListener('click', () => fitRegion(cityViews[mode].region));
 byId('pilot-view').addEventListener('click', () => fitRegion(cityViews[mode].bounds));
 byId('dark-view').addEventListener('click', () => setBasemap(true));
@@ -396,6 +453,10 @@ byId('about-view').addEventListener('click', () => {
 });
 
 async function startMap() {
+try {
+  const response = await fetch('./crop-reports.json');
+  if (response.ok) cropReports = await response.json();
+} catch { cropReports = {}; }
 const mapReady = await initializeMap();
 if (mapReady) {
   try {
@@ -407,6 +468,7 @@ if (mapReady) {
       const observedResponse = await fetch('./observed-areas.json');
       if (!observedResponse.ok) throw new Error(`Observed HTTP ${observedResponse.status}`);
       collections.observed = await observedResponse.json();
+      cropAreas = cropBlocks(collections.observed.areas);
       byId('data-mode').querySelector('[value="observed"]').disabled = false;
       byId('mode-note').textContent = 'Measured satellite squares are separate from the example data. Long-term regional history is not available yet.';
       useCollection('observed');

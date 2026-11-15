@@ -1,0 +1,55 @@
+{
+  "status": "screening",
+  "place": "Nagapattinam, Tamil Nadu",
+  "date": "2026-07-02",
+  "concern": "watch",
+  "nisar": {
+    "matched_cells": 7415,
+    "median_change_m3m3": -0.030678361654281616,
+    "median_earlier_m3m3": 0.2775048613548279,
+    "median_later_m3m3": 0.24652454257011414,
+    "fraction_at_least_2_points_drier": 0.6327714093054619,
+    "earlier_date": "2026-06-20",
+    "later_date": "2026-07-02",
+    "uncertainty": {
+      "matched_cells": 7415,
+      "median_per_date_uncertainty_m3m3": [
+        0.040308523923158646,
+        0.04032040759921074
+      ],
+      "fraction_change_exceeds_sum_of_uncertainties": 0.013081591368846932
+    },
+    "source": "data/observed/nagapattinam-areas.json"
+  },
+  "temperature": {
+    "seven_day_mean_daily_max_c": 32.854285714285716,
+    "baseline_median_c": 31.720714285714287,
+    "baseline_years": 30,
+    "percentile": 1.0,
+    "seven_day_mean_humidity_percent": 69.96714285714286,
+    "seven_day_rain_mm": 8.64,
+    "baseline_rain_median_mm": 7.165,
+    "point_lat_lon": [
+      10.73,
+      79.77
+    ],
+    "source": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,RH2M,PRECTOTCORR&community=AG&longitude=79.77&latitude=10.73&start=19910101&end=20260702&format=JSON&time-standard=LST"
+  },
+  "crop_context": {
+    "candidates": [
+      {
+        "name": "Rice",
+        "season_possible": true,
+        "source": "https://www.agritech.tnau.ac.in/expert_system/paddy/seasonvariety.html"
+      },
+      {
+        "name": "Black gram",
+        "season_possible": true,
+        "source": "https://tnagriculture.in/dashboard/report/26_02.pdf"
+      }
+    ],
+    "field_crop_verified": false,
+    "growth_stage": "unknown"
+  },
+  "meaning": "Hot weather is unusually high for this week. Many NISAR point estimates fell, but most changes are smaller than the sum of the two per-date uncertainty estimates. Rice or black gram may be in season; confirm the actual crop and soil conditions locally."
+}\n

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { latestReading, inspectionBand, inspectionSummary } from './map-data.mjs';
+import { latestReading, inspectionBand, inspectionSummary, cropBlocks, cropInspectionBand } from './map-data.mjs';
 
 test('headline selects newest valid change, never a moisture level or suspect reading', () => {
   const area = { area_id: 'a', observations: [
@@ -33,4 +33,26 @@ test('newest reading is selected by instant across UTC offset forms', () => {
     { source: 'NISAR_SME2', metric: 'soil_moisture_change', spatial_scale: 'local', unit: 'm3/m3', quality: 'valid', value: -0.02, observed_at: '2026-07-01T23:45:00Z' }
   ] };
   assert.equal(latestReading(area, 'NISAR_SME2', 'soil_moisture_change').value, -0.02);
+});
+
+test('crop blocks use medians of observed cells and leave sparse blocks out', () => {
+  const cell = (row, col, value, status = 'observed') => ({
+    area_id: `nagapattinam-pixel-r${row}c${col}`,
+    geometry: { type: 'Polygon', coordinates: [[[col, row], [col + 1, row], [col + 1, row + 1], [col, row + 1], [col, row]]] },
+    observations: [{ source: 'NISAR_SME2', metric: 'soil_moisture_change', spatial_scale: 'local', unit: 'm3/m3', quality: 'valid', data_status: status, value, observed_at: '2026-07-02T00:00:00Z', source_ref: 'test' }]
+  });
+  const cells = Array.from({ length: 10 }, (_, index) => cell(10, 10 + index % 5, index === 0 ? -.5 : -.02));
+  cells.push(cell(15, 15, -.4), cell(10, 10, -.9, 'sample'));
+  const blocks = cropBlocks(cells);
+  assert.equal(blocks.length, 1);
+  assert.equal(blocks[0].cell_count, 10);
+  assert.equal(blocks[0].observations[0].value, -.02);
+  assert.equal(blocks[0].observations[0].data_status, 'derived');
+});
+
+test('crop block colours order relative drying without calling green safe', () => {
+  const block = value => ({ observations: [{ source: 'NISAR_SME2', metric: 'soil_moisture_change', spatial_scale: 'local', unit: 'm3/m3', quality: 'valid', value, observed_at: '2026-07-02T00:00:00Z' }] });
+  assert.equal(cropInspectionBand(block(-.04)), 'review');
+  assert.equal(cropInspectionBand(block(-.025)), 'watch');
+  assert.equal(cropInspectionBand(block(-.01)), 'steady');
 });

@@ -21,4 +21,5 @@ for (const [source, name] of [
   await copyFile(new URL(source, root), new URL(name, output));
 }
 await copyFile(new URL('data/radar/nagapattinam.json', root), new URL('radar-evidence.json', output));
-console.log('Static map preview built in dist/ (11 files; no server, orphaned prototypes, or raw downloads).');
+await copyFile(new URL('data/crop-weather/city-reports.json', root), new URL('crop-reports.json', output));
+console.log('Static map preview built in dist/ (12 files; no server, orphaned prototypes, or raw downloads).');

@@ -24,8 +24,8 @@
       <div id="map" aria-label="Interactive map centered on Nagapattinam, India"></div>
       <header class="map-title">
         <p class="eyebrow">Farm Moisture Watch</p>
-        <h1>Soil moisture map</h1>
-        <p>Choose a city, zoom in, and click a coloured cell to see its change.</p>
+        <h1 id="map-heading">Soil moisture map</h1>
+        <p id="map-intro">Choose a city, zoom in, and click a coloured cell to see its change.</p>
       </header>
       <section class="map-search" aria-label="Map navigation">
         <div class="view-actions"><button type="button" id="about-view">About</button><span class="control-label">View</span><button type="button" id="state-view">Wider map</button><button type="button" id="pilot-view">Back to city</button><button type="button" id="camera-view" aria-pressed="false">Tilt</button></div>
@@ -35,26 +35,45 @@
       <div class="map-status" role="status" id="map-status">NISAR SME2 · Loading evidence · Analysis squares, not farm boundaries</div>
     </section>
     <section class="selection-spotlight" id="selection-spotlight" aria-labelledby="detail-heading" aria-live="polite">
-      <div class="selection-spotlight-head"><p class="eyebrow">Selected square</p><span id="sample-badge" class="badge"></span></div>
+      <div class="selection-spotlight-head"><p class="eyebrow" id="selection-label">Selected square</p><span id="sample-badge" class="badge"></span></div>
       <h2 id="detail-heading">Moisture change</h2>
       <strong id="sme2-value">Loading…</strong>
       <p id="selected-square-name">Choose a square on the map</p>
       <small id="sme2-meta"></small>
     </section>
     <aside class="inspector" aria-labelledby="detail-heading">
-      <section class="panel-section dual-band-panel" id="dual-band-panel" aria-labelledby="dual-band-heading">
-        <h2 id="dual-band-heading">NISAR’s two radar eyes</h2>
-        <p id="dual-band-summary">Loading L-band and S-band evidence…</p>
-        <div class="dual-band-grid">
-          <article><h3>L-band</h3><strong id="l-band-status">Loading…</strong><p id="l-band-explanation">Longer waves can see deeper through vegetation.</p></article>
-          <article><h3>S-band</h3><strong id="s-band-status">Loading…</strong><p id="s-band-explanation">Shorter waves respond more to the surface and lighter vegetation.</p></article>
-        </div>
-        <details class="technical-only"><summary>Technical radar evidence</summary><p id="dual-band-technical">Same-place, same-date L/S GCOV comparison is required before fusion.</p></details>
-      </section>
       <section class="panel-section">
         <label for="data-mode">Choose a city</label>
         <select id="data-mode" aria-describedby="mode-note"><option value="sample" disabled>Example data (synthetic)</option><option value="observed" disabled>Nagapattinam</option><option value="ludhiana" disabled>Ludhiana</option><option value="nairobi" disabled>Nairobi</option><option value="ahmedabad" disabled>Ahmedabad</option></select>
         <p id="mode-note">Each coloured cell is a satellite reading.</p>
+      </section>
+      <section class="panel-section" aria-labelledby="view-mode-heading">
+        <h2 id="view-mode-heading">What to explore</h2>
+        <label for="view-mode">Map mode</label>
+        <select id="view-mode" aria-describedby="view-mode-note"><option value="moisture">Moisture change</option><option value="crop" disabled>Crop + weather</option></select>
+        <p id="view-mode-note">Crop and weather context is available for observed cities.</p>
+      </section>
+      <section class="panel-section crop-panel" id="crop-panel" aria-labelledby="crop-heading" hidden>
+        <h2 id="crop-heading">Crop + weather watch</h2>
+        <label for="crop-select">Crop to consider</label>
+        <select id="crop-select"><option>Rice</option><option>Black gram</option></select>
+        <p id="crop-season"></p>
+        <strong id="crop-concern"></strong>
+        <p id="crop-weather"></p>
+        <p id="crop-nisar"></p>
+        <details class="crop-fusion">
+          <summary>How this reading is combined</summary>
+          <p id="fusion-nisar"></p>
+          <p id="fusion-heat"></p>
+          <p id="fusion-rain"></p>
+          <p id="fusion-summary"></p>
+          <p>Weather adds city-level context. Only NISAR moisture change colors the map blocks. Crop guidance suggests possible crops; it does not verify what is planted or change the signal.</p>
+        </details>
+        <p id="crop-block-summary"></p>
+        <p class="crop-key"><span class="swatch steady"></span> Green: lower concern, median fell under 2 points or rose<br><span class="swatch watch"></span> Yellow: watch, median fell 2–3.5 points<br><span class="swatch review"></span> Red: review sooner, median fell 3.5+ points</p>
+        <div class="crop-block-filters" aria-label="Filter crop watch blocks"><label><input type="checkbox" name="crop-band" value="steady" checked> Show green blocks</label><label><input type="checkbox" name="crop-band" value="watch" checked> Show yellow blocks</label><label><input type="checkbox" name="crop-band" value="review" checked> Show red blocks</label></div>
+        <p class="crop-limit">The weather screen covers the city. Each roughly 1 km block summarizes at least 10 measured cells and can contain gaps. Crop and growth stage are unknown; these colours are inspection cues, not confirmed crop loss.</p>
+        <p class="crop-sources"><a href="https://power.larc.nasa.gov/docs/services/api/temporal/daily/">NASA POWER</a> · <a href="https://nisar-docs.asf.alaska.edu/sme2/">NISAR SME2</a> · <a id="crop-source" href="https://www.spaceappschallenge.org/">Local crop source</a></p>
       </section>
       <section class="panel-section easy-legend" aria-labelledby="easy-legend-heading">
         <h2 id="easy-legend-heading">What the colours mean</h2>

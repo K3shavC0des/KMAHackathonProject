@@ -112,8 +112,10 @@ test('map server forwards API validation errors, POST and preflight to the backe
 
 test('map and its module assets still load from root and nested routes', async () => {
   await withServer(async base => {
-    for (const path of ['/', '/map/', '/map.js', '/map/map.js', '/observations.mjs', '/map/observations.mjs', '/style.css', '/map/style.css', '/ludhiana-areas.json', '/map/ludhiana-areas.json', '/ahmedabad-areas.json', '/map/ahmedabad-areas.json']) {
+    for (const path of ['/', '/map/', '/map.js', '/map/map.js', '/observations.mjs', '/map/observations.mjs', '/style.css', '/map/style.css', '/crop-reports.json', '/map/crop-reports.json', '/ludhiana-areas.json', '/map/ludhiana-areas.json', '/ahmedabad-areas.json', '/map/ahmedabad-areas.json']) {
       assert.equal((await fetch(`${base}${path}`)).status, 200, path);
     }
+    const reports = await (await fetch(`${base}/crop-reports.json`)).json();
+    assert.deepEqual(Object.keys(reports).sort(), ['ahmedabad', 'ludhiana', 'nairobi', 'observed']);
   });
 });

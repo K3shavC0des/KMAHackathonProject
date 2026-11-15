@@ -25,6 +25,19 @@ Run the same-origin API regressions with
 sample/observed separation, missing evidence, bad requests and static assets.
 The observed-mode selector uses these same-origin routes.
 
+The **Crop + weather** map mode is available for every observed city. It groups
+observed 200 m SME2 cells into approximately 1 km blocks, keeps blocks with at
+least 10 matched cells, and colours each block by median moisture change:
+green for under 2 points lower or higher, yellow for 2 to under 3.5 points
+lower, and red for 3.5+ points lower. The right panel loads NASA POWER weather,
+a NISAR summary, and locally sourced crop choices for the selected city. Open
+**How this reading is combined** for the three city-level cues and thresholds.
+Weather informs only that city summary; block colors use NISAR moisture change
+alone. Crop presence and growth stage remain unknown. NISAR uncertainty was
+checked for Nagapattinam; other cities say when it has not been checked. These
+are inspection cues, not confirmed crop stress. Reports can be regenerated
+with `python data/crop-weather/build_city_reports.py`.
+
 The map requests collections through `/api/areas?dataset=observed` or
 `dataset=sample`, served by the shared backend handler. It checks the contract
 version and basic shape before rendering. The strongest valid local drying

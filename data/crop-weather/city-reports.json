@@ -1,0 +1,217 @@
+{
+  "observed": {
+    "place": "Nagapattinam",
+    "date": "2026-07-02",
+    "concern": "2 of 3 city signals coincide",
+    "nisar": {
+      "matched_cells": 7415,
+      "median_change_m3m3": -0.030678361654281616,
+      "fraction_at_least_2_points_drier": 0.6327714093054619,
+      "earlier_date": "2026-06-20",
+      "later_date": "2026-07-02",
+      "uncertainty": {
+        "matched_cells": 7415,
+        "median_per_date_uncertainty_m3m3": [
+          0.040308523923158646,
+          0.04032040759921074
+        ],
+        "fraction_change_exceeds_sum_of_uncertainties": 0.013081591368846932
+      }
+    },
+    "temperature": {
+      "seven_day_mean_daily_max_c": 32.854285714285716,
+      "seven_day_mean_humidity_percent": 69.96714285714286,
+      "seven_day_rain_mm": 8.64,
+      "baseline_median_c": 31.720714285714287,
+      "baseline_years": 30,
+      "percentile": 1.0,
+      "baseline_rain_median_mm": 7.165,
+      "point_lat_lon": [
+        10.73,
+        79.77
+      ],
+      "source": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,RH2M,PRECTOTCORR&community=AG&longitude=79.77&latitude=10.73&start=19910101&end=20260702&format=JSON&time-standard=LST"
+    },
+    "fusion": {
+      "signals": {
+        "nisar_drying": true,
+        "unusual_heat": true,
+        "low_rain": false
+      },
+      "count": 2,
+      "total": 3
+    },
+    "crop_context": {
+      "candidates": [
+        {
+          "name": "Rice",
+          "season": "June\u2013July rice season cited locally",
+          "source": "https://www.agritech.tnau.ac.in/agriculture/agri_seasonandvarieties_rice.html"
+        },
+        {
+          "name": "Black gram",
+          "season": "June\u2013August season cited locally",
+          "source": "https://www.agritech.tnau.ac.in/agriculture/pulses_blackgram.html"
+        }
+      ],
+      "field_crop_verified": false,
+      "growth_stage": "unknown"
+    }
+  },
+  "ludhiana": {
+    "place": "Ludhiana",
+    "date": "2025-12-03",
+    "concern": "0 of 3 city signals coincide",
+    "nisar": {
+      "matched_cells": 4686,
+      "median_change_m3m3": 0.006806090474128723,
+      "fraction_at_least_2_points_drier": 0.019419547588561674,
+      "earlier_date": "2025-11-21",
+      "later_date": "2025-12-03",
+      "uncertainty": null
+    },
+    "temperature": {
+      "seven_day_mean_daily_max_c": 22.521428571428572,
+      "seven_day_mean_humidity_percent": 52.191428571428574,
+      "seven_day_rain_mm": 0.0,
+      "baseline_median_c": 25.657857142857143,
+      "baseline_years": 30,
+      "percentile": 0.0,
+      "baseline_rain_median_mm": 0.0,
+      "point_lat_lon": [
+        30.9,
+        75.85
+      ],
+      "source": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,RH2M,PRECTOTCORR&community=AG&longitude=75.85&latitude=30.9&start=19910101&end=20251203&format=JSON&time-standard=LST"
+    },
+    "fusion": {
+      "signals": {
+        "nisar_drying": false,
+        "unusual_heat": false,
+        "low_rain": false
+      },
+      "count": 0,
+      "total": 3
+    },
+    "crop_context": {
+      "candidates": [
+        {
+          "name": "Wheat",
+          "season": "Common local crop; planting season not checked",
+          "source": "https://pmfme.punjabagro.gov.in/wp-content/uploads/2023/03/F1_Final-SLUP-Report-for-Punjab_13.02.23.pdf"
+        },
+        {
+          "name": "Rice",
+          "season": "Common local crop; planting season not checked",
+          "source": "https://ludhiana.nic.in/departments/state-govt/chief-agri/"
+        }
+      ],
+      "field_crop_verified": false,
+      "growth_stage": "unknown"
+    }
+  },
+  "ahmedabad": {
+    "place": "Ahmedabad",
+    "date": "2025-12-24",
+    "concern": "0 of 3 city signals coincide",
+    "nisar": {
+      "matched_cells": 2681,
+      "median_change_m3m3": 0.006999999284744263,
+      "fraction_at_least_2_points_drier": 0.15292801193584482,
+      "earlier_date": "2025-12-12",
+      "later_date": "2025-12-24",
+      "uncertainty": null
+    },
+    "temperature": {
+      "seven_day_mean_daily_max_c": 29.707142857142856,
+      "seven_day_mean_humidity_percent": 54.03142857142857,
+      "seven_day_rain_mm": 0.0,
+      "baseline_median_c": 31.099285714285713,
+      "baseline_years": 30,
+      "percentile": 0.3333333333333333,
+      "baseline_rain_median_mm": 0.0,
+      "point_lat_lon": [
+        23.02,
+        72.58
+      ],
+      "source": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,RH2M,PRECTOTCORR&community=AG&longitude=72.58&latitude=23.02&start=19910101&end=20251224&format=JSON&time-standard=LST"
+    },
+    "fusion": {
+      "signals": {
+        "nisar_drying": false,
+        "unusual_heat": false,
+        "low_rain": false
+      },
+      "count": 0,
+      "total": 3
+    },
+    "crop_context": {
+      "candidates": [
+        {
+          "name": "Cotton",
+          "season": "Common district crop; planting season not checked",
+          "source": "https://cgwb.gov.in/old_website/AQM/NAQUIM_REPORT/Gujarat/Ahmedabad%20NAQUIM%20Report.pdf"
+        },
+        {
+          "name": "Wheat",
+          "season": "Common district crop; planting season not checked",
+          "source": "https://cgwb.gov.in/old_website/AQM/NAQUIM_REPORT/Gujarat/Ahmedabad%20NAQUIM%20Report.pdf"
+        }
+      ],
+      "field_crop_verified": false,
+      "growth_stage": "unknown"
+    }
+  },
+  "nairobi": {
+    "place": "Nairobi",
+    "date": "2026-07-12",
+    "concern": "1 of 3 city signals coincide",
+    "nisar": {
+      "matched_cells": 7135,
+      "median_change_m3m3": -0.031115323305130005,
+      "fraction_at_least_2_points_drier": 0.650875963559916,
+      "earlier_date": "2026-06-30",
+      "later_date": "2026-07-12",
+      "uncertainty": null
+    },
+    "temperature": {
+      "seven_day_mean_daily_max_c": 27.14857142857143,
+      "seven_day_mean_humidity_percent": 67.44142857142857,
+      "seven_day_rain_mm": 7.5600000000000005,
+      "baseline_median_c": 26.110714285714288,
+      "baseline_years": 30,
+      "percentile": 0.8666666666666667,
+      "baseline_rain_median_mm": 2.11,
+      "point_lat_lon": [
+        -1.275,
+        36.825
+      ],
+      "source": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M_MAX,RH2M,PRECTOTCORR&community=AG&longitude=36.825&latitude=-1.275&start=19910101&end=20260712&format=JSON&time-standard=LST"
+    },
+    "fusion": {
+      "signals": {
+        "nisar_drying": true,
+        "unusual_heat": false,
+        "low_rain": false
+      },
+      "count": 1,
+      "total": 3
+    },
+    "crop_context": {
+      "candidates": [
+        {
+          "name": "Maize",
+          "season": "Common county crop; planting season not checked",
+          "source": "https://maarifa.cog.go.ke/sites/default/files/2022-08/CIDP%20Nairobi%20-%202013-2017.pdf"
+        },
+        {
+          "name": "Beans",
+          "season": "Common county crop; planting season not checked",
+          "source": "https://maarifa.cog.go.ke/sites/default/files/2022-08/CIDP%20Nairobi%20-%202013-2017.pdf"
+        }
+      ],
+      "field_crop_verified": false,
+      "growth_stage": "unknown"
+    }
+  }
+}
