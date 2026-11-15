@@ -187,8 +187,8 @@
       "paths": [
         "experiments/crop-weather-risk"
       ],
-      "status": "review",
-      "evidence": "Experimental branch https://github.com/K3shavC0des/KMAHackathonProject/tree/experiment/keshav/crop-weather-risk at 83f3ee2. Observed 7,415 NISAR SME2 cells and per-date uncertainty, NASA POWER T2M_MAX/RH2M/rain plus 1991-2020 week baseline; rice/black gram season context only. 2/2 Python tests, Python/JS syntax, HTTP 200 for page/JS/report/381KB image, browser visual check, staged diff PASS. No merge/deploy. 1.3% changes exceed sum of uncertainties; crop/stage unknown; raw HDF5 outside Git. Next actor: teammate review before considering main, presentation lead cite limits."
+      "status": "done",
+      "evidence": "Promoted by user request and merged through PR #18 to main at 10550de. The city crop/weather view now covers Nagapattinam, Ludhiana, Ahmedabad, and Nairobi; PR #20 fixes observed-data loading and removes the synthetic map mode. Crop presence/growth stage remain unknown; this is a screening view, not calibrated crop-risk prediction. No S-band data is used."
     },
     "crop-mode-map-experiment": {
       "id": "crop-mode-map-experiment",
@@ -1272,6 +1272,7 @@
     "68348d78-cd09-4de9-88eb-25575ee2a13a",
     "cec13359-f3e6-47a3-befe-df534931b3fa",
     "d6f003e1-c483-420d-b525-0f3518ecb31f",
-    "40666e45-a36f-4873-af05-bbfb29564ae7"
+    "40666e45-a36f-4873-af05-bbfb29564ae7",
+    "52a8b89c-1cd1-4cd8-b3f2-112235655eca"
   ]
 }
