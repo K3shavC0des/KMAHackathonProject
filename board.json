@@ -211,8 +211,8 @@
       "paths": [
         "frontend/map"
       ],
-      "status": "queued",
-      "evidence": ""
+      "status": "working",
+      "evidence": "Claimed frontend/map after inbox review; no active overlapping owner. Working from origin/main in an isolated worktree."
     }
   },
   "messages": [
@@ -1260,6 +1260,7 @@
     "crop-mode-all-city-handoff-20261115-01",
     "crop-mode-pr18-handoff-20261115-01",
     "4b8baf3a-df67-431f-8e85-e652440374ec",
-    "4d9fddf3-63c8-4810-b661-0249948374ea"
+    "4d9fddf3-63c8-4810-b661-0249948374ea",
+    "68348d78-cd09-4de9-88eb-25575ee2a13a"
   ]
 }
