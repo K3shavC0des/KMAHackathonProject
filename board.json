@@ -145,8 +145,8 @@
         "tests/integration/radar.test.mjs",
         ".agents/skills/impeccable"
       ],
-      "status": "working",
-      "evidence": "Starting consolidation from dark-map 82fa8ab after PR #15 merged baseline to integration b701472. User additionally requested prominent feedback whenever a different square is clicked. Preserving unrelated LICENSE and excluding raw downloads, credentials, .tools and .local."
+      "status": "review",
+      "evidence": "Follow-up pushed at b7225ff on hackathon/matthewzhang2008/dark-map. Selected-square moisture change is now dominant map feedback (desktop upper-left overlay; mobile first card below map), with value/direction/label/date and acknowledgement animation updating on click. Verification: Node 31/31, radar Python 4/4, static preview build, syntax and diff check PASS; Edge 1440x900 + 390x844 changed consecutive selections 1.3 to 3.9 points lower. Radar remains truthfully unavailable without matched L/S GCOV. Submission/state/license updated. origin/main is an ancestor, so release is fast-forwardable."
     }
   },
   "messages": [
@@ -985,6 +985,7 @@
     "matt-reconcile-regional-observed-coverage-20261115-01",
     "matt-reconcile-regional-coverage-regression-tests-20261115-01",
     "matt-dark-map-followup-task-20261115-02",
-    "matt-dark-map-followup-start-20261115-02"
+    "matt-dark-map-followup-start-20261115-02",
+    "matt-dark-map-followup-review-20261115-01"
   ]
 }
