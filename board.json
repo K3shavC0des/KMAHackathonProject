@@ -1087,6 +1087,14 @@
       "task": "remove-synthetic-map-mode",
       "body": "PR #20 merged to main as 675598a: https://github.com/K3shavC0des/KMAHackathonProject/pull/20. Observed city data now loads independently of the synthetic fixture; no synthetic mode/fallback remains in the user-facing map, and the yellow dashed pilot box is removed. Crop/weather readiness checks now require matching observed NISAR counts, crop candidates, weather fields, and fusion cues. 12/12 focused Node map/API tests, JS syntax, diff check, and HTTP 200 routes pass. All cities validate: Nagapattinam 7415 cells/339 blocks, Ludhiana 4686/218, Ahmedabad 2681/123, Nairobi 7135/288. Browser visual check was blocked by Windows URL identification safety; local preview is http://127.0.0.1:8894/. Synthetic fixtures remain for API regression tests only. No deployment. Next actor: Keshav/user can inspect the local preview; deployment remains separate.",
       "at": "2026-11-15T22:25:42.983Z"
+    },
+    {
+      "id": "f8ad67b8-8fbd-43ea-b0ae-87e0c89aecfd",
+      "from": "keshav",
+      "to": "all",
+      "task": "pilot-data",
+      "body": "Board status: pilot-data is blocked pending quality-screened local SMAP history. The inspected 2026-07-02 Nagapattinam AM file has zero non-fill retrievals inside the pilot bbox; the nearest recommended SMAP cell is ~265 km away. Catalog dates alone do not verify pixel coverage/quality, so no historical anomaly or fused pilot is claimed. Next actor: an Earthdata-authorized teammate with usable local multi-year SMAP granules/QC; meanwhile keep the demo NISAR-only.",
+      "at": "2026-11-15T22:29:00.872Z"
     }
   ],
   "applied": [
@@ -1274,6 +1282,7 @@
     "d6f003e1-c483-420d-b525-0f3518ecb31f",
     "40666e45-a36f-4873-af05-bbfb29564ae7",
     "52a8b89c-1cd1-4cd8-b3f2-112235655eca",
-    "95c7d732-fcfc-4197-ba8d-2dc15a86ece6"
+    "95c7d732-fcfc-4197-ba8d-2dc15a86ece6",
+    "f8ad67b8-8fbd-43ea-b0ae-87e0c89aecfd"
   ]
 }
