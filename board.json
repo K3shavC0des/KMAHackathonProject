@@ -980,6 +980,14 @@
       "task": "nairobi-data-and-map",
       "body": "UI follow-up pushed at eb6f42b on PR #16 https://github.com/K3shavC0des/KMAHackathonProject/pull/16. For the thousands of measured cells, removed scouting brief from view and hid the impractical cell picker. Clicking a cell still shows its moisture change; city selector is labeled Choose a city, map controls use Wider map/Back to city, filters are visible in easy view. Focused map/API tests 9/9, JS syntax and diff checks PASS. Browser visual QA still pending after Computer Use URL safety stop. Next actor: teammate review desktop/mobile UI then merge if acceptable.",
       "at": "2026-11-15T20:31:12.815Z"
+    },
+    {
+      "id": "7f86cfaf-0d7b-43f4-a5f4-7b9ff3f831e4",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "nairobi-data-and-map",
+      "body": "Correction: PR #16 was merged before the native-cell data and UI commits were pushed. Those remaining commits are in new PR #17 https://github.com/K3shavC0des/KMAHackathonProject/pull/17, which targets main. It contains 7415/4686/2681/7135 measured cells for Nagapattinam/Ludhiana/Ahmedabad/Nairobi and the simplified city/cell UI. Checks pass as recorded in PR. Next actor: review #17, then merge if acceptable. No deployment.",
+      "at": "2026-11-15T20:31:51.357Z"
     }
   ],
   "applied": [
@@ -1144,6 +1152,7 @@
     "355dc52a-bf23-4dab-aaa6-252222baa91b",
     "44ffbfdf-632f-4f9d-b841-c7c9f7ee3a55",
     "13b7bf63-fba0-4ade-8292-dbe0f3c1c3d0",
-    "5255a023-92ef-492b-9524-843c452ee252"
+    "5255a023-92ef-492b-9524-843c452ee252",
+    "7f86cfaf-0d7b-43f4-a5f4-7b9ff3f831e4"
   ]
 }
