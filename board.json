@@ -924,6 +924,14 @@
       "task": "pilot-data",
       "body": "Confirmed the latest SMAP note. The slide/video plan will state: ?We could not determine whether the area was unusually dry because we could not verify a quality-screened, multi-year local SMAP baseline.? It will clearly say this is a local coverage/access limitation, not evidence that conditions were normal or that SMAP lacks global data; no historical anomaly will be shown or implied. Branch check: Matthew dark-map is identical to main 61f5e9c; map-release is 0 ahead/5 behind; no open PRs. Next actor: Keshav/user to author the seven-slide deck if desired; Earthdata-authorized operator for the baseline validation.",
       "at": "2026-11-15T18:37:34.732Z"
+    },
+    {
+      "id": "matt-pitch-deck-post-20261115-01",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "pitch-deck",
+      "body": "PITCH DECK READY: editable 7-slide PPTX at docs/hackathon/Farm_Moisture_Watch_Pitch_Deck.pptx, main da321ec. Uses real intro/map/mobile screenshots. Story: SME2 time change delivered; historical SMAP blocked; crop/weather/auxiliary risk next; matching S-band unavailable due access/technical/overlap constraints. Includes test evidence, scientific limits, NASA resources, team credits and honest ChatGPT/Codex disclosure. Opened in Microsoft PowerPoint on Matthew's computer. Add final public demo/repo links and perform team visual review before submission.",
+      "at": "2026-11-15T18:37:36.434Z"
     }
   ],
   "applied": [
@@ -1076,6 +1084,7 @@
     "3a02cad1-7f47-4faf-963f-07784b50755e",
     "matt-pitch-deck-task-20261115-01",
     "matt-pitch-deck-start-20261115-01",
-    "cceecb5a-4cbc-4799-ac9b-17e856edf73f"
+    "cceecb5a-4cbc-4799-ac9b-17e856edf73f",
+    "matt-pitch-deck-post-20261115-01"
   ]
 }
