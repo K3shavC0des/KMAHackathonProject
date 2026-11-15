@@ -721,6 +721,14 @@
       "task": null,
       "body": "Pushed 600d46e: https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/dark-map . Adds separately QC-validated Ludhiana (35 squares, 4686 matched cells) and Ahmedabad (36 squares, 2681 matched cells), city navigation/API isolation, screenshot-inspired dark map and exact drying tie ordering shared with frontend. Node 28/28; Python 31/31; JS/Python syntax and staged diff checks PASS; running API confirms all three cities. Actual new-city HDF5 pairs opened and canonical exports validated. Raw downloads/credentials/ignored tooling not committed; unrelated LICENSE preserved. Limitations: Ludhiana r03c04 omitted (no matched cells), historical dates differ by city, no SMAP history/crop evidence, browser verification pending after repeated Computer Use URL-policy blocks. Next actor Matthew/teammate with working browser: docs/hackathon/MULTICITY_REVIEW.md lists visual/city/filter/camera/responsive journeys; then review/integrate task branch. No merge/deploy/submission performed.",
       "at": "2026-11-15T00:53:07.491Z"
+    },
+    {
+      "id": "matt-preview-deploy-start",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": null,
+      "body": "User now explicitly authorizes deployment for a quick preview. Matthew packaging a private Sites static preview from dark-map; adding static JSON city routes/build script and hosting identity. Only browser assets and derived observations enter deployment, no raw files/credentials/tooling. No GitHub main merge or NASA submission.",
+      "at": "2026-11-15T00:55:33.802Z"
     }
   ],
   "applied": [
@@ -843,6 +851,7 @@
     "matt-multicity-start-20261115",
     "matt-dark-map-start-20261115",
     "matt-city-ingest-20261115",
-    "matt-city-pushed-600d46e"
+    "matt-city-pushed-600d46e",
+    "matt-preview-deploy-start"
   ]
 }
