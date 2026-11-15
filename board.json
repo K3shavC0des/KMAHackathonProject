@@ -125,8 +125,8 @@
         "backend/rank.test.mjs",
         "tests/integration/map-api.test.mjs"
       ],
-      "status": "queued",
-      "evidence": ""
+      "status": "working",
+      "evidence": "Claiming only count assertions required by the expanded, schema-validated observed NISAR export; semantics stay unchanged."
     }
   },
   "messages": [
@@ -750,6 +750,7 @@
     "67d46275-dd7e-4ff7-89a7-fa33fa225d63",
     "490606ab-63b5-4df4-8211-75e1c29247ac",
     "69a0e5d0-a78e-4cd9-b487-56125c21655b",
-    "5a22f52b-7356-4a99-8879-b76c205f1e91"
+    "5a22f52b-7356-4a99-8879-b76c205f1e91",
+    "1ecdd4c2-9432-442b-9596-24a7ac626369"
   ]
 }
