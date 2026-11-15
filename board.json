@@ -145,8 +145,8 @@
         "tests/integration/radar.test.mjs",
         ".agents/skills/impeccable"
       ],
-      "status": "review",
-      "evidence": "Follow-up pushed at b7225ff on hackathon/matthewzhang2008/dark-map. Selected-square moisture change is now dominant map feedback (desktop upper-left overlay; mobile first card below map), with value/direction/label/date and acknowledgement animation updating on click. Verification: Node 31/31, radar Python 4/4, static preview build, syntax and diff check PASS; Edge 1440x900 + 390x844 changed consecutive selections 1.3 to 3.9 points lower. Radar remains truthfully unavailable without matched L/S GCOV. Submission/state/license updated. origin/main is an ancestor, so release is fast-forwardable."
+      "status": "done",
+      "evidence": "Integrated to GitHub main at 61f5e9c; shipped app commit 9795f59 with prominent selected-square feedback and unused prototype cleanup. Owner-private Sites deployment succeeded at https://farm-moisture-watch-mz.twinklinglime16.chatgpt.site. Deployed authenticated QA changed consecutive squares from 1.3 to 3.9 percentage points lower; card class/label updated. Removed radar/field-check paths contain only app fallback, no old content. Final checks: Node 30/30, radar Python 4/4, static 10-file build, syntax/diff PASS. Remaining external action: choose public/judge access and submit NASA Project Tab with registered roster/citations."
     }
   },
   "messages": [
@@ -986,6 +986,7 @@
     "matt-reconcile-regional-coverage-regression-tests-20261115-01",
     "matt-dark-map-followup-task-20261115-02",
     "matt-dark-map-followup-start-20261115-02",
-    "matt-dark-map-followup-review-20261115-01"
+    "matt-dark-map-followup-review-20261115-01",
+    "matt-dark-map-followup-done-20261115-01"
   ]
 }
