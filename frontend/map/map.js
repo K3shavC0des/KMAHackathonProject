@@ -84,8 +84,6 @@ function render() {
   byId('visible-count').textContent = `${shown.length} / ${areas.length}`;
   byId('map-status').textContent = `NISAR SME2 · ${cityViews[mode].name} · ${mode === 'sample' ? 'SYNTHETIC EXAMPLE' : 'OBSERVED'} · ${shown.length} visible squares · Analysis areas, not farm boundaries`;
   if (!shown.some(area => area.area_id === selectedId)) selectedId = shown[0]?.area_id;
-  select.replaceChildren(...shown.map(area => new Option(area.label, area.area_id)));
-  select.value = selectedId;
   const area = areas.find(item => item.area_id === selectedId);
   if (!area) {
     byId('area-description').textContent = 'No squares match the selected colour filters.';
@@ -105,12 +103,6 @@ function render() {
   byId('area-description').textContent = mode !== 'sample'
     ? `${area.label}. Surface soil moisture was lower or higher between the two satellite dates.`
     : `${area.label}. Example data.`;
-  const candidate = inspectionSummary(shown);
-  byId('with-first').textContent = candidate ? candidate.area.label.split(' (')[0] : 'Insufficient local evidence';
-  byId('value-change').textContent = candidate
-    ? `${candidate.area.label.split(' (')[0]} had the largest moisture decrease (${readingText(candidate.change)}). Check this square first.`
-    : 'No local measurement suggests a first square to check.';
-  byId('rank-explanation').textContent = 'Among visible squares, priority follows local surface moisture change. Colour bands are inspection guides, not calibrated irrigation thresholds.';
   byId('sme2-value').textContent = readingText(sme2);
   byId('selected-square-name').textContent = labelFor(area);
   byId('sme2-meta').textContent = metadata(sme2);
@@ -263,7 +255,7 @@ let tourIndex = 0;
 let tourPlaying = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let tourTimer;
 const tourSteps = [
-  { title: 'Choose a city', copy: 'Start with Nagapattinam, or switch to Ludhiana or Ahmedabad. The synthetic example is labeled separately from measured data.', target: 'data-mode' },
+  { title: 'Choose a city', copy: 'Use Choose a city on the right to switch between Nagapattinam, Ludhiana, Ahmedabad, and Nairobi.', target: 'data-mode' },
   { title: 'See the wider region', copy: 'Region zooms out to show the area around the selected city. Try it to see where the analysis squares sit in the surrounding landscape.', target: 'state-view' },
   { title: 'Return to the squares', copy: 'Fit squares brings all analysis squares for the selected city back into view. Use it whenever you lose your place after panning or zooming.', target: 'pilot-view' },
   { title: 'Change the viewing angle', copy: 'Tilt gives you an angled view of the map. The button then becomes Top-down; press it to return to looking straight down. The measurements stay the same.', target: 'camera-view' },

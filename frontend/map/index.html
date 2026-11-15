@@ -25,10 +25,10 @@
       <header class="map-title">
         <p class="eyebrow">Farm Moisture Watch</p>
         <h1>Soil moisture map</h1>
-        <p>Move the map, zoom in, then select a coloured square to see what the satellite measured.</p>
+        <p>Choose a city, zoom in, and click a coloured cell to see its change.</p>
       </header>
       <section class="map-search" aria-label="Map navigation">
-        <div class="view-actions"><button type="button" id="about-view">About</button><span class="control-label">View</span><button type="button" id="state-view">Region</button><button type="button" id="pilot-view">Fit squares</button><button type="button" id="camera-view" aria-pressed="false">Tilt</button></div>
+        <div class="view-actions"><button type="button" id="about-view">About</button><span class="control-label">View</span><button type="button" id="state-view">Wider map</button><button type="button" id="pilot-view">Back to city</button><button type="button" id="camera-view" aria-pressed="false">Tilt</button></div>
         <div class="view-actions" id="basemap-controls" aria-label="Basemap style"><span class="control-label">Map</span><button type="button" id="dark-view" aria-pressed="true">Dark</button><button type="button" id="street-view" aria-pressed="false">Street</button></div>
         <div class="view-actions" aria-label="Information detail"><span class="control-label">Detail</span><button type="button" id="detail-mode" aria-pressed="false">Easy view</button></div>
       </section>
@@ -52,10 +52,9 @@
         <details class="technical-only"><summary>Technical radar evidence</summary><p id="dual-band-technical">Same-place, same-date L/S GCOV comparison is required before fusion.</p></details>
       </section>
       <section class="panel-section">
-        <p class="eyebrow">Evidence layers</p>
-        <label for="data-mode">Data shown</label>
-        <select id="data-mode" aria-describedby="mode-note"><option value="sample" disabled>Example data (synthetic)</option><option value="observed" disabled>Observed · Nagapattinam</option><option value="ludhiana" disabled>Observed · Ludhiana</option><option value="nairobi" disabled>Observed &middot; Nairobi</option><option value="ahmedabad" disabled>Observed · Ahmedabad</option></select>
-        <p id="mode-note">Satellite squares are measured areas, not farm boundaries.</p>
+        <label for="data-mode">Choose a city</label>
+        <select id="data-mode" aria-describedby="mode-note"><option value="sample" disabled>Example data (synthetic)</option><option value="observed" disabled>Observed · Nagapattinam</option><option value="ludhiana" disabled>Observed · Ludhiana</option><option value="nairobi" disabled>Nairobi</option><option value="ahmedabad" disabled>Observed · Ahmedabad</option></select>
+        <p id="mode-note">Each coloured cell is a satellite reading.</p>
       </section>
       <section class="panel-section easy-legend" aria-labelledby="easy-legend-heading">
         <h2 id="easy-legend-heading">What the colours mean</h2>
@@ -67,17 +66,17 @@
       <section class="map-filters panel-section" aria-labelledby="filter-heading">
         <p class="eyebrow">Legend <span id="visible-count"></span></p>
         <h2 id="filter-heading">Surface moisture change</h2>
-        <p>Toggle layers to filter the inspection priority.</p>
+        <p>Choose which colours appear on the map.</p>
         <label><input type="checkbox" name="band" value="review" checked> <span class="swatch review"></span> Review sooner: 3.5+ points lower</label>
         <label><input type="checkbox" name="band" value="watch" checked> <span class="swatch watch"></span> Watch: 2.0–3.5 points lower</label>
         <label><input type="checkbox" name="band" value="lower" checked> <span class="swatch lower"></span> Slightly lower: under 2.0 points</label>
         <label><input type="checkbox" name="band" value="steady" checked> <span class="swatch steady"></span> Steady or higher</label>
         <label><input type="checkbox" name="band" value="unavailable" checked> <span class="swatch unavailable"></span> No usable measurement</label>
       </section>
-      <section class="panel-section">
-      <p class="eyebrow">Square details</p>
-      <h2>Inspect another area</h2>
-      <label for="area-select">Map square</label><select id="area-select"></select><p id="area-description"></p>
+      <section class="panel-section cell-picker">
+      <p class="eyebrow">Cell details</p>
+      <h2>Click a cell on the map</h2>
+      <label for="area-select">Cell</label><select id="area-select"></select><p id="area-description"></p>
       </section>
       <section class="timeline-section panel-section"><p class="eyebrow">Acquisition history</p><h3>Observation timeline</h3><ol id="timeline"></ol></section>
     </aside>

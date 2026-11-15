@@ -115,3 +115,7 @@ body:not(.technical-mode) .technical-only { display: none; }
   .maplibregl-ctrl-bottom-right { right: 6px; bottom: 42px; }
   #map[role="status"] { padding: 230px 22px 40px; }
 }
+
+/* Thousands of measured cells are selected directly on the map. */
+.inspection-summary, .cell-picker { display: none; }
+body:not(.technical-mode) .map-filters { display: block; }
