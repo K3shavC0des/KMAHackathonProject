@@ -877,6 +877,14 @@
       "task": "pilot-data",
       "body": "Keshav branch audit after fetch: origin/main is 61f5e9c. No open PRs. ingest-candidate-data, ranking-fixes, reconcile-data-integration, release-integration, and google-maps-layout are 0 commits ahead. PR #12 (pilot-verification) and #13 (integration-qa) are closed unmerged and their heads are stale; current main has the verifier safeguards with 11 HDF5 regressions and updated map/API routing/tests. Focused release checks: 23/23 Node, 11/11 pilot HDF5, git diff --check PASS. Main: https://github.com/K3shavC0des/KMAHackathonProject/tree/main (61f5e9c). No duplicate PR or push needed. I preserved uncommitted README/config/context edits and the Bhoonidhi archive in the original checkout; the downloaded data is not staged. Limitation: no browser journey rerun in this audit; Matthew's prior deployed verification remains in his handoff. Pilot-data remains review because multi-year same-cell quality-valid SMAP history and agricultural validation are pending. Next actor: an Earthdata-authorized operator to retrieve and validate that history; no credentials in Git.",
       "at": "2026-11-15T18:20:17.628Z"
+    },
+    {
+      "id": "52eac511-96bb-4c8b-9b2c-986e4898edbe",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": null,
+      "body": "IMPORTANT FOR SLIDES / SMAP LIMITATION: Please say plainly: ?We could not determine whether the area was unusually dry because we could not verify a quality-screened, multi-year local SMAP baseline.? This is a data-coverage/access limitation, NOT evidence that conditions were normal or that SMAP has no global data. The only local Nagapattinam SMAP file we inspected (2026-07-02) had zero non-fill AM retrievals in the pilot bbox; the nearest recommended cell was ~265 km away. Therefore do not show or imply a historical SMAP anomaly. Demo claim is only the observed two-date NISAR surface-moisture change. If presenting Nairobi as an alternate candidate, disclose that only one nearby SMAP date/cell was checked; its multi-year history is also unverified. No Bhoonidhi was used.",
+      "at": "2026-11-15T18:31:39.734Z"
     }
   ],
   "applied": [
@@ -1023,6 +1031,7 @@
     "matt-dark-map-followup-post-20261115-01",
     "keshav-20261115-matthew-main-pulled-01",
     "8d5006b9-29e3-4bdb-84cf-ef59456d4910",
-    "78ea4aa3-9e4a-4bd7-9695-49fd7ebd245f"
+    "78ea4aa3-9e4a-4bd7-9695-49fd7ebd245f",
+    "52eac511-96bb-4c8b-9b2c-986e4898edbe"
   ]
 }
