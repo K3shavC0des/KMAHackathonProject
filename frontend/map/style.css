@@ -45,6 +45,18 @@ h1, h2, h3, p { margin-top: 0; }
 .inspector h2 { margin-bottom: 14px; font-size: 1.05rem; font-weight: 500; }
 .inspector label[for] { margin-bottom: 7px; }
 #mode-note, #area-description { color: var(--muted); font-size: .76rem; line-height: 1.6; margin: 8px 0 0; }
+.crop-panel h2, #view-mode-heading { font-size: .95rem; font-weight: 500; margin-bottom: 10px; }
+.crop-panel strong { display: block; margin-top: 12px; color: #f2d489; font-size: 1rem; }
+.crop-panel p, #view-mode-note { color: var(--muted); font-size: .76rem; line-height: 1.55; margin: 8px 0 0; }
+.crop-panel .crop-limit { color: #d6c99f; }
+.crop-panel a { color: #a9d8f8; }
+.crop-panel .crop-key { line-height: 2; }
+.crop-key .swatch { display: inline-block; width: 10px; height: 10px; margin-right: 7px; }
+.swatch.crop-unclear { background: #5f8296; }
+.crop-block-filters { display: grid; gap: 8px; margin-top: 10px; }
+.crop-block-filters label { color: #c9ddeb; cursor: pointer; }
+.crop-block-filters input { accent-color: #efb352; }
+.crop-mode .easy-legend, .crop-mode .map-filters, .crop-mode .dual-band-panel { display: none; }
 .map-filters h2, .metrics h3, .timeline-section h3 { font-size: .86rem; font-weight: 500; margin-bottom: 9px; }
 .easy-legend h2 { font-size: .95rem; font-weight: 500; margin-bottom: 10px; }
 .dual-band-panel h2 { font-size: .95rem; font-weight: 500; margin-bottom: 8px; }
@@ -119,3 +131,4 @@ body:not(.technical-mode) .technical-only { display: none; }
 /* Thousands of measured cells are selected directly on the map. */
 .inspection-summary, .cell-picker { display: none; }
 body:not(.technical-mode) .map-filters { display: block; }
+body.crop-mode .map-filters { display: none; }

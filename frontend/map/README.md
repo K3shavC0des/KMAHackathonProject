@@ -25,6 +25,16 @@ Run the same-origin API regressions with
 sample/observed separation, missing evidence, bad requests and static assets.
 The observed-mode selector uses these same-origin routes.
 
+The experimental **Crop + weather** map mode is available for Nagapattinam.
+It groups the observed 200 m SME2 cells into approximately 1 km blocks, keeps
+blocks with at least 10 matched cells, and colours each block by its median
+surface-moisture change. The July 2026 regional NASA POWER weather and
+rice/black gram season context appear in the right panel. Block colours are
+inspection cues, not confirmed crop stress; crop presence and growth stage are
+unknown, and the report shows that most cell changes are within the summed
+per-date uncertainty. The source report and method live under
+`experiments/crop-weather-risk/`. Changing city returns to moisture mode.
+
 The map requests collections through `/api/areas?dataset=observed` or
 `dataset=sample`, served by the shared backend handler. It checks the contract
 version and basic shape before rendering. The strongest valid local drying
