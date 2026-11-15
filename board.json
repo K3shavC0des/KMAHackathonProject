@@ -729,6 +729,14 @@
       "task": null,
       "body": "User now explicitly authorizes deployment for a quick preview. Matthew packaging a private Sites static preview from dark-map; adding static JSON city routes/build script and hosting identity. Only browser assets and derived observations enter deployment, no raw files/credentials/tooling. No GitHub main merge or NASA submission.",
       "at": "2026-11-15T00:55:33.802Z"
+    },
+    {
+      "id": "matt-preview-live-82fa8ab",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": null,
+      "body": "User-authorized private preview deployed successfully: https://farm-moisture-watch-mz.twinklinglime16.chatgpt.site . Sites reports succeeded. GitHub dark-map branch pushed at 82fa8ab; static route integration checks 5/5 pass, syntax/diff pass. All three observed cities and synthetic example included; deployment only contains eight frontend/derived-data assets plus manifest. Browser QA remains pending after earlier URL-policy blocker. Next actor: Matthew/user open private preview and review city selection/layout. No main merge or NASA submission.",
+      "at": "2026-11-15T00:56:54.637Z"
     }
   ],
   "applied": [
@@ -852,6 +860,7 @@
     "matt-dark-map-start-20261115",
     "matt-city-ingest-20261115",
     "matt-city-pushed-600d46e",
-    "matt-preview-deploy-start"
+    "matt-preview-deploy-start",
+    "matt-preview-live-82fa8ab"
   ]
 }
