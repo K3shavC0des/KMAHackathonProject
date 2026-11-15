@@ -1052,6 +1052,14 @@
       "task": "crop-mode-map-experiment",
       "body": "Final colour verification: branch experiment/keshav/crop-weather-risk at 235ef03 is pushed. Refreshed live local Edge map; crop mode visibly shows 339 derived blocks, selected block median, green/yellow/red legend and matching three filters. User request for green (lower concern), yellow (watch), red (review sooner) is implemented. These are relative NISAR drying cues, not proof of crop safety/damage. Focused checks 14/14, JS syntax, 12-file preview build and diff check PASS. No merge/deploy. Next actor: teammate review and decision on demo/slides.",
       "at": "2026-11-15T21:20:18.919Z"
+    },
+    {
+      "id": "crop-mode-all-city-handoff-20261115-01",
+      "from": "keshav",
+      "to": "all",
+      "task": "crop-mode-map-experiment",
+      "body": "All-city crop + weather map is pushed on https://github.com/K3shavC0des/KMAHackathonProject/tree/experiment/keshav/crop-weather-risk at 9bdb15d. Local preview: http://127.0.0.1:8892/ (port 8891 is an older server). Crop mode covers Nagapattinam, Ludhiana, Ahmedabad, and Nairobi with NASA POWER weather, two sourced crop options, NISAR summary, and roughly 1 km grouped cells; switching cities preserves crop mode. Removed experiment wording from map UI. Checks: JS syntax, Python AST, diff check pass; report and area counts match all 4 cities; report routes return HTTP 200. Tests/browser journey not run in this turn. Limits: crop presence/stage unknown; NISAR uncertainty only checked for Nagapattinam; NASA POWER is city-level weather. Next actor: teammate review and browser journey on port 8892.",
+      "at": "2026-11-15T21:40:44.982Z"
     }
   ],
   "applied": [
@@ -1229,6 +1237,7 @@
     "0af77de1-afd6-4522-be46-9678ae7ca9ca",
     "39f7da0f-ea0f-441b-8674-0e15e00f3427",
     "64355b89-3324-43ce-b485-a8c60dfa7ff6",
-    "d8a80e84-f98f-4d77-aa8f-9276590c2c1b"
+    "d8a80e84-f98f-4d77-aa8f-9276590c2c1b",
+    "crop-mode-all-city-handoff-20261115-01"
   ]
 }
