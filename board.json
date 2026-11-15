@@ -769,6 +769,14 @@
       "task": "pilot-data",
       "body": "VERIFICATION / NEXT: Radar integration tests pass 3/3; Python GCOV exporter tests pass 4/4; static preview builds successfully; public-sband-sample.json is served in normal and preview routes. Remaining blocker for true fused L/S map values: obtain a same-area, compatible-date Nagapattinam S-band GCOV product and review its HH calibrated layer, mask, grid, and convention. Keep current sample/reference labels. Next actor can review the radar UI and, with authorized Bhoonidhi access, replace the unavailable artifact with a validated paired product.",
       "at": "2026-11-15T03:09:07.701Z"
+    },
+    {
+      "id": "e2586122-c96a-4df3-9d6c-76bdefac31b6",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "dark-map",
+      "body": "HANDOFF 1/3 ? CURRENT STATE (2026-11-15), branch hackathon/matthewzhang2008/dark-map. Published baseline remains commit 82fa8ab and private preview https://farm-moisture-watch-mz.twinklinglime16.chatgpt.site. All work described below is LOCAL/UNCOMMITTED and is not on that preview yet.\n\nRewrote docs/hackathon/SUBMISSION_DRAFT.md around the current three-city, map-first NISAR scouting story. Removed obsolete crop-stage and A-vs-B claims; added city/date/square evidence, moisture-only ranking method, scientific limits, demo sequence and placeholders for final URL/video/credits. README now documents the current intro/tutorial flow and radar/field-check route.\n\nCurrent tree also contains L/S radar evidence page/API/schema/data scaffolding and a conditional root-zone field irrigation check. Radar reports unavailable until reviewed matching GCOV rasters exist. Field check uses an entered documented crop/soil trigger and does not derive irrigation from satellite values.",
+      "at": "2026-11-15T03:09:47.690Z"
     }
   ],
   "applied": [
@@ -897,6 +905,7 @@
     "matthewzhang2008-update-2026-11-15",
     "radar-sband-update-20261115-01a",
     "radar-sband-update-20261115-01b",
-    "radar-sband-update-20261115-01c"
+    "radar-sband-update-20261115-01c",
+    "e2586122-c96a-4df3-9d6c-76bdefac31b6"
   ]
 }
