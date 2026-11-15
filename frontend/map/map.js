@@ -8,6 +8,7 @@ const cityViews = {
   sample: { name: 'Synthetic example', bounds: pilotBounds, region: stateBounds },
   observed: { name: 'Nagapattinam', bounds: pilotBounds, region: stateBounds },
   ludhiana: { name: 'Ludhiana', bounds: [[75.76, 30.81], [75.94, 30.99]], region: [[75.35, 30.4], [76.35, 31.4]] },
+  nairobi: { name: 'Nairobi', bounds: [[36.70, -1.40], [36.95, -1.15]], region: [[36.3, -1.8], [37.4, -0.7]] },
   ahmedabad: { name: 'Ahmedabad', bounds: [[72.49, 22.93], [72.67, 23.11]], region: [[72.08, 22.52], [73.08, 23.52]] },
 };
 const collections = {};
@@ -51,7 +52,7 @@ function metadata(item) {
 }
 
 function labelFor(area) {
-  if (mode !== 'sample') return area.label.replace(/^.* satellite analysis square — /, '');
+  if (mode !== 'sample') return area.label.replace(/^.* satellite (?:analysis square|pixel) — /, '');
   return `Sample ${area.label.match(/field\s+([A-Za-z0-9]+)/i)?.[1] ?? area.area_id}`;
 }
 
@@ -74,7 +75,7 @@ function updateMapData() {
   map.setPaintProperty('area-fill', 'fill-color', ['match', ['get', 'band'], 'review', '#f07861', 'watch', '#efb352', 'lower', '#e4d57b', 'steady', '#82c7a5', '#8997a8']);
   map.setPaintProperty('area-fill', 'fill-opacity', ['case', ['==', ['get', 'area_id'], selectedId], 0.72, 0.42]);
   map.setPaintProperty('area-line', 'line-color', ['case', ['==', ['get', 'area_id'], selectedId], '#b9e2ff', '#c8d9e4']);
-  map.setPaintProperty('area-line', 'line-width', ['case', ['==', ['get', 'area_id'], selectedId], 3, 1]);
+  map.setPaintProperty('area-line', 'line-width', ['case', ['==', ['get', 'area_id'], selectedId], 2, 0.5]);
 }
 
 function render() {
@@ -196,7 +197,7 @@ function useCollection(nextMode) {
   const dates = [...new Set(areas.flatMap(area => area.observations.map(item => item.observed_at.slice(0, 10))))].sort();
   byId('mode-note').textContent = mode === 'sample'
     ? 'Synthetic example, not satellite measurements. Kept separate from observed cities.'
-    : `${cityViews[mode].name} · ${dates.join(' / ')}. ${areas.length} of 36 analysis squares have matched usable cells; gaps are omitted. SMAP history and crop evidence unavailable.`;
+    : `${cityViews[mode].name} · ${dates.join(' / ')} · ${areas.length} measured squares. ${areas[0].area_id.includes('-pixel-') ? 'One matched satellite pixel per square.' : 'Each square summarizes a larger analysis area.'} Gaps have no usable paired reading.`;
   byId('map').setAttribute('aria-label', `Interactive map centered on ${cityViews[mode].name}`);
   render();
   map.setMaxBounds(null);
@@ -422,7 +423,7 @@ if (mapReady) {
       byId('mode-note').textContent = `Observed view unavailable: ${error.message}. Synthetic sample is shown.`;
       useCollection('sample');
     }
-    await Promise.all(['ludhiana', 'ahmedabad'].map(async city => {
+    await Promise.all(['ludhiana', 'ahmedabad', 'nairobi'].map(async city => {
       const option = byId('data-mode').querySelector(`[value="${city}"]`);
       try {
         const response = await fetch(`./${city}-areas.json`);

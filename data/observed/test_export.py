@@ -10,6 +10,22 @@ from export_nagapattinam import GRID, IDENT, CITY_BOUNDS, REGION_BOUNDS, export,
 
 
 class ExportTests(unittest.TestCase):
+    def test_native_cells_keep_individual_changes_and_mask_either_date(self):
+        with h5py.File(self.after, 'r+') as handle:
+            handle[GRID + 'soilMoisture'][0, 0] = .1
+            handle[GRID + 'retrievalQualityFlag'][0, 1] = 1
+        with h5py.File(self.before, 'r+') as handle:
+            handle[GRID + 'retrievalQualityFlag'][1, 0] = 1
+        result = export(self.before, self.after, skip_unavailable=True, pixel_cells=True)
+        validate_collection(result, Path(__file__).resolve().parents[2] / 'contracts/area.schema.json')
+        self.assertEqual(len(result['areas']), 142)
+        self.assertAlmostEqual(result['areas'][0]['observations'][0]['value'], -.3)
+        for area in result['areas']:
+            readings = area['observations']
+            self.assertAlmostEqual(readings[0]['value'], readings[2]['value'] - readings[1]['value'])
+            self.assertIn('1 identical matched', readings[0]['note'])
+            self.assertIn('-pixel-', area['area_id'])
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)

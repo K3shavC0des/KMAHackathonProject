@@ -17,6 +17,7 @@ CITY_BOUNDS = {
     'nagapattinam': REGION_BOUNDS,
     'ludhiana': (75.76, 30.81, 75.94, 30.99),
     'ahmedabad': (72.49, 22.93, 72.67, 23.11),
+    'nairobi': (36.70, -1.40, 36.95, -1.15),
 }
 
 
@@ -66,7 +67,25 @@ def utc_timestamp(value):
     return parsed.astimezone(timezone.utc).isoformat().replace('+00:00', 'Z')
 
 
-def export(earlier, later, city='nagapattinam', skip_unavailable=False):
+def native_cell_tiles(lat, lon, bounds):
+    """Pixel footprints from axis midpoints; retain real grid spacing and gaps."""
+    def edges(axis):
+        axis = np.sort(axis.astype(float))
+        if len(axis) < 2:
+            raise ValueError('Need at least two coordinates to infer cell edges')
+        return axis, np.r_[axis[0] - (axis[1] - axis[0]) / 2,
+                           (axis[:-1] + axis[1:]) / 2,
+                           axis[-1] + (axis[-1] - axis[-2]) / 2]
+    ys, ye = edges(lat)
+    xs, xe = edges(lon)
+    west, south, east, north = bounds
+    for row in np.flatnonzero((ys >= south) & (ys < north)):
+        for col in np.flatnonzero((xs >= west) & (xs < east)):
+            yield (f'r{row + 1:02}c{col + 1:02}', float(xe[col]), float(ye[row]),
+                   float(xe[col + 1]), float(ye[row + 1]))
+
+
+def export(earlier, later, city='nagapattinam', skip_unavailable=False, pixel_cells=False):
     import h5py
 
     bounds = CITY_BOUNDS[city]
@@ -88,7 +107,11 @@ def export(earlier, later, city='nagapattinam', skip_unavailable=False):
         if datetime.fromisoformat(dates[0].replace('Z', '+00:00')) >= datetime.fromisoformat(dates[1].replace('Z', '+00:00')):
             raise ValueError('Inputs must be in chronological order')
         ids = [scalar(handle, 'granuleId') for handle in [before, after]]
-        for tile, west, south, east, north in analysis_tiles(bounds):
+        # Cache each raster once: reading HDF5 compressed chunks per pixel is costly.
+        cached_values = [handle[GRID + 'soilMoisture'][:] for handle in [before, after]]
+        cached_flags = [handle[GRID + 'retrievalQualityFlag'][:] for handle in [before, after]]
+        tiles = native_cell_tiles(lat, lon, bounds) if pixel_cells else analysis_tiles(bounds)
+        for tile, west, south, east, north in tiles:
             # Half-open bounds prevent shared-edge cells from appearing twice.
             rows = np.flatnonzero((lat >= south) & (lat < north))
             cols = np.flatnonzero((lon >= west) & (lon < east))
@@ -98,16 +121,16 @@ def export(earlier, later, city='nagapattinam', skip_unavailable=False):
                 raise ValueError(f'No grid coverage for tile {tile}')
             region = np.s_[rows.min():rows.max()+1, cols.min():cols.max()+1]
             values, masks = [], []
-            for handle in [before, after]:
+            for index, handle in enumerate([before, after]):
                 dataset = handle[GRID + 'soilMoisture']
                 unit = dataset.attrs['units']
                 if isinstance(unit, bytes):
                     unit = unit.decode()
                 if unit != 'meter^3/meter^3':
                     raise ValueError('Unexpected soil moisture units')
-                value = dataset[region]
+                value = cached_values[index][region]
                 quality = handle[GRID + 'retrievalQualityFlag']
-                flag = quality[region]
+                flag = cached_flags[index][region]
                 masks.append(np.isfinite(value) & (value != dataset.attrs['_FillValue'])
                              & (flag != quality.attrs.get('_FillValue', -9999)) & ((flag & 1) == 0))
                 values.append(value)
@@ -118,7 +141,7 @@ def export(earlier, later, city='nagapattinam', skip_unavailable=False):
                     continue
                 raise ValueError(f'No matched recommended cells in tile {tile}')
             delta = float(np.median(values[1][matched] - values[0][matched]))
-            area_id = f'{city}-analysis-{tile}'
+            area_id = f'{city}-{"pixel" if pixel_cells else "analysis"}-{tile}'
             note = (f'{count} identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. '
                     'Analysis tile, not a field or verified crop mask. Surface retrieval only. '
                     'Crop stage unknown; SMAP seasonal context unavailable.')
@@ -132,8 +155,13 @@ def export(earlier, later, city='nagapattinam', skip_unavailable=False):
             for index in [0, 1]:
                 observations.append(observation(f'date-{index}', 'soil_moisture',
                     float(np.median(values[index][matched])), dates[index], ids[index]))
-            row, column = int(tile[1:3]), int(tile[4:6])
-            areas.append(dict(area_id=area_id, label=f'{city.title()} satellite analysis square — row {row}, column {column}',
+            row, column = map(int, tile[1:].split('c'))
+            label_kind = 'pixel' if pixel_cells else 'analysis square'
+            if pixel_cells:
+                note = note.replace('Analysis tile,', 'Native grid cell; footprint inferred from coordinate midpoints,')
+                for item in observations:
+                    item['note'] = note
+            areas.append(dict(area_id=area_id, label=f'{city.title()} satellite {label_kind} — row {row}, column {column}',
                 geometry=dict(type='Polygon', coordinates=[[[west, south], [east, south], [east, north], [west, north], [west, south]]]),
                 crop_stage='unknown', observations=observations))
     if not areas:
@@ -148,7 +176,15 @@ if __name__ == '__main__':
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--city', choices=CITY_BOUNDS, default='nagapattinam')
     parser.add_argument('--skip-unavailable', action='store_true', help='Omit tiles without matched recommended cells; never impute values')
+    parser.add_argument('--pixel-cells', action='store_true', help='Export each matched native pixel instead of 0.03 degree aggregates')
     parser.add_argument('--schema', type=Path, default=Path(__file__).resolve().parents[2] / 'contracts/area.schema.json')
     args = parser.parse_args()
-    collection = validate_collection(export(args.earlier, args.later, args.city, args.skip_unavailable), args.schema)
-    args.output.write_text(json.dumps(collection, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+    collection = validate_collection(export(args.earlier, args.later, args.city, args.skip_unavailable, args.pixel_cells), args.schema)
+    if args.pixel_cells:
+        # One compact record per line keeps large derived grids reviewable.
+        serialized = '{"schema_version":"1.0.0","areas":[\n' + ',\n'.join(
+            json.dumps(area, separators=(',', ':'), allow_nan=False)
+            for area in collection['areas']) + '\n]}\n'
+    else:
+        serialized = json.dumps(collection, indent=2, allow_nan=False) + '\n'
+    args.output.write_text(serialized, encoding='utf-8')
