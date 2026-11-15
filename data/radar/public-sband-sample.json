@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "status": "sample_reference",
+  "title": "Public ISRO/NISAR S-band GCOV sample",
+  "granule_id": "NISAR_S2_PR_GCOV_002_071_A_011_2800_SHNA_A_20081127T061000_20081127T061014_D00301_N_F_I_001",
+  "band": "S",
+  "polarization": "HH",
+  "observed_at": "2008-11-27T06:10:00Z",
+  "location": "California, USA (public sample; not Nagapattinam)",
+  "source_url": "https://bhoonidhi.nrsc.gov.in/bhoonidhi_resources/NISAR_Sample_Data/GCOV/NISAR_S2_PR_GCOV_002_071_A_011_2800_SHNA_A_20081127T061000_20081127T061014_D00301_N_F_I_001.h5",
+  "product": "GCOV",
+  "grid": { "width": 4501, "height": 5401, "x_min_m": 367200, "x_max_m": 457200, "y_min_m": 3796200, "y_max_m": 3904200 },
+  "hh_gamma0_dn": { "min": 0.066674, "max": 203368.0625, "mean": 25.225172, "units": "DN" },
+  "use_in_fusion": false,
+  "notes": [
+    "This public sample proves the S-band GCOV extraction path, but it is not co-located or time-matched with the Nagapattinam L-band evidence.",
+    "It is shown for provenance and pipeline validation only; it must not be used to calculate a Nagapattinam moisture or irrigation decision.",
+    "A true L/S fused layer requires an S-band product for the same area, compatible acquisition, grid, polarization, and processing convention."
+  ]
+}

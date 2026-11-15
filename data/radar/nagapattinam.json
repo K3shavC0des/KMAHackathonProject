@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "observed",
+  "status": "unavailable",
+  "reason": "No verified matching L/S GCOV power rasters have been supplied. Existing SME2 moisture observations are L-band derived; no S-band measurements are inferred from them.",
+  "areas": []
+}

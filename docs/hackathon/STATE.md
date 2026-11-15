@@ -1,6 +1,12 @@
 # Farm Moisture Watch - team checkpoint
 
-Updated 2026-11-14. Integration owner: matthewzhang2008. Current integration branch: `hackathon/matthewzhang2008/integration`.
+Updated 2026-11-15. Integration owner: matthewzhang2008. Current follow-up branch: `hackathon/matthewzhang2008/dark-map`; baseline merged to team integration as PR #15 at `b701472`.
+
+## Release checkpoint (2026-11-15)
+
+The current follow-up adds the plain-language NISAR introduction, a ten-step contextual map tour, Easy/Advanced detail modes, explicit unavailable L/S radar evidence, and a prominent selected-square moisture-change card. The selected value is now the dominant map feedback: desktop places it in the upper-left map overlay and mobile places it first below the map. A headless Edge pass at 1440x900 and 390x844 selected two consecutive Nagapattinam squares and observed the card change from 1.3 to 3.9 percentage points lower; the selected outline, label, status, and animation changed with it. The full Node suite passes 31/31, the radar exporter suite passes 4/4 in the existing project analysis environment, the 14-file static preview builds, map syntax passes, and `git diff --check` passes. A private preview redeploy and deployed-URL repetition remain next.
+
+Official 2026 rules were checked on 2026-11-15: project submission closes at 23:59 local time on November 15; the solution must address an official challenge, include appropriate open-source license documentation, and cite every source. Team membership and the final Project Tab submission remain account-controlled actions.
 
 ## Goal and deadline
 
@@ -8,8 +14,7 @@ Latest checkpoint (2026-11-15): `hackathon/matthewzhang2008/dark-map` adds the
 user-requested dark dashboard and separately validated observed Ludhiana (35
 squares) and Ahmedabad (36 squares), alongside Nagapattinam (36 squares).
 Actual new-city HDF5 pairs opened and passed QC; raw downloads remain ignored.
-Node 28/28 and Python 31/31 pass. Browser verification remains pending after the
-Computer Use URL-policy blocker. Current evidence and next actor are recorded
+Node 28/28 and Python 31/31 passed for the published multi-city baseline. Browser verification for the follow-up is recorded above. Current evidence and next actor are recorded
 in `MULTICITY_REVIEW.md` and `../../data/observed/CITIES.md`; earlier checkpoint
 paragraphs below are historical. No SMAP history or crop evidence was invented.
 

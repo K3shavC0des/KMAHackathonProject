@@ -1,45 +1,79 @@
-# Farm Moisture Watch - NASA project page draft
+# Farm Moisture Watch — NASA Space Apps project page draft
 
-Status: **needs rewrite for the revised map-first scope before publication**. Crop-stage comparisons and the former A-versus-B first-stop claim below are historical draft text. Replace them with the reviewed moisture-only ranking, explicit insufficient-evidence state, and verified regional-anomaly status. Add the final demo screenshot/video after browser rehearsal. Nagapattinam is a development geography, not a validated agricultural field.
+**Submission-ready draft.** Add the final deployed demo link and any optional video before publishing. Automated checks and the core desktop/mobile browser journey have passed. Confirm that every registered team member appears on the NASA team page before the final account-controlled submission.
 
-## One-line summary
+## Project summary
 
-Farm Moisture Watch helps a farmer or crop adviser decide where to scout first by comparing local NISAR surface-moisture change with regional SMAP context and clearly explaining what changes when NISAR is included.
+Farm Moisture Watch is an interactive map that helps a farmer or crop adviser decide which area to **inspect first** for possible surface drying. It compares two quality-screened NISAR soil-moisture observations within each analysis square, shows when and where they were acquired, and orders squares with stronger local drying first. Three Indian city views use measurements derived from opened NISAR files. A separate synthetic example makes the data distinction explicit. The map does not prescribe irrigation.
 
-## The problem and intended impact
+## The problem
 
-Water decisions are often made with incomplete information. A field visit is useful, but time is limited and satellite products have different resolutions and quality limits. We propose a transparent scouting queue, not an automatic watering instruction. A reliable queue could help crop advisers focus scarce visits on areas with stronger evidence of drying. We have not measured farmer outcomes or water savings; that impact remains a hypothesis to test with ground observations.
+A satellite image can show a change without telling someone whether it is recent, reliable, or relevant to a field visit. Water decisions also depend on conditions that a surface satellite retrieval cannot establish on its own, such as root-zone moisture, crop type, and recent management. Farm Moisture Watch turns a pair of surface observations into a traceable **scouting queue**: it suggests where a person might look more closely and shows the evidence behind that suggestion.
 
-## What the demo does
+## What we built
 
-Open the sample map, select either illustrative area, and inspect the local NISAR change, its date/unit/quality/source, and the separate 9 km regional SMAP context. The ranked API compares the first scouting stop with and without local NISAR evidence. In the synthetic fixture, the first stop changes from field B (crop-stage scenario only) to field A when the sample local drying signal is included. The UI labels all fixture values as sample and says no Indian pilot has been selected. The map is a simplified SVG, not a geographic basemap.
+The map opens on Nagapattinam, Tamil Nadu, and can switch to Ludhiana, Punjab, Ahmedabad, Gujarat, or a clearly labeled synthetic example. Each observed city has its own two-date NISAR collection and its own inspection order. Users can pan and zoom, fit the analysis squares, select a square, filter by moisture-change colour, and inspect the acquisition timeline and source details. The selected square's change is the dominant feedback: a large card updates its value, direction, colour, label, and acquisition date with each click. Dark and Street change the OpenStreetMap basemap appearance; the coloured squares carry the NISAR evidence.
 
-Run locally with `node frontend/map/serve.mjs`, then open `http://127.0.0.1:8000/`. The integration branch is `hackathon/matthewzhang2008/integration`. [Add final deployed URL or video here after verification.]
+The scouting brief highlights the strongest supported local drying among the **visible** squares. If no visible square has usable local drying evidence, it says there is insufficient local evidence. The colour bands and inspection points are illustrative guides, not calibrated crop-water thresholds.
 
-## Technical approach and scientific boundaries
+| Observed city | NISAR acquisition dates (UTC) | Analysis squares with matched usable cells |
+| --- | --- | ---: |
+| Nagapattinam | June 20 and July 2, 2026 | 36 |
+| Ludhiana | November 21 and December 3, 2025 | 35 |
+| Ahmedabad | December 12 and 24, 2025 | 36 |
 
-- `contracts/area.schema.json` defines common area geometry, crop stage and observation records with source, timestamp, unit, quality, sample/observed status and source reference. The demo fixture is synthetic.
-- The backend uses an explicitly illustrative priority heuristic. It adds a local NISAR drying signal to crop-stage scenario points; SMAP seasonal baseline is displayed as regional context and is never treated as field-scale moisture. Suspect or missing local readings do not raise priority.
-- Keshav verified two opened NISAR SME2 granules for a broad Nagapattinam candidate window. The median later-minus-earlier change was -0.0282 m3/m3 across 10,890 matched recommended cells. That window spans many fields. The opened July 2 SMAP file had no recommended AM retrieval in the same window; a same-area seasonal baseline and a pilot selection are still unavailable. Source IDs, links and method are in `data/pilot/VERIFICATION.md`.
-- NISAR SME2 provisional data are not fully calibrated; its soil-moisture observations concern the surface, not root-zone water. SMAP is regional. Crop stage requires a sourced calendar or must remain an assumption/unknown. No field trial, yield prediction, or irrigation prescription is claimed.
+These are rectangular **analysis squares**, not surveyed farm boundaries or verified crop areas. One Ludhiana square lacked matched recommended cells and was omitted rather than filled with an estimate. Exact granule IDs, bounds, counts, and reproduction steps are in [the observed-data notes](../../data/observed/CITIES.md) and [the Nagapattinam export notes](../../data/observed/README.md).
 
-## Why it fits the challenge and rubric
+## How the evidence becomes an inspection order
 
-The project uses SAR-derived NISAR moisture change for a concrete scouting decision, while showing its incremental effect instead of merely displaying a raster. Impact is the potential to direct field visits more efficiently. Creativity is the with/without-NISAR value check and explanation. Validity comes from scale separation, quality gates, source provenance, and honest missing-data states. Relevance and presentation come from one clear first-stop journey. The exact official challenge requirements should be checked against the final project page before submission; the challenge page was inaccessible from this session.
+For each square, the exporter aligns the two NISAR SME2 acquisitions on matching grid cells. It excludes fill values and cells that fail the product's recommended retrieval-quality rule on either date. It then reports the median of **later minus earlier** soil-moisture differences across the matched cells, in m³/m³. Negative change indicates a lower retrieved surface-moisture value on the later date. Each displayed reading retains its acquisition time, source granule, quality rule, and matched-cell count.
 
-## Demo sequence and fallback
+The ranking gives an illustrative inspection score only to quality-valid local drying. It does not add crop-stage or SMAP points. An API comparison also removes NISAR evidence as a value check: with the current observed collections, that leaves **no evidence-supported first stop**. We therefore do not claim that NISAR changed one supported first stop into another. We can show that the available local signal is what makes this particular scouting suggestion possible.
 
-1. Show the sample badge and explain that these are illustrative areas, not the selected Indian pilot.
-2. Select field A; show local SME2 drying, timestamp, unit, quality and source label. Point to SMAP as 9 km regional context.
-3. Show first stop with NISAR (A) versus without NISAR (B). Explain that the fallback is a crop-stage scenario, not an observed field-moisture estimate.
-4. Select field B and show its timeline; explain the quality/provenance fields and missing-data behavior.
-5. Open the crop-stage scenario from the map. Change one field's hypothetical stage, show the priority change, then reset it. The moisture observations and provenance stay fixed.
-6. If the network or browser fails, run the local server and show `GET /api/rank` plus `contracts/sample-areas.json`. Keep screenshots/video of the verified final UI as a fallback.
+Regional SMAP historical context is unavailable for these city views. A nearby catalog granule does not establish a quality-valid same-cell observation or a seasonal baseline. The app leaves that context unavailable instead of inventing an anomaly. Crop stage is also unknown without verified crop and planting information. The older crop-stage scenario is outside the active map demonstration.
 
-## Team and sources
+## Why NISAR matters here
 
-Team: K3shavC0des (candidate data verification), matthewzhang2008 (contract, ranking API and integration), aa1manali (map and scenario). Review credits before submission. Sources: [NASA NISAR SME2 guide](https://nisar-docs.asf.alaska.edu/sme2/), [NISAR provisional limitations](https://nisar-docs.asf.alaska.edu/product-limitations/), [NSIDC SMAP SPL3SMP_E v6 guide](https://nsidc.org/sites/default/files/documents/user-guide/spl3smp_e-v006-userguide.pdf), and exact granule links in `data/pilot/VERIFICATION.md`.
+NISAR supplies repeated local surface-moisture retrievals that can be compared over the same cells. We use those changes to focus attention on a concrete next action: **inspect an area**. The project pairs that action with dates, quality screening, provenance, and an explicit insufficient-evidence state. This is a prototype for directing limited scouting time; we have not measured water savings, yield gains, or farmer outcomes.
 
-## Remaining before submission
+## Scientific limits
 
-Visually inspect the integrated map and crop-stage scenario at desktop/mobile, rehearse the scenario journey, capture a demo artifact, and fill the final NASA project URL/video. If no quality-valid SMAP match and agricultural AOI are available, submit the clearly labeled sample demonstration and describe the pilot-data gap as future work. Never silently promote the broad-window candidate to a field-level pilot.
+### Experimental L/S evidence and field check
+
+The map links to a new L/S radar evidence page with synchronized band maps,
+acquisition selection, source notes and a conditional irrigation form. Actual
+matching GCOV rasters have not yet been supplied, so the released artifact
+explicitly reports radar evidence unavailable. No dual-band observed result,
+agricultural polygon validation, accuracy improvement or water saving is claimed.
+The exporter accepts reviewed calibrated HH linear-power rasters, masks them
+on a common grid and reports within-band changes in dB. The field form compares
+an entered root-zone measurement with an entered documented crop/soil trigger;
+satellite values do not determine that trigger. Scenario results are labelled.
+Independent field validation remains open. The unavailable-evidence UI and the main map's desktop/mobile journey have been rehearsed in a real browser.
+
+NISAR SME2 is a provisional surface-moisture product. A lower retrieved value is not proof of root-zone water stress or a need to irrigate. The analysis squares may include non-agricultural land and have not been matched to surveyed fields or crop masks. Irrigation, flooding, rainfall, land cover, and retrieval uncertainty can affect the signal. The views show historical acquisitions, not live conditions. SMAP's regional scale cannot be treated as field-scale evidence, and no quality-valid seasonal SMAP anomaly has been established for these views. A farmer or adviser would need local observations before acting on a water decision.
+
+## Demo walk-through
+
+1. Open with the short NISAR explanation, then choose **Show me on the map**. Follow the in-map tour to the city selector, squares, reading details, colour filters, and scouting brief. Point out that the shapes are analysis squares, not farm boundaries.
+2. Select a coloured square. Show its later-minus-earlier surface-moisture change, two-date timeline, source granules, quality notes, and matched-cell count.
+3. Use the colour filters to narrow the visible squares. Show how the scouting brief follows the visible evidence and how it handles an empty filter result.
+4. Switch to Ludhiana and Ahmedabad. Show their different dates and separate inspection orders; explain that the missing Ludhiana square was omitted.
+5. Switch to the synthetic example and show its explicit label. Explain that regional SMAP history and crop evidence remain unavailable in the observed views.
+
+Run the local map with `node frontend/map/serve.mjs` and open `http://127.0.0.1:8000/`. A static browser preview can be built with `node scripts/build-site-preview.mjs`. **Current private demo URL:** https://farm-moisture-watch-mz.twinklinglime16.chatgpt.site (redeploy the follow-up before final submission). **Video:** optional; the verified desktop and mobile screenshots are retained outside the repository build artifacts.
+
+## Build and validation
+
+The interface uses MapLibre GL JS with OpenStreetMap raster tiles. A shared JSON Schema validates derived area collections, and the Node API ranks observed cities separately from the synthetic example. The Python pair verifier checks acquisition metadata, coordinate alignment, dates, units, and valid-cell masks before export. The published multi-city baseline passed **28 Node tests and 31 Python tests**. The current combined tree passed **31/31 Node tests** and **4/4 radar-exporter Python tests**, plus syntax and static build checks. Headless Edge at 1440x900 and 390x844 verified the introduction, tour, and selected-square feedback; consecutive selections changed the headline from 1.3 to 3.9 percentage points lower. [Review details](MULTICITY_REVIEW.md).
+
+## Team and references
+
+**Repository contributors:** `K3shavC0des` / Keshav (NISAR verification, export safeguards, integration review), `matthewzhang2008` / Matthew (shared contract, API, multi-city integration, tutorial and release), and `aa1manali` (early scouting-map and interaction work). Confirm the registered team roster and each person's preferred public name on the NASA team page before submission.
+
+- [NASA NISAR SME2 product guide](https://nisar-docs.asf.alaska.edu/sme2/)
+- [NISAR provisional product limitations](https://nisar-docs.asf.alaska.edu/product-limitations/)
+- [NSIDC SMAP SPL3SMP_E v6 user guide](https://nsidc.org/sites/default/files/documents/user-guide/spl3smp_e-v006-userguide.pdf)
+- [Exact observed-city granules and reproduction notes](../../data/observed/CITIES.md)
+
+Before submission, redeploy and open the final artifact, include the repository's open-source license, cite every external data/software source in the Project Tab, and confirm the registered team roster. The official 2026 deadline is November 15 at 11:59 PM local time.

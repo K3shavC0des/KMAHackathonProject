@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { compareScoutingStops } from './rank.mjs';
 import { validateCollection } from './validate.mjs';
+import { loadRadar } from './radar.mjs';
 
 const collections = new Map([
   ['sample', new URL('../contracts/sample-areas.json', import.meta.url)],
@@ -38,6 +39,11 @@ export function makeServer() {
       }
       const url = new URL(request.url, 'http://localhost');
       if (url.pathname === '/health' && request.method === 'GET') return send(response, 200, { ok: true });
+      if (url.pathname === '/api/radar-evidence' && request.method === 'GET') {
+        if ((url.searchParams.get('dataset') ?? 'observed') !== 'observed') return send(response, 400, { error: 'Radar evidence supports observed Nagapattinam only' });
+        try { return send(response, 200, await loadRadar()); }
+        catch { return send(response, 500, { error: 'Stored radar evidence failed validation' }); }
+      }
       if ((url.pathname === '/api/rank' || url.pathname === '/api/areas') && request.method === 'GET') {
         const dataset = url.searchParams.get('dataset') ?? 'sample';
         if (!collections.has(dataset)) return send(response, 400, { error: 'Unknown dataset' });

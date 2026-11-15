@@ -6,9 +6,20 @@
   <title>Farm Moisture Watch | Scouting map</title>
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.18.0/dist/maplibre-gl.css">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./tutorial.css">
 </head>
 <body>
-  <main class="map-app">
+  <section class="welcome" id="welcome" aria-labelledby="intro-title">
+  <div class="intro-shell">
+    <header class="intro-header"><strong>FMW.</strong><span>FIELD NOTE / 001</span></header>
+    <div class="intro-content">
+      <div class="intro-heading"><h1 id="intro-title">What is<br>NISAR?</h1><p class="intro-subtitle">A satellite view of surface moisture change.</p></div>
+      <div class="intro-explainer"><p class="intro-card-title">The short version</p><p class="intro-lead">NISAR is a satellite built by NASA and India's space agency, ISRO. Its radar observes Earth through clouds and at night.</p><p class="intro-detail">This map compares its estimates of moisture in the top layer of soil on two dates. A drop can point to a place worth checking in person. It does not tell you to water.</p><div class="intro-actions"><button type="button" id="start-tour">Show me on the map →</button><button type="button" id="skip-tour">Explore without tutorial</button></div><p class="intro-note">The tour takes about 90 seconds. Pause or skip whenever you want.</p></div>
+    </div>
+    <div class="intro-footer"><span>NAGAPATTINAM / LUDHIANA / AHMEDABAD</span><span>HISTORICAL OBSERVATIONS · NOT LIVE CONDITIONS</span></div>
+  </div>
+</section>
+  <main class="map-app" id="map-app" hidden inert aria-hidden="true">
     <section class="map-canvas" aria-label="Interactive geographic scouting map">
       <div id="map" aria-label="Interactive map centered on Nagapattinam, India"></div>
       <header class="map-title">
@@ -17,21 +28,45 @@
         <p>Move the map, zoom in, then select a coloured square to see what the satellite measured.</p>
       </header>
       <section class="map-search" aria-label="Map navigation">
-        <div class="view-actions"><span class="control-label">View</span><button type="button" id="state-view">Region</button><button type="button" id="pilot-view">Fit squares</button><button type="button" id="camera-view" aria-pressed="false">Tilt</button></div>
-        <div class="view-actions" aria-label="Basemap style"><span class="control-label">Map</span><button type="button" id="dark-view" aria-pressed="true">Dark</button><button type="button" id="street-view" aria-pressed="false">Street</button></div>
+        <div class="view-actions"><button type="button" id="about-view">About</button><span class="control-label">View</span><button type="button" id="state-view">Region</button><button type="button" id="pilot-view">Fit squares</button><button type="button" id="camera-view" aria-pressed="false">Tilt</button></div>
+        <div class="view-actions" id="basemap-controls" aria-label="Basemap style"><span class="control-label">Map</span><button type="button" id="dark-view" aria-pressed="true">Dark</button><button type="button" id="street-view" aria-pressed="false">Street</button></div>
+        <div class="view-actions" aria-label="Information detail"><span class="control-label">Detail</span><button type="button" id="detail-mode" aria-pressed="false">Easy view</button></div>
       </section>
       <div class="map-status" role="status" id="map-status">NISAR SME2 · Loading evidence · Analysis squares, not farm boundaries</div>
     </section>
+    <section class="selection-spotlight" id="selection-spotlight" aria-labelledby="detail-heading" aria-live="polite">
+      <div class="selection-spotlight-head"><p class="eyebrow">Selected square</p><span id="sample-badge" class="badge"></span></div>
+      <h2 id="detail-heading">Moisture change</h2>
+      <strong id="sme2-value">Loading…</strong>
+      <p id="selected-square-name">Choose a square on the map</p>
+      <small id="sme2-meta"></small>
+    </section>
     <aside class="inspector" aria-labelledby="detail-heading">
+      <section class="panel-section dual-band-panel" id="dual-band-panel" aria-labelledby="dual-band-heading">
+        <h2 id="dual-band-heading">NISAR’s two radar eyes</h2>
+        <p id="dual-band-summary">Loading L-band and S-band evidence…</p>
+        <div class="dual-band-grid">
+          <article><h3>L-band</h3><strong id="l-band-status">Loading…</strong><p id="l-band-explanation">Longer waves can see deeper through vegetation.</p></article>
+          <article><h3>S-band</h3><strong id="s-band-status">Loading…</strong><p id="s-band-explanation">Shorter waves respond more to the surface and lighter vegetation.</p></article>
+        </div>
+        <details class="technical-only"><summary>Technical radar evidence</summary><p id="dual-band-technical">Same-place, same-date L/S GCOV comparison is required before fusion.</p></details>
+      </section>
       <section class="panel-section">
         <p class="eyebrow">Evidence layers</p>
         <label for="data-mode">Data shown</label>
         <select id="data-mode" aria-describedby="mode-note"><option value="sample" disabled>Example data (synthetic)</option><option value="observed" disabled>Observed · Nagapattinam</option><option value="ludhiana" disabled>Observed · Ludhiana</option><option value="ahmedabad" disabled>Observed · Ahmedabad</option></select>
         <p id="mode-note">Satellite squares are measured areas, not farm boundaries.</p>
       </section>
+      <section class="panel-section easy-legend" aria-labelledby="easy-legend-heading">
+        <h2 id="easy-legend-heading">What the colours mean</h2>
+        <p><span class="swatch review"></span> Red: got drier — check sooner</p>
+        <p><span class="swatch watch"></span> Yellow: may be getting drier</p>
+        <p><span class="swatch steady"></span> Green: little change or wetter</p>
+        <p><span class="swatch unavailable"></span> Gray: no usable reading</p>
+      </section>
       <section class="map-filters panel-section" aria-labelledby="filter-heading">
         <p class="eyebrow">Legend <span id="visible-count"></span></p>
-        <h3 id="filter-heading">Surface moisture change</h3>
+        <h2 id="filter-heading">Surface moisture change</h2>
         <p>Toggle layers to filter the inspection priority.</p>
         <label><input type="checkbox" name="band" value="review" checked> <span class="swatch review"></span> Review sooner: 3.5+ points lower</label>
         <label><input type="checkbox" name="band" value="watch" checked> <span class="swatch watch"></span> Watch: 2.0–3.5 points lower</label>
@@ -40,14 +75,18 @@
         <label><input type="checkbox" name="band" value="unavailable" checked> <span class="swatch unavailable"></span> No usable measurement</label>
       </section>
       <section class="panel-section">
-      <div class="inspector-head"><p class="eyebrow">Selected square</p><span id="sample-badge" class="badge"></span></div>
-      <h2 id="detail-heading">Moisture overview</h2>
+      <p class="eyebrow">Square details</p>
+      <h2>Inspect another area</h2>
       <label for="area-select">Map square</label><select id="area-select"></select><p id="area-description"></p>
-      <div class="metrics"><article><h3>Satellite moisture change</h3><strong id="sme2-value"></strong><small id="sme2-meta"></small></article></div>
       </section>
       <section class="timeline-section panel-section"><p class="eyebrow">Acquisition history</p><h3>Observation timeline</h3><ol id="timeline"></ol></section>
     </aside>
     <section class="inspection-summary" aria-labelledby="value-heading"><p class="eyebrow">Scouting brief</p><h3 id="value-heading">Where to check first</h3><strong id="with-first">Loading…</strong><p id="value-change"></p><p id="rank-explanation"></p></section>
+    <section class="map-tour" id="map-tour" aria-labelledby="tour-title" hidden>
+      <div class="tour-top"><span>MAP TOUR <span id="tour-count">01 / 10</span></span><button type="button" id="tour-close" aria-label="Close tutorial">×</button></div>
+      <h2 id="tour-title">Choose a city</h2><p id="tour-copy">Start with Nagapattinam, or switch to another observed city. The synthetic example stays clearly labeled.</p>
+      <div class="tour-controls"><button type="button" id="tour-back" aria-label="Previous tutorial step">←</button><button type="button" id="tour-play" aria-label="Pause tutorial" aria-pressed="true">Ⅱ Pause</button><button type="button" id="tour-next">Next →</button><span id="tour-state" role="status">Playing</span></div>
+    </section>
   </main>
   <script type="module" src="./map.js"></script>
 </body>

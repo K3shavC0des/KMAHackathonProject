@@ -16,6 +16,8 @@ let areas = [];
 let selectedId;
 let map;
 let maplibregl;
+let detailMode = 'easy';
+let radarEvidence = null;
 
 function fitRegion(bounds, maxZoom = 13) {
   if (!map) return;
@@ -88,6 +90,8 @@ function render() {
     byId('area-description').textContent = 'No squares match the selected colour filters.';
     for (const id of ['sample-badge', 'sme2-meta', 'value-change', 'rank-explanation']) byId(id).textContent = '';
     byId('sme2-value').textContent = 'Unavailable';
+    byId('selected-square-name').textContent = 'No square selected';
+    updateSelectionSpotlight(null);
     byId('with-first').textContent = 'No visible squares';
     byId('timeline').replaceChildren();
     updateMapData();
@@ -107,7 +111,10 @@ function render() {
     : 'No local measurement suggests a first square to check.';
   byId('rank-explanation').textContent = 'Among visible squares, priority follows local surface moisture change. Colour bands are inspection guides, not calibrated irrigation thresholds.';
   byId('sme2-value').textContent = readingText(sme2);
+  byId('selected-square-name').textContent = labelFor(area);
   byId('sme2-meta').textContent = metadata(sme2);
+  updateSelectionSpotlight(sme2);
+  renderDualBand(area);
   const timeline = byId('timeline');
   timeline.replaceChildren();
   for (const item of [...area.observations].sort((a, b) => observationInstant(b) - observationInstant(a))) {
@@ -127,6 +134,47 @@ function render() {
     li.append(details);
     timeline.append(li);
   }
+  applyDetailMode();
+}
+
+function updateSelectionSpotlight(reading) {
+  const spotlight = byId('selection-spotlight');
+  spotlight.classList.remove('is-drying', 'is-wetting', 'is-updating');
+  if (reading?.value < 0) spotlight.classList.add('is-drying');
+  if (reading?.value >= 0) spotlight.classList.add('is-wetting');
+  // Restart the short acknowledgement animation even when two nearby squares share a value.
+  void spotlight.offsetWidth;
+  spotlight.classList.add('is-updating');
+}
+
+function renderDualBand(area) {
+  const status = radarEvidence?.status;
+  const paired = status === 'paired' && radarEvidence.areas?.some(item => item.area_id === area.area_id);
+  byId('l-band-status').textContent = paired ? 'Available for this area' : 'Not available here yet';
+  byId('s-band-status').textContent = paired ? 'Available for this area' : 'Waiting for matching data';
+  byId('dual-band-summary').textContent = paired
+    ? 'Both NISAR radar views cover this area. Their agreement can help separate surface change from vegetation effects.'
+    : 'The moisture result is available, but a matched S-band view is not. This map will show both bands here when the compatible product is available.';
+  byId('dual-band-technical').textContent = paired
+    ? 'The paired product passed the same-area, compatible-date, grid, polarization, mask, and processing checks.'
+    : 'No same-area, same-date L/S GCOV pair is currently verified for this map. The public S-band sample is a different place and is excluded from fusion.';
+}
+
+function applyDetailMode() {
+  document.body.classList.toggle('technical-mode', detailMode === 'technical');
+  const area = areas.find(item => item.area_id === selectedId);
+  const sme2 = area ? latestReading(area, 'NISAR_SME2', 'soil_moisture_change') : null;
+  const candidate = inspectionSummary(visibleAreas());
+  byId('detail-mode').textContent = detailMode === 'easy' ? 'Easy view' : 'Advanced view';
+  byId('detail-mode').setAttribute('aria-pressed', String(detailMode === 'technical'));
+  if (detailMode !== 'easy') return;
+  byId('map-status').textContent = `NISAR map · ${cityViews[mode].name} · ${visibleAreas().length} areas shown · Not farm boundaries`;
+  const direction = sme2?.value < 0 ? 'drier' : sme2?.value > 0 ? 'wetter' : 'about the same';
+  byId('area-description').textContent = area ? `This area looks ${direction} at the surface between the two NISAR visits.` : 'No area is selected.';
+  byId('value-change').textContent = candidate
+    ? `Start here: this area became drier than the others. Look at the soil before deciding what to do.`
+    : 'There is not enough usable satellite information to choose a first area.';
+  byId('rank-explanation').textContent = 'This map helps you choose where to look. It does not tell you to water.';
 }
 
 function selectArea(id, panToArea = false) {
@@ -186,7 +234,16 @@ async function initializeMap() {
 
 byId('area-select').addEventListener('change', event => selectArea(event.target.value, true));
 byId('data-mode').addEventListener('change', event => useCollection(event.target.value));
+byId('detail-mode').addEventListener('click', () => {
+  detailMode = detailMode === 'easy' ? 'technical' : 'easy';
+  applyDetailMode();
+});
 document.querySelectorAll('input[name="band"]').forEach(input => input.addEventListener('change', render));
+
+fetch('./radar-evidence.json').then(response => response.ok ? response.json() : null).then(value => {
+  radarEvidence = value;
+  if (areas.length) render();
+}).catch(() => { radarEvidence = null; });
 byId('state-view').addEventListener('click', () => fitRegion(cityViews[mode].region));
 byId('pilot-view').addEventListener('click', () => fitRegion(cityViews[mode].bounds));
 byId('dark-view').addEventListener('click', () => setBasemap(true));
@@ -198,6 +255,152 @@ byId('camera-view').addEventListener('click', () => {
   byId('camera-view').setAttribute('aria-pressed', String(!tilted));
 });
 
+let started = false;
+let tourIndex = 0;
+let tourPlaying = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let tourTimer;
+const tourSteps = [
+  { title: 'Choose a city', copy: 'Start with Nagapattinam, or switch to Ludhiana or Ahmedabad. The synthetic example is labeled separately from measured data.', target: 'data-mode' },
+  { title: 'See the wider region', copy: 'Region zooms out to show the area around the selected city. Try it to see where the analysis squares sit in the surrounding landscape.', target: 'state-view' },
+  { title: 'Return to the squares', copy: 'Fit squares brings all analysis squares for the selected city back into view. Use it whenever you lose your place after panning or zooming.', target: 'pilot-view' },
+  { title: 'Change the viewing angle', copy: 'Tilt gives you an angled view of the map. The button then becomes Top-down; press it to return to looking straight down. The measurements stay the same.', target: 'camera-view' },
+  { title: 'Choose a map style', copy: 'Dark and Street change the appearance of the background map. The coloured moisture squares and their readings stay the same. Try both to see which is easier to read.', target: 'basemap-controls' },
+  { title: 'Look at the squares', copy: 'Each coloured shape is an analysis area, not a farm boundary. Select one on the map to inspect its satellite measurements.', target: 'map-canvas' },
+  { title: 'Read the change', copy: 'The selected square shows how surface moisture changed between two NISAR dates. Open the timeline for dates, quality, and source granules.', target: 'detail-heading' },
+  { title: 'Filter the colours', copy: 'Warm colours show lower surface moisture; green means steady or higher. Turn colour groups on or off to focus the view.', target: 'filter-heading' },
+  { title: 'Choose what to inspect', copy: 'The scouting brief follows the strongest local drying among visible squares. Check local conditions before any water decision.', target: 'value-heading' },
+  { title: 'Revisit this guide', copy: 'About takes you back to the NISAR introduction. You can start this guided tour again from there whenever you need a reminder.', target: 'about-view' },
+];
+function closeTour() {
+  clearTimeout(tourTimer);
+  byId('map-tour').hidden = true;
+  document.querySelectorAll('.tour-target').forEach(element => element.classList.remove('tour-target'));
+  if (!byId('map-app').hidden) byId('about-view').focus();
+}
+function positionTour(target) {
+  const card = byId('map-tour');
+  if (card.hidden || !target || window.innerWidth <= 760) return;
+  const rect = target.getBoundingClientRect();
+  const width = card.offsetWidth;
+  const height = card.offsetHeight;
+  const clamp = (value, low, high) => Math.max(low, Math.min(value, high));
+  let left;
+  let top;
+  let placement;
+  if (target.closest('.map-search')) {
+    left = clamp(rect.left + rect.width / 2 - width / 2, 18, window.innerWidth - width - 18);
+    top = rect.bottom + 22;
+    placement = 'below';
+    card.style.setProperty('--tour-arrow-left', `${clamp(rect.left + rect.width / 2 - left - 8, 20, width - 36)}px`);
+  } else if (target.classList.contains('map-canvas')) {
+    const area = areas.find(item => item.area_id === selectedId);
+    const ring = area?.geometry.coordinates[0];
+    const center = ring && map ? map.project([
+      ring.slice(0, -1).reduce((sum, point) => sum + point[0], 0) / (ring.length - 1),
+      ring.slice(0, -1).reduce((sum, point) => sum + point[1], 0) / (ring.length - 1)
+    ]) : { x: window.innerWidth * .5, y: window.innerHeight * .45 };
+    left = clamp(center.x - width - 34, 18, window.innerWidth - width - 18);
+    top = clamp(center.y - height - 35, 120, window.innerHeight - height - 54);
+    placement = 'map';
+  } else if (target.closest('.inspection-summary')) {
+    const summary = target.closest('.inspection-summary').getBoundingClientRect();
+    left = clamp(summary.left, 18, window.innerWidth - width - 18);
+    top = clamp(summary.top - height - 18, 18, window.innerHeight - height - 18);
+    placement = 'above';
+  } else {
+    left = clamp(rect.left - width - 27, 18, window.innerWidth - width - 18);
+    top = clamp(rect.top - 18, 18, window.innerHeight - height - 18);
+    placement = 'left';
+  }
+  card.style.left = `${left}px`;
+  card.style.top = `${top}px`;
+  card.dataset.placement = placement;
+}
+function renderTour() {
+  const step = tourSteps[tourIndex];
+  byId('tour-title').textContent = step.title;
+  byId('tour-copy').textContent = step.copy;
+  byId('tour-count').textContent = `${String(tourIndex + 1).padStart(2, '0')} / ${String(tourSteps.length).padStart(2, '0')}`;
+  byId('tour-next').textContent = tourIndex === tourSteps.length - 1 ? 'Finish →' : 'Next →';
+  byId('tour-play').textContent = tourPlaying ? 'Ⅱ Pause' : '▶ Play';
+  byId('tour-play').setAttribute('aria-label', tourPlaying ? 'Pause tutorial' : 'Play tutorial');
+  byId('tour-play').setAttribute('aria-pressed', String(tourPlaying));
+  byId('tour-state').textContent = tourPlaying ? 'Playing' : 'Paused';
+  document.querySelectorAll('.tour-target').forEach(element => element.classList.remove('tour-target'));
+  const target = step.target === 'map-canvas' ? document.querySelector('.map-canvas') : byId(step.target);
+  target?.classList.add('tour-target');
+  if (window.innerWidth <= 760) {
+    if (step.target === 'map-canvas') window.scrollTo({ top: 0, behavior: 'smooth' });
+    else target?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  } else if (target?.closest('.inspector')) {
+    target.scrollIntoView({ block: 'nearest' });
+  }
+  requestAnimationFrame(() => positionTour(target));
+}
+window.addEventListener('resize', () => {
+  if (!byId('map-tour').hidden) positionTour(document.querySelector('.tour-target'));
+});
+function scheduleTour() {
+  clearTimeout(tourTimer);
+  if (tourPlaying && !byId('map-tour').hidden) tourTimer = setTimeout(() => {
+    if (tourIndex < tourSteps.length - 1) {
+      tourIndex += 1;
+      renderTour();
+      scheduleTour();
+    } else {
+      tourPlaying = false;
+      renderTour();
+    }
+  }, 8000);
+}
+function moveTour(direction) {
+  if (direction > 0 && tourIndex === tourSteps.length - 1) { closeTour(); return; }
+  tourIndex = Math.max(0, Math.min(tourSteps.length - 1, tourIndex + direction));
+  renderTour();
+  scheduleTour();
+}
+function openTour() {
+  tourIndex = 0;
+  tourPlaying = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  byId('map-tour').hidden = false;
+  renderTour();
+  scheduleTour();
+  byId('tour-play').focus();
+}
+byId('tour-back').addEventListener('click', () => moveTour(-1));
+byId('tour-next').addEventListener('click', () => moveTour(1));
+byId('tour-play').addEventListener('click', () => { tourPlaying = !tourPlaying; renderTour(); scheduleTour(); });
+byId('tour-close').addEventListener('click', closeTour);
+async function enterMap(withTour) {
+  byId('welcome').hidden = true;
+  byId('map-app').hidden = false;
+  byId('map-app').inert = false;
+  byId('map-app').removeAttribute('aria-hidden');
+  window.scrollTo(0, 0);
+  let ready = true;
+  if (!started) {
+    started = true;
+    ready = await startMap();
+  } else {
+    map?.resize();
+  }
+  if (!byId('welcome').hidden) return;
+  if (withTour && ready) openTour();
+  else byId('about-view').focus();
+}
+byId('start-tour').addEventListener('click', () => enterMap(true));
+byId('skip-tour').addEventListener('click', () => enterMap(false));
+byId('about-view').addEventListener('click', () => {
+  closeTour();
+  byId('map-app').hidden = true;
+  byId('map-app').inert = true;
+  byId('map-app').setAttribute('aria-hidden', 'true');
+  byId('welcome').hidden = false;
+  window.scrollTo(0, 0);
+  byId('start-tour').focus();
+});
+
+async function startMap() {
 const mapReady = await initializeMap();
 if (mapReady) {
   try {
@@ -233,4 +436,6 @@ if (mapReady) {
   } catch (error) {
     byId('area-description').textContent = `Could not load areas: ${error.message}`;
   }
+}
+return mapReady;
 }
