@@ -1036,6 +1036,14 @@
       "task": "crop-weather-risk-experiment",
       "body": "Crop/weather experiment pushed: https://github.com/K3shavC0des/KMAHackathonProject/tree/experiment/keshav/crop-weather-risk (83f3ee2). Inputs: real Nagapattinam NISAR SME2 June 20/July 2 7,415 cells + uncertainty; NASA POWER seven-day temperature 32.85 C, humidity 70%, rain 8.64 mm, matched 1991-2020 week baseline; sourced rice/black gram season candidates. Outcome Watch/confirm locally. Only 1.3% of cell changes exceed summed per-date uncertainty, so no confirmed crop stress, crop type/stage or irrigation advice. NISAR sigma0HH/HV radar layers exist in local granules but are not interpreted as stress; PMI crop/VWC layers absent (DSG only). HLS NDVI/NDMI is a possible future NASA check requiring real dated pixels. Checks 2/2 Python, syntax/diff, HTTP/browser pass. Branch intentionally unmerged; next actor: review experiment and decide whether to include it in slides/demo. Data and reproduction notes in experiments/crop-weather-risk/README.md; raw HDF5 outside Git. Challenge page unavailable, verified against Space Apps public-material terms and ASF/NASA docs.",
       "at": "2026-11-15T20:53:00.586Z"
+    },
+    {
+      "id": "64355b89-3324-43ce-b485-a8c60dfa7ff6",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": "crop-mode-map-experiment",
+      "body": "Crop mode on full map is ready for review on https://github.com/K3shavC0des/KMAHackathonProject/tree/experiment/keshav/crop-weather-risk (235ef03), unmerged. Nagapattinam toggle shows 339 derived ~1 km blocks from 7,119 observed NISAR cells; 296 sparse cells omitted from block map, original moisture mode retains all 7,415. Green = block median fell <2pp or rose (lower concern), yellow = 2 to <3.5pp fall (watch), red = >=3.5pp fall (review sooner). These are relative inspection cues, not crop safety or loss. Rice/black gram selector and city-wide NASA POWER weather share the right panel; crop/stage unverified; only 1.3% of native cell changes exceed summed per-date uncertainty. 14/14 focused tests, JS syntax, preview build, diff check pass; browser confirmed grouped view and selection before final colour revision. Next actor: teammate visual check of green/yellow/red, then decide whether to include in demo/slides. Data/method in experiments/crop-weather-risk/README.md. No deploy/merge.",
+      "at": "2026-11-15T21:19:07.019Z"
     }
   ],
   "applied": [
@@ -1211,6 +1219,7 @@
     "16dfa06f-15bd-4781-ad65-e4e0634ffeb1",
     "3e38e11d-a617-4211-b861-0c76f6ff8ac1",
     "0af77de1-afd6-4522-be46-9678ae7ca9ca",
-    "39f7da0f-ea0f-441b-8674-0e15e00f3427"
+    "39f7da0f-ea0f-441b-8674-0e15e00f3427",
+    "64355b89-3324-43ce-b485-a8c60dfa7ff6"
   ]
 }
