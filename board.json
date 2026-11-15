@@ -745,6 +745,14 @@
       "task": "dark-map",
       "body": "Progress update (2026-11-15): current branch hackathon/matthewzhang2008/dark-map. Added dark dashboard, multi-city observed NISAR datasets for Ludhiana (35 squares) and Ahmedabad (36) alongside Nagapattinam (36), with new radar UI/API/schema/data, irrigation view, tutorial styles, and site preview updates. Current working tree also has README, submission draft, backend/map changes and new integration coverage. Recorded verification from current checkpoint: Node 28/28 and Python 31/31 pass; observed city HDF5 pairs opened and passed QC, raw downloads remain ignored. Still open: browser verification (previous URL-policy blocker) and final review/integration of all current uncommitted work. Next: inspect and consolidate pending edits, complete browser pass when access allows, then update submission page.",
       "at": "2026-11-15T03:08:29.344Z"
+    },
+    {
+      "id": "radar-sband-update-20261115-01a",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "pilot-data",
+      "body": "RADAR / NISAR S-BAND UPDATE (2026-11-15): Implemented the L/S radar evidence slice and integrated it into the map demo. Added backend/radar.mjs validation, contracts/radar.schema.json, frontend/map/radar.html + radar.js + radar.css, irrigation.mjs field-check logic, /api/radar-evidence, static routes, preview packaging, and data/radar/export_gcov.py with tests. The radar UI compares same-grid L/S HH backscatter only when compatible GCOV evidence exists and keeps SME2 moisture separate from radar backscatter.",
+      "at": "2026-11-15T03:08:56.658Z"
     }
   ],
   "applied": [
@@ -870,6 +878,7 @@
     "matt-city-pushed-600d46e",
     "matt-preview-deploy-start",
     "matt-preview-live-82fa8ab",
-    "matthewzhang2008-update-2026-11-15"
+    "matthewzhang2008-update-2026-11-15",
+    "radar-sband-update-20261115-01a"
   ]
 }
