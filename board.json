@@ -753,6 +753,14 @@
       "task": "pilot-data",
       "body": "RADAR / NISAR S-BAND UPDATE (2026-11-15): Implemented the L/S radar evidence slice and integrated it into the map demo. Added backend/radar.mjs validation, contracts/radar.schema.json, frontend/map/radar.html + radar.js + radar.css, irrigation.mjs field-check logic, /api/radar-evidence, static routes, preview packaging, and data/radar/export_gcov.py with tests. The radar UI compares same-grid L/S HH backscatter only when compatible GCOV evidence exists and keeps SME2 moisture separate from radar backscatter.",
       "at": "2026-11-15T03:08:56.658Z"
+    },
+    {
+      "id": "radar-sband-update-20261115-01b",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "pilot-data",
+      "body": "DATA / ACCESS: Nagapattinam radar evidence remains explicitly unavailable for matched S-band GCOV. We opened a public ISRO S-band GCOV sample and added data/radar/public-sband-sample.json plus a clearly labeled UI reference card. The sample is California, 2008, not Nagapattinam, so it is excluded from fusion and cannot drive an irrigation decision. A public Nagapattinam FCC PNG is contextual visual material only. Bhoonidhi protected products require authenticated bearer access; there is no legitimate bypass. A dedicated Brave profile is prepared; Earthdata works, but matching Nagapattinam S-band pixels still require authorized Bhoonidhi access.",
+      "at": "2026-11-15T03:09:02.369Z"
     }
   ],
   "applied": [
@@ -879,6 +887,7 @@
     "matt-preview-deploy-start",
     "matt-preview-live-82fa8ab",
     "matthewzhang2008-update-2026-11-15",
-    "radar-sband-update-20261115-01a"
+    "radar-sband-update-20261115-01a",
+    "radar-sband-update-20261115-01b"
   ]
 }
