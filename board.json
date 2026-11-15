@@ -211,8 +211,8 @@
       "paths": [
         "frontend/map"
       ],
-      "status": "working",
-      "evidence": "Claimed frontend/map after inbox review; no active overlapping owner. Working from origin/main in an isolated worktree."
+      "status": "review",
+      "evidence": "Merged PR #20 to main at 675598a. 12/12 focused Node map/API tests, map syntax, diff check, all-four-city report/count validation, and all static data routes pass. Browser visual QA was blocked by Windows URL identification; local preview at http://127.0.0.1:8894/."
     }
   },
   "messages": [
@@ -1270,6 +1270,7 @@
     "4b8baf3a-df67-431f-8e85-e652440374ec",
     "4d9fddf3-63c8-4810-b661-0249948374ea",
     "68348d78-cd09-4de9-88eb-25575ee2a13a",
-    "cec13359-f3e6-47a3-befe-df534931b3fa"
+    "cec13359-f3e6-47a3-befe-df534931b3fa",
+    "d6f003e1-c483-420d-b525-0f3518ecb31f"
   ]
 }
