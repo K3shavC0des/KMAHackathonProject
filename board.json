@@ -202,6 +202,17 @@
       ],
       "status": "done",
       "evidence": "User revised scope to merge. PR #18 https://github.com/K3shavC0des/KMAHackathonProject/pull/18 squash-merged to main as 10550deb7bf19e597945646191a767e7a689d622. Removed experimental naming and the unsupported L/S radar panel; added a compact explanation of three city-level cues (NISAR drying, unusual heat, below-baseline rain) and what the sources contribute. Crop options are contextual only; weather does not color map blocks. Checks: Python tests 4/4, map API tests 5/5, JS syntax, diff check, static preview build, and all city report counts/routes pass. Limits: crop presence/stage unknown; uncertainty checked only for Nagapattinam; no S-band or crop-specific calibrated risk. Next actor: demo/presentation lead use the merged map and preserve these limits in the explanation."
+    },
+    "remove-synthetic-map-mode": {
+      "id": "remove-synthetic-map-mode",
+      "owner": "keshav",
+      "goal": "Fix unavailable crop context and remove synthetic map mode/fallback from the user journey.",
+      "acceptance": "Observed cities load crop context when reports match; failed observed loads show a clear unavailable state and never display synthetic data. Desktop map has no synthetic mode or yellow pilot outline.",
+      "paths": [
+        "frontend/map"
+      ],
+      "status": "queued",
+      "evidence": ""
     }
   },
   "messages": [
@@ -1248,6 +1259,7 @@
     "d8a80e84-f98f-4d77-aa8f-9276590c2c1b",
     "crop-mode-all-city-handoff-20261115-01",
     "crop-mode-pr18-handoff-20261115-01",
-    "4b8baf3a-df67-431f-8e85-e652440374ec"
+    "4b8baf3a-df67-431f-8e85-e652440374ec",
+    "4d9fddf3-63c8-4810-b661-0249948374ea"
   ]
 }
