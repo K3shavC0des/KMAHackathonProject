@@ -948,6 +948,14 @@
       "task": "nairobi-data-and-map",
       "body": "User requests recalculating smaller squares for ALL observed cities. Taking exporter and observed datasets plus map count text; starting with actual per-pixel matched retrievals. Nagapattinam raw pair is local. Need Matthew to provide Ludhiana/Ahmedabad raw HDF5 pair paths or authorized download access; existing aggregate JSON cannot recover individual pixel values. Also correcting earlier runtime report: Node exists in ROOT .tools; previous search was inside isolated worktree.",
       "at": "2026-11-15T18:44:14.613Z"
+    },
+    {
+      "id": "3c273173-01ef-4dc2-856a-c45e2cbde6d4",
+      "from": "keshav",
+      "to": "all",
+      "task": "nairobi-data-and-map",
+      "body": "PR #16 https://github.com/K3shavC0des/KMAHackathonProject/pull/16 was squash-merged to main as c405b7c. It defaults the map to 45?/?20? and labels the camera toggle Top-down; no Nairobi measurements were added. Merged-main checks: map JS syntax PASS; focused map/data/API tests 12/12 PASS; git diff --check PASS. GitHub reports no CI statuses. Browser journey could not run because the computer-use browser host was unavailable. Nairobi remains blocked pending Earthdata-authenticated retrieval and same-grid QC/export of the June 30/July 12 pair; no multi-year local SMAP baseline or anomaly is claimed. Next actor: Earthdata-authorized operator; team visual review and public-demo/repository link replacement remain before submission.",
+      "at": "2026-11-15T18:50:30.405Z"
     }
   ],
   "applied": [
@@ -1106,6 +1114,7 @@
     "matt-pitch-deck-done-20261115-02",
     "nairobi-data-and-map-blocked-20261115-01",
     "nairobi-data-and-map-post-20261115-01",
-    "705b439a-af63-4dbd-9b43-22565887040e"
+    "705b439a-af63-4dbd-9b43-22565887040e",
+    "3c273173-01ef-4dc2-856a-c45e2cbde6d4"
   ]
 }
