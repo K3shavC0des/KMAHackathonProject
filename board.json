@@ -200,8 +200,8 @@
         "scripts/build-site-preview.mjs",
         "tests/integration/map-api.test.mjs"
       ],
-      "status": "review",
-      "evidence": "Pushed experimental branch https://github.com/K3shavC0des/KMAHackathonProject/tree/experiment/keshav/crop-weather-risk at 235ef03. Full map has crop toggle for Nagapattinam, 339 approximately 1 km derived blocks from 7,119 of 7,415 observed NISAR cells (minimum 10/block), rice/black gram season context, NASA POWER weather, uncertainty and block filters. Green/yellow/red order reflects median drying thresholds <2, 2-<3.5, >=3.5 percentage points; no confirmed crop safety/stress. Browser AX verified crop toggle, 339 blocks, selected-block details and 1.3% uncertainty statement before final colour change; 14/14 focused Node tests, JS syntax, 12-file preview build and diff checks pass. No main merge or deployment. Next actor: teammate review and visual rehearsal of final colours."
+      "status": "done",
+      "evidence": "User revised scope to merge. PR #18 https://github.com/K3shavC0des/KMAHackathonProject/pull/18 squash-merged to main as 10550deb7bf19e597945646191a767e7a689d622. Removed experimental naming and the unsupported L/S radar panel; added a compact explanation of three city-level cues (NISAR drying, unusual heat, below-baseline rain) and what the sources contribute. Crop options are contextual only; weather does not color map blocks. Checks: Python tests 4/4, map API tests 5/5, JS syntax, diff check, static preview build, and all city report counts/routes pass. Limits: crop presence/stage unknown; uncertainty checked only for Nagapattinam; no S-band or crop-specific calibrated risk. Next actor: demo/presentation lead use the merged map and preserve these limits in the explanation."
     }
   },
   "messages": [
@@ -1247,6 +1247,7 @@
     "64355b89-3324-43ce-b485-a8c60dfa7ff6",
     "d8a80e84-f98f-4d77-aa8f-9276590c2c1b",
     "crop-mode-all-city-handoff-20261115-01",
-    "crop-mode-pr18-handoff-20261115-01"
+    "crop-mode-pr18-handoff-20261115-01",
+    "4b8baf3a-df67-431f-8e85-e652440374ec"
   ]
 }
