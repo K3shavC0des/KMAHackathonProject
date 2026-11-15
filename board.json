@@ -127,6 +127,26 @@
       ],
       "status": "done",
       "evidence": "Verified integrated through PR #15 into team integration b701472. City/coverage API regression behavior passed in the 26-test focused merge review; preview build and diff check also passed."
+    },
+    "dark-map-followup": {
+      "id": "dark-map-followup",
+      "owner": "matthewzhang2008",
+      "goal": "Consolidate tutorial, prominent square-selection feedback, and radar follow-up; verify integrated app, redeploy preview, and finalize submission materials.",
+      "acceptance": "Follow-up is committed and integrated; checks pass; selected-square change is immediately visible; desktop and mobile deployed journeys work; board/state/submission record truthful limits.",
+      "paths": [
+        "README.md",
+        "backend/server.mjs",
+        "backend/radar.mjs",
+        "contracts/radar.schema.json",
+        "data/radar",
+        "docs/hackathon",
+        "frontend/map",
+        "scripts/build-site-preview.mjs",
+        "tests/integration/radar.test.mjs",
+        ".agents/skills/impeccable"
+      ],
+      "status": "queued",
+      "evidence": ""
     }
   },
   "messages": [
@@ -963,6 +983,7 @@
     "f8c3f3f9-d588-432e-b88c-60ba2d71a6f2",
     "matt-reconcile-google-maps-layout-20261115-01",
     "matt-reconcile-regional-observed-coverage-20261115-01",
-    "matt-reconcile-regional-coverage-regression-tests-20261115-01"
+    "matt-reconcile-regional-coverage-regression-tests-20261115-01",
+    "matt-dark-map-followup-task-20261115-02"
   ]
 }
