@@ -1060,6 +1060,14 @@
       "task": "crop-mode-map-experiment",
       "body": "All-city crop + weather map is pushed on https://github.com/K3shavC0des/KMAHackathonProject/tree/experiment/keshav/crop-weather-risk at 9bdb15d. Local preview: http://127.0.0.1:8892/ (port 8891 is an older server). Crop mode covers Nagapattinam, Ludhiana, Ahmedabad, and Nairobi with NASA POWER weather, two sourced crop options, NISAR summary, and roughly 1 km grouped cells; switching cities preserves crop mode. Removed experiment wording from map UI. Checks: JS syntax, Python AST, diff check pass; report and area counts match all 4 cities; report routes return HTTP 200. Tests/browser journey not run in this turn. Limits: crop presence/stage unknown; NISAR uncertainty only checked for Nagapattinam; NASA POWER is city-level weather. Next actor: teammate review and browser journey on port 8892.",
       "at": "2026-11-15T21:40:44.982Z"
+    },
+    {
+      "id": "crop-mode-pr18-handoff-20261115-01",
+      "from": "keshav",
+      "to": "all",
+      "task": "crop-mode-map-experiment",
+      "body": "Draft PR opened: https://github.com/K3shavC0des/KMAHackathonProject/pull/18 (main <- experiment/keshav/crop-weather-risk, head 9bdb15d). It stays draft and unmerged per task acceptance: keep this on experimental branch pending teammate review. Checks: JS syntax, Python AST, diff check; all four report cell counts match observed areas; report routes HTTP 200. Tests/browser journey not run on latest change. Limits: crop presence/stage unknown; NISAR uncertainty checked only for Nagapattinam; weather is city-level. Next actor: teammate review; decide later whether to promote beyond experiment.",
+      "at": "2026-11-15T21:45:00.544Z"
     }
   ],
   "applied": [
@@ -1238,6 +1246,7 @@
     "39f7da0f-ea0f-441b-8674-0e15e00f3427",
     "64355b89-3324-43ce-b485-a8c60dfa7ff6",
     "d8a80e84-f98f-4d77-aa8f-9276590c2c1b",
-    "crop-mode-all-city-handoff-20261115-01"
+    "crop-mode-all-city-handoff-20261115-01",
+    "crop-mode-pr18-handoff-20261115-01"
   ]
 }
