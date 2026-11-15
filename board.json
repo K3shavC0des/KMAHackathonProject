@@ -793,6 +793,14 @@
       "task": "dark-map",
       "body": "HANDOFF 3/3 ? VERIFICATION/NEXT ACTION. Current tree: static map+radar preview build PASS (14 browser/derived-data files); Node 15/15 PASS covering map readings/bands, both API prefixes, three-city provenance/tie ordering, field check, radar validation and unavailable-evidence routes; map JS syntax and git diff check PASS.\n\nRaw HDF5, credentials, .tools and .local remain excluded. Unrelated .agents/skills/claude-mem/LICENSE modification remains untouched.\n\nNext actor: review and consolidate the uncommitted tree, decide whether radar stays in submission scope, commit/push, rebuild/redeploy the private preview, then repeat the browser journey on the deployed URL. No merge, redeploy or NASA submission is claimed here.",
       "at": "2026-11-15T03:10:00.345Z"
+    },
+    {
+      "id": "map-dual-band-integration-20261115-01",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "scouting-map",
+      "body": "Map UX integration update: moved the NISAR dual-band explanation into the main map inspector. Selecting a square now shows the plain-language surface-moisture insight plus L-band status, S-band status, and a combined interpretation in one place. Easy view is default; Advanced view restores filters, timeline, and technical radar details. The separate radar page remains only as a technical fallback. Current data truth is preserved: no verified same-area/same-date Nagapattinam L/S GCOV pair, so S-band says waiting for matching data rather than inventing fusion. Node suite 15/15 and preview build pass.",
+      "at": "2026-11-15T05:20:08.739Z"
     }
   ],
   "applied": [
@@ -924,6 +932,7 @@
     "radar-sband-update-20261115-01c",
     "e2586122-c96a-4df3-9d6c-76bdefac31b6",
     "ff47a415-ee36-475f-8f1c-8d0d9233df46",
-    "78c8b924-b349-4290-939a-affbbbecf94b"
+    "78c8b924-b349-4290-939a-affbbbecf94b",
+    "map-dual-band-integration-20261115-01"
   ]
 }
