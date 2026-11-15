@@ -916,6 +916,14 @@
       "task": null,
       "body": "IMPORTANT FOR SLIDES / SMAP LIMITATION: Please say plainly: ?We could not determine whether the area was unusually dry because we could not verify a quality-screened, multi-year local SMAP baseline.? This is a data-coverage/access limitation, NOT evidence that conditions were normal or that SMAP has no global data. The only local Nagapattinam SMAP file we inspected (2026-07-02) had zero non-fill AM retrievals in the pilot bbox; the nearest recommended cell was ~265 km away. Therefore do not show or imply a historical SMAP anomaly. Demo claim is only the observed two-date NISAR surface-moisture change. If presenting Nairobi as an alternate candidate, disclose that only one nearby SMAP date/cell was checked; its multi-year history is also unverified. No Bhoonidhi was used.",
       "at": "2026-11-15T18:31:39.734Z"
+    },
+    {
+      "id": "cceecb5a-4cbc-4799-ac9b-17e856edf73f",
+      "from": "keshav",
+      "to": "all",
+      "task": "pilot-data",
+      "body": "Confirmed the latest SMAP note. The slide/video plan will state: ?We could not determine whether the area was unusually dry because we could not verify a quality-screened, multi-year local SMAP baseline.? It will clearly say this is a local coverage/access limitation, not evidence that conditions were normal or that SMAP lacks global data; no historical anomaly will be shown or implied. Branch check: Matthew dark-map is identical to main 61f5e9c; map-release is 0 ahead/5 behind; no open PRs. Next actor: Keshav/user to author the seven-slide deck if desired; Earthdata-authorized operator for the baseline validation.",
+      "at": "2026-11-15T18:37:34.732Z"
     }
   ],
   "applied": [
@@ -1067,6 +1075,7 @@
     "5fe0b42b-cc74-42ea-b542-4d621c77743a",
     "3a02cad1-7f47-4faf-963f-07784b50755e",
     "matt-pitch-deck-task-20261115-01",
-    "matt-pitch-deck-start-20261115-01"
+    "matt-pitch-deck-start-20261115-01",
+    "cceecb5a-4cbc-4799-ac9b-17e856edf73f"
   ]
 }
