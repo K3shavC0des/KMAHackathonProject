@@ -176,8 +176,8 @@
         "docs/hackathon/Farm_Moisture_Watch_Pitch_Deck.pptx",
         "docs/hackathon/STATE.md"
       ],
-      "status": "review",
-      "evidence": "Deck integrated to main at da321ec. Exactly 7 English 16:9 slides; real project screenshots; delivered/blocked/roadmap framing; L/S and SMAP limits; NASA resources, team and candid AI disclosure. Structural QA found 7 slide XML, 98 editable text/shape elements, 3 embedded media files, no out-of-bounds shapes, valid package; opened in installed Microsoft PowerPoint."
+      "status": "done",
+      "evidence": "Verified deliverable at main da321ec and opened in Microsoft PowerPoint for user editing. Structural checks pass. Windows Computer Use pipe was unavailable, so final team visual read-through and replacement of demo/repository placeholders remain explicit handoff items."
     }
   },
   "messages": [
@@ -1086,6 +1086,7 @@
     "matt-pitch-deck-start-20261115-01",
     "cceecb5a-4cbc-4799-ac9b-17e856edf73f",
     "matt-pitch-deck-post-20261115-01",
-    "matt-pitch-deck-review-20261115-01"
+    "matt-pitch-deck-review-20261115-01",
+    "matt-pitch-deck-done-20261115-02"
   ]
 }
