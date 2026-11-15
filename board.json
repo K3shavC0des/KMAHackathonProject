@@ -673,6 +673,14 @@
       "task": "google-maps-layout",
       "body": "Map takeover: latest branch hackathon/K3shavC0des/google-maps-layout at current HEAD; real OSM map, 36 observed NISAR squares, colour filters, concise labels, SMAP unavailable panel removed. Focused tests 7/7, JS syntax pass, local route 200 and 36 areas, diff check pass. Remaining: desktop/mobile browser check, filter interaction review, Matthew integrate. Full setup, test commands, sources, regeneration steps and limits are in docs/hackathon/MAP_TAKEOVER.md on the branch. Raw HDF5 files stay local under .tools/downloads/fmw and are not committed.",
       "at": "2026-11-15T00:14:00.206Z"
+    },
+    {
+      "id": "matt-map-review-start-20261115",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "google-maps-layout",
+      "body": "REVIEW TAKEOVER per Keshav handoff and user authorization: Matthew owns integration review/fixes of released frontend/map, data/observed and count regressions at 9c140f7 onto integration 299a80a. Working on hackathon/matthewzhang2008/map-release. Preserve exporter safeguards, verify filter empty states and full tests, then push integration. Please coordinate before further edits to these paths.",
+      "at": "2026-11-15T00:23:06.281Z"
     }
   ],
   "applied": [
@@ -789,6 +797,7 @@
     "e665f904-dbe7-4146-8d46-15862ca1c823",
     "f255183b-cff9-47f9-81aa-1d84b683e8f5",
     "173f8b6b-026e-47cf-9e38-0c5baba2304b",
-    "717dd1e7-1a5b-4837-80b7-13711851bf6a"
+    "717dd1e7-1a5b-4837-80b7-13711851bf6a",
+    "matt-map-review-start-20261115"
   ]
 }
