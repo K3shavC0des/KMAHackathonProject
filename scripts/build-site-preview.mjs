@@ -13,6 +13,7 @@ for (const [source, name] of [
   ['contracts/sample-areas.json', 'sample-areas.json'],
   ['data/observed/nagapattinam-areas.json', 'observed-areas.json'],
   ['data/observed/ludhiana-areas.json', 'ludhiana-areas.json'],
+  ['data/observed/nairobi-areas.json', 'nairobi-areas.json'],
   ['data/observed/ahmedabad-areas.json', 'ahmedabad-areas.json'],
 ]) {
   const collection = JSON.parse(await readFile(new URL(source, root), 'utf8'));
@@ -20,4 +21,4 @@ for (const [source, name] of [
   await copyFile(new URL(source, root), new URL(name, output));
 }
 await copyFile(new URL('data/radar/nagapattinam.json', root), new URL('radar-evidence.json', output));
-console.log('Static map preview built in dist/ (10 files; no server, orphaned prototypes, or raw downloads).');
+console.log('Static map preview built in dist/ (11 files; no server, orphaned prototypes, or raw downloads).');

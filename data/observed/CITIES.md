@@ -1,4 +1,43 @@
-# Observed city windows
+# Native satellite cells
+
+The map now uses one matched quality-recommended NISAR grid cell per square,
+recomputed from the original HDF5 pair. No aggregate value is copied into smaller
+shapes. Cell edges are inferred from adjacent coordinate midpoints. These are
+sampling footprints, not verified positional accuracy or field boundaries.
+
+| City | Dates (UTC) | Usable native cells |
+| --- | --- | --- |
+| Nagapattinam | 2026-06-20 / 2026-07-02 | 7,415 |
+| Ludhiana | 2025-11-21 / 2025-12-03 | 4,686 |
+| Ahmedabad | 2025-12-12 / 2025-12-24 | 2,681 |
+| Nairobi | 2026-06-30 / 2026-07-12 | 7,135 |
+
+Each displayed change equals the later retrieval minus the earlier retrieval
+at the identical grid coordinate. Both dates must pass the recommended bit-0
+quality mask, finite-value and fill-value checks. Missing cells are omitted.
+Smaller cells expose local variation and noise that the former medians smoothed;
+inspection colour thresholds remain uncalibrated.
+
+Nairobi window: west 36.70, south -1.40, east 36.95, north -1.15.
+Compatible raw pair opened and verified on 2026-11-15:
+- NISAR_L3_PR_SME2_024_057_A_001_4005_DHDH_A_20260630T031543_20260630T031617_P05023_N_F_J_001
+- NISAR_L3_PR_SME2_025_057_A_001_4005_DHDH_A_20260712T031542_20260712T031616_P05023_N_F_J_001
+
+Nairobi matched-cell median change: -0.031115323305130005 m3/m3.
+The 2026-07-02 SMAP check found 9 recommended cells within 30 km of Nairobi,
+nearest 19.7 km. That single regional date is not a seasonal baseline and is
+not fused into the pixel ranking. Multi-year SMAP history remains unverified.
+
+Reproduce any city (use `nagapattinam`, `ludhiana`, `ahmedabad`, or `nairobi`):
+
+```sh
+python data/observed/export_nagapattinam.py EARLIER.h5 LATER.h5 --city CITY --pixel-cells --skip-unavailable --output data/observed/CITY-areas.json
+```
+
+Raw files were obtained through the user's authorized Earthdata browser session
+from ASF. No Bhoonidhi source was used. Preserve raw HDF5 files outside Git.
+
+# Previous aggregated city exports (superseded above)
 
 Ludhiana and Ahmedabad were downloaded through the user's authorized Earthdata
 session and opened locally on 2026-11-15. These are historical NISAR SME2

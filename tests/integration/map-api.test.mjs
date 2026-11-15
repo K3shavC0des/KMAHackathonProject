@@ -25,14 +25,14 @@ test('map server serves distinct sample and observed collections through both AP
       assert.equal(observed.status, 200);
       assert.equal(observed.headers.get('cache-control'), 'no-store');
       const collection = await observed.json();
-      assert.equal(collection.areas.length, 36);
-      assert.ok(collection.areas.every(area => area.area_id.startsWith('nagapattinam-analysis-')));
+      assert.equal(collection.areas.length, 7415);
+      assert.ok(collection.areas.every(area => area.area_id.startsWith('nagapattinam-pixel-')));
       assert.ok(collection.areas.every(area => area.observations.every(item => item.data_status === 'observed' && item.source === 'NISAR_SME2')));
 
       const ranked = await fetch(`${base}${prefix}/rank?dataset=observed`);
       assert.equal(ranked.status, 200);
       const ranking = await ranked.json();
-      assert.equal(ranking.with_nisar.first_stop, 'nagapattinam-analysis-r01c04');
+      assert.equal(ranking.with_nisar.first_stop, 'nagapattinam-pixel-r961c877');
       assert.equal(ranking.without_nisar.first_stop, null);
       assert.equal(ranking.first_stop_changes, false);
       assert.equal((await fetch(`${base}${prefix}/areas?dataset=unknown`)).status, 400);
@@ -44,13 +44,13 @@ test('map server serves distinct sample and observed collections through both AP
 test('city datasets retain distinct provenance and agree with the map inspection priority', async () => {
   await withServer(async base => {
     for (const prefix of ['/api', '/map/api']) {
-      for (const [city, dates] of [['ludhiana', ['2025-11-21', '2025-12-03']], ['ahmedabad', ['2025-12-12', '2025-12-24']]]) {
+      for (const [city, dates] of [['ludhiana', ['2025-11-21', '2025-12-03']], ['ahmedabad', ['2025-12-12', '2025-12-24']], ['nairobi', ['2026-06-30', '2026-07-12']]]) {
         const response = await fetch(`${base}${prefix}/areas?dataset=${city}`);
         assert.equal(response.status, 200);
         const collection = await response.json();
-        assert.ok(collection.areas.length > 0 && collection.areas.length <= 36);
+        assert.ok(collection.areas.length > 36);
         for (const area of collection.areas) {
-          assert.ok(area.area_id.startsWith(`${city}-analysis-`));
+          assert.ok(area.area_id.startsWith(`${city}-pixel-`));
           assert.equal(area.crop_stage, 'unknown');
           assert.equal(area.observations.length, 3);
           for (const item of area.observations) {

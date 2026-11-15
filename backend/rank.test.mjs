@@ -118,9 +118,9 @@ test('verified regional anomaly flags below-baseline context without changing fi
 
 test('observed NISAR analysis tiles keep missing crop and SMAP context unavailable', () => {
   const result = compareScoutingStops(observed);
-  assert.equal(observed.areas.length, 36);
+  assert.equal(observed.areas.length, 7415);
   assert.ok(observed.areas.every(area => area.crop_stage === 'unknown' && area.observations.every(item => item.data_status === 'observed' && item.observed_at.endsWith('Z'))));
-  assert.equal(result.with_nisar.first_stop, 'nagapattinam-analysis-r01c04');
+  assert.equal(result.with_nisar.first_stop, 'nagapattinam-pixel-r961c877');
   assert.equal(result.without_nisar.first_stop, null);
   assert.equal(result.first_stop_changes, false);
   assert.equal(result.with_nisar.ranking[0].regional_below_historical, null);
@@ -148,7 +148,7 @@ test('API serves fixture and rejects unlabeled input', async () => {
     assert.equal(response.status, 400);
     const areasResponse = await fetch(`${base}/api/areas?dataset=observed`);
     assert.equal(areasResponse.status, 200);
-    assert.equal((await areasResponse.json()).areas.length, 36);
+    assert.equal((await areasResponse.json()).areas.length, 7415);
     const observedRank = await fetch(`${base}/api/rank?dataset=observed`);
     assert.equal(observedRank.status, 200);
     assert.equal((await observedRank.json()).without_nisar.first_stop, null);
