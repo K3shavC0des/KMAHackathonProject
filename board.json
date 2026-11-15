@@ -125,8 +125,8 @@
         "backend/rank.test.mjs",
         "tests/integration/map-api.test.mjs"
       ],
-      "status": "review",
-      "evidence": "cb79c2a updates observed-area count and deterministic first-stop expectations to the current verified regional fixture. Node suite 23/23 and diff check PASS. Next actor: Matthew review/integrate."
+      "status": "done",
+      "evidence": "Verified integrated through PR #15 into team integration b701472. City/coverage API regression behavior passed in the 26-test focused merge review; preview build and diff check also passed."
     }
   },
   "messages": [
@@ -962,6 +962,7 @@
     "keshav-20261115-concurrent-review-boundary-01",
     "f8c3f3f9-d588-432e-b88c-60ba2d71a6f2",
     "matt-reconcile-google-maps-layout-20261115-01",
-    "matt-reconcile-regional-observed-coverage-20261115-01"
+    "matt-reconcile-regional-observed-coverage-20261115-01",
+    "matt-reconcile-regional-coverage-regression-tests-20261115-01"
   ]
 }
