@@ -1,7 +1,7 @@
-import { inspectionSummary, latestReading, observationInstant } from './map-data.mjs';
+import { inspectionBand, inspectionSummary, latestReading, observationInstant } from './map-data.mjs';
 
 const byId = id => document.getElementById(id);
-const pilotBounds = [[79.74, 10.70], [79.80, 10.76]];
+const pilotBounds = [[79.68, 10.64], [79.86, 10.82]];
 const stateBounds = [[79.20, 10.30], [80.35, 11.10]];
 const pilotCenter = [79.77, 10.73];
 const collections = {};
@@ -23,7 +23,7 @@ function readingText(item) {
 
 function metadata(item) {
   if (!item) return 'No quality-valid reading';
-  return `${item.observed_at.slice(0, 10)} · ${item.spatial_scale} · ${item.quality} · ${item.data_status}`;
+  return `${item.observed_at.slice(0, 10)} · local satellite measurement`;
 }
 
 function labelFor(area) {
@@ -31,55 +31,60 @@ function labelFor(area) {
   return `Sample ${area.label.match(/field\s+([A-Za-z0-9]+)/i)?.[1] ?? area.area_id}`;
 }
 
-function displayPilotPanel() {
-  byId('pilot-panel').hidden = false;
-  byId('pilot-panel').scrollIntoView({ block: 'nearest' });
-}
-
 function featureCollection() {
+  const visibleBands = new Set([...document.querySelectorAll('input[name="band"]:checked')].map(input => input.value));
   return {
     type: 'FeatureCollection',
-    features: areas.map(area => ({ type: 'Feature', properties: { area_id: area.area_id, label: labelFor(area) }, geometry: area.geometry }))
+    features: areas.filter(area => visibleBands.has(inspectionBand(area))).map(area => ({ type: 'Feature', properties: { area_id: area.area_id, label: labelFor(area), band: inspectionBand(area) }, geometry: area.geometry }))
   };
+}
+
+function visibleAreas() {
+  const visibleIds = new Set(featureCollection().features.map(feature => feature.properties.area_id));
+  return areas.filter(area => visibleIds.has(area.area_id));
 }
 
 function updateMapData() {
   if (!map?.getSource('areas')) return;
   map.getSource('areas')?.setData(featureCollection());
-  map.setPaintProperty('area-fill', 'fill-color', ['case', ['==', ['get', 'area_id'], selectedId], '#ea4335', '#1a73e8']);
-  map.setPaintProperty('area-line', 'line-color', ['case', ['==', ['get', 'area_id'], selectedId], '#c5221f', '#1967d2']);
-  map.setPaintProperty('area-line', 'line-width', ['case', ['==', ['get', 'area_id'], selectedId], 3, 2]);
+  map.setPaintProperty('area-fill', 'fill-color', ['match', ['get', 'band'], 'review', '#d93025', 'watch', '#f9ab00', 'lower', '#fdd663', 'steady', '#188038', '#9aa0a6']);
+  map.setPaintProperty('area-fill', 'fill-opacity', ['case', ['==', ['get', 'area_id'], selectedId], 0.72, 0.42]);
+  map.setPaintProperty('area-line', 'line-color', ['case', ['==', ['get', 'area_id'], selectedId], '#202124', '#ffffff']);
+  map.setPaintProperty('area-line', 'line-width', ['case', ['==', ['get', 'area_id'], selectedId], 3, 1]);
 }
 
 function render() {
   const select = byId('area-select');
-  select.replaceChildren(...areas.map(area => new Option(area.label, area.area_id)));
+  const shown = visibleAreas();
+  if (!shown.some(area => area.area_id === selectedId)) selectedId = shown[0]?.area_id;
+  select.replaceChildren(...shown.map(area => new Option(area.label, area.area_id)));
   select.value = selectedId;
   const area = areas.find(item => item.area_id === selectedId);
-  if (!area) return;
+  if (!area) {
+    byId('area-description').textContent = 'No squares match the selected colour filters.';
+    updateMapData();
+    return;
+  }
   updateMapData();
   const sme2 = latestReading(area, 'NISAR_SME2', 'soil_moisture_change');
-  const smap = latestReading(area, 'SMAP', 'seasonal_baseline');
   const statuses = new Set(area.observations.map(item => item.data_status));
   byId('sample-badge').textContent = statuses.size === 1 ? [...statuses][0].toUpperCase() : 'MIXED STATUS';
   byId('area-description').textContent = mode === 'observed'
-    ? `${area.label}. This is a satellite analysis square, not a farm boundary. It measures surface soil moisture only; the crop and growth stage have not been verified.`
-    : `${area.label}. This is example data for demonstrating the app; it is not a real measurement.`;
+    ? `${area.label}. Surface soil moisture was lower or higher between the two satellite dates.`
+    : `${area.label}. Example data.`;
   const candidate = inspectionSummary(areas);
   byId('with-first').textContent = candidate ? candidate.area.label.split(' (')[0] : 'Insufficient local evidence';
   byId('value-change').textContent = candidate
-    ? `${candidate.area.label.split(' (')[0]} shows the largest measured decrease (${readingText(candidate.change)}). It may be a sensible place to look first, but this is not irrigation advice.`
-    : 'There is not enough quality-approved local evidence to suggest a first place to inspect.';
-  byId('rank-explanation').textContent = 'We cannot compare this change with a long-term seasonal record yet. The map therefore does not make a drought-risk claim or identify a crop stage.';
+    ? `${candidate.area.label.split(' (')[0]} had the largest moisture decrease (${readingText(candidate.change)}). Check this square first.`
+    : 'No local measurement suggests a first square to check.';
+  byId('rank-explanation').textContent = 'Priority is based on the local satellite moisture change.';
   byId('sme2-value').textContent = readingText(sme2);
   byId('sme2-meta').textContent = metadata(sme2);
-  byId('smap-value').textContent = readingText(smap);
-  byId('smap-meta').textContent = smap ? `9 km regional context · ${metadata(smap)}` : 'Regional SMAP context unavailable for this area';
   const timeline = byId('timeline');
   timeline.replaceChildren();
   for (const item of [...area.observations].sort((a, b) => observationInstant(b) - observationInstant(a))) {
     const li = document.createElement('li');
-    const source = item.source === 'NISAR_SME2' ? 'Local SME2' : item.source === 'SMAP' ? 'Regional SMAP' : 'Crop context';
+    const source = item.source === 'NISAR_SME2' ? 'Satellite' : 'Other source';
     const metric = item.metric === 'soil_moisture_change' ? 'change' : item.metric === 'soil_moisture' ? 'surface moisture' : item.metric.replaceAll('_', ' ');
     li.textContent = `${source} ${metric}: ${item.quality === 'missing' ? 'Unavailable' : readingText(item)}`;
     const meta = document.createElement('span');
@@ -94,7 +99,6 @@ function render() {
     li.append(details);
     timeline.append(li);
   }
-  if (!smap) timeline.append(Object.assign(document.createElement('li'), { textContent: 'Regional SMAP context: unavailable' }));
 }
 
 function selectArea(id, panToArea = false) {
@@ -135,17 +139,17 @@ async function initializeMap() {
   map.addLayer({ id: 'pilot-fill', type: 'fill', source: 'pilot-window', paint: { 'fill-color': '#f9ab00', 'fill-opacity': 0.05 } });
   map.addLayer({ id: 'pilot-outline', type: 'line', source: 'pilot-window', paint: { 'line-color': '#f9ab00', 'line-width': 2, 'line-dasharray': [2, 2] } });
   map.addSource('areas', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
-  map.addLayer({ id: 'area-fill', type: 'fill', source: 'areas', paint: { 'fill-color': '#1a73e8', 'fill-opacity': 0.30 } });
-  map.addLayer({ id: 'area-line', type: 'line', source: 'areas', paint: { 'line-color': '#1967d2', 'line-width': 2 } });
+  map.addLayer({ id: 'area-fill', type: 'fill', source: 'areas', paint: { 'fill-color': '#9aa0a6', 'fill-opacity': 0.42 } });
+  map.addLayer({ id: 'area-line', type: 'line', source: 'areas', paint: { 'line-color': '#ffffff', 'line-width': 1 } });
   map.on('mouseenter', 'area-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
   map.on('mouseleave', 'area-fill', () => { map.getCanvas().style.cursor = ''; });
   map.on('click', 'area-fill', event => selectArea(event.features[0].properties.area_id, true));
-  map.on('click', 'pilot-outline', displayPilotPanel);
   return true;
 }
 
 byId('area-select').addEventListener('change', event => selectArea(event.target.value, true));
 byId('data-mode').addEventListener('change', event => useCollection(event.target.value));
+document.querySelectorAll('input[name="band"]').forEach(input => input.addEventListener('change', render));
 byId('state-view').addEventListener('click', () => map?.fitBounds(stateBounds, { padding: 48, duration: 600 }));
 byId('pilot-view').addEventListener('click', () => map?.fitBounds(pilotBounds, { padding: 48, maxZoom: 13, duration: 600 }));
 byId('camera-view').addEventListener('click', () => {

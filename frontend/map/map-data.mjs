@@ -17,3 +17,14 @@ export function inspectionSummary(areas) {
     .sort((a, b) => a.change.value - b.change.value);
   return candidates[0] || null;
 }
+
+// These are inspection aids based only on the verified local satellite change.
+// They are deliberately not crop, drought, or irrigation risk categories.
+export function inspectionBand(area) {
+  const change = latestReading(area, 'NISAR_SME2', 'soil_moisture_change');
+  if (!change) return 'unavailable';
+  if (change.value <= -0.035) return 'review';
+  if (change.value <= -0.020) return 'watch';
+  if (change.value < 0) return 'lower';
+  return 'steady';
+}

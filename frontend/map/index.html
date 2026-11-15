@@ -25,12 +25,21 @@
       <div class="map-status" role="status">Real basemap tiles © OpenStreetMap contributors. Evidence overlays are clearly labeled as observed or synthetic.</div>
     </section>
     <aside class="inspector" aria-labelledby="detail-heading">
-      <div class="inspector-head"><p class="eyebrow">Selected area</p><span id="sample-badge" class="badge"></span></div>
-      <h2 id="detail-heading">Area evidence</h2>
-      <label for="area-select">Scouting area</label><select id="area-select"></select><p id="area-description"></p>
-      <div class="metrics"><article><h3>Local SME2 change</h3><strong id="sme2-value"></strong><small id="sme2-meta"></small></article><article><h3>Regional SMAP context</h3><strong id="smap-value"></strong><small id="smap-meta"></small></article></div>
+      <div class="inspector-head"><p class="eyebrow">Selected square</p><span id="sample-badge" class="badge"></span></div>
+      <h2 id="detail-heading">Moisture overview</h2>
+      <label for="area-select">Map square</label><select id="area-select"></select><p id="area-description"></p>
+      <div class="metrics"><article><h3>Satellite moisture change</h3><strong id="sme2-value"></strong><small id="sme2-meta"></small></article></div>
+      <section class="map-filters" aria-labelledby="filter-heading">
+        <p class="eyebrow">Map filters</p>
+        <h3 id="filter-heading">Show squares by colour</h3>
+        <p>Colours show the local moisture change between the two satellite dates.</p>
+        <label><input type="checkbox" name="band" value="review" checked> <span class="swatch review"></span> Review sooner: 3.5+ points lower</label>
+        <label><input type="checkbox" name="band" value="watch" checked> <span class="swatch watch"></span> Watch: 2.0–3.5 points lower</label>
+        <label><input type="checkbox" name="band" value="lower" checked> <span class="swatch lower"></span> Slightly lower: under 2.0 points</label>
+        <label><input type="checkbox" name="band" value="steady" checked> <span class="swatch steady"></span> Steady or higher</label>
+        <label><input type="checkbox" name="band" value="unavailable" checked> <span class="swatch unavailable"></span> No usable measurement</label>
+      </section>
       <section class="inspection-summary" aria-labelledby="value-heading"><p class="eyebrow">Inspection priority</p><h3 id="value-heading">Where to check first</h3><strong id="with-first">Loading…</strong><p id="value-change"></p><p id="rank-explanation"></p></section>
-      <section class="pilot-panel" id="pilot-panel" hidden><h3>Nagapattinam development window · observed NISAR summary</h3><p>79.74–79.80° E, 10.70–10.76° N. June 20 to July 2, 2026: median SME2 surface-moisture change <strong>−0.0175 m³/m³</strong> across 920 matched recommended cells. This window spans multiple areas; it is not a validated farm field.</p><p>SMAP regional anomaly: <strong>unavailable</strong>. Crop stage: <strong>unknown</strong>. This window is excluded from the sample ranking.</p><a href="https://github.com/K3shavC0des/KMAHackathonProject/blob/hackathon/K3shavC0des/ingest-candidate-data-and-select-indian-pilot/data/pilot/PILOT_DECISION.md">Read the source decision and quality limits</a></section>
       <section class="timeline-section"><h3>Observation timeline</h3><ol id="timeline"></ol></section>
     </aside>
   </main>
