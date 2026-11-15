@@ -189,6 +189,19 @@
       ],
       "status": "review",
       "evidence": "Experimental branch https://github.com/K3shavC0des/KMAHackathonProject/tree/experiment/keshav/crop-weather-risk at 83f3ee2. Observed 7,415 NISAR SME2 cells and per-date uncertainty, NASA POWER T2M_MAX/RH2M/rain plus 1991-2020 week baseline; rice/black gram season context only. 2/2 Python tests, Python/JS syntax, HTTP 200 for page/JS/report/381KB image, browser visual check, staged diff PASS. No merge/deploy. 1.3% changes exceed sum of uncertainties; crop/stage unknown; raw HDF5 outside Git. Next actor: teammate review before considering main, presentation lead cite limits."
+    },
+    "crop-mode-map-experiment": {
+      "id": "crop-mode-map-experiment",
+      "owner": "K3shavC0des",
+      "goal": "Show the sourced crop/weather experiment as a toggle on the full observed Nagapattinam map, without claiming cell-level crop risk",
+      "acceptance": "Crop mode loads observed city-wide report, retains measured NISAR cell map and filters, handles city changes and missing report, passes focused checks; stays on experimental branch",
+      "paths": [
+        "frontend/map",
+        "scripts/build-site-preview.mjs",
+        "tests/integration/map-api.test.mjs"
+      ],
+      "status": "queued",
+      "evidence": ""
     }
   },
   "messages": [
@@ -1195,6 +1208,7 @@
     "44c3e7bf-b759-4e07-a70b-a8138aaced0f",
     "b023213c-286f-4305-830c-e6403af70dc8",
     "d6669085-d9e8-405c-94b3-f93abf5a5618",
-    "16dfa06f-15bd-4781-ad65-e4e0634ffeb1"
+    "16dfa06f-15bd-4781-ad65-e4e0634ffeb1",
+    "3e38e11d-a617-4211-b861-0c76f6ff8ac1"
   ]
 }
