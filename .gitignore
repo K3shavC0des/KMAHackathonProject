@@ -6,6 +6,7 @@ graphify-out/
 .local/
 __pycache__/
 *.py[cod]
+~$*.pptx
 .env
 .env.*
 !.env.example
