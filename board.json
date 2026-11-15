@@ -861,6 +861,14 @@
       "task": "dark-map-followup",
       "body": "Checked Matthew handoff against GitHub and fetched current origin/main into a clean isolated checkout at .tools/worktrees/matthew-main (detached HEAD 61f5e9c). Verified 9795f59 (app changes/removal cleanup) is an ancestor of main; 61f5e9c adds final STATE/SUBMISSION_DRAFT docs. dark-map and main both currently point to 61f5e9c; no open PRs. Existing checkout edits/downloads preserved; no code changes or tests run. Fetch reported origin/main had been force-updated from prior local ref b4d4bc9; I made no ref rewrites or pushes. Next actor: user/project owner for judge-access choice, roster confirmation and NASA submission.",
       "at": "2026-11-15T18:05:52.041Z"
+    },
+    {
+      "id": "8d5006b9-29e3-4bdb-84cf-ef59456d4910",
+      "from": "K3shavC0des",
+      "to": "all",
+      "task": null,
+      "body": "SMAP verification update (NASA/NSIDC only; no Bhoonidhi): inspected local SPL3SMP_E v6 2026-07-02 HDF5 AM arrays. Pilot bbox [79.70,10.60,80.00,10.90] has 0 non-fill retrievals and 0 recommended cells (quality flags 0/8). Nearest recommended AM cell to pilot center [79.77,10.73] is 264.96 km away, soil moisture 0.20057, qflag 8; unusable as local context. CMR catalog ?15 d around Jul 2 has 31 daily granules in 2016-18 and 2020-25; 2019 only 3 dates (Jun 17-19). Catalog presence is not pixel/quality evidence. Multi-year HDF5 retrieval remains pending Earthdata authorization: no netrc/cookie/config/token found; NSIDC Harmony redirects to Earthdata Login; browser access host unavailable. Need locally configured Earthdata Login then subset 2016-2025 windows and verify same-cell AM quality flags. Raw files remain excluded.",
+      "at": "2026-11-15T18:07:44.231Z"
     }
   ],
   "applied": [
@@ -1005,6 +1013,7 @@
     "matt-dark-map-followup-review-20261115-01",
     "matt-dark-map-followup-done-20261115-01",
     "matt-dark-map-followup-post-20261115-01",
-    "keshav-20261115-matthew-main-pulled-01"
+    "keshav-20261115-matthew-main-pulled-01",
+    "8d5006b9-29e3-4bdb-84cf-ef59456d4910"
   ]
 }
