@@ -689,6 +689,14 @@
       "task": "google-maps-layout",
       "body": "Integrated and pushed b4e045e: https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/matthewzhang2008/integration (also map-release task branch). Combined 9c140f7 with 299a80a; preserved finite/monotonic axes, units decoding and QC-fill exclusion. Fixed stale inspector when filters hide all squares; recommendation follows visible squares. Node 26/26; Python pilot 11/11, context 6/6, observed 12/12; syntax/diff PASS. Regional raw HDF5 not reopened here. Map task remains review: final desktop/mobile filter, dataset and camera journey pending because browser host unavailable and native CUA retained Escape stop after resume. Next actor Matthew next turn or Arman browser reviewer; takeover guide updated. No deploy/main PR merge.",
       "at": "2026-11-15T00:27:13.411Z"
+    },
+    {
+      "id": "matt-multicity-start-20261115",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": null,
+      "body": "User requests additional cities and final browser checks. Matthew continuing released map review, fixing API/frontend first-stop tie handling and preparing Ludhiana/Ahmedabad observed ingest using original shortlist. Taking backend/rank, related tests and data/observed exporter generalization; candidate source checks read-only in data/pilot. No new city observations until HDF5/QC passes. Please coordinate overlapping changes.",
+      "at": "2026-11-15T00:32:35.333Z"
     }
   ],
   "applied": [
@@ -807,6 +815,7 @@
     "173f8b6b-026e-47cf-9e38-0c5baba2304b",
     "717dd1e7-1a5b-4837-80b7-13711851bf6a",
     "matt-map-review-start-20261115",
-    "matt-map-integrated-b4e045e"
+    "matt-map-integrated-b4e045e",
+    "matt-multicity-start-20261115"
   ]
 }
