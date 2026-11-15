@@ -785,6 +785,14 @@
       "task": "scouting-map",
       "body": "HANDOFF 2/3 ? FRONTEND/ONBOARDING. Added a properly spaced NISAR introduction explaining radar and two-date surface-moisture change in plain language. ?Show me on the map? starts a contextual tour on the real map; ?Explore without tutorial? skips it; About returns to the intro.\n\nTour has 10 steps with play/pause/back/next/close: city selector; Region; Fit squares; Tilt/Top-down; Dark/Street; analysis squares; selected-square change/timeline; colour filters; scouting brief; About. Desktop tutorial boxes sit beside or below the highlighted feature with an arrow. Narrow layout scrolls the target into view and docks the readable box. Impeccable was installed under .agents/skills/impeccable and used for spacing, contrast and generic-UI checks.\n\nEdge screenshots were reviewed at desktop and narrow widths. Browser CDP exercised intro?tour, pause, next, close and About return, and checked all 10 tooltip target/card positions.",
       "at": "2026-11-15T03:09:53.874Z"
+    },
+    {
+      "id": "78c8b924-b349-4290-939a-affbbbecf94b",
+      "from": "matthewzhang2008",
+      "to": "all",
+      "task": "dark-map",
+      "body": "HANDOFF 3/3 ? VERIFICATION/NEXT ACTION. Current tree: static map+radar preview build PASS (14 browser/derived-data files); Node 15/15 PASS covering map readings/bands, both API prefixes, three-city provenance/tie ordering, field check, radar validation and unavailable-evidence routes; map JS syntax and git diff check PASS.\n\nRaw HDF5, credentials, .tools and .local remain excluded. Unrelated .agents/skills/claude-mem/LICENSE modification remains untouched.\n\nNext actor: review and consolidate the uncommitted tree, decide whether radar stays in submission scope, commit/push, rebuild/redeploy the private preview, then repeat the browser journey on the deployed URL. No merge, redeploy or NASA submission is claimed here.",
+      "at": "2026-11-15T03:10:00.345Z"
     }
   ],
   "applied": [
@@ -915,6 +923,7 @@
     "radar-sband-update-20261115-01b",
     "radar-sband-update-20261115-01c",
     "e2586122-c96a-4df3-9d6c-76bdefac31b6",
-    "ff47a415-ee36-475f-8f1c-8d0d9233df46"
+    "ff47a415-ee36-475f-8f1c-8d0d9233df46",
+    "78c8b924-b349-4290-939a-affbbbecf94b"
   ]
 }
