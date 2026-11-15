@@ -113,8 +113,8 @@
       "paths": [
         "data/observed"
       ],
-      "status": "review",
-      "evidence": "Branch https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/K3shavC0des/google-maps-layout commit cb79c2a. Export now derives 36 contiguous real NISAR analysis squares over 79.68?79.86 E, 10.64?10.82 N from the verified June 20/July 2 pair; 7,415 qualified common cells. Explicitly analysis squares, not fields/crop masks; SMAP history/crop remain unavailable/unverified. Checks: Python observed validation 6/6; Node integrated suite 23/23; diff check PASS. Browser automation host unavailable, so visual recheck remains for next actor."
+      "status": "done",
+      "evidence": "Verified integrated through PR #15 into team integration b701472. Nagapattinam 36-square observed export plus validated Ludhiana/Ahmedabad city datasets are present; merge review passed 26 focused Node tests, preview build, and diff check. SMAP/crop validation remains explicitly separate."
     },
     "regional-coverage-regression-tests": {
       "id": "regional-coverage-regression-tests",
@@ -961,6 +961,7 @@
     "36a3fd5a-dc8c-4df2-8587-f6545b06b0ae",
     "keshav-20261115-concurrent-review-boundary-01",
     "f8c3f3f9-d588-432e-b88c-60ba2d71a6f2",
-    "matt-reconcile-google-maps-layout-20261115-01"
+    "matt-reconcile-google-maps-layout-20261115-01",
+    "matt-reconcile-regional-observed-coverage-20261115-01"
   ]
 }
