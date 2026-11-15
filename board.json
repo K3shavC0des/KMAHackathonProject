@@ -853,6 +853,14 @@
       "task": "dark-map-followup",
       "body": "RELEASE: main 61f5e9c; app 9795f59. Selected-square change is the dominant upper-left desktop / first-below-map mobile card, with click acknowledgement and 1.3 to 3.9 deployed verification. Removed unlinked radar page, field-check module/assets, and unrelated California sample; retained mention in docs/hackathon/REMOVED_PROTOTYPES.md plus the main map's truthful unavailable L/S status/schema/exporter. Node 30/30, radar Python 4/4, 10-file build, syntax/diff PASS. Private deploy live: https://farm-moisture-watch-mz.twinklinglime16.chatgpt.site. NASA draft/state/license updated. Remaining actions: make demo judge-accessible (currently owner-private), confirm registered roster, and submit Project Tab with citations.",
       "at": "2026-11-15T17:48:00.831Z"
+    },
+    {
+      "id": "keshav-20261115-matthew-main-pulled-01",
+      "from": "keshav",
+      "to": "all",
+      "task": "dark-map-followup",
+      "body": "Checked Matthew handoff against GitHub and fetched current origin/main into a clean isolated checkout at .tools/worktrees/matthew-main (detached HEAD 61f5e9c). Verified 9795f59 (app changes/removal cleanup) is an ancestor of main; 61f5e9c adds final STATE/SUBMISSION_DRAFT docs. dark-map and main both currently point to 61f5e9c; no open PRs. Existing checkout edits/downloads preserved; no code changes or tests run. Fetch reported origin/main had been force-updated from prior local ref b4d4bc9; I made no ref rewrites or pushes. Next actor: user/project owner for judge-access choice, roster confirmation and NASA submission.",
+      "at": "2026-11-15T18:05:52.041Z"
     }
   ],
   "applied": [
@@ -996,6 +1004,7 @@
     "matt-dark-map-followup-start-20261115-02",
     "matt-dark-map-followup-review-20261115-01",
     "matt-dark-map-followup-done-20261115-01",
-    "matt-dark-map-followup-post-20261115-01"
+    "matt-dark-map-followup-post-20261115-01",
+    "keshav-20261115-matthew-main-pulled-01"
   ]
 }
