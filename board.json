@@ -147,6 +147,25 @@
       ],
       "status": "done",
       "evidence": "Integrated to GitHub main at 61f5e9c; shipped app commit 9795f59 with prominent selected-square feedback and unused prototype cleanup. Owner-private Sites deployment succeeded at https://farm-moisture-watch-mz.twinklinglime16.chatgpt.site. Deployed authenticated QA changed consecutive squares from 1.3 to 3.9 percentage points lower; card class/label updated. Removed radar/field-check paths contain only app fallback, no old content. Final checks: Node 30/30, radar Python 4/4, static 10-file build, syntax/diff PASS. Remaining external action: choose public/judge access and submit NASA Project Tab with registered roster/citations."
+    },
+    "nairobi-data-and-map": {
+      "id": "nairobi-data-and-map",
+      "owner": "K3shavC0des",
+      "goal": "Evaluate and, if raw NISAR evidence passes QC, add Nairobi as an observed NISAR+SMAP candidate; improve square scale and default map tilt using actual product sampling, not synthetic values.",
+      "acceptance": "Open compatible NISAR SME2 pair over Nairobi, verify same-grid same-cell recommended retrievals and source provenance; assess nearby SMAP cell honestly; add city without changing ranking meaning; map marks evidence at correct spatial scale and defaults to tilt; tests/browser check pass. If data gates fail, do not add synthetic city, report candidate as not integrated.",
+      "paths": [
+        "data/observed/nairobi-areas.json",
+        "data/observed/CITIES.md",
+        "data/observed/export_nairobi.py",
+        "backend/rank.mjs",
+        "backend/rank.test.mjs",
+        "frontend/map/map-data.mjs",
+        "frontend/map/map.js",
+        "frontend/map/style.css",
+        "tests/integration"
+      ],
+      "status": "queued",
+      "evidence": ""
     }
   },
   "messages": [
@@ -1032,6 +1051,7 @@
     "keshav-20261115-matthew-main-pulled-01",
     "8d5006b9-29e3-4bdb-84cf-ef59456d4910",
     "78ea4aa3-9e4a-4bd7-9695-49fd7ebd245f",
-    "52eac511-96bb-4c8b-9b2c-986e4898edbe"
+    "52eac511-96bb-4c8b-9b2c-986e4898edbe",
+    "5fe0b42b-cc74-42ea-b542-4d621c77743a"
   ]
 }
