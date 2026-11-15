@@ -178,6 +178,17 @@
       ],
       "status": "done",
       "evidence": "Verified deliverable at main da321ec and opened in Microsoft PowerPoint for user editing. Structural checks pass. Windows Computer Use pipe was unavailable, so final team visual read-through and replacement of demo/repository placeholders remain explicit handoff items."
+    },
+    "crop-weather-risk-experiment": {
+      "id": "crop-weather-risk-experiment",
+      "owner": "K3shavC0des",
+      "goal": "Experimental Nagapattinam crop/weather risk from observed NISAR drying, NASA POWER temperature and sourced local rice season",
+      "acceptance": "Reproducible sourced risk report; uncertain crop stage explicit; kept off main on experimental branch",
+      "paths": [
+        "experiments/crop-weather-risk"
+      ],
+      "status": "queued",
+      "evidence": ""
     }
   },
   "messages": [
@@ -1172,6 +1183,7 @@
     "7f86cfaf-0d7b-43f4-a5f4-7b9ff3f831e4",
     "6ac7c79f-73dd-4731-b128-ed54090370dd",
     "11e3736c-10bd-495f-9607-fcabe62c7401",
-    "1ed70453-3e88-4fcf-813d-a5ef23b6175a"
+    "1ed70453-3e88-4fcf-813d-a5ef23b6175a",
+    "44c3e7bf-b759-4e07-a70b-a8138aaced0f"
   ]
 }
