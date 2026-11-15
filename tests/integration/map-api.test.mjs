@@ -24,14 +24,14 @@ test('map server serves distinct sample and observed collections through both AP
       assert.equal(observed.status, 200);
       assert.equal(observed.headers.get('cache-control'), 'no-store');
       const collection = await observed.json();
-      assert.equal(collection.areas.length, 4);
+      assert.equal(collection.areas.length, 36);
       assert.ok(collection.areas.every(area => area.area_id.startsWith('nagapattinam-analysis-')));
       assert.ok(collection.areas.every(area => area.observations.every(item => item.data_status === 'observed' && item.source === 'NISAR_SME2')));
 
       const ranked = await fetch(`${base}${prefix}/rank?dataset=observed`);
       assert.equal(ranked.status, 200);
       const ranking = await ranked.json();
-      assert.equal(ranking.with_nisar.first_stop, 'nagapattinam-analysis-sw');
+      assert.equal(ranking.with_nisar.first_stop, 'nagapattinam-analysis-r01c03');
       assert.equal(ranking.without_nisar.first_stop, null);
       assert.equal(ranking.first_stop_changes, false);
       assert.equal((await fetch(`${base}${prefix}/areas?dataset=unknown`)).status, 400);

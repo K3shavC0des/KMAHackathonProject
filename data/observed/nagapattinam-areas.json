@@ -2,8 +2,1030 @@
   "schema_version": "1.0.0",
   "areas": [
     {
-      "area_id": "nagapattinam-analysis-sw",
-      "label": "Nagapattinam analysis tile SW (observed)",
+      "area_id": "nagapattinam-analysis-r01c01",
+      "label": "Nagapattinam satellite analysis square \u2014 row 1, column 1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.68,
+              10.64
+            ],
+            [
+              79.71,
+              10.64
+            ],
+            [
+              79.71,
+              10.67
+            ],
+            [
+              79.68,
+              10.67
+            ],
+            [
+              79.68,
+              10.64
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r01c01-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.012703366577625275,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "246 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r01c01-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.26138997077941895,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "246 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r01c01-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.24795441329479218,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "246 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r01c02",
+      "label": "Nagapattinam satellite analysis square \u2014 row 1, column 2",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.71,
+              10.64
+            ],
+            [
+              79.74,
+              10.64
+            ],
+            [
+              79.74,
+              10.67
+            ],
+            [
+              79.71,
+              10.67
+            ],
+            [
+              79.71,
+              10.64
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r01c02-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.03872993588447571,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "278 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r01c02-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.29571011662483215,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "278 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r01c02-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.25768905878067017,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "278 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r01c03",
+      "label": "Nagapattinam satellite analysis square \u2014 row 1, column 3",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.74,
+              10.64
+            ],
+            [
+              79.77,
+              10.64
+            ],
+            [
+              79.77,
+              10.67
+            ],
+            [
+              79.74,
+              10.67
+            ],
+            [
+              79.74,
+              10.64
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r01c03-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.0554104745388031,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "261 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r01c03-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2995971739292145,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "261 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r01c03-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.24451692402362823,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "261 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r01c04",
+      "label": "Nagapattinam satellite analysis square \u2014 row 1, column 4",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.77,
+              10.64
+            ],
+            [
+              79.8,
+              10.64
+            ],
+            [
+              79.8,
+              10.67
+            ],
+            [
+              79.77,
+              10.67
+            ],
+            [
+              79.77,
+              10.64
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r01c04-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.060573697090148926,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "281 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r01c04-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.29409274458885193,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "281 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r01c04-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23427551984786987,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "281 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r01c05",
+      "label": "Nagapattinam satellite analysis square \u2014 row 1, column 5",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.8,
+              10.64
+            ],
+            [
+              79.83,
+              10.64
+            ],
+            [
+              79.83,
+              10.67
+            ],
+            [
+              79.8,
+              10.67
+            ],
+            [
+              79.8,
+              10.64
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r01c05-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.04647025465965271,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "246 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r01c05-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2651388645172119,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "246 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r01c05-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.22047218680381775,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "246 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r01c06",
+      "label": "Nagapattinam satellite analysis square \u2014 row 1, column 6",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.83,
+              10.64
+            ],
+            [
+              79.86,
+              10.64
+            ],
+            [
+              79.86,
+              10.67
+            ],
+            [
+              79.83,
+              10.67
+            ],
+            [
+              79.83,
+              10.64
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r01c06-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.0272882878780365,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "89 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r01c06-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2622237503528595,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "89 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r01c06-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23105597496032715,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "89 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r02c01",
+      "label": "Nagapattinam satellite analysis square \u2014 row 2, column 1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.68,
+              10.67
+            ],
+            [
+              79.71,
+              10.67
+            ],
+            [
+              79.71,
+              10.7
+            ],
+            [
+              79.68,
+              10.7
+            ],
+            [
+              79.68,
+              10.67
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r02c01-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.018249183893203735,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "242 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r02c01-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.27718088030815125,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "242 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r02c01-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.257536917924881,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "242 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r02c02",
+      "label": "Nagapattinam satellite analysis square \u2014 row 2, column 2",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.71,
+              10.67
+            ],
+            [
+              79.74,
+              10.67
+            ],
+            [
+              79.74,
+              10.7
+            ],
+            [
+              79.71,
+              10.7
+            ],
+            [
+              79.71,
+              10.67
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r02c02-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.04544578492641449,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "277 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r02c02-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.29128745198249817,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "277 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r02c02-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2473210245370865,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "277 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r02c03",
+      "label": "Nagapattinam satellite analysis square \u2014 row 2, column 3",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.74,
+              10.67
+            ],
+            [
+              79.77,
+              10.67
+            ],
+            [
+              79.77,
+              10.7
+            ],
+            [
+              79.74,
+              10.7
+            ],
+            [
+              79.74,
+              10.67
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r02c03-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.057511553168296814,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "257 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r02c03-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.3045795261859894,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "257 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r02c03-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2506650984287262,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "257 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r02c04",
+      "label": "Nagapattinam satellite analysis square \u2014 row 2, column 4",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.77,
+              10.67
+            ],
+            [
+              79.8,
+              10.67
+            ],
+            [
+              79.8,
+              10.7
+            ],
+            [
+              79.77,
+              10.7
+            ],
+            [
+              79.77,
+              10.67
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r02c04-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.05630137026309967,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "254 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r02c04-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.311873197555542,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "254 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r02c04-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2550734281539917,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "254 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r02c05",
+      "label": "Nagapattinam satellite analysis square \u2014 row 2, column 5",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.8,
+              10.67
+            ],
+            [
+              79.83,
+              10.67
+            ],
+            [
+              79.83,
+              10.7
+            ],
+            [
+              79.8,
+              10.7
+            ],
+            [
+              79.8,
+              10.67
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r02c05-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.04523277282714844,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "245 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r02c05-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2968616187572479,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "245 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r02c05-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.24862989783287048,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "245 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r02c06",
+      "label": "Nagapattinam satellite analysis square \u2014 row 2, column 6",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.83,
+              10.67
+            ],
+            [
+              79.86,
+              10.67
+            ],
+            [
+              79.86,
+              10.7
+            ],
+            [
+              79.83,
+              10.7
+            ],
+            [
+              79.83,
+              10.67
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r02c06-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.025894582271575928,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "59 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r02c06-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.27613309025764465,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "59 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r02c06-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.24843785166740417,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "59 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r03c01",
+      "label": "Nagapattinam satellite analysis square \u2014 row 3, column 1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.68,
+              10.7
+            ],
+            [
+              79.71,
+              10.7
+            ],
+            [
+              79.71,
+              10.73
+            ],
+            [
+              79.68,
+              10.73
+            ],
+            [
+              79.68,
+              10.7
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r03c01-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.04963397979736328,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "223 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r03c01-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.303358793258667,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "223 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r03c01-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2560150623321533,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "223 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r03c02",
+      "label": "Nagapattinam satellite analysis square \u2014 row 3, column 2",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.71,
+              10.7
+            ],
+            [
+              79.74,
+              10.7
+            ],
+            [
+              79.74,
+              10.73
+            ],
+            [
+              79.71,
+              10.73
+            ],
+            [
+              79.71,
+              10.7
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r03c02-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.05436128377914429,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "220 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r03c02-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.30935466289520264,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "220 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r03c02-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.25934898853302,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "220 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r03c03",
+      "label": "Nagapattinam satellite analysis square \u2014 row 3, column 3",
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -34,7 +1056,7 @@
       "crop_stage": "unknown",
       "observations": [
         {
-          "observation_id": "nagapattinam-analysis-sw-change",
+          "observation_id": "nagapattinam-analysis-r03c03-change",
           "source": "NISAR_SME2",
           "metric": "soil_moisture_change",
           "value": -0.0307721346616745,
@@ -47,7 +1069,7 @@
           "note": "194 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
         },
         {
-          "observation_id": "nagapattinam-analysis-sw-date-0",
+          "observation_id": "nagapattinam-analysis-r03c03-date-0",
           "source": "NISAR_SME2",
           "metric": "soil_moisture",
           "value": 0.2866423726081848,
@@ -60,7 +1082,7 @@
           "note": "194 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
         },
         {
-          "observation_id": "nagapattinam-analysis-sw-date-1",
+          "observation_id": "nagapattinam-analysis-r03c03-date-1",
           "source": "NISAR_SME2",
           "metric": "soil_moisture",
           "value": 0.2640873193740845,
@@ -75,8 +1097,8 @@
       ]
     },
     {
-      "area_id": "nagapattinam-analysis-se",
-      "label": "Nagapattinam analysis tile SE (observed)",
+      "area_id": "nagapattinam-analysis-r03c04",
+      "label": "Nagapattinam satellite analysis square \u2014 row 3, column 4",
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -107,7 +1129,7 @@
       "crop_stage": "unknown",
       "observations": [
         {
-          "observation_id": "nagapattinam-analysis-se-change",
+          "observation_id": "nagapattinam-analysis-r03c04-change",
           "source": "NISAR_SME2",
           "metric": "soil_moisture_change",
           "value": -0.025783687829971313,
@@ -120,7 +1142,7 @@
           "note": "235 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
         },
         {
-          "observation_id": "nagapattinam-analysis-se-date-0",
+          "observation_id": "nagapattinam-analysis-r03c04-date-0",
           "source": "NISAR_SME2",
           "metric": "soil_moisture",
           "value": 0.2693275511264801,
@@ -133,7 +1155,7 @@
           "note": "235 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
         },
         {
-          "observation_id": "nagapattinam-analysis-se-date-1",
+          "observation_id": "nagapattinam-analysis-r03c04-date-1",
           "source": "NISAR_SME2",
           "metric": "soil_moisture",
           "value": 0.24994148313999176,
@@ -148,8 +1170,300 @@
       ]
     },
     {
-      "area_id": "nagapattinam-analysis-nw",
-      "label": "Nagapattinam analysis tile NW (observed)",
+      "area_id": "nagapattinam-analysis-r03c05",
+      "label": "Nagapattinam satellite analysis square \u2014 row 3, column 5",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.8,
+              10.7
+            ],
+            [
+              79.83,
+              10.7
+            ],
+            [
+              79.83,
+              10.73
+            ],
+            [
+              79.8,
+              10.73
+            ],
+            [
+              79.8,
+              10.7
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r03c05-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.017692089080810547,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "215 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r03c05-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2559647560119629,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "215 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r03c05-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23803162574768066,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "215 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r03c06",
+      "label": "Nagapattinam satellite analysis square \u2014 row 3, column 6",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.83,
+              10.7
+            ],
+            [
+              79.86,
+              10.7
+            ],
+            [
+              79.86,
+              10.73
+            ],
+            [
+              79.83,
+              10.73
+            ],
+            [
+              79.83,
+              10.7
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r03c06-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.012547209858894348,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "67 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r03c06-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.24301202595233917,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "67 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r03c06-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.22548289597034454,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "67 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r04c01",
+      "label": "Nagapattinam satellite analysis square \u2014 row 4, column 1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.68,
+              10.73
+            ],
+            [
+              79.71,
+              10.73
+            ],
+            [
+              79.71,
+              10.76
+            ],
+            [
+              79.68,
+              10.76
+            ],
+            [
+              79.68,
+              10.73
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r04c01-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.05916783958673477,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "176 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r04c01-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.29958122968673706,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "176 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r04c01-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.24445997178554535,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "176 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r04c02",
+      "label": "Nagapattinam satellite analysis square \u2014 row 4, column 2",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.71,
+              10.73
+            ],
+            [
+              79.74,
+              10.73
+            ],
+            [
+              79.74,
+              10.76
+            ],
+            [
+              79.71,
+              10.76
+            ],
+            [
+              79.71,
+              10.73
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r04c02-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.039852648973464966,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "225 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r04c02-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.28752264380455017,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "225 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r04c02-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.25106802582740784,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "225 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r04c03",
+      "label": "Nagapattinam satellite analysis square \u2014 row 4, column 3",
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -180,7 +1494,7 @@
       "crop_stage": "unknown",
       "observations": [
         {
-          "observation_id": "nagapattinam-analysis-nw-change",
+          "observation_id": "nagapattinam-analysis-r04c03-change",
           "source": "NISAR_SME2",
           "metric": "soil_moisture_change",
           "value": -0.021050073206424713,
@@ -193,7 +1507,7 @@
           "note": "238 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
         },
         {
-          "observation_id": "nagapattinam-analysis-nw-date-0",
+          "observation_id": "nagapattinam-analysis-r04c03-date-0",
           "source": "NISAR_SME2",
           "metric": "soil_moisture",
           "value": 0.259524941444397,
@@ -206,7 +1520,7 @@
           "note": "238 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
         },
         {
-          "observation_id": "nagapattinam-analysis-nw-date-1",
+          "observation_id": "nagapattinam-analysis-r04c03-date-1",
           "source": "NISAR_SME2",
           "metric": "soil_moisture",
           "value": 0.23777872323989868,
@@ -221,8 +1535,8 @@
       ]
     },
     {
-      "area_id": "nagapattinam-analysis-ne",
-      "label": "Nagapattinam analysis tile NE (observed)",
+      "area_id": "nagapattinam-analysis-r04c04",
+      "label": "Nagapattinam satellite analysis square \u2014 row 4, column 4",
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -253,7 +1567,7 @@
       "crop_stage": "unknown",
       "observations": [
         {
-          "observation_id": "nagapattinam-analysis-ne-change",
+          "observation_id": "nagapattinam-analysis-r04c04-change",
           "source": "NISAR_SME2",
           "metric": "soil_moisture_change",
           "value": -0.0068940818309783936,
@@ -266,7 +1580,7 @@
           "note": "253 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
         },
         {
-          "observation_id": "nagapattinam-analysis-ne-date-0",
+          "observation_id": "nagapattinam-analysis-r04c04-date-0",
           "source": "NISAR_SME2",
           "metric": "soil_moisture",
           "value": 0.2293751835823059,
@@ -279,7 +1593,7 @@
           "note": "253 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
         },
         {
-          "observation_id": "nagapattinam-analysis-ne-date-1",
+          "observation_id": "nagapattinam-analysis-r04c04-date-1",
           "source": "NISAR_SME2",
           "metric": "soil_moisture",
           "value": 0.223127543926239,
@@ -290,6 +1604,1028 @@
           "data_status": "observed",
           "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
           "note": "253 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r04c05",
+      "label": "Nagapattinam satellite analysis square \u2014 row 4, column 5",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.8,
+              10.73
+            ],
+            [
+              79.83,
+              10.73
+            ],
+            [
+              79.83,
+              10.76
+            ],
+            [
+              79.8,
+              10.76
+            ],
+            [
+              79.8,
+              10.73
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r04c05-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.0016956180334091187,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "207 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r04c05-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.22468268871307373,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "207 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r04c05-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.22116902470588684,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "207 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r04c06",
+      "label": "Nagapattinam satellite analysis square \u2014 row 4, column 6",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.83,
+              10.73
+            ],
+            [
+              79.86,
+              10.73
+            ],
+            [
+              79.86,
+              10.76
+            ],
+            [
+              79.83,
+              10.76
+            ],
+            [
+              79.83,
+              10.73
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r04c06-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": 0.0014018192887306213,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "60 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r04c06-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.20904788374900818,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "60 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r04c06-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2097211629152298,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "60 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r05c01",
+      "label": "Nagapattinam satellite analysis square \u2014 row 5, column 1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.68,
+              10.76
+            ],
+            [
+              79.71,
+              10.76
+            ],
+            [
+              79.71,
+              10.79
+            ],
+            [
+              79.68,
+              10.79
+            ],
+            [
+              79.68,
+              10.76
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r05c01-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.04788997769355774,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "172 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r05c01-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2924245595932007,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "172 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r05c01-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.24967291951179504,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "172 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r05c02",
+      "label": "Nagapattinam satellite analysis square \u2014 row 5, column 2",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.71,
+              10.76
+            ],
+            [
+              79.74,
+              10.76
+            ],
+            [
+              79.74,
+              10.79
+            ],
+            [
+              79.71,
+              10.79
+            ],
+            [
+              79.71,
+              10.76
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r05c02-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.041276901960372925,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "211 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r05c02-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.28364241123199463,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "211 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r05c02-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.24589602649211884,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "211 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r05c03",
+      "label": "Nagapattinam satellite analysis square \u2014 row 5, column 3",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.74,
+              10.76
+            ],
+            [
+              79.77,
+              10.76
+            ],
+            [
+              79.77,
+              10.79
+            ],
+            [
+              79.74,
+              10.79
+            ],
+            [
+              79.74,
+              10.76
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r05c03-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.01216500997543335,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "219 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r05c03-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.26759961247444153,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "219 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r05c03-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2520325183868408,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "219 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r05c04",
+      "label": "Nagapattinam satellite analysis square \u2014 row 5, column 4",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.77,
+              10.76
+            ],
+            [
+              79.8,
+              10.76
+            ],
+            [
+              79.8,
+              10.79
+            ],
+            [
+              79.77,
+              10.79
+            ],
+            [
+              79.77,
+              10.76
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r05c04-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.011130645871162415,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "240 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r05c04-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2459733784198761,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "240 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r05c04-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23423543572425842,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "240 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r05c05",
+      "label": "Nagapattinam satellite analysis square \u2014 row 5, column 5",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.8,
+              10.76
+            ],
+            [
+              79.83,
+              10.76
+            ],
+            [
+              79.83,
+              10.79
+            ],
+            [
+              79.8,
+              10.79
+            ],
+            [
+              79.8,
+              10.76
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r05c05-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.009460240602493286,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "237 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r05c05-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23035842180252075,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "237 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r05c05-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.22132740914821625,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "237 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r05c06",
+      "label": "Nagapattinam satellite analysis square \u2014 row 5, column 6",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.83,
+              10.76
+            ],
+            [
+              79.86,
+              10.76
+            ],
+            [
+              79.86,
+              10.79
+            ],
+            [
+              79.83,
+              10.79
+            ],
+            [
+              79.83,
+              10.76
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r05c06-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.0032344162464141846,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "55 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r05c06-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2299305647611618,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "55 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r05c06-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2250918447971344,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "55 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r06c01",
+      "label": "Nagapattinam satellite analysis square \u2014 row 6, column 1",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.68,
+              10.79
+            ],
+            [
+              79.71,
+              10.79
+            ],
+            [
+              79.71,
+              10.82
+            ],
+            [
+              79.68,
+              10.82
+            ],
+            [
+              79.68,
+              10.79
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r06c01-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.04256254434585571,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "243 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r06c01-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.28352606296539307,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "243 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r06c01-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2509283423423767,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "243 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r06c02",
+      "label": "Nagapattinam satellite analysis square \u2014 row 6, column 2",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.71,
+              10.79
+            ],
+            [
+              79.74,
+              10.79
+            ],
+            [
+              79.74,
+              10.82
+            ],
+            [
+              79.71,
+              10.82
+            ],
+            [
+              79.71,
+              10.79
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r06c02-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.03008893132209778,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "251 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r06c02-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.26821452379226685,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "251 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r06c02-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.24075451493263245,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "251 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r06c03",
+      "label": "Nagapattinam satellite analysis square \u2014 row 6, column 3",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.74,
+              10.79
+            ],
+            [
+              79.77,
+              10.79
+            ],
+            [
+              79.77,
+              10.82
+            ],
+            [
+              79.74,
+              10.82
+            ],
+            [
+              79.74,
+              10.79
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r06c03-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.026381857693195343,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "226 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r06c03-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2587927579879761,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "226 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r06c03-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.23684066534042358,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "226 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r06c04",
+      "label": "Nagapattinam satellite analysis square \u2014 row 6, column 4",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.77,
+              10.79
+            ],
+            [
+              79.8,
+              10.79
+            ],
+            [
+              79.8,
+              10.82
+            ],
+            [
+              79.77,
+              10.82
+            ],
+            [
+              79.77,
+              10.79
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r06c04-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.02371278405189514,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "246 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r06c04-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2729746103286743,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "246 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r06c04-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2535599172115326,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "246 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r06c05",
+      "label": "Nagapattinam satellite analysis square \u2014 row 6, column 5",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.8,
+              10.79
+            ],
+            [
+              79.83,
+              10.79
+            ],
+            [
+              79.83,
+              10.82
+            ],
+            [
+              79.8,
+              10.82
+            ],
+            [
+              79.8,
+              10.79
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r06c05-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.013478845357894897,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "215 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r06c05-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2770441770553589,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "215 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r06c05-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2627600431442261,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "215 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        }
+      ]
+    },
+    {
+      "area_id": "nagapattinam-analysis-r06c06",
+      "label": "Nagapattinam satellite analysis square \u2014 row 6, column 6",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              79.83,
+              10.79
+            ],
+            [
+              79.86,
+              10.79
+            ],
+            [
+              79.86,
+              10.82
+            ],
+            [
+              79.83,
+              10.82
+            ],
+            [
+              79.83,
+              10.79
+            ]
+          ]
+        ]
+      },
+      "crop_stage": "unknown",
+      "observations": [
+        {
+          "observation_id": "nagapattinam-analysis-r06c06-change",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture_change",
+          "value": -0.008304014801979065,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001 ; NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "52 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r06c06-date-0",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2919531464576721,
+          "unit": "m3/m3",
+          "observed_at": "2026-06-20T00:15:57Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_023_084_A_007_4005_DHDH_A_20260620T001557_20260620T001631_P05023_N_F_J_001",
+          "note": "52 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
+        },
+        {
+          "observation_id": "nagapattinam-analysis-r06c06-date-1",
+          "source": "NISAR_SME2",
+          "metric": "soil_moisture",
+          "value": 0.2797159254550934,
+          "unit": "m3/m3",
+          "observed_at": "2026-07-02T00:15:56Z",
+          "spatial_scale": "local",
+          "quality": "valid",
+          "data_status": "observed",
+          "source_ref": "NISAR_L3_PR_SME2_024_084_A_007_4005_DHDH_A_20260702T001556_20260702T001630_P05023_N_F_J_001",
+          "note": "52 identical matched recommended cells; retrievalQualityFlag bit 0=0 on both dates. Analysis tile, not a field or verified crop mask. Surface retrieval only. Crop stage unknown; SMAP seasonal context unavailable."
         }
       ]
     }

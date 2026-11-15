@@ -2,8 +2,9 @@
 
 `nagapattinam-areas.json` implements the reviewed area collection v1 contract.
 All readings are derived from the opened NISAR SME2 June 20 / July 2, 2026
-granules listed in `data/pilot/VERIFICATION.md`. These four rectangular analysis
-tiles divide the development window; they are not surveyed fields or a crop mask.
+granules listed in `data/pilot/VERIFICATION.md`. The 36 rectangular analysis
+squares cover a 0.18° × 0.18° development region around Nagapattinam (79.68–79.86° E,
+10.64–10.82° N); they are not surveyed fields or a crop mask.
 
 Reproduce from the repository root (Python requires h5py, numpy and jsonschema):
 
@@ -23,9 +24,10 @@ Set `FMW_AREA_SCHEMA` to the same canonical schema path if using a separate chec
 The exporter checks matching coordinate axes, track, frame, pass, radar band,
 look direction, product type, units, and date order. It uses each dataset's fill
 value, finite values, and retrievalQualityFlag bit 0=0 on both dates. Quality-flag
-fill values are excluded even when their low bit is zero. Tile bounds
-are half-open to prevent double counting shared edges. The four tiles contain
-194, 235, 238, and 253 matched recommended cells (920 total).
+fill values are excluded even when their low bit is zero. Square bounds
+are half-open to prevent double counting shared edges. The 36 exported squares contain
+7,415 matched recommended cells in total. A square is shown only when it has qualified
+common cells in both acquisition dates; values are never filled in or estimated.
 
 For each tile, the change is the median of per-cell later-minus-earlier moisture
 on the common valid mask. Two additional observations record each date's median
@@ -45,15 +47,16 @@ affect surface moisture; do not present drying as measured root-zone stress.
 - Load this collection explicitly as observed data; keep the synthetic demo as a
   separately labeled option. Select the requested observation metric as well as
   source: change for the headline, soil_moisture for the two-date timeline.
-- Support `first_stop=null` from ranking PR #11. On these inputs the southwest
-  tile ranks first with NISAR; without NISAR there is insufficient evidence.
+- Support `first_stop=null` from ranking PR #11. On these inputs row 1, column 3
+  ranks first with NISAR; without NISAR there is insufficient evidence.
   `first_stop_changes=false` because both modes do not have supported stops.
 - Validate against `contracts/area.schema.json`. Schema/date validation passed;
-  the export was run against the actual opened HDF5 pair. This export has not
-  yet been wired into the browser interface or validated in the field.
+  the export was run against the actual opened HDF5 pair by Keshav. The map uses
+  these squares; field validation remains pending.
 
-Integration reconciliation checks: 11 exporter/schema regressions, 11 pair
+Historical four-tile reconciliation checks: 11 exporter/schema regressions, 11 pair
 regressions and 6 seasonal-window checks pass. The June 20 / July 2 local HDF5
 pair still yields 920 matched recommended cells and -0.01749463379383087 m3/m3
 median change. The schema-validated four-tile export exactly reproduces the
-committed observed collection. This does not validate missing SMAP context.
+then-committed observed collection. The expanded 36-square export supersedes it.
+This does not validate missing SMAP context.

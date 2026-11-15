@@ -19,12 +19,12 @@ class ExportTests(unittest.TestCase):
                                   (self.after, '2026-07-02T01:15:56+01:00', .3)):
             with h5py.File(path, 'w') as handle:
                 grid = handle.create_group(GRID)
-                grid['latitude'] = [10.705, 10.715, 10.735, 10.745]
-                grid['longitude'] = [79.745, 79.755, 79.775, 79.785]
-                grid['soilMoisture'] = np.full((4, 4), value)
+                grid['latitude'] = [10.645 + row * .03 + offset for row in range(6) for offset in (0, .01)]
+                grid['longitude'] = [79.685 + col * .03 + offset for col in range(6) for offset in (0, .01)]
+                grid['soilMoisture'] = np.full((12, 12), value)
                 grid['soilMoisture'].attrs['units'] = 'meter^3/meter^3'
                 grid['soilMoisture'].attrs['_FillValue'] = -9999.
-                grid['retrievalQualityFlag'] = np.zeros((4, 4), dtype='int16')
+                grid['retrievalQualityFlag'] = np.zeros((12, 12), dtype='int16')
                 for key, item in dict(productType='SME2', trackNumber=84, frameNumber=4005,
                                       orbitPassDirection='Ascending', radarBand='L', lookDirection='Right',
                                       zeroDopplerStartTime=date, granuleId=path.stem).items():
@@ -34,7 +34,7 @@ class ExportTests(unittest.TestCase):
         result = export(self.before, self.after)
         schema = Path(__file__).resolve().parents[2] / 'contracts/area.schema.json'
         validate_collection(result, schema)
-        self.assertEqual(len(result['areas']), 4)
+        self.assertEqual(len(result['areas']), 36)
         for area in result['areas']:
             change = area['observations'][0]
             self.assertAlmostEqual(change['value'], -.1)
@@ -66,7 +66,9 @@ class ExportTests(unittest.TestCase):
     def test_nonmonotonic_pair_rejected(self):
         for path in (self.before, self.after):
             with h5py.File(path, 'r+') as handle:
-                handle[GRID + 'latitude'][:] = [10.705, 10.735, 10.715, 10.745]
+                axis = handle[GRID + 'latitude'][:]
+                axis[[1, 2]] = axis[[2, 1]]
+                handle[GRID + 'latitude'][:] = axis
         with self.assertRaisesRegex(ValueError, 'monotonic'):
             export(self.before, self.after)
 
