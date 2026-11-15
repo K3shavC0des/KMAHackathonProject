@@ -61,7 +61,7 @@ NISAR SME2 is a provisional surface-moisture product. A lower retrieved value is
 4. Switch to Ludhiana and Ahmedabad. Show their different dates and separate inspection orders; explain that the missing Ludhiana square was omitted.
 5. Switch to the synthetic example and show its explicit label. Explain that regional SMAP history and crop evidence remain unavailable in the observed views.
 
-Run the local map with `node frontend/map/serve.mjs` and open `http://127.0.0.1:8000/`. A static browser preview can be built with `node scripts/build-site-preview.mjs`. **Current private demo URL:** https://farm-moisture-watch-mz.twinklinglime16.chatgpt.site (redeploy the follow-up before final submission). **Video:** optional; the verified desktop and mobile screenshots are retained outside the repository build artifacts.
+Run the local map with `node frontend/map/serve.mjs` and open `http://127.0.0.1:8000/`. A static browser preview can be built with `node scripts/build-site-preview.mjs`. **Verified owner-private demo URL:** https://farm-moisture-watch-mz.twinklinglime16.chatgpt.site. The final NASA project should use a judge-accessible public URL or explicitly provide access. **Video:** optional; the verified desktop and mobile screenshots are retained outside the repository build artifacts.
 
 ## Build and validation
 
