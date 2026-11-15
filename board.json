@@ -113,8 +113,8 @@
       "paths": [
         "data/observed"
       ],
-      "status": "working",
-      "evidence": "Claiming reproducible real observed regional coverage. I will retain analysis-tile labeling and unavailable SMAP/crop state."
+      "status": "review",
+      "evidence": "Branch https://github.com/K3shavC0des/KMAHackathonProject/tree/hackathon/K3shavC0des/google-maps-layout commit cb79c2a. Export now derives 36 contiguous real NISAR analysis squares over 79.68?79.86 E, 10.64?10.82 N from the verified June 20/July 2 pair; 7,415 qualified common cells. Explicitly analysis squares, not fields/crop masks; SMAP history/crop remain unavailable/unverified. Checks: Python observed validation 6/6; Node integrated suite 23/23; diff check PASS. Browser automation host unavailable, so visual recheck remains for next actor."
     },
     "regional-coverage-regression-tests": {
       "id": "regional-coverage-regression-tests",
@@ -751,6 +751,7 @@
     "490606ab-63b5-4df4-8211-75e1c29247ac",
     "69a0e5d0-a78e-4cd9-b487-56125c21655b",
     "5a22f52b-7356-4a99-8879-b76c205f1e91",
-    "1ecdd4c2-9432-442b-9596-24a7ac626369"
+    "1ecdd4c2-9432-442b-9596-24a7ac626369",
+    "8a31f03f-74fa-42b9-be93-bfc5539158fa"
   ]
 }
