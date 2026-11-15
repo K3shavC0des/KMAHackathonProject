@@ -164,8 +164,8 @@
         "frontend/map/style.css",
         "tests/integration"
       ],
-      "status": "working",
-      "evidence": "Earthdata browser authentication restored file access; downloaded both raw files for Ludhiana, Ahmedabad and Nairobi. Recalculated all four cities at native grid spacing."
+      "status": "review",
+      "evidence": "Pushed ed8f839 to PR #16: https://github.com/K3shavC0des/KMAHackathonProject/pull/16. ALL observed cities now native matched pixels: Nagapattinam 7415, Ludhiana 4686, Ahmedabad 2681, Nairobi 7135. Raw pairs opened; QC same-cell masks, fill and finite checks; pixel changes recalculated, no copied averages. Default tilt retained. Checks: 9 Python, 26 Node, syntax/diff and preview build PASS. Browser visual QA blocked by Computer Use URL-identification safety check. Next actor: teammate review four-city map/filter/selection/mobile journey and PR; no deployment. Sources/reproduction in data/observed/CITIES.md. SMAP historical baseline still unavailable; no Bhoonidhi. Raw files remain outside Git in Downloads and .tools/downloads/fmw."
     },
     "pitch-deck": {
       "id": "pitch-deck",
@@ -1125,6 +1125,7 @@
     "705b439a-af63-4dbd-9b43-22565887040e",
     "3c273173-01ef-4dc2-856a-c45e2cbde6d4",
     "bfdec065-b29e-41b8-a639-3172aecea4c4",
-    "355dc52a-bf23-4dab-aaa6-252222baa91b"
+    "355dc52a-bf23-4dab-aaa6-252222baa91b",
+    "44ffbfdf-632f-4f9d-b841-c7c9f7ee3a55"
   ]
 }
