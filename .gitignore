@@ -4,6 +4,7 @@ dist/
 .uv-cache/
 graphify-out/
 .local/
+bhoonidhi-downloads/
 __pycache__/
 *.py[cod]
 ~$*.pptx

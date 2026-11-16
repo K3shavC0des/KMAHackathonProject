@@ -14,9 +14,7 @@ python data/observed/export_nagapattinam.py earlier.h5 later.h5 --output data/ob
 
 Before writing, the exporter validates the complete collection against the shared
 `contracts/area.schema.json` with date-time format checking and rejects nonfinite
-numbers. No output is written on validation failure. On a pilot-only branch that
-does not yet contain contracts, pass `--schema path/to/contracts/area.schema.json`
-from the reviewed contract checkout; absence of a schema is an error.
+numbers. No output is written on validation failure.
 
 Run validation regressions with `python -m unittest discover -s data/observed -p test_validation.py`.
 Set `FMW_AREA_SCHEMA` to the same canonical schema path if using a separate checkout.
@@ -42,21 +40,5 @@ unverified. Show **Regional context unavailable**. Crop stage stays `unknown`.
 Crop-stage scenarios are deferred from the active map journey. Paddy water management can
 affect surface moisture; do not present drying as measured root-zone stress.
 
-## Frontend/backend handoff
-
-- Load this collection explicitly as observed data; keep the synthetic demo as a
-  separately labeled option. Select the requested observation metric as well as
-  source: change for the headline, soil_moisture for the two-date timeline.
-- Support `first_stop=null` from ranking PR #11. On these inputs row 1, column 3
-  ranks first with NISAR; without NISAR there is insufficient evidence.
-  `first_stop_changes=false` because both modes do not have supported stops.
-- Validate against `contracts/area.schema.json`. Schema/date validation passed;
-  the export was run against the actual opened HDF5 pair by Keshav. The map uses
-  these squares; field validation remains pending.
-
-Historical four-tile reconciliation checks: 11 exporter/schema regressions, 11 pair
-regressions and 6 seasonal-window checks pass. The June 20 / July 2 local HDF5
-pair still yields 920 matched recommended cells and -0.01749463379383087 m3/m3
-median change. The schema-validated four-tile export exactly reproduces the
-then-committed observed collection. The expanded 36-square export supersedes it.
-This does not validate missing SMAP context.
+The map displays this as observed data, separate from the labeled synthetic example.
+Field boundaries and crop identity have not been validated for these squares.
