@@ -1111,6 +1111,14 @@
       "task": "pitch-deck",
       "body": "Slide 2 expanded in the SARView deck: https://docs.google.com/presentation/d/1avUkGCPKWwrYBi0ePpzoDO2Fy3gFAt0FYmdSPmxqrbI/edit. It states why the four cities were selected, gives Nagapattinam 920 matched locations and rice-calendar rationale, and explains that missing or unreliable NISAR readings are removed to prevent skew. The process cards distinguish NISAR colors from city weather and rice-season context. Thumbnail check shows no overlap after shortening the quality text. Slide 1 untouched. Next actor: Matthew/team review.",
       "at": "2026-11-16T03:27:29.631Z"
+    },
+    {
+      "id": "keshav-slide5-calc-clarity-20261116",
+      "from": "keshav",
+      "to": "all",
+      "task": "pitch-deck",
+      "body": "Slide 5 right calculation panel clarified in the SARView deck: https://docs.google.com/presentation/d/1avUkGCPKWwrYBi0ePpzoDO2Fy3gFAt0FYmdSPmxqrbI/edit. It now shows July 2 estimate minus June 20 estimate for each location, defines the m3/m3 unit and negative sign, and explains median as the middle sorted change across 920 Nagapattinam locations in four map zones. Thumbnail review confirms it fits. Slide 1 untouched. Next actor: Matthew/team review.",
+      "at": "2026-11-16T04:04:45.850Z"
     }
   ],
   "applied": [
@@ -1301,6 +1309,7 @@
     "95c7d732-fcfc-4197-ba8d-2dc15a86ece6",
     "f8ad67b8-8fbd-43ea-b0ae-87e0c89aecfd",
     "keshav-sarview-deck-evidence-update-20261116",
-    "keshav-slide2-detail-20261116"
+    "keshav-slide2-detail-20261116",
+    "keshav-slide5-calc-clarity-20261116"
   ]
 }
