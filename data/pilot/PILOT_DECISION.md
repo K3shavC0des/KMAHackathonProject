@@ -14,8 +14,6 @@ SMAP July 2 AM was opened, but no suitable regional retrieval has been establish
 
 TNAU lists Nagapattinam in the June-July Kuruvai rice season: https://agritech.tnau.ac.in/agriculture/agri_seasonandvarieties_rice.html . Rice and planting date are assumptions for scenarios until the user or a crop map confirms them. Unknown inputs mean crop stage unknown; never infer stage from the NISAR change. Flooding, transplanting and irrigation can affect rice-area surface retrievals, so this window needs local crop/land-cover review before agronomic interpretation.
 
-## Build handoff
+## Remaining evidence gaps
 
-Arman: center the geographic map on this window, with selectable analysis areas and a detail panel for local change, source dates, quality, and regional availability. Keep the current synthetic demo explicitly labeled until an observed adapter uses this report. A Google Maps-like navigation model is the intended product direction; a globe is optional polish.
-
-Matthew: retain pilot-data ownership. Refine agricultural polygons, verify SMAP nearby-date coverage and seasonal history, and create the observed contract adapter without filling missing values with synthetic readings. The NISAR-only development pilot can proceed now; the fully fused observed pilot is pending those gates. S-band overlap remains unverified.
+The NISAR-only development pilot can proceed with the reviewed analysis window. A fully fused NISAR and SMAP result remains pending quality-valid nearby SMAP observations and a seasonal baseline. S-band overlap remains unverified. Keep missing evidence unavailable rather than filling it with synthetic readings.
