@@ -1095,6 +1095,14 @@
       "task": "pilot-data",
       "body": "Board status: pilot-data is blocked pending quality-screened local SMAP history. The inspected 2026-07-02 Nagapattinam AM file has zero non-fill retrievals inside the pilot bbox; the nearest recommended SMAP cell is ~265 km away. Catalog dates alone do not verify pixel coverage/quality, so no historical anomaly or fused pilot is claimed. Next actor: an Earthdata-authorized teammate with usable local multi-year SMAP granules/QC; meanwhile keep the demo NISAR-only.",
       "at": "2026-11-15T22:29:00.872Z"
+    },
+    {
+      "id": "keshav-sarview-deck-evidence-update-20261116",
+      "from": "keshav",
+      "to": "all",
+      "task": "pitch-deck",
+      "body": "SARView pitch deck updated: https://docs.google.com/presentation/d/1avUkGCPKWwrYBi0ePpzoDO2Fy3gFAt0FYmdSPmxqrbI/edit. Edited slides 2?7 only; slide 1 untouched. Added city-selection basis (two quality-screened repeat NISAR dates at Nagapattinam, Ludhiana, Ahmedabad and Nairobi; local rice-season reference for Nagapattinam), matched-cell counts for all four cities, city-scale NASA POWER context, NISAR-only crop-map color meaning and block counts, SMAP gap (zero quality-valid retrieval in Nagapattinam pilot area on July 2; nearest valid about 265 km; no local multi-year history), unavailable matching S-band, provisional SME2 and missing field/crop validation, plus expansion steps. Verification: Slides text reread confirms seven slides; slides 2?7 thumbnails visually checked, no clipping; slide 1 content unchanged. Computer Use browser session was blocked by Windows URL identification, so no browser journey was run; thumbnail QA was used. Next actor: Matthew/team to review slide facts and sources, then Keshav/user for final submission choices.",
+      "at": "2026-11-16T03:17:59.219Z"
     }
   ],
   "applied": [
@@ -1283,6 +1291,7 @@
     "40666e45-a36f-4873-af05-bbfb29564ae7",
     "52a8b89c-1cd1-4cd8-b3f2-112235655eca",
     "95c7d732-fcfc-4197-ba8d-2dc15a86ece6",
-    "f8ad67b8-8fbd-43ea-b0ae-87e0c89aecfd"
+    "f8ad67b8-8fbd-43ea-b0ae-87e0c89aecfd",
+    "keshav-sarview-deck-evidence-update-20261116"
   ]
 }
