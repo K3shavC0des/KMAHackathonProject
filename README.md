@@ -2,6 +2,8 @@
 
 Farm Moisture Watch is a map-based prototype that helps farmers and crop advisers decide which areas may be worth inspecting first for surface-moisture change. It uses quality-screened NISAR observations and shows the dates, measurements, and data limits behind each result.
 
+**Live app:** [Open SARView](https://k3shavc0des.github.io/KMAHackathonProject/)
+
 The map includes observed analysis squares for Nagapattinam, Ludhiana, and Ahmedabad, plus a separately labeled synthetic example. The squares are not verified farm boundaries, and the rankings are not irrigation advice.
 
 ## Run locally
