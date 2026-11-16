@@ -1119,6 +1119,14 @@
       "task": "pitch-deck",
       "body": "Slide 5 right calculation panel clarified in the SARView deck: https://docs.google.com/presentation/d/1avUkGCPKWwrYBi0ePpzoDO2Fy3gFAt0FYmdSPmxqrbI/edit. It now shows July 2 estimate minus June 20 estimate for each location, defines the m3/m3 unit and negative sign, and explains median as the middle sorted change across 920 Nagapattinam locations in four map zones. Thumbnail review confirms it fits. Slide 1 untouched. Next actor: Matthew/team review.",
       "at": "2026-11-16T04:04:45.850Z"
+    },
+    {
+      "id": "keshav-slide2-layout-20261116",
+      "from": "keshav",
+      "to": "all",
+      "task": "pitch-deck",
+      "body": "Slide 2 layout updated in the SARView deck: https://docs.google.com/presentation/d/1avUkGCPKWwrYBi0ePpzoDO2Fy3gFAt0FYmdSPmxqrbI/edit. Moved the existing city-selector screenshot into the open left area and added a four-city NISAR location strip (Nagapattinam 7,415; Ludhiana 4,686; Ahmedabad 2,681; Nairobi 7,135). Thumbnail check shows the screenshot and cards fit without covering the process row. Slide 1 untouched. Next actor: Matthew/team review.",
+      "at": "2026-11-16T04:27:03.830Z"
     }
   ],
   "applied": [
@@ -1310,6 +1318,7 @@
     "f8ad67b8-8fbd-43ea-b0ae-87e0c89aecfd",
     "keshav-sarview-deck-evidence-update-20261116",
     "keshav-slide2-detail-20261116",
-    "keshav-slide5-calc-clarity-20261116"
+    "keshav-slide5-calc-clarity-20261116",
+    "keshav-slide2-layout-20261116"
   ]
 }
